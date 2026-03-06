@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Drift Observatory</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="backdrop"></div>
+    <main class="shell">
+      <section class="hero">
+        <div class="eyebrow">Claude system prompt evolution</div>
+        <h1>Prompt Drift Observatory</h1>
+        <p class="lede">
+          A focused browser for the latest five prompt versions, with structural
+          drift, N-back comparisons, and named section-level change inspection.
+        </p>
+        <div id="hero-stats" class="hero-stats"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Version strip</div>
+            <h2>Snapshot</h2>
+          </div>
+          <div id="version-summary" class="inline-note"></div>
+        </div>
+        <div id="version-cards" class="version-cards"></div>
+      </section>
+
+      <section class="panel panel-grid">
+        <div>
+          <div class="section-head">
+            <div>
+              <div class="kicker">Diff surface</div>
+              <h2>N-back matrix</h2>
+            </div>
+            <div class="inline-note">Color = structural + section churn</div>
+          </div>
+          <div id="nback-matrix" class="matrix-wrap"></div>
+        </div>
+        <div>
+          <div class="section-head">
+            <div>
+              <div class="kicker">Persistent skeleton</div>
+              <h2>Stable subsection paths</h2>
+            </div>
+          </div>
+          <div id="stable-sections" class="chip-cloud"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Transition inspector</div>
+            <h2>Pairwise changes</h2>
+          </div>
+          <div id="selected-diff-note" class="inline-note"></div>
+        </div>
+        <div id="diff-tabs" class="diff-tabs"></div>
+        <div id="diff-detail" class="diff-detail"></div>
+      </section>
+
+      <section class="panel panel-grid">
+        <div>
+          <div class="section-head">
+            <div>
+              <div class="kicker">Version anatomy</div>
+              <h2>Section browser</h2>
+            </div>
+          </div>
+          <div id="version-browser" class="version-browser"></div>
+        </div>
+        <div>
+          <div class="section-head">
+            <div>
+              <div class="kicker">Exact-line persistence</div>
+              <h2>Global motifs</h2>
+            </div>
+          </div>
+          <div id="motif-list" class="motif-list"></div>
+        </div>
+      </section>
+
+      <section id="status" class="status">Loading analysis...</section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
