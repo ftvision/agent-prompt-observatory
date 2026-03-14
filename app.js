@@ -1,32 +1,115 @@
 const DATA_ROOT = ".context/latest5-prototype";
 
+const ROUTES = [
+  {
+    file: "index.html",
+    page: "home",
+    label: "Overview",
+    description: "Entry page, site map, latest sections, and strongest transitions.",
+  },
+  {
+    file: "sections.html",
+    page: "sections",
+    label: "Sections",
+    description: "Current major sections ranked by stability, density, and change.",
+  },
+  {
+    file: "section.html",
+    page: "section-detail",
+    label: "Section Detail",
+    description: "Current meaning and historical evidence for one selected section.",
+  },
+  {
+    file: "lineages.html",
+    page: "lineages",
+    label: "Lineages",
+    description: "Concept-level index for major idea threads across the prompt.",
+  },
+  {
+    file: "lineage.html",
+    page: "lineage-detail",
+    label: "Lineage Detail",
+    description: "A single idea thread with active sections and transition trail.",
+  },
+  {
+    file: "compare.html",
+    page: "compare",
+    label: "Compare",
+    description: "Direct version-to-version comparison with evidence.",
+  },
+  {
+    file: "method.html",
+    page: "method",
+    label: "Method",
+    description: "Parsing, scoring, limitations, and scientific framing.",
+  },
+];
+
+const LINEAGES = [
+  {
+    id: "tool-discovery",
+    title: "Tool discovery",
+    description: "How the prompt exposes, hides, or reintroduces tool schemas.",
+    paths: ["Tools / ToolSearch", "System Prompt / Using your tools"],
+    pathPrefixes: ["Tools / "],
+  },
+  {
+    id: "memory-policy",
+    title: "Memory policy",
+    description: "What the prompt says about persistent memory and recall.",
+    paths: ["System Prompt / auto memory"],
+    pathPrefixes: [],
+  },
+  {
+    id: "risk-discipline",
+    title: "Risk discipline",
+    description: "Constraints around reversibility, shared state, and safety.",
+    paths: ["System Prompt / Executing actions with care", "System Prompt / System"],
+    pathPrefixes: [],
+  },
+  {
+    id: "output-discipline",
+    title: "Output discipline",
+    description: "How concise and user-facing the assistant should be.",
+    paths: ["System Prompt / Output efficiency", "System Prompt / Tone and style"],
+    pathPrefixes: [],
+  },
+  {
+    id: "task-execution",
+    title: "Task execution",
+    description: "How the prompt frames engineering work, planning, and tool use.",
+    paths: ["System Prompt / Doing tasks", "System Prompt / Using your tools"],
+    pathPrefixes: [],
+  },
+];
+
 const state = {
   analysis: null,
   parsedVersions: null,
-  selectedDiffIndex: 0,
-  selectedVersionIndex: 0,
+  latestVersion: null,
+  changeIndex: new Map(),
+  page: document.body.dataset.page,
 };
 
-const els = {
-  status: document.querySelector("#status"),
-  heroStats: document.querySelector("#hero-stats"),
-  versionSummary: document.querySelector("#version-summary"),
-  versionCards: document.querySelector("#version-cards"),
-  nBackMatrix: document.querySelector("#nback-matrix"),
-  stableSections: document.querySelector("#stable-sections"),
-  diffTabs: document.querySelector("#diff-tabs"),
-  selectedDiffNote: document.querySelector("#selected-diff-note"),
-  diffDetail: document.querySelector("#diff-detail"),
-  versionBrowser: document.querySelector("#version-browser"),
-  motifList: document.querySelector("#motif-list"),
-};
+function $(id) {
+  return document.getElementById(id);
+}
 
 function escapeHtml(value) {
-  return value
+  return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function setStatus(message, isError = false) {
+  const el = $("status");
+  if (!el) {
+    return;
+  }
+  el.textContent = message;
+  el.style.color = isError ? "#8f2f11" : "";
 }
 
 function diffScore(diff) {
@@ -38,322 +121,544 @@ function diffScore(diff) {
   );
 }
 
-function setStatus(message, isError = false) {
-  els.status.textContent = message;
-  els.status.style.color = isError ? "#8f2f11" : "";
+function summaryFromUnits(units, count = 2) {
+  return units
+    .slice(0, count)
+    .map((item) => item.text)
+    .join(" ");
 }
 
-function uniqueStableSections() {
-  const totalVersions = state.analysis.versions.length;
-  return state.analysis.section_presence.filter((item) => item.count === totalVersions);
+function queryParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
 }
 
-function strongestTransition() {
-  return state.analysis.pairwise_diffs.reduce((best, current, index) => {
-    const score = diffScore(current);
-    if (!best || score > best.score) {
-      return { index, score, diff: current };
+function buildPageLink(file, params = {}) {
+  const url = new URL(file, window.location.href);
+  Object.entries(params).forEach(([key, value]) => {
+    if (value) {
+      url.searchParams.set(key, value);
     }
-    return best;
-  }, null);
+  });
+  return `${url.pathname}${url.search}`;
 }
 
-function cellTone(score, maxScore) {
-  const normalized = maxScore === 0 ? 0 : score / maxScore;
-  const alpha = 0.12 + normalized * 0.52;
-  return `rgba(176, 77, 26, ${alpha.toFixed(3)})`;
-}
-
-function renderHero() {
-  const versions = state.analysis.versions;
-  const latest = versions[versions.length - 1];
-  const anchor = state.analysis.anchor_diff;
-  const major = strongestTransition();
-
-  els.heroStats.innerHTML = [
-    {
-      label: "Window",
-      value: `${versions[0].version} - ${latest.version}`,
-    },
-    {
-      label: "Latest release",
-      value: latest.release_date,
-    },
-    {
-      label: "Stable subsection paths",
-      value: String(uniqueStableSections().length),
-    },
-    {
-      label: "Anchor subsection drift",
-      value: `${anchor.h2.added.length + anchor.h2.removed.length}`,
-    },
-    {
-      label: "Largest shift",
-      value: `${major.diff.from_version} -> ${major.diff.to_version}`,
-    },
-  ]
-    .map(
-      (item) => `
-        <article class="stat-card">
-          <div class="stat-label">${escapeHtml(item.label)}</div>
-          <div class="stat-value">${escapeHtml(item.value)}</div>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderVersionCards() {
-  const versions = state.analysis.versions;
-  const totalUnits = versions.reduce((sum, item) => sum + item.unit_count, 0);
-  const avgUnits = Math.round(totalUnits / versions.length);
-  els.versionSummary.textContent = `Average unit count in window: ${avgUnits}`;
-
-  els.versionCards.innerHTML = versions
-    .map(
-      (item) => `
-        <article class="version-card">
-          <div class="version-head">
-            <div>
-              <div class="mini-label">Version</div>
-              <div class="version-title">${escapeHtml(item.version)}</div>
-            </div>
-            <div class="release-pill">${escapeHtml(item.release_date || "Unknown")}</div>
-          </div>
-          <div class="version-meta">
-            <div class="meta-box">
-              <div class="mini-label">Top-level sections</div>
-              <strong>${item.h1_count}</strong>
-            </div>
-            <div class="meta-box">
-              <div class="mini-label">Subsections</div>
-              <strong>${item.h2_count}</strong>
-            </div>
-            <div class="meta-box">
-              <div class="mini-label">Units</div>
-              <strong>${item.unit_count}</strong>
-            </div>
-          </div>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderNBackMatrix() {
-  const versions = state.analysis.versions.map((item) => item.version);
-  const maxLag = Math.max(...state.analysis.n_back_diffs.map((item) => item.lag));
-  const diffMap = new Map(
-    state.analysis.n_back_diffs.map((item) => [`${item.to_version}:${item.lag}`, item])
-  );
-  const maxScore = Math.max(...state.analysis.n_back_diffs.map(diffScore), 1);
-
-  const header = Array.from({ length: maxLag }, (_, index) => `<th>N-${index + 1}</th>`).join("");
-  const rows = versions
-    .slice(1)
-    .map((version) => {
-      const cells = Array.from({ length: maxLag }, (_, idx) => {
-        const lag = idx + 1;
-        const diff = diffMap.get(`${version}:${lag}`);
-        if (!diff) {
-          return '<td><div class="matrix-cell empty">-</div></td>';
-        }
-        const score = diffScore(diff);
-        return `
-          <td>
-            <div class="matrix-cell" style="background:${cellTone(score, maxScore)}">
-              <span class="big">${diff.h2.added.length + diff.h2.removed.length}</span>
-              <span class="small">subsection drift</span>
-            </div>
-          </td>
-        `;
-      }).join("");
-      return `
-        <tr>
-          <th>${escapeHtml(version)}</th>
-          ${cells}
-        </tr>
-      `;
-    })
-    .join("");
-
-  els.nBackMatrix.innerHTML = `
-    <table class="matrix">
-      <thead>
-        <tr>
-          <th>Target</th>
-          ${header}
-        </tr>
-      </thead>
-      <tbody>
-        ${rows}
-      </tbody>
-    </table>
+function renderNav() {
+  const nav = $("site-nav");
+  if (!nav) {
+    return;
+  }
+  nav.innerHTML = `
+    <div class="nav-brand">
+      <a href="index.html">Prompt Drift Observatory</a>
+      <span>7-page prototype</span>
+    </div>
+    <nav class="nav-links">
+      ${ROUTES.map((route) => {
+        const active = route.page === state.page ? "active" : "";
+        return `<a class="${active}" href="${route.file}">${escapeHtml(route.label)}</a>`;
+      }).join("")}
+    </nav>
   `;
 }
 
-function renderStableSections() {
-  const stable = uniqueStableSections();
-  els.stableSections.innerHTML = stable
-    .map((item) => `<div class="chip">${escapeHtml(item.path)}</div>`)
+function buildChangeIndex() {
+  const index = new Map();
+
+  function ensure(path) {
+    if (!index.has(path)) {
+      index.set(path, {
+        path,
+        changeCount: 0,
+        addedTransitions: 0,
+        removedTransitions: 0,
+        unitAdded: 0,
+        unitRemoved: 0,
+        transitions: [],
+      });
+    }
+    return index.get(path);
+  }
+
+  state.analysis.pairwise_diffs.forEach((diff) => {
+    diff.h2.added.forEach((path) => {
+      const row = ensure(path);
+      row.changeCount += 1;
+      row.addedTransitions += 1;
+      row.transitions.push({
+        from: diff.from_version,
+        to: diff.to_version,
+        mode: "added",
+        summary: "Section path appears.",
+      });
+    });
+
+    diff.h2.removed.forEach((path) => {
+      const row = ensure(path);
+      row.changeCount += 1;
+      row.removedTransitions += 1;
+      row.transitions.push({
+        from: diff.from_version,
+        to: diff.to_version,
+        mode: "removed",
+        summary: "Section path disappears.",
+      });
+    });
+
+    diff.changed_sections.forEach((item) => {
+      const row = ensure(item.path);
+      row.changeCount += 1;
+      row.unitAdded += item.added_count;
+      row.unitRemoved += item.removed_count;
+      row.transitions.push({
+        from: diff.from_version,
+        to: diff.to_version,
+        mode: "rewritten",
+        summary: `+${item.added_count} / -${item.removed_count}`,
+        addedSample: item.added_samples[0] || "",
+        removedSample: item.removed_samples[0] || "",
+      });
+    });
+  });
+
+  state.changeIndex = index;
+}
+
+function versionSpan() {
+  const versions = state.analysis.versions;
+  return `${versions[0].version} -> ${versions[versions.length - 1].version}`;
+}
+
+function strongestTransitions(limit = 4) {
+  return [...state.analysis.pairwise_diffs]
+    .sort((left, right) => diffScore(right) - diffScore(left))
+    .slice(0, limit);
+}
+
+function sectionRows() {
+  const totalVersions = state.analysis.versions.length;
+  const latestSections = Object.entries(state.latestVersion.h2_sections).map(([path, info]) => {
+    const presence = state.analysis.section_presence.find((item) => item.path === path);
+    const change = state.changeIndex.get(path) || {
+      changeCount: 0,
+      addedTransitions: 0,
+      removedTransitions: 0,
+      unitAdded: 0,
+      unitRemoved: 0,
+      transitions: [],
+    };
+    return {
+      path,
+      info,
+      summary: summaryFromUnits(info.units, 2) || "No unit text parsed for this section.",
+      presenceCount: presence ? presence.count : 1,
+      presenceLabel: `${presence ? presence.count : 1}/${totalVersions} versions`,
+      volatility: change.changeCount,
+      unitChurn: change.unitAdded + change.unitRemoved,
+      transitions: change.transitions,
+    };
+  });
+
+  latestSections.sort((left, right) => {
+    const scoreRight = right.volatility * 8 + right.unitChurn + right.info.unit_count;
+    const scoreLeft = left.volatility * 8 + left.unitChurn + left.info.unit_count;
+    return scoreRight - scoreLeft;
+  });
+  return latestSections;
+}
+
+function matchesLineage(path, lineage) {
+  if (lineage.paths.includes(path)) {
+    return true;
+  }
+  return lineage.pathPrefixes.some((prefix) => path.startsWith(prefix));
+}
+
+function lineageRows() {
+  return LINEAGES.map((lineage) => {
+    const relatedSections = sectionRows().filter((row) => matchesLineage(row.path, lineage));
+    const transitionRows = state.analysis.pairwise_diffs.filter((diff) => {
+      return (
+        diff.h2.added.some((path) => matchesLineage(path, lineage)) ||
+        diff.h2.removed.some((path) => matchesLineage(path, lineage)) ||
+        diff.changed_sections.some((item) => matchesLineage(item.path, lineage))
+      );
+    });
+
+    const presenceMax = relatedSections.reduce((max, row) => Math.max(max, row.presenceCount), 0);
+    return {
+      ...lineage,
+      relatedSections,
+      transitionRows,
+      sectionCount: relatedSections.length,
+      totalChanges: transitionRows.reduce((sum, row) => sum + diffScore(row), 0),
+      presenceMax,
+    };
+  }).sort((left, right) => right.totalChanges - left.totalChanges);
+}
+
+function renderInfoGrid(el, rows) {
+  el.innerHTML = rows
+    .map(
+      (row) => `
+        <article class="info-card">
+          <div class="mini-label">${escapeHtml(row.label)}</div>
+          <div class="info-value">${escapeHtml(row.value)}</div>
+        </article>
+      `
+    )
     .join("");
 }
 
-function renderDiffTabs() {
-  els.diffTabs.innerHTML = state.analysis.pairwise_diffs
-    .map((diff, index) => {
-      const active = index === state.selectedDiffIndex ? "active" : "";
-      const score = diffScore(diff);
-      return `
-        <button class="diff-tab ${active}" data-diff-index="${index}" type="button">
-          <div class="mini-label">Transition</div>
-          <div class="tab-title">${escapeHtml(diff.from_version)} -> ${escapeHtml(diff.to_version)}</div>
-          <div class="tab-meta">
-            <span>${diff.h2.added.length + diff.h2.removed.length} subsection drift</span>
-            <span class="score-pill">score ${score}</span>
+function renderOverview() {
+  renderInfoGrid($("hero-stats"), [
+    { label: "Window", value: versionSpan() },
+    { label: "Latest release", value: state.analysis.versions.at(-1).release_date || "Unknown" },
+    { label: "Current sections", value: String(Object.keys(state.latestVersion.h2_sections).length) },
+    { label: "Major lineages", value: String(LINEAGES.length) },
+    { label: "Strongest shift", value: `${strongestTransitions(1)[0].from_version} -> ${strongestTransitions(1)[0].to_version}` },
+  ]);
+
+  $("route-cards").innerHTML = ROUTES.map(
+    (route, index) => `
+      <a class="route-card" href="${route.file}">
+        <div class="mini-label">Page ${index + 1}</div>
+        <h3>${escapeHtml(route.label)}</h3>
+        <p>${escapeHtml(route.description)}</p>
+      </a>
+    `
+  ).join("");
+
+  $("latest-sections").innerHTML = sectionRows()
+    .slice(0, 6)
+    .map(
+      (row) => `
+        <article class="card">
+          <div class="pill-row">
+            <span class="pill">${escapeHtml(row.presenceLabel)}</span>
+            <span class="pill signal">${row.volatility} change events</span>
           </div>
-        </button>
+          <h3>${escapeHtml(row.path)}</h3>
+          <p>${escapeHtml(row.summary)}</p>
+          <a class="text-link" href="${buildPageLink("section.html", { path: row.path })}">Open section</a>
+        </article>
+      `
+    )
+    .join("");
+
+  $("major-transitions").innerHTML = strongestTransitions()
+    .map(
+      (diff) => `
+        <article class="stack-card">
+          <div class="pill-row">
+            <span class="pill">${escapeHtml(diff.from_version)} -> ${escapeHtml(diff.to_version)}</span>
+            <span class="pill signal">score ${diffScore(diff)}</span>
+          </div>
+          <strong>${diff.h2.added.length + diff.h2.removed.length} subsection path changes</strong>
+          <p>${diff.changed_sections[0] ? escapeHtml(diff.changed_sections[0].path) : "No shared-section churn after filters."}</p>
+          <a class="text-link" href="${buildPageLink("compare.html", { from: diff.from_version, to: diff.to_version })}">Compare pair</a>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderSections() {
+  $("sections-note").textContent = `${Object.keys(state.latestVersion.h2_sections).length} sections in ${state.latestVersion.version}`;
+  $("section-index").innerHTML = sectionRows()
+    .map(
+      (row) => `
+        <article class="card">
+          <div class="pill-row">
+            <span class="pill">${escapeHtml(row.presenceLabel)}</span>
+            <span class="pill signal">${row.unitChurn} unit churn</span>
+          </div>
+          <h3>${escapeHtml(row.path)}</h3>
+          <p>${escapeHtml(row.summary)}</p>
+          <div class="meta-line">${row.info.unit_count} current units</div>
+          <a class="text-link" href="${buildPageLink("section.html", { path: row.path })}">Inspect section</a>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderSectionDetail() {
+  const rows = sectionRows();
+  const selectedPath = queryParam("path") || rows[0].path;
+  const selected = rows.find((row) => row.path === selectedPath) || rows[0];
+
+  $("section-title").textContent = selected.path;
+  $("section-lede").textContent = selected.summary;
+
+  $("section-catalog").innerHTML = rows
+    .map((row) => {
+      const active = row.path === selected.path ? "active-item" : "";
+      return `
+        <a class="stack-card ${active}" href="${buildPageLink("section.html", { path: row.path })}">
+          <strong>${escapeHtml(row.path)}</strong>
+          <span>${escapeHtml(row.presenceLabel)} · ${row.volatility} changes</span>
+        </a>
       `;
     })
     .join("");
 
-  els.diffTabs.querySelectorAll("[data-diff-index]").forEach((button) => {
-    button.addEventListener("click", () => {
-      state.selectedDiffIndex = Number(button.dataset.diffIndex);
-      renderDiffTabs();
-      renderDiffDetail();
-    });
-  });
+  renderInfoGrid($("section-summary"), [
+    { label: "Current version", value: state.latestVersion.version },
+    { label: "Presence", value: selected.presenceLabel },
+    { label: "Current units", value: String(selected.info.unit_count) },
+    { label: "Tracked changes", value: String(selected.volatility) },
+  ]);
+
+  $("section-units").innerHTML = selected.info.units
+    .slice(0, 8)
+    .map(
+      (unit) => `
+        <article class="stack-card quote-card">
+          <p>${escapeHtml(unit.text)}</p>
+        </article>
+      `
+    )
+    .join("") || '<div class="empty">No parsed unit text.</div>';
+
+  $("section-history").innerHTML = selected.transitions
+    .map(
+      (item) => `
+        <article class="stack-card">
+          <div class="pill-row">
+            <span class="pill">${escapeHtml(item.from)} -> ${escapeHtml(item.to)}</span>
+            <span class="pill signal">${escapeHtml(item.mode)}</span>
+          </div>
+          <p>${escapeHtml(item.summary)}</p>
+          ${item.addedSample ? `<div class="sample">Added: ${escapeHtml(item.addedSample)}</div>` : ""}
+          ${item.removedSample ? `<div class="sample">Removed: ${escapeHtml(item.removedSample)}</div>` : ""}
+        </article>
+      `
+    )
+    .join("") || '<div class="empty">No historical changes in the current window.</div>';
 }
 
-function renderDiffDetail() {
-  const diff = state.analysis.pairwise_diffs[state.selectedDiffIndex];
-  els.selectedDiffNote.textContent = `${diff.changed_section_count} changed shared sections`;
+function renderLineages() {
+  $("lineage-index").innerHTML = lineageRows()
+    .map(
+      (lineage) => `
+        <article class="card">
+          <div class="pill-row">
+            <span class="pill">${lineage.sectionCount} active sections</span>
+            <span class="pill signal">${lineage.transitionRows.length} transitions</span>
+          </div>
+          <h3>${escapeHtml(lineage.title)}</h3>
+          <p>${escapeHtml(lineage.description)}</p>
+          <div class="meta-line">Strongest presence: ${lineage.presenceMax}/${state.analysis.versions.length} versions</div>
+          <a class="text-link" href="${buildPageLink("lineage.html", { id: lineage.id })}">Open lineage</a>
+        </article>
+      `
+    )
+    .join("");
+}
 
-  const addedSubsections = diff.h2.added.length
-    ? diff.h2.added.map((item) => `<span class="pill">${escapeHtml(item)}</span>`).join("")
-    : '<div class="empty">No new subsection paths.</div>';
+function renderLineageDetail() {
+  const rows = lineageRows();
+  const selectedId = queryParam("id") || rows[0].id;
+  const selected = rows.find((row) => row.id === selectedId) || rows[0];
 
-  const removedSubsections = diff.h2.removed.length
-    ? diff.h2.removed.map((item) => `<span class="pill signal">${escapeHtml(item)}</span>`).join("")
-    : '<div class="empty">No removed subsection paths.</div>';
+  $("lineage-title").textContent = selected.title;
+  $("lineage-lede").textContent = selected.description;
 
-  const sectionChanges = diff.changed_sections.length
-    ? diff.changed_sections
-        .map((item) => {
-          const addedSample = item.added_samples[0]
-            ? `<div class="sample">Added: ${escapeHtml(item.added_samples[0])}</div>`
-            : "";
-          const removedSample = item.removed_samples[0]
-            ? `<div class="sample">Removed: ${escapeHtml(item.removed_samples[0])}</div>`
-            : "";
-          return `
-            <div class="section-change">
-              <strong>${escapeHtml(item.path)}</strong>
-              <div class="mini-label">+${item.added_count} / -${item.removed_count}</div>
-              ${addedSample}
-              ${removedSample}
-            </div>
-          `;
-        })
-        .join("")
-    : '<div class="empty">No unit-level changes in shared sections after volatile filters.</div>';
+  $("lineage-catalog").innerHTML = rows
+    .map((row) => {
+      const active = row.id === selected.id ? "active-item" : "";
+      return `
+        <a class="stack-card ${active}" href="${buildPageLink("lineage.html", { id: row.id })}">
+          <strong>${escapeHtml(row.title)}</strong>
+          <span>${row.sectionCount} active sections · ${row.transitionRows.length} transitions</span>
+        </a>
+      `;
+    })
+    .join("");
 
-  els.diffDetail.innerHTML = `
-    <article class="detail-card">
-      <h3>Added subsection paths</h3>
-      <div class="pill-list">${addedSubsections}</div>
+  renderInfoGrid($("lineage-profile"), [
+    { label: "Window", value: versionSpan() },
+    { label: "Active sections", value: String(selected.sectionCount) },
+    { label: "Transitions", value: String(selected.transitionRows.length) },
+    { label: "Total signal", value: String(selected.totalChanges) },
+  ]);
+
+  $("lineage-sections").innerHTML = selected.relatedSections
+    .map(
+      (row) => `
+        <article class="stack-card">
+          <div class="pill-row">
+            <span class="pill">${escapeHtml(row.presenceLabel)}</span>
+            <span class="pill signal">${row.unitChurn} unit churn</span>
+          </div>
+          <strong>${escapeHtml(row.path)}</strong>
+          <p>${escapeHtml(row.summary)}</p>
+          <a class="text-link" href="${buildPageLink("section.html", { path: row.path })}">Open section</a>
+        </article>
+      `
+    )
+    .join("") || '<div class="empty">No live sections matched this lineage in the latest window.</div>';
+
+  $("lineage-history").innerHTML = selected.transitionRows
+    .map((diff) => {
+      const relatedChanges = diff.changed_sections.filter((item) => matchesLineage(item.path, selected));
+      return `
+        <article class="stack-card">
+          <div class="pill-row">
+            <span class="pill">${escapeHtml(diff.from_version)} -> ${escapeHtml(diff.to_version)}</span>
+            <span class="pill signal">${diffScore(diff)} score</span>
+          </div>
+          <p>${relatedChanges[0] ? escapeHtml(relatedChanges[0].path) : "Structural change inside the lineage."}</p>
+          ${
+            relatedChanges[0] && relatedChanges[0].added_samples[0]
+              ? `<div class="sample">Added: ${escapeHtml(relatedChanges[0].added_samples[0])}</div>`
+              : ""
+          }
+        </article>
+      `;
+    })
+    .join("") || '<div class="empty">No transitions matched this lineage in the current window.</div>';
+}
+
+function renderCompare() {
+  const versions = state.analysis.versions.map((item) => item.version);
+  const fromVersion = queryParam("from") || versions[0];
+  const toVersion = queryParam("to") || versions.at(-1);
+  const selected = state.analysis.n_back_diffs.find(
+    (item) => item.from_version === fromVersion && item.to_version === toVersion
+  ) || state.analysis.anchor_diff;
+
+  $("compare-note").textContent = `Window supports arbitrary pairwise comparisons inside ${versionSpan()}`;
+
+  $("compare-controls").innerHTML = `
+    <label class="select-label">
+      <span>From</span>
+      <select id="compare-from" class="browser-select">
+        ${versions.map((version) => `<option value="${version}" ${version === selected.from_version ? "selected" : ""}>${version}</option>`).join("")}
+      </select>
+    </label>
+    <label class="select-label">
+      <span>To</span>
+      <select id="compare-to" class="browser-select">
+        ${versions.map((version) => `<option value="${version}" ${version === selected.to_version ? "selected" : ""}>${version}</option>`).join("")}
+      </select>
+    </label>
+    <a class="button-link" id="compare-go" href="${buildPageLink("compare.html", { from: selected.from_version, to: selected.to_version })}">Load pair</a>
+  `;
+
+  renderInfoGrid($("compare-summary"), [
+    { label: "Pair", value: `${selected.from_version} -> ${selected.to_version}` },
+    { label: "Added paths", value: String(selected.h2.added.length) },
+    { label: "Removed paths", value: String(selected.h2.removed.length) },
+    { label: "Changed sections", value: String(selected.changed_section_count) },
+  ]);
+
+  $("compare-detail").innerHTML = `
+    <article class="card">
+      <div class="mini-label">Added subsection paths</div>
+      <div class="pill-row wrap-row">
+        ${selected.h2.added.length ? selected.h2.added.map((path) => `<span class="pill">${escapeHtml(path)}</span>`).join("") : '<span class="empty">None</span>'}
+      </div>
     </article>
-    <article class="detail-card">
-      <h3>Removed subsection paths</h3>
-      <div class="pill-list">${removedSubsections}</div>
+    <article class="card">
+      <div class="mini-label">Removed subsection paths</div>
+      <div class="pill-row wrap-row">
+        ${selected.h2.removed.length ? selected.h2.removed.map((path) => `<span class="pill signal">${escapeHtml(path)}</span>`).join("") : '<span class="empty">None</span>'}
+      </div>
     </article>
-    <article class="detail-card">
-      <h3>Shared subsection drift</h3>
-      <div class="list-block">
-        <div class="mini-label">units added ${diff.section_unit_added_total}</div>
-        <div class="mini-label">units removed ${diff.section_unit_removed_total}</div>
-        ${sectionChanges}
+    <article class="card">
+      <div class="mini-label">Shared-section churn</div>
+      <div class="stack-list compact-stack">
+        ${
+          selected.changed_sections.length
+            ? selected.changed_sections
+                .map(
+                  (item) => `
+                    <article class="stack-card">
+                      <strong>${escapeHtml(item.path)}</strong>
+                      <span>+${item.added_count} / -${item.removed_count}</span>
+                      ${item.added_samples[0] ? `<div class="sample">Added: ${escapeHtml(item.added_samples[0])}</div>` : ""}
+                    </article>
+                  `
+                )
+                .join("")
+            : '<div class="empty">No shared-section churn after volatile filters.</div>'
+        }
       </div>
     </article>
   `;
+
+  $("compare-from").addEventListener("change", syncCompareLink);
+  $("compare-to").addEventListener("change", syncCompareLink);
 }
 
-function renderVersionBrowser() {
-  const parsed = state.parsedVersions[state.selectedVersionIndex];
-  const options = state.parsedVersions
+function syncCompareLink() {
+  const fromValue = $("compare-from").value;
+  const toValue = $("compare-to").value;
+  $("compare-go").href = buildPageLink("compare.html", { from: fromValue, to: toValue });
+}
+
+function renderMethod() {
+  $("method-pipeline").innerHTML = [
+    "Fetch prompt markdown for the latest versions.",
+    "Parse top-level sections, subsection paths, and unit-level text fragments.",
+    "Normalize volatile values such as temporary paths and project memory roots.",
+    "Compute consecutive diffs, N-back diffs, anchor diffs, and exact persistent motifs.",
+    "Render multipage views for overview, sections, lineages, evidence, and method.",
+  ]
     .map(
-      (item, index) =>
-        `<option value="${index}" ${index === state.selectedVersionIndex ? "selected" : ""}>${escapeHtml(item.version)}</option>`
+      (item, index) => `
+        <article class="stack-card">
+          <div class="pill-row">
+            <span class="pill">Step ${index + 1}</span>
+          </div>
+          <p>${escapeHtml(item)}</p>
+        </article>
+      `
     )
     .join("");
 
-  const h1Cards = Object.entries(parsed.h1_sections)
-    .map(([h1, info]) => {
-      const h2Items = Object.values(parsed.h2_sections)
-        .filter((section) => section.h1 === h1)
-        .sort((left, right) => right.unit_count - left.unit_count)
-        .map(
-          (section) => `
-            <div class="h2-item">
-              <span>${escapeHtml(section.h2)}</span>
-              <span class="mini-label">${section.unit_count}</span>
-            </div>
-          `
-        )
-        .join("");
-      return `
-        <article class="browser-card">
-          <div class="mini-label">Top-level section</div>
-          <h3>${escapeHtml(h1)}</h3>
-          <div class="lag-pill">${info.unit_count} direct units</div>
-          <div class="h2-list">${h2Items || '<div class="empty">No named subsections.</div>'}</div>
-        </article>
-      `;
-    })
-    .join("");
+  renderInfoGrid($("method-facts"), [
+    { label: "Versions loaded", value: String(state.analysis.versions.length) },
+    { label: "Current sections", value: String(Object.keys(state.latestVersion.h2_sections).length) },
+    { label: "Pairwise diffs", value: String(state.analysis.pairwise_diffs.length) },
+    { label: "Lineage examples", value: String(LINEAGES.length) },
+  ]);
 
-  els.versionBrowser.innerHTML = `
-    <div class="browser-toolbar">
-      <select class="browser-select" id="version-select">${options}</select>
-      <div class="inline-note">${escapeHtml(parsed.release_date || "Unknown release date")}</div>
-    </div>
-    <div class="browser-grid">${h1Cards}</div>
-  `;
-
-  els.versionBrowser.querySelector("#version-select").addEventListener("change", (event) => {
-    state.selectedVersionIndex = Number(event.target.value);
-    renderVersionBrowser();
-  });
-}
-
-function renderMotifs() {
-  els.motifList.innerHTML = state.analysis.global_duplicates
+  $("method-limitations").innerHTML = [
+    "Section identity is still path-based, so renames and moves are not inferred yet.",
+    "Unit drift is exact-text oriented, which undercounts paraphrase-level change.",
+    "Lineages in this prototype are example groupings, not model-derived semantic graphs.",
+    "The site uses the latest-five data window for live rendering, not the wider 20-version scan.",
+  ]
     .map(
       (item) => `
-        <article class="motif-card">
-          <div class="mini-label">Exact persistent unit</div>
-          <p>${escapeHtml(item.text)}</p>
-          <div class="pill-list">
-            <span class="pill">${item.version_count} versions</span>
-            <span class="pill">${item.path_count} paths</span>
-          </div>
+        <article class="card">
+          <p>${escapeHtml(item)}</p>
         </article>
       `
     )
     .join("");
 }
 
-function render() {
-  renderHero();
-  renderVersionCards();
-  renderNBackMatrix();
-  renderStableSections();
-  renderDiffTabs();
-  renderDiffDetail();
-  renderVersionBrowser();
-  renderMotifs();
-  setStatus("Loaded latest-five analysis.");
+function renderPage() {
+  renderNav();
+
+  if (state.page === "home") {
+    renderOverview();
+  } else if (state.page === "sections") {
+    renderSections();
+  } else if (state.page === "section-detail") {
+    renderSectionDetail();
+  } else if (state.page === "lineages") {
+    renderLineages();
+  } else if (state.page === "lineage-detail") {
+    renderLineageDetail();
+  } else if (state.page === "compare") {
+    renderCompare();
+  } else if (state.page === "method") {
+    renderMethod();
+  }
 }
 
 async function loadData() {
@@ -365,15 +670,15 @@ async function loadData() {
     ]);
 
     if (!analysisResponse.ok || !parsedResponse.ok) {
-      throw new Error("Analysis artifacts are missing. Run the analyzer first.");
+      throw new Error("Analysis artifacts are missing. Run python3 analyze_prompts.py first.");
     }
 
     state.analysis = await analysisResponse.json();
     state.parsedVersions = await parsedResponse.json();
-    const major = strongestTransition();
-    state.selectedDiffIndex = major ? major.index : 0;
-    state.selectedVersionIndex = state.parsedVersions.length - 1;
-    render();
+    state.latestVersion = state.parsedVersions.at(-1);
+    buildChangeIndex();
+    renderPage();
+    setStatus(`Loaded ${state.analysis.versions.length} versions for the 7-page prototype.`);
   } catch (error) {
     setStatus(error.message, true);
   }
