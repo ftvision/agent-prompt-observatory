@@ -1,0 +1,94 @@
+{
+  "from_version": "2.1.7",
+  "to_version": "2.1.8",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-14",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-16",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.9925,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.95"
+      ],
+      "before_text": "Today's date is 2026-01-14. You MUST use this year when searching for recent information, documentation, or current events.",
+      "after_text": "Today's date is 2026-01-16. You MUST use this year when searching for recent information, documentation, or current events.",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.9459,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.75",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Example: If today is 2025-07-15 and the user asks for \"latest React docs\", search for \"React documentation 2025\", NOT \"React documentation 2024\"",
+      "after_text": "Example: If the user asks for \"latest React docs\", search for \"React documentation 2026\", NOT \"React documentation 2025\"",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.7477,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-01-16T09:28:20.157Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-01-14T09:28:19.819Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 3,
+    "new_policy": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.8884,
+  "churn_rate": 0.1116
+}

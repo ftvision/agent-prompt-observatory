@@ -1,0 +1,110 @@
+{
+  "from_version": "2.1.47",
+  "to_version": "2.1.48",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.79",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Today's date is 2026-02-19.",
+      "after_text": "Today's date is 2026-02-20.",
+      "before_path": "User Message / currentDate",
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": 0.7857,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**Foreground vs background**: Use foreground (default) when you need the agent's results before you can proceed — e.g., research agents whose findings inform your next steps. Use background when you have genuinely independent work to do in parallel.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-20T09:28:20.624Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You can optionally run agents in the background using the run_in_background parameter. When an agent runs in the background, the tool result will include an output_file path. You can use this to check on the agent's progress or inspect its work.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "You can optionally run agents in the background using the run_in_background parameter. When an agent runs in the background, the tool result will include an output_file path. To check on the agent's progress or retrieve its results, use the Read tool to read the output file, or use Bash with `tail` to see recent output. You can continue working while background agents run.",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-02-19T09:28:20.605Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / currentDate",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 3,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.903,
+  "churn_rate": 0.097
+}

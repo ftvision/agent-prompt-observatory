@@ -1,0 +1,477 @@
+{
+  "from_version": "1.0.59",
+  "to_version": "1.0.60",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.85"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"description\": { \"type\": \"string\", \"description\": \"A short (3-5 word) description of the task\" }, \"prompt\": { \"type\": \"string\", \"description\": \"The task for the agent to perform\" } }, \"required\": [ \"description\", \"prompt\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"description\": { \"type\": \"string\", \"description\": \"A short (3-5 word) description of the task\" }, \"prompt\": { \"type\": \"string\", \"description\": \"The task for the agent to perform\" }, \"subagent_type\": { \"type\": \"string\", \"description\": \"The type of specialized agent to use for this task\" } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": 0.8528,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "user: \"Hello\"",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "</commentary>",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example usage:",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "user: \"Please write a function that checks if a number is prime\" assistant: Sure let me write a function that checks if a number is prime assistant: First let me use the Write tool to write a function that checks if a number is prime assistant: I'm going to use the Write tool to write the following code:",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "general-purpose: General-purpose agent for researching complex questions, searching for code, and executing multi-step tasks. When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries use this agent to perform the search for you. (Tools: *)",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "<example_agent_descriptions>",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "function isPrime(n) { if (n <= 1) return false for (let i = 2; i * i <= n; i++) { if (n % i === 0) return false } return true }",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Since a signficant piece of code was written and the task was completed, now use the code-reviewer agent to review the code",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "<code>",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "</code>",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Other tasks that are not related to the agent descriptions above",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "<commentary>",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Since the user is greeting, use the greeting-responder agent to respond with a friendly joke",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When you are instructed to execute custom slash commands. Use the Agent tool with the slash command invocation as the entire prompt. The slash command can take arguments. For example: Task(description=\"Check the file\", prompt=\"/check-file path/to/file.py\")",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "assistant: Now let me use the code-reviewer agent to review the code assistant: Uses the Task tool to launch the with the code-reviewer agent",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "assistant: \"I'm going to use the Task tool to launch the with the greeting-responder agent\"",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "\"code-reviewer\": use this agent after you are done writing a signficant piece of code \"greeting-responder\": use this agent when to respond to user greetings with a friendly joke",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "</example_agent_description>",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If the agent description mentions that it should be used proactively, then you should try your best to use it without the user having to ask for it first. Use your judgement.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Launch a new agent to handle complex, multi-step tasks autonomously.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You should proactively use the Task tool with specialized agents when the task at hand matches the agent's description.",
+      "before_path": null,
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When using the Task tool, you must specify a subagent_type parameter to select which agent type to use.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Available agent types and the tools they have access to:",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Other tasks that are not related to searching for a keyword or file",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When you are searching for a keyword or file and are not confident that you will find the right match in the first few tries, use the Agent tool to perform the search for you.",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "If you are searching for a keyword like \"config\" or \"logger\", or for questions like \"which file does X?\", the Agent tool is strongly recommended",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Launch a new agent that has access to the following tools: Bash, Glob, Grep, LS, ExitPlanMode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch.",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Writing code and running bash commands (use other tools for that)",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 23,
+    "policy_relaxation": 5
+  },
+  "stability_ratio": 0.8462,
+  "churn_rate": 0.1538
+}

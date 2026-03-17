@@ -1,0 +1,591 @@
+{
+  "from_version": "2.0.72",
+  "to_version": "2.0.73",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-12-18",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-12-19",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.9851,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.83",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "how to use a specific Claude Code feature (eg. implement a hook, write a slash command, or install an MCP server)",
+      "after_text": "how to use a specific Claude Code feature (eg. implement a hook, write a skill, or install an MCP server)",
+      "before_path": "System Prompt / Looking up your own documentation:",
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": 0.8288,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.95"
+      ],
+      "before_text": "Today's date is 2025-12-18. You MUST use this year when searching for recent information, documentation, or current events.",
+      "after_text": "Today's date is 2025-12-19. You MUST use this year when searching for recent information, documentation, or current events.",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.9459,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.80",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"skill\": { \"type\": \"string\", \"description\": \"The skill name (no arguments).",
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"skill\": { \"type\": \"string\", \"description\": \"The skill name.",
+      "before_path": "Tools / Skill",
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": 0.8046,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "`skill: \"commit\", args: \"-m 'Fix bug'\"` - invoke with arguments",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "E.g., \\\"commit\\\", \\\"review-pr\\\", or \\\"pdf\\\"\" }, \"args\": { \"type\": \"string\", \"description\": \"Optional arguments for the skill\" } }, \"required\": [ \"skill\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "User: \"run /commit\" Assistant: [Calls Skill tool with skill: \"commit\"]",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-12-19T09:28:19.573Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use this tool with the skill name and optional arguments",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use this tool to invoke the corresponding skill.",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When users ask you to run a \"slash command\" or reference \"/<something>\" (e.g., \"/commit\", \"/review-pr\"), they are referring to a skill.",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "`skill: \"review-pr\", args: \"123\"` - invoke with arguments",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Built-in CLI commands (like /help, /clear, etc.)",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-12-18T09:28:20.495Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do not stop mid-task or leave work incomplete.",
+      "after_text": null,
+      "before_path": "System Prompt / Doing tasks",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Example: `command: \"/review-pr 123\"`",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "`skill: \"xlsx\"` - invoke the xlsx skill",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Commands not shown in the list",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Execute a slash command within the main conversation",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Continue working until the task is done or the user stops you.",
+      "after_text": null,
+      "before_path": "System Prompt / Doing tasks",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When a user requests multiple slash commands, execute each one sequentially and check for <command-message>{name} is running…</command-message> to verify each has been processed",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Only custom slash commands with descriptions are listed in Available Commands. If a user's command is not listed, ask them to check the slash command file and consult the docs.",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "IMPORTANT: Only use this tool for custom slash commands that appear in the Available Commands list below.",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "You have unlimited context through summarization.",
+      "after_text": null,
+      "before_path": "System Prompt / Doing tasks",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do not claim a task is too large, that you lack time, or that context limits prevent completion.",
+      "after_text": null,
+      "before_path": "System Prompt / Doing tasks",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "How slash commands work: When you use this tool or when a user types a slash command, you will see <command-message>{name} is running…</command-message> followed by the expanded prompt.",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do NOT use for:",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "For example, if .claude/commands/foo.md contains \"Print today's date\", then /foo expands to that prompt in the next message.",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"command\": { \"type\": \"string\", \"description\": \"The slash command to execute with its arguments, e.g., \\\"/review-pr 123\\\"\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_030",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Commands you think might exist but aren't listed",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_031",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "`command` (required): The slash command to execute, including any arguments",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_032",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do not invoke a command that is already running. For example, if you see <command-message>foo is running…</command-message>, do NOT use this tool with \"/foo\" - process the expanded prompt in the following message",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_033",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "E.g., \\\"pdf\\\" or \\\"xlsx\\\"\" } }, \"required\": [ \"skill\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_034",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Notes:",
+      "after_text": null,
+      "before_path": "Tools / SlashCommand",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_035",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "IMPORTANT: Complete tasks fully.",
+      "after_text": null,
+      "before_path": "System Prompt / Doing tasks",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_036",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use this tool with the skill name only (no arguments)",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 4,
+    "new_policy": 8,
+    "policy_relaxation": 24
+  },
+  "stability_ratio": 0.8527,
+  "churn_rate": 0.1473
+}

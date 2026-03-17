@@ -1,0 +1,173 @@
+{
+  "from_version": "2.1.29",
+  "to_version": "2.1.30",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.94"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-31",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-02-03",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.9416,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.89"
+      ],
+      "before_text": "Today's date is 2026-01-31. You MUST use this year when searching for recent information, documentation, or current events.",
+      "after_text": "Today's date is 2026-02-03. You MUST use this year when searching for recent information, documentation, or current events.",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.8947,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Maximum 20 pages per request.\", \"type\": \"string\" } }, \"required\": [ \"file_path\" ], \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / Read",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "This tool can read PDF files (.pdf). For large PDFs (more than 10 pages), you MUST provide the pages parameter to read specific page ranges (e.g., pages: \"1-5\"). Reading a large PDF without the pages parameter will fail. Maximum 20 pages per request.",
+      "before_path": null,
+      "after_path": "Tools / Read",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-03T21:28:24.085Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Only applicable to PDF files.",
+      "before_path": null,
+      "after_path": "Tools / Read",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Only provide if the file is too large to read at once.\", \"type\": \"number\" }, \"pages\": { \"description\": \"Page range for PDF files (e.g., \\\"1-5\\\", \\\"3\\\", \\\"10-20\\\").",
+      "before_path": null,
+      "after_path": "Tools / Read",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "This tool can read PDF files (.pdf). PDFs are processed page by page, extracting both text and visual content for analysis.",
+      "after_text": null,
+      "before_path": "Tools / Read",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Only provide if the file is too large to read at once.\", \"type\": \"number\" } }, \"required\": [ \"file_path\" ], \"additionalProperties\": false }",
+      "after_text": null,
+      "before_path": "Tools / Read",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-01-31T21:28:27.878Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 5,
+    "policy_relaxation": 3
+  },
+  "stability_ratio": 0.8815,
+  "churn_rate": 0.1185
+}

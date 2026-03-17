@@ -1,0 +1,27 @@
+{
+  "from_version": "2.1.75",
+  "to_version": "2.1.76",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.89"
+      ],
+      "before_text": "x-anthropic-billing-header: cc_version=2.1.75.7df; cc_entrypoint=sdk-cli; cch=00000; You are a Claude agent, built on Anthropic's Claude Agent SDK.",
+      "after_text": "x-anthropic-billing-header: cc_version=2.1.76.b57; cc_entrypoint=sdk-cli; cch=00000; You are a Claude agent, built on Anthropic's Claude Agent SDK.",
+      "before_path": "System Prompt",
+      "after_path": "System Prompt",
+      "layer": "environment",
+      "similarity": 0.888,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1
+  },
+  "stability_ratio": 0.9292,
+  "churn_rate": 0.0708
+}

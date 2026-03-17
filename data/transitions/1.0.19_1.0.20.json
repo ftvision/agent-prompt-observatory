@@ -1,0 +1,300 @@
+{
+  "from_version": "1.0.19",
+  "to_version": "1.0.20",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "false",
+      "before_path": null,
+      "after_path": "System Prompt / Task Management",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "preinstall.js",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "anthropic-ai-claude-code-1.0.19.tgz",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "directoryStructure: Below is a snapshot of this project's file structure at the start of the conversation.",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "cli.js",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "yoga.wasm",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "/tmp/claude-history-<SESSION>/",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "package/",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "LICENSE.md",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "CLAUDE.md",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "package.json",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "sdk.d.ts",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "sdk.mjs",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "scripts/",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "README.md",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "It skips over .gitignore patterns.",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "vendor/",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "This snapshot will NOT update during the conversation.",
+      "after_text": null,
+      "before_path": "System Prompt / Code References",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "new_policy": 1,
+    "policy_relaxation": 17
+  },
+  "stability_ratio": 0.8179,
+  "churn_rate": 0.1821
+}

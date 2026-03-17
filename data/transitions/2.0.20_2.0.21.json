@@ -1,0 +1,141 @@
+{
+  "from_version": "2.0.20",
+  "to_version": "2.0.21",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2025-10-30T21:30:11.251Z is the date.",
+      "after_text": "2025-10-30T21:30:18.406Z is the date.",
+      "before_path": "User Message",
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": 0.6667,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Only proceed with ExitPlanMode after resolving ambiguities",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use the AskUserQuestion tool to clarify with the user",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Clarify any assumptions that could affect the implementation",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "#### Handling Ambiguity in Plans Before using this tool, ensure your plan is clear and unambiguous.",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Initial task: \"Add a new feature to handle user authentication\" - If unsure about auth method (OAuth, JWT, etc.), use AskUserQuestion first, then use exit plan mode tool after clarifying the approach.",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If there are multiple valid approaches or unclear requirements:",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Ask about specific implementation choices (e.g., architectural patterns, which library to use)",
+      "before_path": null,
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 7
+  },
+  "stability_ratio": 0.8618,
+  "churn_rate": 0.1382
+}

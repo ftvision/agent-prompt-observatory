@@ -1,0 +1,209 @@
+{
+  "from_version": "2.1.44",
+  "to_version": "2.1.45",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.97"
+      ],
+      "before_text": "The most recent Claude model family is Claude 4.5/4.6. Model IDs — Opus 4.6: 'claude-opus-4-6', Sonnet 4.5: 'claude-sonnet-4-5-20250929', Haiku 4.5: 'claude-haiku-4-5-20251001'. When building AI applications, default to the latest and most capable Claude models.",
+      "after_text": "The most recent Claude model family is Claude 4.5/4.6. Model IDs — Opus 4.6: 'claude-opus-4-6', Sonnet 4.6: 'claude-sonnet-4-6', Haiku 4.5: 'claude-haiku-4-5-20251001'. When building AI applications, default to the latest and most capable Claude models.",
+      "before_path": "System Prompt / Environment",
+      "after_path": "System Prompt / Environment",
+      "layer": "environment",
+      "similarity": 0.967,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.78",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "You are powered by the model named Sonnet 4.5. The exact model ID is claude-sonnet-4-5-20250929.",
+      "after_text": "You are powered by the model named Sonnet 4.6. The exact model ID is claude-sonnet-4-6.",
+      "before_path": "System Prompt / Environment",
+      "after_path": "System Prompt / Environment",
+      "layer": "environment",
+      "similarity": 0.7791,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.65",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Assistant knowledge cutoff is January 2025.",
+      "after_text": "Assistant knowledge cutoff is August 2025.",
+      "before_path": "System Prompt / Environment",
+      "after_path": "System Prompt / Environment",
+      "layer": "environment",
+      "similarity": 0.6531,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.91"
+      ],
+      "before_text": "Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com> EOF )\"",
+      "after_text": "Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com> EOF )\"",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.9062,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.89"
+      ],
+      "before_text": "Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>",
+      "after_text": "Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.8947,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.73",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Use when choices are not mutually exclusive.\", \"default\": false, \"type\": \"boolean\" } }, \"required\": [ \"question\", \"header\", \"options\", \"multiSelect\" ], \"additionalProperties\": false } }, \"answers\": { \"description\": \"User answers collected by the permission component\", \"type\": \"object\", \"propertyNames\": { \"type\": \"string\" }, \"additionalProperties\": { \"type\": \"string\" } }, \"metadata\": { \"description\": \"Optional metadata for tracking and analytics purposes.",
+      "after_text": "Use when choices are not mutually exclusive.\", \"default\": false, \"type\": \"boolean\" } }, \"required\": [ \"question\", \"header\", \"options\", \"multiSelect\" ], \"additionalProperties\": false } }, \"answers\": { \"description\": \"User answers collected by the permission component\", \"type\": \"object\", \"propertyNames\": { \"type\": \"string\" }, \"additionalProperties\": { \"type\": \"string\" } }, \"annotations\": { \"description\": \"Optional per-question annotations from the user (e.g., notes on preview selections).",
+      "before_path": "Tools / AskUserQuestion",
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": 0.7284,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.69",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Useful for providing context about trade-offs or implications.\", \"type\": \"string\" } }, \"required\": [ \"label\", \"description\" ], \"additionalProperties\": false } }, \"multiSelect\": { \"description\": \"Set to true to allow the user to select multiple options instead of just one.",
+      "after_text": "Supports multi-line text with newlines.\", \"type\": \"string\" } }, \"required\": [ \"label\", \"description\" ], \"additionalProperties\": false } }, \"multiSelect\": { \"description\": \"Set to true to allow the user to select multiple options instead of just one.",
+      "before_path": "Tools / AskUserQuestion",
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": 0.6939,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-17T21:28:20.129Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Keyed by question text.\", \"type\": \"object\", \"propertyNames\": { \"type\": \"string\" }, \"additionalProperties\": { \"type\": \"object\", \"properties\": { \"markdown\": { \"description\": \"The markdown preview content of the selected option, if the question used previews.\", \"type\": \"string\" }, \"notes\": { \"description\": \"Free-text notes the user added to their selection.\", \"type\": \"string\" } }, \"additionalProperties\": false } }, \"metadata\": { \"description\": \"Optional metadata for tracking and analytics purposes.",
+      "before_path": null,
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Useful for providing context about trade-offs or implications.\", \"type\": \"string\" }, \"markdown\": { \"description\": \"Optional preview content shown in a monospace box when this option is focused.",
+      "before_path": null,
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use for ASCII mockups, code snippets, or diagrams that help users visually compare options.",
+      "before_path": null,
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-02-17T09:28:20.359Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / currentDate",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 7,
+    "new_policy": 4,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.902,
+  "churn_rate": 0.098
+}

@@ -1,0 +1,126 @@
+{
+  "from_version": "1.0.31",
+  "to_version": "1.0.32",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.82",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "This will prompt the user to exit plan mode. { \"type\": \"object\", \"properties\": { \"plan\": { \"type\": \"string\", \"description\": \"The plan you came up with, that you want to run by the user for approval.",
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"plan\": { \"type\": \"string\", \"description\": \"The plan you came up with, that you want to run by the user for approval.",
+      "before_path": "Tools / exit_plan_mode",
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": 0.8163,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "Initial task: \"Search for and understand the implementation of vim mode in the codebase\" - Do not use the exit plan mode tool because you are not planning the implementation steps of a task.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "IMPORTANT: Only use this tool when the task requires planning the implementation steps of a task that requires writing code.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "For research tasks where you're gathering information, searching files, reading files or in general trying to understand the codebase - do NOT use this tool.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Initial task: \"Help me implement yank mode for vim\" - Use the exit plan mode tool after you have finished planning the implementation steps of the task.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Eg.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "This will prompt the user to exit plan mode.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "model_calibration": 2,
+    "new_policy": 4
+  },
+  "stability_ratio": 0.8466,
+  "churn_rate": 0.1534
+}

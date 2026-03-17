@@ -1,0 +1,174 @@
+{
+  "from_version": "2.0.23",
+  "to_version": "2.0.24",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2025-10-30T21:30:32.546Z is the date.",
+      "after_text": "2025-10-30T21:30:39.283Z is the date.",
+      "before_path": "User Message",
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": 0.6667,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use BashOutput to read the output later.\" }, \"dangerouslyOverrideSandbox\": { \"type\": \"boolean\", \"description\": \"Set this to true to dangerously override sandbox mode and run commands without sandboxing.\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "IMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts.",
+      "before_path": null,
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.",
+      "before_path": null,
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes.",
+      "before_path": null,
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Refuse to create, modify, or improve code that may be used maliciously.",
+      "after_text": null,
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "IMPORTANT: Assist with defensive security tasks only.",
+      "after_text": null,
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use BashOutput to read the output later.\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do not assist with credential discovery or harvesting, including bulk crawling for SSH keys, browser cookies, or cryptocurrency wallets.",
+      "after_text": null,
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Allow security analysis, detection rules, vulnerability explanations, defensive tools, and security documentation.",
+      "after_text": null,
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 4,
+    "policy_relaxation": 5
+  },
+  "stability_ratio": 0.855,
+  "churn_rate": 0.145
+}

@@ -1,0 +1,93 @@
+{
+  "from_version": "1.0.102",
+  "to_version": "1.0.103",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-03",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-04",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "environment",
+      "similarity": 0.9851,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.93"
+      ],
+      "before_text": "For example, before running \"mkdir foo/bar\", first use LS to check that \"foo\" exists and is the intended parent directory",
+      "after_text": "For example, before running \"mkdir foo/bar\", first use `ls foo` to check that \"foo\" exists and is the intended parent directory",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.925,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.88"
+      ],
+      "before_text": "If the command will create new directories or files, first use the LS tool to verify the parent directory exists and is the correct location",
+      "after_text": "If the command will create new directories or files, first use `ls` to verify the parent directory exists and is the correct location",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.8824,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-09-04T03:36:51.265Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-09-03T03:36:51.401Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 3,
+    "new_policy": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.8515,
+  "churn_rate": 0.1485
+}

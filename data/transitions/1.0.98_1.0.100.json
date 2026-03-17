@@ -1,0 +1,110 @@
+{
+  "from_version": "1.0.98",
+  "to_version": "1.0.100",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.94"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-08-30",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-02",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "environment",
+      "similarity": 0.9416,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "You are powered by the model named Sonnet 4.",
+      "after_text": "You are powered by the model named Opus 4.1.",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": 0.6735,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-09-02T03:36:51.301Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The exact model ID is claude-opus-4-1-20250805.",
+      "before_path": null,
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The exact model ID is claude-sonnet-4-20250514.",
+      "after_text": null,
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-08-30T03:36:51.242Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 2,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8499,
+  "churn_rate": 0.1501
+}

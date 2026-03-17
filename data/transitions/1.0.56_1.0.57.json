@@ -1,0 +1,27 @@
+{
+  "from_version": "1.0.56",
+  "to_version": "1.0.57",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.93"
+      ],
+      "before_text": "Launch a new agent that has access to the following tools: Bash, Glob, Grep, LS, exit_plan_mode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch.",
+      "after_text": "Launch a new agent that has access to the following tools: Bash, Glob, Grep, LS, ExitPlanMode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoWrite, WebSearch.",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": 0.9342,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1
+  },
+  "stability_ratio": 0.8546,
+  "churn_rate": 0.1454
+}

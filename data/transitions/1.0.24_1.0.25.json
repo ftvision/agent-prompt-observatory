@@ -1,0 +1,27 @@
+{
+  "from_version": "1.0.24",
+  "to_version": "1.0.25",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Other tasks that are not related to searching for a keyword or file",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "new_policy": 1
+  },
+  "stability_ratio": 0.8451,
+  "churn_rate": 0.1549
+}

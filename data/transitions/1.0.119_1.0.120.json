@@ -1,0 +1,78 @@
+{
+  "from_version": "1.0.119",
+  "to_version": "1.0.120",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.97"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-19",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-20",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "environment",
+      "similarity": 0.9704,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.84",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "The list of available docs is available at https://docs.anthropic.com/en/docs/claude-code/claude_code_docs_map.md.",
+      "after_text": "The list of available docs is available at https://docs.claude.com/en/docs/claude-code/claude_code_docs_map.md.",
+      "before_path": "System Prompt",
+      "after_path": "System Prompt",
+      "layer": "environment",
+      "similarity": 0.837,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-09-20T03:36:51.563Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-09-19T03:36:59.900Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.853,
+  "churn_rate": 0.147
+}

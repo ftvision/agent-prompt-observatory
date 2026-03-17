@@ -1,0 +1,43 @@
+{
+  "from_version": "1.0.52",
+  "to_version": "1.0.53",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "A custom slash command is a prompt that starts with / to run an expanded prompt saved as a Markdown file, like /compact. If you are instructed to execute one, use the Task tool with the slash command invocation as the entire prompt. Slash commands can take arguments; defer to user instructions.",
+      "before_path": null,
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Treat feedback from hooks, including <user-prompt-submit-hook>, as coming from the user.",
+      "before_path": null,
+      "after_path": "System Prompt / Task Management",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "new_policy": 2
+  },
+  "stability_ratio": 0.8539,
+  "churn_rate": 0.1461
+}

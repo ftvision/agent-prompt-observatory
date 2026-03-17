@@ -1,0 +1,54 @@
+/* Layer color definitions */
+.layer-identity     { --layer-color: #6366f1; }
+.layer-tools        { --layer-color: #06b6d4; }
+.layer-safety       { --layer-color: #ef4444; }
+.layer-output       { --layer-color: #f59e0b; }
+.layer-task_execution { --layer-color: #10b981; }
+.layer-memory       { --layer-color: #8b5cf6; }
+.layer-environment  { --layer-color: #64748b; }
+
+.layer-bar {
+  width: 4px;
+  border-radius: 2px;
+  background: var(--layer-color);
+  flex-shrink: 0;
+}
+
+.layer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  color: white;
+  background: var(--layer-color);
+}
+
+/* Classification colors */
+.cls-new_policy         { --cls-color: #6366f1; }
+.cls-policy_tightening  { --cls-color: #ef4444; }
+.cls-policy_relaxation  { --cls-color: #10b981; }
+.cls-model_calibration  { --cls-color: #f59e0b; }
+.cls-structural_reorg   { --cls-color: #64748b; }
+.cls-wording_refinement { --cls-color: #94a3b8; }
+
+.cls-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  color: white;
+  background: var(--cls-color);
+}
+
+/* Stability badges */
+.stability-stable  { color: #166534; background: #dcfce7; }
+.stability-recent  { color: #1e40af; background: #dbeafe; }
+.stability-volatile { color: #9a3412; background: #fed7aa; }
+.stability-legacy  { color: #78716c; background: #e7e5e4; }

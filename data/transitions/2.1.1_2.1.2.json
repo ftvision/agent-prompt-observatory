@@ -1,0 +1,125 @@
+{
+  "from_version": "2.1.1",
+  "to_version": "2.1.2",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-07",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-09",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.9851,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.95"
+      ],
+      "before_text": "Today's date is 2026-01-07. You MUST use this year when searching for recent information, documentation, or current events.",
+      "after_text": "Today's date is 2026-01-09. You MUST use this year when searching for recent information, documentation, or current events.",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.9459,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The tool result will include an output_file path - use Read tool or Bash tail to check on output.\", \"type\": \"boolean\" }, \"max_turns\": { \"description\": \"Maximum number of agentic turns (API round-trips) before stopping.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-01-09T09:28:19.750Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-01-07T21:28:37.290Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The tool result will include an output_file path - use Read tool or Bash tail to check on output.\", \"type\": \"boolean\" } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 3,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8814,
+  "churn_rate": 0.1186
+}

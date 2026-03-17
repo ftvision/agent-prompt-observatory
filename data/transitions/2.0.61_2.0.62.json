@@ -1,0 +1,1061 @@
+{
+  "from_version": "2.0.61",
+  "to_version": "2.0.62",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-12-07",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-12-09",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.9851,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.95"
+      ],
+      "before_text": "Today's date is 2025-12-07. You MUST use this year when searching for recent information, documentation, or current events.",
+      "after_text": "Today's date is 2025-12-09. You MUST use this year when searching for recent information, documentation, or current events.",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.9459,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.94"
+      ],
+      "before_text": "This requires architectural decisions (session vs JWT, where to store tokens, middleware structure)",
+      "after_text": "Requires architectural decisions (session vs JWT, where to store tokens, middleware structure)",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.9432,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.86"
+      ],
+      "before_text": "If you would use AskUserQuestion to clarify the approach, consider EnterPlanMode instead",
+      "after_text": "If you would use AskUserQuestion to clarify the approach, use EnterPlanMode instead",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.8605,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.82",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "IMPORTANT: If an MCP-provided web fetch tool is available, prefer using that tool instead of this one, as it may have fewer restrictions. All MCP-provided tools start with \"mcp__\".",
+      "after_text": "IMPORTANT: If an MCP-provided web fetch tool is available, prefer using that tool instead of this one, as it may have fewer restrictions.",
+      "before_path": "Tools / WebFetch",
+      "after_path": "Tools / WebFetch",
+      "layer": "tools",
+      "similarity": 0.8224,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.81",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Takes a shell_id parameter identifying the shell",
+      "after_text": "Takes a bash_id parameter identifying the shell",
+      "before_path": "Tools / BashOutput",
+      "after_path": "Tools / BashOutput",
+      "layer": "tools",
+      "similarity": 0.8125,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.79",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "**Multiple Valid Approaches**: The task can be solved in several different ways, each with trade-offs",
+      "after_text": "**Multiple Valid Approaches**: The task can be solved in several different ways",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.7857,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.78",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "This tool transitions you into plan mode where you can thoroughly explore the codebase and design an implementation approach.",
+      "after_text": "This tool transitions you into plan mode where you can explore the codebase and design an implementation approach for user approval.",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.7795,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.73",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Invoke skills using this tool with the skill name only (no arguments)",
+      "after_text": "Use this tool with the skill name only (no arguments)",
+      "before_path": "Tools / Skill",
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": 0.7344,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.72",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Research-only tasks (use the Task tool with explore agent instead)",
+      "after_text": "Pure research/exploration tasks (use the Task tool with explore agent instead)",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.7162,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.66",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "**Significant Architectural Decisions**: The task requires choosing between architectural patterns",
+      "after_text": "**Architectural Decisions**: The task requires choosing between patterns or technologies",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.6634,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "This is a BLOCKING REQUIREMENT: invoke the relevant Skill tool BEFORE generating any other response about the task",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: \"Refactor this component\" - what's the target architecture?",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use it when ANY of these conditions apply:",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**User Preferences Matter**: The implementation could reasonably go multiple ways",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Only skip EnterPlanMode for simple tasks:",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "Do not stop mid-task or leave work incomplete.",
+      "before_path": null,
+      "after_path": "System Prompt / Doing tasks",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use this tool proactively when you're about to start a non-trivial implementation task.",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When the agent is done, it will return a single message back to you along with its agent ID. You can use this ID to resume the agent later if needed for follow-up work.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: \"Add form validation\" - what rules? What error messages?",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Seems simple but involves: where to place it, confirmation dialog, API call, error handling, state updates",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**New Feature Implementation**: Adding meaningful new functionality",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**Code Modifications**: Changes that affect existing behavior or structure",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**Prefer using EnterPlanMode** for implementation tasks unless they're simple.",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Single-line or few-line fixes (typos, obvious bugs, small tweaks)",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Users appreciate being consulted before significant changes are made to their codebase",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "User: \"Update the error handling in the API\"",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Continue working until the task is done or the user stops you.",
+      "before_path": null,
+      "after_path": "System Prompt / Doing tasks",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Affects multiple files, user should approve the approach",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_030",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When a skill is relevant, you must invoke this tool IMMEDIATELY as your first action",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_031",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Agents can be resumed using the `resume` parameter by passing the agent ID from a previous invocation. When resumed, the agent continues with its full previous context preserved. When NOT resuming, each invocation starts fresh and you should provide a detailed task description with all necessary context.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_032",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-12-09T09:28:20.397Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_033",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**Multi-File Changes**: The task will likely touch more than 2-3 files",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_034",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You have unlimited context through summarization.",
+      "before_path": null,
+      "after_path": "System Prompt / Doing tasks",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_035",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "Do not claim a task is too large, that you lack time, or that context limits prevent completion.",
+      "before_path": null,
+      "after_path": "System Prompt / Doing tasks",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_036",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "User: \"Add a delete button to the user profile\"",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_037",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "How to invoke:",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_038",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "NEVER just announce or mention a skill in your text response without actually calling this tool",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_039",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: \"Add a logout button\" - where should it go? What should happen on click?",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_040",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If unsure whether to use it, err on the side of planning - it's better to get alignment upfront than to redo work",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_041",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: \"Add a new API endpoint with tests\"",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_042",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Getting user sign-off on your approach before writing code prevents wasted effort and ensures alignment.",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_043",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Provide clear, detailed prompts so the agent can work autonomously and return exactly the information you need.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_044",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: \"Update the login flow\" - what exactly should change?",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_045",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "IMPORTANT: Complete tasks fully.",
+      "before_path": null,
+      "after_path": "System Prompt / Doing tasks",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_046",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Tasks where the user has given very specific, detailed instructions",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_047",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Adding a single function with clear requirements",
+      "before_path": null,
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_048",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "You can always ask the user \"Would you like me to plan this out first?\"",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_049",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do NOT use EnterPlanMode for:",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_050",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**User Input Needed**: You'll need to ask clarifying questions before starting",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_051",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Each agent invocation is stateless. You will not be able to send additional messages to the agent, nor will the agent be able to communicate with you outside of its final report. Therefore, your prompt should contain a highly detailed task description for the agent to perform autonomously and you should specify exactly what information the agent should return back to you in its final and only message to you.",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_052",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Simple, straightforward tasks with obvious implementation",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_053",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use this tool when you encounter a complex task that requires careful planning and exploration before implementation.",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_054",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Example: \"Migrate from REST to GraphQL\"",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_055",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Be thoughtful about when to use it - unnecessary plan mode slows down simple tasks",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_056",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use EnterPlanMode when ANY of these conditions apply:",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_057",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**Large-Scale Changes**: The task touches many files or systems",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_058",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Tasks you're already confident how to implement",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_059",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "How to use skills:",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_060",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Small bug fixes where the solution is clear",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_061",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-12-07T21:28:20.184Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_062",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The skill's prompt will expand and provide detailed instructions on how to complete the task",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_063",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "If unsure whether to use it, err on the side of starting implementation",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_064",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When you invoke a skill, you will see <command-message>The \"{name}\" skill is loading</command-message>",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_065",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Adding a single function or small feature",
+      "after_text": null,
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 11,
+    "new_policy": 34,
+    "model_calibration": 2,
+    "policy_relaxation": 18
+  },
+  "stability_ratio": 0.853,
+  "churn_rate": 0.147
+}

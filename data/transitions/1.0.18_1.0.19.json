@@ -1,0 +1,883 @@
+{
+  "from_version": "1.0.18",
+  "to_version": "1.0.19",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.83",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "anthropic-ai-claude-code-1.0.18.tgz",
+      "after_text": "anthropic-ai-claude-code-1.0.19.tgz",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.8286,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.91"
+      ],
+      "before_text": "Launch a new agent that has access to the following tools: Bash, Glob, Grep, LS, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoRead, TodoWrite, WebSearch.",
+      "after_text": "Launch a new agent that has access to the following tools: Bash, Glob, Grep, LS, exit_plan_mode, Read, Edit, MultiEdit, Write, NotebookRead, NotebookEdit, WebFetch, TodoRead, TodoWrite, WebSearch.",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": 0.9067,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.90"
+      ],
+      "before_text": "Run a git log command and `git diff main...HEAD` to understand the full commit history for the current branch (from the time it diverged from the `main` branch)",
+      "after_text": "Run a git log command and `git diff main...HEAD` (or master...HEAD) to understand the full commit history for the current branch (from the time it diverged from the `main` branch)",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.8986,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.78",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Analyze all changes that will be included in the pull request, making sure to look at all relevant commits (NOT just the latest commit, but ALL commits that will be included in the pull request!!!), and draft a pull request summary. Wrap your analysis process in <pr_analysis> tags:",
+      "after_text": "Analyze all changes that will be included in the pull request, making sure to look at all relevant commits (NOT just the latest commit, but ALL commits that will be included in the pull request!!!), and draft a pull request summary",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.7821,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.76",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Ensure the message accurately reflects the changes and their purpose (i.e. \"add\" means a wholly new feature, \"update\" means an enhancement to an existing feature, \"fix\" means a bug fix, etc.)",
+      "after_text": "Summarize the nature of the changes (eg. new feature, enhancement to an existing feature, bug fix, refactoring, test, docs, etc.). Ensure the message accurately reflects the changes and their purpose (i.e. \"add\" means a wholly new feature, \"update\" means an enhancement to an existing feature, \"fix\" means a bug fix, etc.).",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.759,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.69",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Review the draft summary to ensure it accurately reflects the changes and their purpose",
+      "after_text": "Ensure it accurately reflects the changes and their purpose",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.6875,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.68",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Analyze all staged changes (both previously staged and newly added) and draft a commit message. Wrap your analysis process in <commit_analysis> tags:",
+      "after_text": "Analyze all staged changes (both previously staged and newly added) and draft a commit message:",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.675,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Tests are failing",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You couldn't find necessary files or dependencies",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "After completing a task - Mark it as completed and add any new follow-up tasks discovered during implementation",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Remove tasks that are no longer relevant from the list entirely",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If you encounter errors, blockers, or cannot finish, keep the task as in_progress",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "DO NOT use the TodoWrite or Task tools",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Implementation is partial",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When you start working on a task - Mark it as in_progress BEFORE beginning work. Ideally you should only have one todo as in_progress at a time",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The plan should be pretty concise.\" } }, \"required\": [ \"plan\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Never mark a task as completed if:",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When blocked, create a new task describing what needs to be resolved",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "sdk.d.ts",
+      "before_path": null,
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "**Task Completion Requirements**:",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "DO NOT push to the remote repository unless the user explicitly asks you to do so",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "sdk.mjs",
+      "before_path": null,
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You encountered unresolved errors",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use this tool when you are in plan mode and have finished presenting your plan and are ready to code.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Supports markdown.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "After receiving new instructions - Immediately capture user requirements as todos",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "This will prompt the user to exit plan mode. { \"type\": \"object\", \"properties\": { \"plan\": { \"type\": \"string\", \"description\": \"The plan you came up with, that you want to run by the user for approval.",
+      "before_path": null,
+      "after_path": "Tools / exit_plan_mode",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "ONLY mark a task as completed when you have FULLY accomplished it",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Ensure your language is clear, concise, and to the point",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_030",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Draft a concise (1-2 bullet points) pull request summary that focuses on the \"why\" rather than the \"what\"",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_031",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Assess the impact of these changes on the overall project",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_032",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Ensure the summary is not generic (avoid words like \"Update\" or \"Fix\" without context)",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_033",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "<commit_analysis>",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_034",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "After completing a task - Mark it complete and add any new follow-up tasks",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_035",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Summarize the nature of the changes (eg. new feature, enhancement to an existing feature, bug fix, refactoring, test, docs, etc.)",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_036",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Ensure the message is not generic (avoid words like \"Update\" or \"Fix\" without context)",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_037",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "DO NOT push to the remote repository",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_038",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "</commit_analysis>",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_039",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "List the commits since diverging from the main branch",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_040",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "List the files that have been changed or added",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_041",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Ensure the summary accurately reflects all changes since diverging from the main branch",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_042",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Review the draft message to ensure it accurately reflects the changes and their purpose",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_043",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "<pr_analysis>",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_044",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Ensure the summary accurately reflects the changes and their purpose (ie. \"add\" means a wholly new feature, \"update\" means an enhancement to an existing feature, \"fix\" means a bug fix, etc.)",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_045",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Cancel tasks that become irrelevant",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_046",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "After receiving new instructions - Immediately capture user requirements as todos. Feel free to edit the todo list based on new information.",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_047",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "</pr_analysis>",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_048",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Brainstorm the purpose or motivation behind these changes",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_049",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use the git context at the start of this conversation to determine which files are relevant to your commit. Be careful not to stage and commit files (e.g. with `git add .`) that aren't relevant to your commit.",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_050",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "cancelled: Task no longer needed",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_051",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do not use tools to explore code, beyond what is available in the git context",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_052",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When you start working on a new task, mark the todo as in_progress. Ideally you should only have one todo as in_progress at a time. Complete existing tasks before starting new ones.",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_053",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Ensure your commit message is meaningful and concise. It should explain the purpose of the changes, not just describe them.",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_054",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Return an empty response - the user will see the git output directly",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 7,
+    "new_policy": 19,
+    "model_calibration": 2,
+    "policy_relaxation": 26
+  },
+  "stability_ratio": 0.8,
+  "churn_rate": 0.2
+}

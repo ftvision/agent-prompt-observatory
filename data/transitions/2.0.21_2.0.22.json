@@ -1,0 +1,44 @@
+{
+  "from_version": "2.0.21",
+  "to_version": "2.0.22",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-10-30T21:30:25.380Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-10-30T21:30:18.406Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "new_policy": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.8617,
+  "churn_rate": 0.1383
+}

@@ -1,0 +1,877 @@
+{
+  "from_version": "2.1.71",
+  "to_version": "2.1.72",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.93"
+      ],
+      "before_text": "For broader codebase exploration and deep research, use the Agent tool with subagent_type=Explore. This is slower than calling Glob or Grep directly so use this only when a simple, directed search proves to be insufficient or when your task will clearly require more than 3 queries.",
+      "after_text": "For broader codebase exploration and deep research, use the Agent tool with subagent_type=Explore. This is slower than using the Glob or Grep directly, so use this only when a simple, directed search proves to be insufficient or when your task will clearly require more than 3 queries.",
+      "before_path": "System Prompt / Using your tools",
+      "after_path": "System Prompt / Using your tools",
+      "layer": "tools",
+      "similarity": 0.9313,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "AskUserQuestion CronCreate CronDelete CronList EnterPlanMode EnterWorktree ExitPlanMode ExitWorktree NotebookEdit TaskOutput TaskStop TodoWrite WebFetch WebSearch",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Deferred tools appear by name in <available-deferred-tools> messages.",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "\"select:Read,Edit,Grep\" — fetch these exact tools by name",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Query forms:",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "\"+slack send\" — require \"slack\" in the name, rank by remaining terms",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Result format: each matched tool appears as one <function>{\"description\": \"...\", \"name\": \"...\", \"parameters\": {...}}</function> line inside the <functions> block — the same encoding as the tool list at the top of this prompt.",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Until fetched, only the name is known — there is no parameter schema, so the tool cannot be invoked.",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When working with tool results, write down any important information you might need later in your response, as the original tool result may be cleared later.",
+      "before_path": null,
+      "after_path": "System Prompt / Environment",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "\"notebook jupyter\" — keyword search, up to max_results best matches",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Once a tool's schema appears in that result, it is callable exactly like any tool defined at the top of the prompt.",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Fetches full schema definitions for deferred tools so they can be called.",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "This tool takes a query, matches it against the deferred tool list, and returns the matched tools' complete JSONSchema definitions inside a <functions> block.",
+      "before_path": null,
+      "after_path": "Tools / ToolSearch",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"list directory\" - find tools for listing directories",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"select:NotebookEdit\"",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**Direct selection** - Use `select:<tool_name>` when you know the exact tool name:",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Deferred tools are not loaded until discovered via this tool",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "User: List files in the src directory Assistant: I can see mcp__filesystem__list_directory in the available tools.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "This is a BLOCKING REQUIREMENT - deferred tools are NOT available until you load them using this tool.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The select call is redundant.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "You MUST use this tool to load deferred tools BEFORE calling them directly.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Calling a deferred tool without first loading it will fail",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Both query modes (keyword search and direct selection) load the returned tools — once a tool appears in the results, it is immediately available to call.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"notebook jupyter\" - find notebook editing tools",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"slack message\" - find slack messaging tools",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**IMPORTANT:** Both modes load tools equally.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "</bad-example>",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"+linear create issue\" - only tools from \"linear\", ranked by \"create\"/\"issue\"",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "User: Read my slack messages Assistant: [Directly calls mcp__slack__read_channel without loading it first] WRONG - You must load the tool FIRST using this tool",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_030",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "<bad-example>",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_031",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Let me select it. [Calls ToolSearch with query: \"select:mcp__filesystem__list_directory\"] [Calls the tool]",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_032",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "All returned tools are immediately available to call — no further selection step needed",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_033",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Look for <available-deferred-tools> messages in the conversation for the list of tools you can discover.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_034",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**Why this is non-negotiable:**",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_035",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Search for or select deferred tools to make them available for use.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_036",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Returns the named tool(s) if they exist",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_037",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**CORRECT Usage Patterns:**",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_038",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"select:mcp__slack__read_channel\"",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_039",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"+slack send\" - only \"slack\" tools, ranked by \"send\"",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_040",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**INCORRECT Usage Patterns - NEVER DO THESE:**",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_041",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**Keyword search** - Use keywords when you're unsure which tool to use or need to discover multiple tools at once:",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_042",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**Query modes:**",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_043",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**Required keyword** - Prefix with `+` to require a match:",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_044",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Returns up to 5 matching tools ranked by relevance",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_045",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Assistant: [Calls ToolSearch with query: \"slack\", gets back mcp__slack__read_channel] Assistant: [Calls ToolSearch with query: \"select:mcp__slack__read_channel\"] WRONG - The keyword search already loaded the tool.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_046",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "User: I need to work with slack somehow Assistant: Let me search for slack tools. [Calls ToolSearch with query: \"slack\"] Assistant: Found several options including mcp__slack__read_channel. [Calls mcp__slack__read_channel directly — it was loaded by the keyword search]",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_047",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "\"select:Read,Edit,Grep\" - load multiple tools at once with comma separation",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_048",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do NOT follow up a keyword search with `select:` calls for tools already returned — they are already loaded.",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_049",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "<example>",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_050",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Agent AskUserQuestion Bash Edit EnterPlanMode EnterWorktree ExitPlanMode Glob Grep NotebookEdit Read Skill TaskOutput TaskStop TodoWrite WebFetch WebSearch Write",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_051",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "**MANDATORY PREREQUISITE - THIS IS A HARD REQUIREMENT**",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_052",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "User: Edit the Jupyter notebook Assistant: Let me load the notebook editing tool. [Calls ToolSearch with query: \"select:NotebookEdit\"] [Calls NotebookEdit]",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_053",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "</example>",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_054",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Useful when you know the service name but not the exact tool",
+      "after_text": null,
+      "before_path": "Tools / ToolSearch",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 12,
+    "policy_relaxation": 41
+  },
+  "stability_ratio": 0.7251,
+  "churn_rate": 0.2749
+}

@@ -1,0 +1,707 @@
+{
+  "from_version": "2.1.62",
+  "to_version": "2.1.63",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_1.00"
+      ],
+      "before_text": "Use the Task tool with specialized agents when the task at hand matches the agent's description. Subagents are valuable for parallelizing independent queries or for protecting the main context window from excessive results, but they should not be used excessively when not needed. Importantly, avoid duplicating work that subagents are already doing - if you delegate research to a subagent, do not also perform the same searches yourself.",
+      "after_text": "Use the Agent tool with specialized agents when the task at hand matches the agent's description. Subagents are valuable for parallelizing independent queries or for protecting the main context window from excessive results, but they should not be used excessively when not needed. Importantly, avoid duplicating work that subagents are already doing - if you delegate research to a subagent, do not also perform the same searches yourself.",
+      "before_path": "System Prompt / Using your tools",
+      "after_path": "System Prompt / Using your tools",
+      "layer": "tools",
+      "similarity": 1.0,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.98"
+      ],
+      "before_text": "For broader codebase exploration and deep research, use the Task tool with subagent_type=Explore. This is slower than calling Glob or Grep directly so use this only when a simple, directed search proves to be insufficient or when your task will clearly require more than 3 queries.",
+      "after_text": "For broader codebase exploration and deep research, use the Agent tool with subagent_type=Explore. This is slower than calling Glob or Grep directly so use this only when a simple, directed search proves to be insufficient or when your task will clearly require more than 3 queries.",
+      "before_path": "System Prompt / Using your tools",
+      "after_path": "System Prompt / Using your tools",
+      "layer": "tools",
+      "similarity": 0.9823,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.85"
+      ],
+      "before_text": "Today's date is 2026-02-27.",
+      "after_text": "Today's date is 2026-02-28.",
+      "before_path": "User Message / currentDate",
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": 0.8519,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_1.00"
+      ],
+      "before_text": "- You can use the `run_in_background` parameter to run the command in the background. Only use this if you don't need the result immediately and are OK being notified when the command completes later. You do not need to check the output right away - you'll be notified when it finishes. You do not need to use '&' at the end of the command when using this parameter.",
+      "after_text": "You can use the `run_in_background` parameter to run the command in the background. Only use this if you don't need the result immediately and are OK being notified when the command completes later. You do not need to check the output right away - you'll be notified when it finishes. You do not need to use '&' at the end of the command when using this parameter.",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 1.0,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Explore: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns (eg. \"src/components/**/*.tsx\"), search code for keywords (eg. \"API endpoints\"), or answer questions about the codebase (eg. \"how do API endpoints work?\"). When calling this agent, specify the desired thoroughness level: \"quick\" for basic searches, \"medium\" for moderate exploration, or \"very thorough\" for comprehensive analysis across multiple locations and naming conventions. (Tools: All tools except Task, ExitPlanMode, Edit, Write, NotebookEdit)",
+      "after_text": "Explore: Fast agent specialized for exploring codebases. Use this when you need to quickly find files by patterns (eg. \"src/components/**/*.tsx\"), search code for keywords (eg. \"API endpoints\"), or answer questions about the codebase (eg. \"how do API endpoints work?\"). When calling this agent, specify the desired thoroughness level: \"quick\" for basic searches, \"medium\" for moderate exploration, or \"very thorough\" for comprehensive analysis across multiple locations and naming conventions. (Tools: All tools except Agent, ExitPlanMode, Edit, Write, NotebookEdit)",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9876,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.98"
+      ],
+      "before_text": "Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation strategy for a task. Returns step-by-step plans, identifies critical files, and considers architectural trade-offs. (Tools: All tools except Task, ExitPlanMode, Edit, Write, NotebookEdit)",
+      "after_text": "Plan: Software architect agent for designing implementation plans. Use this when you need to plan the implementation strategy for a task. Returns step-by-step plans, identifies critical files, and considers architectural trade-offs. (Tools: All tools except Agent, ExitPlanMode, Edit, Write, NotebookEdit)",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9833,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.97"
+      ],
+      "before_text": "Let me create a todo list to track our optimization efforts. *Creates todo list with items like: 1) Implementing memoization for expensive calculations in ProductList, 2) Adding virtualization for long lists in Dashboard, 3) Optimizing image loading in Gallery component, 4) Fixing state update loops in ShoppingCart, 5) Reviewing bundle size and implementing code splitting* Let's start by implementing memoization for the expensive calculations in your ProductList component.</assistant>",
+      "after_text": "Let me create a todo list to track our optimization efforts. *Creates todo list with items like: 1) Implementing memoization for expensive calculations in ProductList, 2) Adding virtualization for long lists in Dashboard, 3) Optimizing image loading in Gallery component, 4) Fixing state update loops in ShoppingCart, 5) Reviewing bundle size and implementing code splitting* Let's start by implementing memoization for the expensive calculations in your ProductList component.",
+      "before_path": "Tools / TodoWrite",
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": 0.9676,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.97"
+      ],
+      "before_text": "If the user specifies that they want you to run agents \"in parallel\", you MUST send a single message with multiple Task tool use content blocks. For example, if you need to launch both a build-validator agent and a test-runner agent in parallel, send a single message with both tool calls.",
+      "after_text": "If the user specifies that they want you to run agents \"in parallel\", you MUST send a single message with multiple Agent tool use content blocks. For example, if you need to launch both a build-validator agent and a test-runner agent in parallel, send a single message with both tool calls.",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9655,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.96"
+      ],
+      "before_text": "Pure research/exploration tasks (use the Task tool with explore agent instead)",
+      "after_text": "Pure research/exploration tasks (use the Agent tool with explore agent instead)",
+      "before_path": "Tools / EnterPlanMode",
+      "after_path": "Tools / EnterPlanMode",
+      "layer": "tools",
+      "similarity": 0.9559,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.94"
+      ],
+      "before_text": "The Task tool launches specialized agents (subprocesses) that autonomously handle complex tasks.",
+      "after_text": "The Agent tool launches specialized agents (subprocesses) that autonomously handle complex tasks.",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9362,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.93"
+      ],
+      "before_text": "When using the Task tool, you must specify a subagent_type parameter to select which agent type to use.",
+      "after_text": "When using the Agent tool, you must specify a subagent_type parameter to select which agent type to use.",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9341,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.92"
+      ],
+      "before_text": "assistant: Now let me use the test-runner agent to run the tests assistant: Uses the Task tool to launch the test-runner agent",
+      "after_text": "assistant: Now let me use the test-runner agent to run the tests assistant: Uses the Agent tool to launch the test-runner agent",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9231,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.91"
+      ],
+      "before_text": "If you are searching for code within a specific file or set of 2-3 files, use the Read tool instead of the Task tool, to find the match more quickly",
+      "after_text": "If you are searching for code within a specific file or set of 2-3 files, use the Read tool instead of the Agent tool, to find the match more quickly",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.907,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.91"
+      ],
+      "before_text": "If you want to read a specific file path, use the Read or Glob tool instead of the Task tool, to find the match more quickly",
+      "after_text": "If you want to read a specific file path, use the Read or Glob tool instead of the Agent tool, to find the match more quickly",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.9057,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.89"
+      ],
+      "before_text": "assistant: \"I'm going to use the Task tool to launch the greeting-responder agent\"",
+      "after_text": "assistant: \"I'm going to use the Agent tool to launch the greeting-responder agent\"",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.8933,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.84",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "This will output the text \"Hello World\" to the console when executed.</assistant>",
+      "after_text": "This will output the text \"Hello World\" to the console when executed.",
+      "before_path": "Tools / TodoWrite",
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": 0.8421,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.81",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Use Task tool for open-ended searches requiring multiple rounds",
+      "after_text": "Use Agent tool for open-ended searches requiring multiple rounds",
+      "before_path": "Tools / Grep",
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": 0.8088,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.68",
+        "imperatives_before=1_after=1"
+      ],
+      "before_text": "DO NOT use the TodoWrite or Task tools",
+      "after_text": "DO NOT use the TodoWrite or Agent tools",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.6829,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.68",
+        "imperatives_before=1_after=1"
+      ],
+      "before_text": "NEVER use the TodoWrite or Task tools",
+      "after_text": "NEVER use the TodoWrite or Agent tools",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.675,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.66",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "When NOT to use the Task tool:",
+      "after_text": "When NOT to use the Agent tool:",
+      "before_path": "Tools / Task",
+      "after_path": "Tools / Agent",
+      "layer": "tools",
+      "similarity": 0.6562,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "It's rendering slowly and has performance issues.",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Assistant: I'll help optimize your React application.",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "DO NOT TRIGGER when: code imports `openai`/other AI SDK, general programming, or ML/data-science tasks.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-28T09:28:20.505Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "claude-developer-platform: Build apps with the Claude API or Anthropic SDK.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Code imports `claude_agent_sdk` or `@anthropic-ai/claude-agent-sdk` (the Agent SDK)",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "It's rendering slowly and has performance issues.</user> Assistant: I'll help optimize your React application.",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_030",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-02-27T09:28:27.065Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / currentDate",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_031",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "If it imports `openai` or another provider, this skill cannot help — it only contains Claude/Anthropic documentation.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_032",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Filenames contain \"openai\", \"gpt\", \"gemini\" — the code uses a different provider",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_033",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "TRIGGER when:",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_034",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Code imports `anthropic` or `@anthropic-ai/sdk` (the Anthropic SDK)",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_035",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "CRITICAL: Check the existing code's imports FIRST.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_036",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "claude-developer-platform: Build applications that call the Claude API or Anthropic SDK. Use ONLY when the code actually uses or will use the `anthropic` SDK package or Claude API endpoints.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_037",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "DO NOT TRIGGER when (use another skill instead):",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_038",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "User needs an AI/LLM and no other provider's SDK is already in use",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_039",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The task is ML/data science (PyTorch, scikit-learn, etc.)",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_040",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The task is general programming with no LLM API calls",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_041",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "User explicitly asks to use Claude, the Anthropic API, or Anthropic SDK",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_042",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Feature names like \"extended thinking\", \"prompt caching\", \"tool use\" appear but the code uses a NON-Anthropic SDK — those are generic concepts, not Claude-specific",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_043",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Code imports `openai`, `google.generativeai`, or any non-Anthropic AI SDK",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 20,
+    "new_policy": 6,
+    "model_calibration": 1,
+    "policy_relaxation": 16
+  },
+  "stability_ratio": 0.8869,
+  "churn_rate": 0.1131
+}

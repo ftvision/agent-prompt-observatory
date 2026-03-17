@@ -1,0 +1,814 @@
+{
+  "from_version": "2.1.50",
+  "to_version": "2.1.51",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.85"
+      ],
+      "before_text": "Today's date is 2026-02-21.",
+      "after_text": "Today's date is 2026-02-24.",
+      "before_path": "User Message / currentDate",
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": 0.8519,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Code imports `claude_agent_sdk` or `@anthropic-ai/claude-agent-sdk` (the Agent SDK)",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The user asks to fix a bug or work on a feature — use normal git workflow unless they specifically mention worktrees",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "#### When to Use",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "#### Parameters",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "On session exit, the user will be prompted to keep or remove the worktree",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Must not already be in a worktree",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The user explicitly says \"worktree\" (e.g., \"start a worktree\", \"work in a worktree\", \"create a worktree\", \"use a worktree\")",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Must be in a git repository, OR have WorktreeCreate/WorktreeRemove hooks configured in settings.json",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Never use this tool unless the user explicitly mentions \"worktree\"",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If it imports `openai` or another provider, this skill cannot help — it only contains Claude/Anthropic documentation.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Switches the session's working directory to the new worktree",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Filenames contain \"openai\", \"gpt\", \"gemini\" — the code uses a different provider",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "TRIGGER when:",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "A random name is generated if not provided.\", \"type\": \"string\" } }, \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "`name` (optional): A name for the worktree. If not provided, a random name is generated.",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "#### When NOT to Use",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Code imports `anthropic` or `@anthropic-ai/sdk` (the Anthropic SDK)",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-24T09:28:20.706Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use this tool ONLY when the user explicitly asks to work in a worktree.",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "CRITICAL: Check the existing code's imports FIRST.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "#### Behavior",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "claude-developer-platform: Build applications that call the Claude API or Anthropic SDK. Use ONLY when the code actually uses or will use the `anthropic` SDK package or Claude API endpoints.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The user asks to create a branch, switch branches, or work on a different branch — use git commands instead",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "#### Requirements",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Outside a git repository: delegates to WorktreeCreate/WorktreeRemove hooks for VCS-agnostic isolation",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "DO NOT TRIGGER when (use another skill instead):",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_028",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "User needs an AI/LLM and no other provider's SDK is already in use",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_029",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The task is ML/data science (PyTorch, scikit-learn, etc.)",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_030",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The task is general programming with no LLM API calls",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_031",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "User explicitly asks to use Claude, the Anthropic API, or Anthropic SDK",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_032",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "This tool creates an isolated git worktree and switches the current session into it.",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_033",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "{ \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", \"properties\": { \"name\": { \"description\": \"Optional name for the worktree.",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_034",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Feature names like \"extended thinking\", \"prompt caching\", \"tool use\" appear but the code uses a NON-Anthropic SDK — those are generic concepts, not Claude-specific",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_035",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "In a git repository: creates a new git worktree inside `.claude/worktrees/` with a new branch based on HEAD",
+      "before_path": null,
+      "after_path": "Tools / EnterWorktree",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_036",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Code imports `openai`, `google.generativeai`, or any non-Anthropic AI SDK",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_037",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-02-21T09:28:20.268Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / currentDate",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_038",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The prompt explicitly mentions using OpenAI, GPT, Gemini, or another non-Claude provider",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_039",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "References Anthropic-specific features (Batches API, Files API, prompt caching, extended thinking, etc.)",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_040",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "claude-developer-platform: Use this skill when the user wants to build a program that calls the Claude API or Anthropic SDK, OR when they need an AI/LLM and haven't chosen a platform yet. Trigger if the request:",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_041",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Check for these signals BEFORE reading this skill's docs:",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_042",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "This skill only contains Claude/Anthropic documentation and cannot help with other providers.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_043",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do NOT trigger if the user is already working with a non-Claude AI platform.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_044",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Involves building a chatbot, AI agent, or LLM-powered app and the existing code already uses Claude/Anthropic, or no AI SDK has been chosen yet",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_045",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do NOT trigger for purely conventional programming with no AI — calculators, timers, unit converters, file utilities, todo apps, password generators, URL shorteners, format converters, or similar deterministic-logic tasks.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_046",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Describes a program whose core logic requires calling an AI model and no non-Claude SDK is already in use",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_047",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Filenames in the prompt referencing another provider (e.g. \"openai\", \"gpt\", \"gemini\" in the filename)",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_048",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Existing project files import a non-Claude AI SDK (e.g. openai, google.generativeai, or another provider)",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_049",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Mentions Claude, Opus, Sonnet, Haiku, or the Anthropic SDK / Agent SDK / API",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "identity",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_050",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do NOT trigger for traditional ML/data science tasks that don't call an LLM API — scikit-learn pipelines, PyTorch model training, pandas/numpy data processing, etc.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 34,
+    "model_calibration": 1,
+    "policy_relaxation": 14
+  },
+  "stability_ratio": 0.8863,
+  "churn_rate": 0.1137
+}

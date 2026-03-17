@@ -1,0 +1,323 @@
+{
+  "from_version": "2.1.49",
+  "to_version": "2.1.50",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.84",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Explicit user requests:",
+      "after_text": "### Explicit user requests:",
+      "before_path": "System Prompt / auto memory",
+      "after_path": "System Prompt / auto memory",
+      "layer": "memory",
+      "similarity": 0.84,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.79",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "What NOT to save:",
+      "after_text": "### What NOT to save:",
+      "before_path": "System Prompt / auto memory",
+      "after_path": "System Prompt / auto memory",
+      "layer": "memory",
+      "similarity": 0.7895,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.75",
+        "imperatives_before=1_after=1"
+      ],
+      "before_text": "`MEMORY.md` is always loaded into your system prompt — lines after 200 will be truncated, so keep it concise",
+      "after_text": "`MEMORY.md` is always loaded into your conversation context — lines after 200 will be truncated, so keep it concise",
+      "before_path": "System Prompt / auto memory",
+      "after_path": "System Prompt / auto memory",
+      "layer": "memory",
+      "similarity": 0.7459,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.73",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "What to save:",
+      "after_text": "### What to save:",
+      "before_path": "System Prompt / auto memory",
+      "after_path": "System Prompt / auto memory",
+      "layer": "memory",
+      "similarity": 0.7333,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.85"
+      ],
+      "before_text": "Today's date is 2026-02-20.",
+      "after_text": "Today's date is 2026-02-21.",
+      "before_path": "User Message / currentDate",
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": 0.8519,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.75",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "These describe categories of actions rather than specific commands.\", \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"tool\": { \"description\": \"The tool this prompt applies to\", \"type\": \"string\", \"enum\": [ \"Bash\" ] }, \"prompt\": { \"description\": \"Semantic description of the action, e.g. \\\"run tests\\\", \\\"install dependencies\\\"\", \"type\": \"string\" } }, \"required\": [ \"tool\", \"prompt\" ], \"additionalProperties\": false } }, \"pushToRemote\": { \"description\": \"Whether to push the plan to a remote Claude.ai session\", \"type\": \"boolean\" }, \"remoteSessionId\": { \"description\": \"The remote session ID if pushed to remote\", \"type\": \"string\" }, \"remoteSessionUrl\": { \"description\": \"The remote session URL if pushed to remote\", \"type\": \"string\" }, \"remoteSessionTitle\": { \"description\": \"The remote session title if pushed to remote\", \"type\": \"string\" } }, \"additionalProperties\": {} }",
+      "after_text": "These describe categories of actions rather than specific commands.\", \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"tool\": { \"description\": \"The tool this prompt applies to\", \"type\": \"string\", \"enum\": [ \"Bash\" ] }, \"prompt\": { \"description\": \"Semantic description of the action, e.g. \\\"run tests\\\", \\\"install dependencies\\\"\", \"type\": \"string\" } }, \"required\": [ \"tool\", \"prompt\" ], \"additionalProperties\": false } } }, \"additionalProperties\": {} }",
+      "before_path": "Tools / ExitPlanMode",
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": 0.7514,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "Do not write duplicate memories. First check if there is an existing memory you can update before writing a new one.",
+      "before_path": null,
+      "after_path": "System Prompt / auto memory",
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-21T09:28:20.268Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 }, \"isolation\": { \"description\": \"Isolation mode. \\\"worktree\\\" creates a temporary git worktree so the agent works on an isolated copy of the repo.\", \"type\": \"string\", \"enum\": [ \"worktree\" ] } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You can optionally set `isolation: \"worktree\"` to run the agent in a temporary git worktree, giving it an isolated copy of the repository. The worktree is automatically cleaned up if the agent makes no changes; if changes are made, the worktree path and branch are returned in the result.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "### How to save memories:",
+      "before_path": null,
+      "after_path": "System Prompt / auto memory",
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Your MEMORY.md is currently empty.",
+      "after_text": null,
+      "before_path": "System Prompt / auto memory",
+      "after_path": null,
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "### MEMORY.md",
+      "after_text": null,
+      "before_path": "System Prompt / auto memory",
+      "after_path": null,
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Anything in MEMORY.md will be included in your system prompt next time.",
+      "after_text": null,
+      "before_path": "System Prompt / auto memory",
+      "after_path": null,
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When you encounter a mistake that seems like it could be common, check your auto memory for relevant notes — and if nothing is written yet, record what you learned.",
+      "after_text": null,
+      "before_path": "System Prompt / auto memory",
+      "after_path": null,
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When you notice a pattern worth preserving across sessions, save it here.",
+      "after_text": null,
+      "before_path": "System Prompt / auto memory",
+      "after_path": null,
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Guidelines:",
+      "after_text": null,
+      "before_path": "System Prompt / auto memory",
+      "after_path": null,
+      "layer": "memory",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-02-20T09:28:26.446Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / currentDate",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 6,
+    "model_calibration": 1,
+    "new_policy": 4,
+    "policy_relaxation": 8
+  },
+  "stability_ratio": 0.895,
+  "churn_rate": 0.105
+}

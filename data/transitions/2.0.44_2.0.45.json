@@ -1,0 +1,206 @@
+{
+  "from_version": "2.0.44",
+  "to_version": "2.0.45",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.76",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Shell IDs can be found using the /bashes command",
+      "after_text": "Shell IDs can be found using the /tasks command",
+      "before_path": "Tools / KillShell",
+      "after_path": "Tools / KillShell",
+      "layer": "environment",
+      "similarity": 0.76,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When the user directly asks about any of the following:",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "how to use Claude Code (eg. \"can Claude Code do...\", \"does Claude Code have...\")",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "how to use a specific Claude Code feature (eg. implement a hook, write a slash command, or install an MCP server)",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-11-18T21:28:20.377Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "about how they might do something with Claude Code (eg. \"how do I...\", \"how can I...\")",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "how to use the Claude Agent SDK, or asks you to write code that uses the Claude Agent SDK",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "what you're able to do as Claude Code in second person (eg. \"are you able...\", \"can you do...\")",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use the Task tool with subagent_type='claude-code-guide' to get accurate information from the official Claude Code and Claude Agent SDK documentation.",
+      "before_path": null,
+      "after_path": "System Prompt / Looking up your own documentation:",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The list of available docs is available at https://code.claude.com/docs/en/claude_code_docs_map.md.",
+      "after_text": null,
+      "before_path": "System Prompt",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-11-18T09:28:30.045Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When the user directly asks about Claude Code (eg. \"can Claude Code do...\", \"does Claude Code have...\"), or asks in second person (eg. \"are you able...\", \"can you do...\"), or asks how to use a specific Claude Code feature (eg. implement a hook, write a slash command, or install an MCP server), use the WebFetch tool to gather information to answer the question from Claude Code docs.",
+      "after_text": null,
+      "before_path": "System Prompt",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 8,
+    "policy_relaxation": 3
+  },
+  "stability_ratio": 0.8633,
+  "churn_rate": 0.1367
+}

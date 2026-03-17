@@ -1,0 +1,222 @@
+{
+  "from_version": "1.0.120",
+  "to_version": "1.0.122",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-20",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-09-24",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "environment",
+      "similarity": 0.9851,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: `command: \"/review-pr 123\"`",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If command validation fails, list up to 5 available commands, not all of them.",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Important Notes:",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-09-24T03:36:51.722Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"command\": { \"type\": \"string\", \"description\": \"The slash command to execute with its arguments, e.g., \\\"/review-pr 123\\\"\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "`command` (required): The slash command to execute, including any arguments",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Available Commands:",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "Do not use this tool if you are already processing a slash command with the same name as indicated by <command-message>{name_of_command} is running…</command-message>",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Execute a slash command within the main conversation Usage:",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Some commands may require arguments as shown in the command list above",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Only available slash commands can be executed.",
+      "before_path": null,
+      "after_path": "Tools / SlashCommand",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-09-20T03:36:51.563Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 10,
+    "model_calibration": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.853,
+  "churn_rate": 0.147
+}

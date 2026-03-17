@@ -1,0 +1,95 @@
+{
+  "from_version": "1.0.58",
+  "to_version": "1.0.59",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.72",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "You should not respond to this context or otherwise consider it in your response unless it is highly relevant to your task.",
+      "after_text": "You should not respond to this context unless it is highly relevant to your task.",
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": 0.7228,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "Do not add additional code explanation summary unless requested by the user.",
+      "before_path": null,
+      "after_path": "System Prompt / Tone and style",
+      "layer": "output",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "After working on a file, just stop, rather than providing an explanation of what you did.",
+      "before_path": null,
+      "after_path": "System Prompt / Tone and style",
+      "layer": "output",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Do not add additional code explanation summary unless requested by the user. After working on a file, just stop, rather than providing an explanation of what you did.",
+      "after_text": null,
+      "before_path": "System Prompt / Proactiveness",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Most of the time, it is not relevant.",
+      "after_text": null,
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "model_calibration": 1,
+    "new_policy": 1,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8514,
+  "churn_rate": 0.1486
+}

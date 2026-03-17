@@ -1,0 +1,271 @@
+{
+  "from_version": "2.1.18",
+  "to_version": "2.1.19",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2026-01-24T09:28:20.221Z is the date.",
+      "after_text": "2026-01-24T09:28:26.380Z is the date.",
+      "before_path": "User Message",
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": 0.6667,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.86"
+      ],
+      "before_text": "These describe categories of actions rather than specific commands.\", \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"tool\": { \"description\": \"The tool this prompt applies to\", \"type\": \"string\", \"enum\": [ \"Bash\" ] }, \"prompt\": { \"description\": \"Semantic description of the action, e.g. \\\"run tests\\\", \\\"install dependencies\\\"\", \"type\": \"string\" } }, \"required\": [ \"tool\", \"prompt\" ], \"additionalProperties\": false } }, \"pushToRemote\": { \"description\": \"Whether to push the plan to a remote Claude.ai session\", \"type\": \"boolean\" }, \"remoteSessionId\": { \"description\": \"The remote session ID if pushed to remote\", \"type\": \"string\" }, \"remoteSessionUrl\": { \"description\": \"The remote session URL if pushed to remote\", \"type\": \"string\" }, \"remoteSessionTitle\": { \"description\": \"The remote session title if pushed to remote\", \"type\": \"string\" }, \"launchSwarm\": { \"description\": \"Whether to launch a swarm to implement the plan\", \"type\": \"boolean\" }, \"teammateCount\": { \"description\": \"Number of teammates to spawn in the swarm\", \"type\": \"number\" } }, \"additionalProperties\": {} }",
+      "after_text": "These describe categories of actions rather than specific commands.\", \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"tool\": { \"description\": \"The tool this prompt applies to\", \"type\": \"string\", \"enum\": [ \"Bash\" ] }, \"prompt\": { \"description\": \"Semantic description of the action, e.g. \\\"run tests\\\", \\\"install dependencies\\\"\", \"type\": \"string\" } }, \"required\": [ \"tool\", \"prompt\" ], \"additionalProperties\": false } }, \"pushToRemote\": { \"description\": \"Whether to push the plan to a remote Claude.ai session\", \"type\": \"boolean\" }, \"remoteSessionId\": { \"description\": \"The remote session ID if pushed to remote\", \"type\": \"string\" }, \"remoteSessionUrl\": { \"description\": \"The remote session URL if pushed to remote\", \"type\": \"string\" }, \"remoteSessionTitle\": { \"description\": \"The remote session title if pushed to remote\", \"type\": \"string\" } }, \"additionalProperties\": {} }",
+      "before_path": "Tools / ExitPlanMode",
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": 0.8613,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.85"
+      ],
+      "before_text": "Use this tool when you need to terminate a long-running shell",
+      "after_text": "Use this tool when you need to terminate a long-running task",
+      "before_path": "Tools / KillShell",
+      "after_path": "Tools / TaskStop",
+      "layer": "tools",
+      "similarity": 0.8548,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.71",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "{ \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", \"properties\": { \"shell_id\": { \"description\": \"The ID of the background shell to kill\", \"type\": \"string\" } }, \"required\": [ \"shell_id\" ], \"additionalProperties\": false }",
+      "after_text": "{ \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", \"properties\": { \"task_id\": { \"description\": \"The ID of the background task to stop\", \"type\": \"string\" }, \"shell_id\": { \"description\": \"Deprecated: use task_id instead\", \"type\": \"string\" } }, \"additionalProperties\": false }",
+      "before_path": "Tools / KillShell",
+      "after_path": "Tools / TaskStop",
+      "layer": "tools",
+      "similarity": 0.7078,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Stops a running background task by its ID",
+      "before_path": null,
+      "after_path": "Tools / TaskStop",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Skills listed below are available for invocation",
+      "before_path": null,
+      "after_path": "Tools / Skill",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Example: [\\\"Bash(git commit*)\\\", \\\"Read\\\"]\", \"type\": \"array\", \"items\": { \"type\": \"string\" } } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "User will be prompted to approve if not already allowed.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Takes a task_id parameter identifying the task to stop",
+      "before_path": null,
+      "after_path": "Tools / TaskStop",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 }, \"allowed_tools\": { \"description\": \"Tools to grant this agent.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Only use skills listed in \"Available skills\" below",
+      "after_text": null,
+      "before_path": "Tools / Skill",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Shell IDs can be found using the /tasks command",
+      "after_text": null,
+      "before_path": "Tools / KillShell",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 }, \"name\": { \"description\": \"Name for the spawned agent\", \"type\": \"string\" }, \"team_name\": { \"description\": \"Team name for spawning.",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Uses current team context if omitted.\", \"type\": \"string\" }, \"mode\": { \"description\": \"Permission mode for spawned teammate (e.g., \\\"plan\\\" to require plan approval).\", \"type\": \"string\", \"enum\": [ \"acceptEdits\", \"bypassPermissions\", \"default\", \"delegate\", \"dontAsk\", \"plan\" ] } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Takes a shell_id parameter identifying the shell to kill",
+      "after_text": null,
+      "before_path": "Tools / KillShell",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Kills a running background bash shell by its ID",
+      "after_text": null,
+      "before_path": "Tools / KillShell",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 4,
+    "new_policy": 6,
+    "policy_relaxation": 6
+  },
+  "stability_ratio": 0.8769,
+  "churn_rate": 0.1231
+}

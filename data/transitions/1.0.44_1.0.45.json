@@ -1,0 +1,446 @@
+{
+  "from_version": "1.0.44",
+  "to_version": "1.0.45",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.90"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"pattern\": { \"type\": \"string\", \"description\": \"The regular expression pattern to search for in file contents\" }, \"path\": { \"type\": \"string\", \"description\": \"The directory to search in.",
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"pattern\": { \"type\": \"string\", \"description\": \"The regular expression pattern to search for in file contents\" }, \"path\": { \"type\": \"string\", \"description\": \"File or directory to search in (rg PATH).",
+      "before_path": "Tools / Grep",
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": 0.9048,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.78",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Supports full regex syntax (eg. \"log.*Error\", \"function\\s+\\w+\", etc.)",
+      "after_text": "Supports full regex syntax (e.g., \"log.*Error\", \"function\\s+\\w+\")",
+      "before_path": "Tools / Grep",
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": 0.7778,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Requires output_mode: \\\"content\\\", ignored otherwise.\" }, \"-n\": { \"type\": \"boolean\", \"description\": \"Show line numbers in output (rg -n).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use Task tool for open-ended searches requiring multiple rounds",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "More efficient than include for standard file types.\" }, \"head_limit\": { \"type\": \"number\", \"description\": \"Limit output to first N lines/entries, equivalent to \\\"| head -N\\\".",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Defaults to \\\"files_with_matches\\\".\" }, \"-B\": { \"type\": \"number\", \"description\": \"Number of lines to show before each match (rg -B).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Multiline matching: By default patterns match within single lines only. For cross-line patterns like `struct \\{[\\s\\S]*?field`, use `multiline: true`",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When unspecified, shows all results from ripgrep.\" }, \"multiline\": { \"type\": \"boolean\", \"description\": \"Enable multiline mode where . matches newlines and patterns can span lines (rg -U --multiline-dotall).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Output modes: \"content\" shows matching lines, \"files_with_matches\" shows only file paths (default), \"count\" shows match counts",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Requires output_mode: \\\"content\\\", ignored otherwise.\" }, \"-A\": { \"type\": \"number\", \"description\": \"Number of lines to show after each match (rg -A).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Common types: js, py, rust, go, java, etc.",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Default: false.\" } }, \"required\": [ \"pattern\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Filter files with glob parameter (e.g., \"*.js\", \"**/*.tsx\") or type parameter (e.g., \"js\", \"py\", \"rust\")",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Requires output_mode: \\\"content\\\", ignored otherwise.\" }, \"-C\": { \"type\": \"number\", \"description\": \"Number of lines to show before and after each match (rg -C).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Works across all output modes: content (limits output lines), files_with_matches (limits file paths), count (limits count entries).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Requires output_mode: \\\"content\\\", ignored otherwise.\" }, \"-i\": { \"type\": \"boolean\", \"description\": \"Case insensitive search (rg -i)\" }, \"type\": { \"type\": \"string\", \"description\": \"File type to search (rg --type).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Pattern syntax: Uses ripgrep (not grep) - literal braces need escaping (use `interface\\{\\}` to find `interface{}` in Go code)",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Defaults to current working directory.\" }, \"glob\": { \"type\": \"string\", \"description\": \"Glob pattern to filter files (e.g. \\\"*.js\\\", \\\"*.{ts,tsx}\\\") - maps to rg --glob\" }, \"output_mode\": { \"type\": \"string\", \"enum\": [ \"content\", \"files_with_matches\", \"count\" ], \"description\": \"Output mode: \\\"content\\\" shows matching lines (supports -A/-B/-C context, -n line numbers, head_limit), \\\"files_with_matches\\\" shows file paths (supports head_limit), \\\"count\\\" shows match counts (supports head_limit).",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_019",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "ALWAYS use Grep for search tasks. NEVER invoke `grep` or `rg` as a Bash command. The Grep tool has been optimized for correct permissions and access.",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_020",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "A powerful search tool built on ripgrep",
+      "before_path": null,
+      "after_path": "Tools / Grep",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_021",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Defaults to the current working directory.\" }, \"include\": { \"type\": \"string\", \"description\": \"File pattern to include in the search (e.g. \\\"*.js\\\", \\\"*.{ts,tsx}\\\")\" } }, \"required\": [ \"pattern\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_022",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "If you need to identify/count the number of matches within files, use the Bash tool with `rg` (ripgrep) directly. Do NOT use `grep`.",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_023",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use this tool when you need to find files containing specific patterns",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_024",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Filter files by pattern with the include parameter (eg. \"*.js\", \"*.{ts,tsx}\")",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_025",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Returns file paths with at least one match sorted by modification time",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_026",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Fast content search tool that works with any codebase size",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_027",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Searches file contents using regular expressions",
+      "after_text": null,
+      "before_path": "Tools / Grep",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 18,
+    "policy_relaxation": 7
+  },
+  "stability_ratio": 0.8384,
+  "churn_rate": 0.1616
+}

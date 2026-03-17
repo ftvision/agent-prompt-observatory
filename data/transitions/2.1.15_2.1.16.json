@@ -1,0 +1,158 @@
+{
+  "from_version": "2.1.15",
+  "to_version": "2.1.16",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.86"
+      ],
+      "before_text": "These describe categories of actions rather than specific commands.\", \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"tool\": { \"description\": \"The tool this prompt applies to\", \"type\": \"string\", \"enum\": [ \"Bash\" ] }, \"prompt\": { \"description\": \"Semantic description of the action, e.g. \\\"run tests\\\", \\\"install dependencies\\\"\", \"type\": \"string\" } }, \"required\": [ \"tool\", \"prompt\" ], \"additionalProperties\": false } }, \"pushToRemote\": { \"description\": \"Whether to push the plan to a remote Claude.ai session\", \"type\": \"boolean\" }, \"remoteSessionId\": { \"description\": \"The remote session ID if pushed to remote\", \"type\": \"string\" }, \"remoteSessionUrl\": { \"description\": \"The remote session URL if pushed to remote\", \"type\": \"string\" }, \"remoteSessionTitle\": { \"description\": \"The remote session title if pushed to remote\", \"type\": \"string\" } }, \"additionalProperties\": {} }",
+      "after_text": "These describe categories of actions rather than specific commands.\", \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"tool\": { \"description\": \"The tool this prompt applies to\", \"type\": \"string\", \"enum\": [ \"Bash\" ] }, \"prompt\": { \"description\": \"Semantic description of the action, e.g. \\\"run tests\\\", \\\"install dependencies\\\"\", \"type\": \"string\" } }, \"required\": [ \"tool\", \"prompt\" ], \"additionalProperties\": false } }, \"pushToRemote\": { \"description\": \"Whether to push the plan to a remote Claude.ai session\", \"type\": \"boolean\" }, \"remoteSessionId\": { \"description\": \"The remote session ID if pushed to remote\", \"type\": \"string\" }, \"remoteSessionUrl\": { \"description\": \"The remote session URL if pushed to remote\", \"type\": \"string\" }, \"remoteSessionTitle\": { \"description\": \"The remote session title if pushed to remote\", \"type\": \"string\" }, \"launchSwarm\": { \"description\": \"Whether to launch a swarm to implement the plan\", \"type\": \"boolean\" }, \"teammateCount\": { \"description\": \"Number of teammates to spawn in the swarm\", \"type\": \"number\" } }, \"additionalProperties\": {} }",
+      "before_path": "Tools / ExitPlanMode",
+      "after_path": "Tools / ExitPlanMode",
+      "layer": "tools",
+      "similarity": 0.8613,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You are a Claude agent, built on Anthropic's Claude Agent SDK.",
+      "before_path": null,
+      "after_path": "System Prompt",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 }, \"name\": { \"description\": \"Name for the spawned agent\", \"type\": \"string\" }, \"team_name\": { \"description\": \"Team name for spawning.",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "model_calibration",
+      "confidence": 0.8,
+      "signals": [
+        "calibration_pattern_detected"
+      ],
+      "before_text": null,
+      "after_text": "IMPORTANT: Do not use --no-edit with git rebase commands, as the --no-edit flag is not a valid option for git rebase.",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Uses current team context if omitted.\", \"type\": \"string\" }, \"mode\": { \"description\": \"Permission mode for spawned teammate (e.g., \\\"plan\\\" to require plan approval).\", \"type\": \"string\", \"enum\": [ \"acceptEdits\", \"bypassPermissions\", \"default\", \"delegate\", \"dontAsk\", \"plan\" ] } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / Task",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-01-22T21:28:19.754Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-01-22T09:28:19.969Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Used internally for warmup.\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 } }, \"required\": [ \"description\", \"prompt\", \"subagent_type\" ], \"additionalProperties\": false }",
+      "after_text": null,
+      "before_path": "Tools / Task",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "x-anthropic-billing-header: cc_version=2.1.15.19c; cc_entrypoint=sdk-cli You are a Claude agent, built on Anthropic's Claude Agent SDK.",
+      "after_text": null,
+      "before_path": "System Prompt",
+      "after_path": null,
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 4,
+    "model_calibration": 1,
+    "policy_relaxation": 3
+  },
+  "stability_ratio": 0.8809,
+  "churn_rate": 0.1191
+}

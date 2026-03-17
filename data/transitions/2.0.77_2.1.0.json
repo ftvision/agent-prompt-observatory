@@ -1,0 +1,301 @@
+{
+  "from_version": "2.0.77",
+  "to_version": "2.1.0",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2026-01-07T21:28:19.785Z is the date.",
+      "after_text": "2026-01-07T21:28:29.675Z is the date.",
+      "before_path": "User Message",
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": 0.6667,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Supported operations:",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "goToDefinition: Find where a symbol is defined",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "prepareCallHierarchy: Get call hierarchy item at a position (functions/methods)",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "outgoingCalls: Find all functions/methods called by the function at a position",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "workspaceSymbol: Search for symbols across the entire workspace",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "If no server is available, an error will be returned. { \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", \"properties\": { \"operation\": { \"description\": \"The LSP operation to perform\", \"type\": \"string\", \"enum\": [ \"goToDefinition\", \"findReferences\", \"hover\", \"documentSymbol\", \"workspaceSymbol\", \"goToImplementation\", \"prepareCallHierarchy\", \"incomingCalls\", \"outgoingCalls\" ] }, \"filePath\": { \"description\": \"The absolute or relative path to the file\", \"type\": \"string\" }, \"line\": { \"description\": \"The line number (1-based, as shown in editors)\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 }, \"character\": { \"description\": \"The character offset (1-based, as shown in editors)\", \"type\": \"integer\", \"exclusiveMinimum\": 0, \"maximum\": 9007199254740991 } }, \"required\": [ \"operation\", \"filePath\", \"line\", \"character\" ], \"additionalProperties\": false }",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "findReferences: Find all references to a symbol",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "incomingCalls: Find all functions/methods that call the function at a position",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Interact with Language Server Protocol (LSP) servers to get code intelligence features.",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "line: The line number (1-based, as shown in editors)",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "goToImplementation: Find implementations of an interface or abstract method",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "documentSymbol: Get all symbols (functions, classes, variables) in a document",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "All operations require:",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "filePath: The file to operate on",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "hover: Get hover information (documentation, type info) for a symbol",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "character: The character offset (1-based, as shown in editors)",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Note: LSP servers must be configured for the file type.",
+      "after_text": null,
+      "before_path": "Tools / LSP",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "policy_relaxation": 17
+  },
+  "stability_ratio": 0.8621,
+  "churn_rate": 0.1379
+}

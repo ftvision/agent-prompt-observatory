@@ -1,0 +1,61 @@
+{
+  "from_version": "2.0.25",
+  "to_version": "2.0.26",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.96"
+      ],
+      "before_text": "Use BashOutput to read the output later.\" }, \"dangerouslyOverrideSandbox\": { \"type\": \"boolean\", \"description\": \"Set this to true to dangerously override sandbox mode and run commands without sandboxing.\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": "Use BashOutput to read the output later.\" }, \"dangerouslyDisableSandbox\": { \"type\": \"boolean\", \"description\": \"Set this to true to dangerously override sandbox mode and run commands without sandboxing.\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.9602,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-10-30T21:30:53.131Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-10-30T21:30:46.274Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.8629,
+  "churn_rate": 0.1371
+}

@@ -1,0 +1,174 @@
+{
+  "from_version": "1.0.21",
+  "to_version": "1.0.22",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.92"
+      ],
+      "before_text": "Defaults to replace.\" } }, \"required\": [ \"notebook_path\", \"cell_number\", \"new_source\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": "Defaults to replace.\" } }, \"required\": [ \"notebook_path\", \"cell_id\", \"new_source\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": "Tools / NotebookEdit",
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": 0.9245,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.73",
+        "imperatives_before=1_after=1"
+      ],
+      "before_text": "Use edit_mode=delete to delete the cell at the index specified by cell_number. { \"type\": \"object\", \"properties\": { \"notebook_path\": { \"type\": \"string\", \"description\": \"The absolute path to the Jupyter notebook file to edit (must be absolute, not relative)\" }, \"cell_number\": { \"type\": \"number\", \"description\": \"The index of the cell to edit (0-based)\" }, \"new_source\": { \"type\": \"string\", \"description\": \"The new source for the cell\" }, \"cell_type\": { \"type\": \"string\", \"enum\": [ \"code\", \"markdown\" ], \"description\": \"The type of the cell (code or markdown).",
+      "after_text": "Use edit_mode=delete to delete the cell at the index specified by cell_number. { \"type\": \"object\", \"properties\": { \"notebook_path\": { \"type\": \"string\", \"description\": \"The absolute path to the Jupyter notebook file to edit (must be absolute, not relative)\" }, \"cell_id\": { \"type\": [ \"string\", \"null\" ], \"description\": \"The ID of the cell to edit.",
+      "before_path": "Tools / NotebookEdit",
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": 0.7308,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "NEVER use the TodoWrite or Task tools",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "If not provided, all cells will be read.\" } }, \"required\": [ \"notebook_path\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / NotebookRead",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The notebook_path parameter must be an absolute path, not a relative path. { \"type\": \"object\", \"properties\": { \"notebook_path\": { \"type\": \"string\", \"description\": \"The absolute path to the Jupyter notebook file to read (must be absolute, not relative)\" }, \"cell_id\": { \"type\": \"string\", \"description\": \"The ID of a specific cell to read.",
+      "before_path": null,
+      "after_path": "Tools / NotebookRead",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When inserting a new cell, the new cell will be inserted after the cell with this ID.",
+      "before_path": null,
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "NEVER run additional commands to read or explore code, besides git bash commands",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use `null` to insert at the beginning.\" }, \"new_source\": { \"type\": \"string\", \"description\": \"The new source for the cell\" }, \"cell_type\": { \"type\": \"string\", \"enum\": [ \"code\", \"markdown\" ], \"description\": \"The type of the cell (code or markdown).",
+      "before_path": null,
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The notebook_path parameter must be an absolute path, not a relative path. { \"type\": \"object\", \"properties\": { \"notebook_path\": { \"type\": \"string\", \"description\": \"The absolute path to the Jupyter notebook file to read (must be absolute, not relative)\" } }, \"required\": [ \"notebook_path\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / NotebookRead",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "DO NOT run additional commands to read or explore code, beyond what is available in the git context",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 6,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8392,
+  "churn_rate": 0.1608
+}

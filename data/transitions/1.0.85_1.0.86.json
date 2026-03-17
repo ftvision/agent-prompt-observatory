@@ -1,0 +1,109 @@
+{
+  "from_version": "1.0.85",
+  "to_version": "1.0.86",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-08-20",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-08-21",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "environment",
+      "similarity": 0.9851,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.99"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"todos\": { \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"content\": { \"type\": \"string\", \"minLength\": 1 }, \"status\": { \"type\": \"string\", \"enum\": [ \"pending\", \"in_progress\", \"completed\" ] }, \"id\": { \"type\": \"string\" } }, \"required\": [ \"content\", \"status\", \"id\" ], \"additionalProperties\": false }, \"description\": \"The updated todo list\" } }, \"required\": [ \"todos\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"todos\": { \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"content\": { \"type\": \"string\", \"minLength\": 1 }, \"status\": { \"type\": \"string\", \"enum\": [ \"pending\", \"in_progress\", \"completed\" ] } }, \"required\": [ \"content\", \"status\" ], \"additionalProperties\": false }, \"description\": \"The updated todo list\" } }, \"required\": [ \"todos\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": "Tools / TodoWrite",
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": 0.9873,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Exactly ONE task must be in_progress at any time (not less, not more)",
+      "before_path": null,
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2025-08-21T03:36:51.112Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2025-08-20T03:36:50.832Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Only have ONE task in_progress at any time",
+      "after_text": null,
+      "before_path": "Tools / TodoWrite",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 2,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8492,
+  "churn_rate": 0.1508
+}

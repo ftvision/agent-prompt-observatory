@@ -1,0 +1,126 @@
+{
+  "from_version": "1.0.22",
+  "to_version": "1.0.23",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.90"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 8/3/2025",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2025-08-03",
+      "before_path": "System Prompt / Tool usage policy",
+      "after_path": "System Prompt / Tool usage policy",
+      "layer": "environment",
+      "similarity": 0.8993,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.95"
+      ],
+      "before_text": "Use edit_mode=delete to delete the cell at the index specified by cell_number. { \"type\": \"object\", \"properties\": { \"notebook_path\": { \"type\": \"string\", \"description\": \"The absolute path to the Jupyter notebook file to edit (must be absolute, not relative)\" }, \"cell_id\": { \"type\": [ \"string\", \"null\" ], \"description\": \"The ID of the cell to edit.",
+      "after_text": "Use edit_mode=delete to delete the cell at the index specified by cell_number. { \"type\": \"object\", \"properties\": { \"notebook_path\": { \"type\": \"string\", \"description\": \"The absolute path to the Jupyter notebook file to edit (must be absolute, not relative)\" }, \"cell_id\": { \"type\": \"string\", \"description\": \"The ID of the cell to edit.",
+      "before_path": "Tools / NotebookEdit",
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": 0.9498,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.94"
+      ],
+      "before_text": "Defaults to replace.\" } }, \"required\": [ \"notebook_path\", \"cell_id\", \"new_source\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": "Defaults to replace.\" } }, \"required\": [ \"notebook_path\", \"new_source\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": "Tools / NotebookEdit",
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": 0.9404,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.74",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Run a git log command and `git diff main...HEAD` (or master...HEAD) to understand the full commit history for the current branch (from the time it diverged from the `main` branch)",
+      "after_text": "Run a git log command and `git diff [base-branch]...HEAD` to understand the full commit history for the current branch (from the time it diverged from the base branch)",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.7368,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "When inserting a new cell, the new cell will be inserted after the cell with this ID, or at the beginning if not specified.\" }, \"new_source\": { \"type\": \"string\", \"description\": \"The new source for the cell\" }, \"cell_type\": { \"type\": \"string\", \"enum\": [ \"code\", \"markdown\" ], \"description\": \"The type of the cell (code or markdown).",
+      "before_path": null,
+      "after_path": "Tools / NotebookEdit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "When inserting a new cell, the new cell will be inserted after the cell with this ID.",
+      "after_text": null,
+      "before_path": "Tools / NotebookEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Use `null` to insert at the beginning.\" }, \"new_source\": { \"type\": \"string\", \"description\": \"The new source for the cell\" }, \"cell_type\": { \"type\": \"string\", \"enum\": [ \"code\", \"markdown\" ], \"description\": \"The type of the cell (code or markdown).",
+      "after_text": null,
+      "before_path": "Tools / NotebookEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 4,
+    "new_policy": 1,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8418,
+  "churn_rate": 0.1582
+}

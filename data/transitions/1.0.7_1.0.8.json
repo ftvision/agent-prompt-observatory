@@ -1,0 +1,302 @@
+{
+  "from_version": "1.0.7",
+  "to_version": "1.0.8",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.82",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "anthropic-ai-claude-code-1.0.7.tgz",
+      "after_text": "anthropic-ai-claude-code-1.0.8.tgz",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.8235,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.97"
+      ],
+      "before_text": "NOTE that you should use should not use this tool if there is only one trivial task to do.",
+      "after_text": "NOTE that you should not use this tool if there is only one trivial task to do.",
+      "before_path": "Tools / TodoWrite",
+      "after_path": "Tools / TodoWrite",
+      "layer": "tools",
+      "similarity": 0.9718,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "The edit will FAIL if `old_string` is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use `replace_all` to change every instance of `old_string`.",
+      "before_path": null,
+      "after_path": "Tools / Edit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"file_path\": { \"type\": \"string\", \"description\": \"The absolute path to the file to modify\" }, \"old_string\": { \"type\": \"string\", \"description\": \"The text to replace\" }, \"new_string\": { \"type\": \"string\", \"description\": \"The text to replace it with (must be different from old_string)\" }, \"replace_all\": { \"type\": \"boolean\", \"default\": false, \"description\": \"Replace all occurences of old_string (default false)\" } }, \"required\": [ \"file_path\", \"old_string\", \"new_string\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / Edit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Performs exact string replacements in files.",
+      "before_path": null,
+      "after_path": "Tools / Edit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use `replace_all` for replacing and renaming strings across the file. This parameter is useful if you want to rename a variable for instance.",
+      "before_path": null,
+      "after_path": "Tools / Edit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "{ \"type\": \"object\", \"properties\": { \"file_path\": { \"type\": \"string\", \"description\": \"The absolute path to the file to modify\" }, \"edits\": { \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"old_string\": { \"type\": \"string\", \"description\": \"The text to replace\" }, \"new_string\": { \"type\": \"string\", \"description\": \"The text to replace it with\" }, \"replace_all\": { \"type\": \"boolean\", \"default\": false, \"description\": \"Replace all occurences of old_string (default false).\" } }, \"required\": [ \"old_string\", \"new_string\" ], \"additionalProperties\": false }, \"minItems\": 1, \"description\": \"Array of edit operations to perform sequentially on the file\" } }, \"required\": [ \"file_path\", \"edits\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "before_path": null,
+      "after_path": "Tools / MultiEdit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "You must use your `Read` tool at least once in the conversation before editing. This tool will error if you attempt an edit without reading the file.",
+      "before_path": null,
+      "after_path": "Tools / Edit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "replace_all: Replace all occurences of old_string. This parameter is optional and defaults to false.",
+      "before_path": null,
+      "after_path": "Tools / MultiEdit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Use replace_all for replacing and renaming strings across the file. This parameter is useful if you want to rename a variable for instance.",
+      "before_path": null,
+      "after_path": "Tools / MultiEdit",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Performs exact string replacements in files with strict occurrence count validation.",
+      "after_text": null,
+      "before_path": "Tools / Edit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"file_path\": { \"type\": \"string\", \"description\": \"The absolute path to the file to modify\" }, \"old_string\": { \"type\": \"string\", \"description\": \"The text to replace\" }, \"new_string\": { \"type\": \"string\", \"description\": \"The text to replace it with (must be different from old_string)\" }, \"expected_replacements\": { \"type\": \"number\", \"default\": 1, \"description\": \"The expected number of replacements to perform.",
+      "after_text": null,
+      "before_path": "Tools / Edit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Defaults to 1 if not specified.\" } }, \"required\": [ \"old_string\", \"new_string\" ], \"additionalProperties\": false }, \"minItems\": 1, \"description\": \"Array of edit operations to perform sequentially on the file\" } }, \"required\": [ \"file_path\", \"edits\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / MultiEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "expected_replacements: The number of replacements you expect to make. Defaults to 1 if not specified.",
+      "after_text": null,
+      "before_path": "Tools / MultiEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Defaults to 1 if not specified.\" } }, \"required\": [ \"file_path\", \"old_string\", \"new_string\" ], \"additionalProperties\": false, \"$schema\": \"http://json-schema.org/draft-07/schema#\" }",
+      "after_text": null,
+      "before_path": "Tools / Edit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "{ \"type\": \"object\", \"properties\": { \"file_path\": { \"type\": \"string\", \"description\": \"The absolute path to the file to modify\" }, \"edits\": { \"type\": \"array\", \"items\": { \"type\": \"object\", \"properties\": { \"old_string\": { \"type\": \"string\", \"description\": \"The text to replace\" }, \"new_string\": { \"type\": \"string\", \"description\": \"The text to replace it with\" }, \"expected_replacements\": { \"type\": \"number\", \"default\": 1, \"description\": \"The expected number of replacements to perform.",
+      "after_text": null,
+      "before_path": "Tools / MultiEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_017",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The tool will fail if edits.old_string matches multiple locations and edits.expected_replacements isn't specified",
+      "after_text": null,
+      "before_path": "Tools / MultiEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_018",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "The tool will fail if the number of matches doesn't equal edits.expected_replacements when it's specified",
+      "after_text": null,
+      "before_path": "Tools / MultiEdit",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 8,
+    "policy_relaxation": 8
+  },
+  "stability_ratio": 0.8302,
+  "churn_rate": 0.1698
+}

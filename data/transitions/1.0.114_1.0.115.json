@@ -1,0 +1,28 @@
+{
+  "from_version": "1.0.114",
+  "to_version": "1.0.115",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2025-09-16T03:36:51.885Z is the date.",
+      "after_text": "2025-09-16T03:36:59.709Z is the date.",
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": 0.6667,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1
+  },
+  "stability_ratio": 0.8546,
+  "churn_rate": 0.1454
+}

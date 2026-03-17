@@ -1,0 +1,28 @@
+{
+  "from_version": "2.1.33",
+  "to_version": "2.1.34",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.68",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2026-02-06T09:28:20.458Z is the date.",
+      "after_text": "2026-02-06T09:28:28.047Z is the date.",
+      "before_path": "User Message",
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": 0.6829,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1
+  },
+  "stability_ratio": 0.903,
+  "churn_rate": 0.097
+}

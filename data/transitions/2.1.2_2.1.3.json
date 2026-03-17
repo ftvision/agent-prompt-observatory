@@ -1,0 +1,274 @@
+{
+  "from_version": "2.1.2",
+  "to_version": "2.1.3",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.97"
+      ],
+      "before_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-09",
+      "after_text": "Working directory: /tmp/claude-history-<SESSION> Is directory a git repo: No Platform: linux OS Version: Linux 5.15.0-144-generic Today's date: 2026-01-10",
+      "before_path": "System Prompt / Code References",
+      "after_path": "System Prompt / Code References",
+      "layer": "environment",
+      "similarity": 0.9704,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.95"
+      ],
+      "before_text": "{ \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", \"properties\": { \"command\": { \"description\": \"The command to execute\", \"type\": \"string\" }, \"timeout\": { \"description\": \"Optional timeout in milliseconds (max 600000)\", \"type\": \"number\" }, \"description\": { \"description\": \"Clear, concise description of what this command does in 5-10 words, in active voice.",
+      "after_text": "{ \"$schema\": \"https://json-schema.org/draft/2020-12/schema\", \"type\": \"object\", \"properties\": { \"command\": { \"description\": \"The command to execute\", \"type\": \"string\" }, \"timeout\": { \"description\": \"Optional timeout in milliseconds (max 600000)\", \"type\": \"number\" }, \"description\": { \"description\": \"Clear, concise description of what this command does in active voice.",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.9463,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.93"
+      ],
+      "before_text": "Today's date is 2026-01-09. You MUST use this year when searching for recent information, documentation, or current events.",
+      "after_text": "Today's date is 2026-01-10. You MUST use this year when searching for recent information, documentation, or current events.",
+      "before_path": "Tools / WebSearch",
+      "after_path": "Tools / WebSearch",
+      "layer": "tools",
+      "similarity": 0.9286,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.84",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Use when choices are not mutually exclusive.\", \"default\": false, \"type\": \"boolean\" } }, \"required\": [ \"question\", \"header\", \"options\", \"multiSelect\" ], \"additionalProperties\": false } }, \"answers\": { \"description\": \"User answers collected by the permission component\", \"type\": \"object\", \"propertyNames\": { \"type\": \"string\" }, \"additionalProperties\": { \"type\": \"string\" } } }, \"required\": [ \"questions\" ], \"additionalProperties\": false }",
+      "after_text": "Use when choices are not mutually exclusive.\", \"default\": false, \"type\": \"boolean\" } }, \"required\": [ \"question\", \"header\", \"options\", \"multiSelect\" ], \"additionalProperties\": false } }, \"answers\": { \"description\": \"User answers collected by the permission component\", \"type\": \"object\", \"propertyNames\": { \"type\": \"string\" }, \"additionalProperties\": { \"type\": \"string\" } }, \"metadata\": { \"description\": \"Optional metadata for tracking and analytics purposes.",
+      "before_path": "Tools / AskUserQuestion",
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": 0.8363,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "policy_tightening",
+      "confidence": 0.7,
+      "signals": [
+        "similarity_0.70",
+        "imperatives_before=0_after=1",
+        "more_imperatives"
+      ],
+      "before_text": "Run a git status command to see all untracked files",
+      "after_text": "Run a git status command to see all untracked files (never use -uall flag)",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.7,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.68",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "Use TaskOutput to read the output later.\", \"type\": \"boolean\" }, \"dangerouslyDisableSandbox\": { \"description\": \"Set this to true to dangerously override sandbox mode and run commands without sandboxing.\", \"type\": \"boolean\" } }, \"required\": [ \"command\" ], \"additionalProperties\": false }",
+      "after_text": "Use TaskOutput to read the output later.\", \"type\": \"boolean\" }, \"dangerouslyDisableSandbox\": { \"description\": \"Set this to true to dangerously override sandbox mode and run commands without sandboxing.\", \"type\": \"boolean\" }, \"_simulatedSedEdit\": { \"description\": \"Internal: pre-computed sed edit result from preview\", \"type\": \"object\", \"properties\": { \"filePath\": { \"type\": \"string\" }, \"newContent\": { \"type\": \"string\" } }, \"required\": [ \"filePath\", \"newContent\" ], \"additionalProperties\": false } }, \"required\": [ \"command\" ], \"additionalProperties\": false }",
+      "before_path": "Tools / Bash",
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": 0.6844,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Used for analytics tracking.\", \"type\": \"string\" } }, \"additionalProperties\": false } }, \"required\": [ \"questions\" ], \"additionalProperties\": false }",
+      "before_path": null,
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-01-10T09:28:19.889Z is the date.",
+      "before_path": null,
+      "after_path": "User Message",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Not displayed to user.\", \"type\": \"object\", \"properties\": { \"source\": { \"description\": \"Optional identifier for the source of this question (e.g., \\\"remember\\\" for /remember command).",
+      "before_path": null,
+      "after_path": "Tools / AskUserQuestion",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Run a git status command to see all untracked files. IMPORTANT: Never use the -uall flag as it can cause memory issues on large repos.",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_011",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Never use words like \\\"complex\\\" or \\\"risk\\\" in the description - just describe what it does.\\n\\nFor simple commands (git, npm, standard CLI tools), keep it brief (5-10 words):\\n- ls → \\\"List files in current directory\\\"\\n- git status → \\\"Show working tree status\\\"\\n- npm install → \\\"Install package dependencies\\\"\\n\\nFor commands that are harder to parse at a glance (piped commands, obscure flags, etc.), add enough context to clarify what it does:\\n- find . -name \\\"*.tmp\\\" -exec rm {} \\\\; → \\\"Find and delete all .tmp files recursively\\\"\\n- git reset --hard origin/main → \\\"Discard all local changes and match remote main\\\"\\n- curl -s url | jq '.data[]' → \\\"Fetch JSON from URL and extract data array elements\\\"\", \"type\": \"string\" }, \"run_in_background\": { \"description\": \"Set to true to run this command in the background.",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_012",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "It is very helpful if you write a clear, concise description of what this command does. For simple commands, keep it brief (5-10 words). For complex commands (piped commands, obscure flags, or anything hard to understand at a glance), add enough context to clarify what it does.",
+      "before_path": null,
+      "after_path": "Tools / Bash",
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_013",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Examples:\\nInput: ls\\nOutput: List files in current directory\\n\\nInput: git status\\nOutput: Show working tree status\\n\\nInput: npm install\\nOutput: Install package dependencies\\n\\nInput: mkdir foo\\nOutput: Create directory 'foo'\", \"type\": \"string\" }, \"run_in_background\": { \"description\": \"Set to true to run this command in the background.",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_014",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Run a git status command to see all untracked files.",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_015",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "It is very helpful if you write a clear, concise description of what this command does in 5-10 words.",
+      "after_text": null,
+      "before_path": "Tools / Bash",
+      "after_path": null,
+      "layer": "tools",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_016",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-01-09T09:28:19.750Z is the date.",
+      "after_text": null,
+      "before_path": "User Message",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 5,
+    "policy_tightening": 1,
+    "new_policy": 6,
+    "policy_relaxation": 4
+  },
+  "stability_ratio": 0.8787,
+  "churn_rate": 0.1213
+}

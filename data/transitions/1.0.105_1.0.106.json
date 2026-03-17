@@ -1,0 +1,174 @@
+{
+  "from_version": "1.0.105",
+  "to_version": "1.0.106",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.93"
+      ],
+      "before_text": "Only address the specific query or task at hand, avoiding tangential information unless absolutely critical for completing the request.",
+      "after_text": "Only address the specific task at hand, avoiding tangential information unless absolutely critical for completing the request.",
+      "before_path": "System Prompt / Tone and style",
+      "after_path": "System Prompt / Tone and style",
+      "layer": "output",
+      "similarity": 0.925,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "wording_refinement",
+      "confidence": 0.5,
+      "signals": [
+        "similarity_0.67",
+        "imperatives_before=0_after=0"
+      ],
+      "before_text": "2025-09-05T03:36:51.963Z is the date.",
+      "after_text": "2025-09-05T03:36:59.808Z is the date.",
+      "before_path": "User Message / important-instruction-reminders",
+      "after_path": "User Message / important-instruction-reminders",
+      "layer": "task_execution",
+      "similarity": 0.6667,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "It is best for the user if Claude honestly applies the same rigorous standards to all ideas and disagrees when necessary, even if it may not be what the user wants to hear.",
+      "before_path": null,
+      "after_path": "System Prompt / Professional objectivity",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_004",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Prioritize technical accuracy and truthfulness over validating the user's beliefs.",
+      "before_path": null,
+      "after_path": "System Prompt / Professional objectivity",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_005",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Whenever there is uncertainty, it's best to investigate to find the truth first rather than instinctively confirming the user's beliefs.",
+      "before_path": null,
+      "after_path": "System Prompt / Professional objectivity",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_006",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Answer the user's question directly, avoiding any elaboration, explanation, introduction, conclusion, or excessive details.",
+      "before_path": null,
+      "after_path": "System Prompt / Tone and style",
+      "layer": "output",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_007",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Focus on facts and problem-solving, providing direct, objective technical info without any unnecessary superlatives, praise, or emotional validation.",
+      "before_path": null,
+      "after_path": "System Prompt / Professional objectivity",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_008",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "Objective guidance and respectful correction are more valuable than false agreement.",
+      "before_path": null,
+      "after_path": "System Prompt / Professional objectivity",
+      "layer": "environment",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_009",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Avoid introductions, conclusions, and explanations.",
+      "after_text": null,
+      "before_path": "System Prompt / Tone and style",
+      "after_path": null,
+      "layer": "output",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_010",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "Answer the user's question directly, without elaboration, explanation, or details.",
+      "after_text": null,
+      "before_path": "System Prompt / Tone and style",
+      "after_path": null,
+      "layer": "output",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 2,
+    "new_policy": 6,
+    "policy_relaxation": 2
+  },
+  "stability_ratio": 0.8499,
+  "churn_rate": 0.1501
+}

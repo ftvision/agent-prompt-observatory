@@ -1,0 +1,61 @@
+{
+  "from_version": "2.1.42",
+  "to_version": "2.1.44",
+  "changes": [
+    {
+      "change_id": "chg_001",
+      "classification": "wording_refinement",
+      "confidence": 0.8,
+      "signals": [
+        "high_similarity_0.85"
+      ],
+      "before_text": "Today's date is 2026-02-13.",
+      "after_text": "Today's date is 2026-02-17.",
+      "before_path": "User Message / currentDate",
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": 0.8519,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_002",
+      "classification": "new_policy",
+      "confidence": 0.85,
+      "signals": [
+        "new_unit"
+      ],
+      "before_text": null,
+      "after_text": "2026-02-17T09:28:20.359Z is the date.",
+      "before_path": null,
+      "after_path": "User Message / currentDate",
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    },
+    {
+      "change_id": "chg_003",
+      "classification": "policy_relaxation",
+      "confidence": 0.6,
+      "signals": [
+        "removed_unit"
+      ],
+      "before_text": "2026-02-13T21:28:20.084Z is the date.",
+      "after_text": null,
+      "before_path": "User Message / currentDate",
+      "after_path": null,
+      "layer": "task_execution",
+      "similarity": null,
+      "is_override": false,
+      "override_note": null
+    }
+  ],
+  "summary": {
+    "wording_refinement": 1,
+    "new_policy": 1,
+    "policy_relaxation": 1
+  },
+  "stability_ratio": 0.902,
+  "churn_rate": 0.098
+}
