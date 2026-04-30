@@ -1,155 +1,328 @@
-import * as d3 from 'd3'
+import * as THREE from 'three'
 import { getMeta, getStructures } from '../data/loader.js'
 import { createVersionPicker } from '../components/version-picker.js'
 
-export async function renderStructure(container) {
-  const [meta, structures] = await Promise.all([getMeta(), getStructures()])
-  const versions = meta.versions.map(v => v.version)
-  let currentVersion = versions[versions.length - 1]
+// Module-level Three.js state — cleaned up on each re-render
+let _renderer = null
+let _animId = null
 
-  // Header row with version picker
-  const header = document.createElement('div')
-  header.className = 'view-header'
-  header.innerHTML = '<h2>Prompt Structure</h2>'
-  const pickerWrap = document.createElement('div')
-  pickerWrap.className = 'picker-wrap'
-  createVersionPicker(pickerWrap, versions, currentVersion, (v) => {
-    currentVersion = v
-    renderContent()
-  })
-  header.appendChild(pickerWrap)
-  container.appendChild(header)
+function _cleanup() {
+  if (_animId) { cancelAnimationFrame(_animId); _animId = null }
+  if (_renderer) { _renderer.dispose(); _renderer = null }
+}
 
-  // Content area
-  const content = document.createElement('div')
-  content.className = 'structure-content'
-  container.appendChild(content)
+// Stack color palettes — deep to light (bottom to top of each stack)
+const PALETTES = {
+  system_prompt: [0x1e3a8a, 0x1d4ed8, 0x2563eb, 0x3b82f6, 0x60a5fa, 0x93c5fd, 0xbfdbfe, 0xdbeafe],
+  tools:         [0x2e1065, 0x4c1d95, 0x5b21b6, 0x6d28d9, 0x7c3aed, 0x8b5cf6, 0xa78bfa, 0xc4b5fd],
+  user_message:  [0x7c2d12, 0x9a3412, 0xc2410c, 0xea580c, 0xf97316, 0xfb923c, 0xfed7aa, 0xfff7ed],
+}
 
-  function renderContent() {
-    content.innerHTML = ''
-    const data = structures[currentVersion]
-    if (!data) {
-      content.innerHTML = '<p class="error">No data for version ' + currentVersion + '</p>'
-      return
-    }
+function _darken(hex, f) {
+  return (
+    (Math.round(((hex >> 16) & 0xff) * f) << 16) |
+    (Math.round(((hex >> 8)  & 0xff) * f) << 8)  |
+     Math.round( (hex        & 0xff) * f)
+  )
+}
 
-    // Two-column layout
-    const cols = document.createElement('div')
-    cols.className = 'structure-cols'
+// Bake a label texture onto a canvas — text on a solid color background
+function _makeLabelTex(text, baseColor) {
+  const W = 420, H = 240
+  const c = document.createElement('canvas')
+  c.width = W; c.height = H
+  const ctx = c.getContext('2d')
 
-    // Sections column
-    const secCol = document.createElement('div')
-    secCol.className = 'structure-col'
-    secCol.innerHTML = '<h3>System Prompt Sections</h3>'
-    const secMax = d3.max(data.sections, d => d.char_count) || 1
-    renderBarList(secCol, data.sections, 'char_count', secMax, '#60a5fa')
-    cols.appendChild(secCol)
+  // Background fill
+  const r = (baseColor >> 16) & 0xff
+  const g = (baseColor >> 8)  & 0xff
+  const b =  baseColor        & 0xff
+  ctx.fillStyle = `rgb(${r},${g},${b})`
+  ctx.fillRect(0, 0, W, H)
 
-    // Tools column
-    const toolCol = document.createElement('div')
-    toolCol.className = 'structure-col'
-    toolCol.innerHTML = '<h3>Tools</h3>'
-    const toolMax = d3.max(data.tools, d => d.total_chars) || 1
-    renderBarList(toolCol, data.tools, 'total_chars', toolMax, '#a78bfa')
-    cols.appendChild(toolCol)
+  // Subtle inner border
+  ctx.strokeStyle = `rgba(255,255,255,0.15)`
+  ctx.lineWidth = 4
+  ctx.strokeRect(6, 6, W - 12, H - 12)
 
-    content.appendChild(cols)
+  // Label text
+  ctx.fillStyle = 'rgba(255,255,255,0.92)'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
 
-    // XML tags
-    if (data.xml_tags && data.xml_tags.length > 0) {
-      const tagSection = document.createElement('div')
-      tagSection.className = 'xml-tags-section'
-      tagSection.innerHTML = '<h3>XML Tags</h3>'
-      const chips = document.createElement('div')
-      chips.className = 'chips-row'
-      data.xml_tags.forEach(tag => {
-        const chip = document.createElement('span')
-        chip.className = 'chip chip-neutral'
-        chip.textContent = tag
-        chips.appendChild(chip)
-      })
-      tagSection.appendChild(chips)
-      content.appendChild(tagSection)
-    }
+  // Fit text to width
+  let fontSize = 44
+  ctx.font = `600 ${fontSize}px system-ui, sans-serif`
+  while (ctx.measureText(text).width > W - 32 && fontSize > 14) {
+    fontSize -= 2
+    ctx.font = `600 ${fontSize}px system-ui, sans-serif`
   }
+  ctx.fillText(text, W / 2, H / 2)
 
-  function renderBarList(parent, items, countKey, maxVal, color) {
-    const list = document.createElement('div')
-    list.className = 'bar-list'
+  return new THREE.CanvasTexture(c)
+}
 
-    items.forEach((item, i) => {
-      const row = document.createElement('div')
-      row.className = 'bar-row'
+// Floating stack-title sprite above each stack
+function _makeTitleSprite(text) {
+  const W = 512, H = 96
+  const c = document.createElement('canvas')
+  c.width = W; c.height = H
+  const ctx = c.getContext('2d')
+  ctx.clearRect(0, 0, W, H)
+  ctx.fillStyle = '#ffffff'
+  ctx.font = '700 44px system-ui, sans-serif'
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.fillText(text, W / 2, H / 2)
+  const tex = new THREE.CanvasTexture(c)
+  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false })
+  const sprite = new THREE.Sprite(mat)
+  sprite.scale.set(5.5, 1.0, 1)
+  return sprite
+}
 
-      const label = document.createElement('div')
-      label.className = 'bar-label'
-      label.textContent = item.title
+// Build one stack; push hit-testable entries into `registry`
+function _buildStack(scene, stackDef, snap, registry) {
+  const { id, label, x, items } = stackDef
+  const palette = PALETTES[id]
+  const BOX_W = 4.2, BOX_D = 2.4, GAP = 0.07
+  const MAX_H = 1.6, MIN_H = 0.22
 
-      const barWrap = document.createElement('div')
-      barWrap.className = 'bar-wrap'
+  const maxSize = Math.max(...items.map(i => i.size), 1)
+  let y = 0
 
-      // Use D3 for the bar
-      const svg = d3.select(barWrap)
-        .append('svg')
-        .attr('width', '100%')
-        .attr('height', 8)
+  items.forEach((item, idx) => {
+    // Square-root scaling so large sections don't dwarf small ones
+    const h = MIN_H + (MAX_H - MIN_H) * Math.sqrt(item.size / maxSize)
+    const baseColor = palette[idx % palette.length]
+    const tex = _makeLabelTex(item.title, baseColor)
 
-      const bar = svg.append('rect')
-        .attr('y', 0)
-        .attr('height', 8)
-        .attr('rx', 4)
-        .attr('fill', color)
-        .attr('opacity', 0.8)
-        .attr('width', 0)
+    // Six-face material array: +x, -x, +y(top), -y, +z, -z
+    const mats = [
+      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.72) }),          // right
+      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.60) }),          // left
+      new THREE.MeshPhongMaterial({ map: tex, color: baseColor }),                // top ← label
+      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.35) }),          // bottom
+      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.82) }),          // front
+      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.50) }),          // back
+    ]
 
-      // Animate bar in after a staggered delay
-      bar.transition()
-        .delay(i * 40)
-        .duration(500)
-        .attr('width', function() {
-          const parentW = barWrap.getBoundingClientRect().width || 300
-          return (item[countKey] / maxVal) * parentW
-        })
+    const geo  = new THREE.BoxGeometry(BOX_W, h, BOX_D)
+    const mesh = new THREE.Mesh(geo, mats)
+    mesh.position.set(x, y + h / 2, 0)
+    scene.add(mesh)
 
-      // Recalculate width on resize
-      row._item = item
-      row._countKey = countKey
-      row._maxVal = maxVal
-      row._bar = bar
-
-      row.appendChild(label)
-      row.appendChild(barWrap)
-
-      // Detail expand row
-      const detail = document.createElement('div')
-      detail.className = 'detail-row'
-      let detailContent = `<span class="detail-stat">${item[countKey].toLocaleString()} chars</span>`
-      if (item.hash) detailContent += `<span class="detail-stat">hash: <code>${item.hash.slice(0, 8)}</code></span>`
-      if (countKey === 'total_chars') {
-        detailContent += `<span class="detail-stat">prose: ${item.prose_chars} | schema: ${item.schema_chars}</span>`
-      }
-      detail.innerHTML = detailContent
-
-      let open = false
-      row.addEventListener('click', () => {
-        open = !open
-        detail.classList.toggle('open', open)
-        row.classList.toggle('active', open)
-      })
-
-      list.appendChild(row)
-      list.appendChild(detail)
+    registry.push({
+      mesh,
+      stackLabel: label,
+      item,
+      baseColors: mats.map(m => m.color.getHex()),
     })
 
-    parent.appendChild(list)
+    y += h + GAP
+  })
+
+  // Floating title above the stack
+  const sprite = _makeTitleSprite(label)
+  sprite.position.set(x, y + 0.9, 0)
+  scene.add(sprite)
+}
+
+// Slide-in detail panel (HTML overlay on top of canvas)
+function _buildPanel(container) {
+  const panel = document.createElement('div')
+  panel.className = 'stack-panel'
+  container.appendChild(panel)
+  return panel
+}
+
+function _openPanel(panel, reg) {
+  const { item, stackLabel } = reg
+  const typeLabel = item.type === 'tool'
+    ? `prose: ${item.prose_chars?.toLocaleString() ?? '—'} · schema: ${item.schema_chars?.toLocaleString() ?? '—'}`
+    : `${item.size.toLocaleString()} chars`
+
+  panel.innerHTML = `
+    <div class="stack-panel-head">
+      <span class="stack-panel-tag">${stackLabel}</span>
+      <button class="stack-panel-close">×</button>
+    </div>
+    <div class="stack-panel-title">${item.title}</div>
+    <div class="stack-panel-meta">${typeLabel}</div>
+  `
+  panel.classList.add('open')
+  panel.querySelector('.stack-panel-close').onclick = () => panel.classList.remove('open')
+}
+
+export async function renderStructure(container) {
+  _cleanup()
+
+  const [meta, structures] = await Promise.all([getMeta(), getStructures()])
+  const versions = meta.versions.map(v => v.version)
+  let currentVersion = versions.at(-1)
+
+  container.innerHTML = ''
+  container.style.cssText = 'position:relative; height:calc(100vh - 54px); overflow:hidden; background:#0a0a0a'
+
+  // Canvas fills the container
+  const canvas = document.createElement('canvas')
+  canvas.style.cssText = 'display:block; width:100%; height:100%'
+  container.appendChild(canvas)
+
+  // Version picker overlay (top-left)
+  const pickerWrap = document.createElement('div')
+  pickerWrap.className = 'stack-picker-overlay'
+  container.appendChild(pickerWrap)
+  createVersionPicker(pickerWrap, versions, currentVersion, v => {
+    currentVersion = v
+    _rebuildScene(currentVersion)
+  })
+
+  // Detail panel
+  const panel = _buildPanel(container)
+
+  // ── Three.js setup ──────────────────────────────────────────────────────────
+  const W = container.clientWidth  || 800
+  const H = container.clientHeight || 600
+
+  _renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
+  _renderer.setSize(W, H, false)
+  _renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
+  _renderer.setClearColor(0x0a0a0a, 1)
+
+  const scene  = new THREE.Scene()
+  const aspect = W / H
+  const F      = 11   // frustum half-size
+
+  const cam = new THREE.OrthographicCamera(
+    -F * aspect, F * aspect, F, -F, 0.1, 200
+  )
+  cam.position.set(20, 20, 20)
+  cam.lookAt(0, 4, 0)
+
+  // Lighting
+  scene.add(new THREE.AmbientLight(0xffffff, 0.45))
+  const key = new THREE.DirectionalLight(0xffffff, 1.1)
+  key.position.set(10, 20, 10)
+  scene.add(key)
+  const fill = new THREE.DirectionalLight(0x6688cc, 0.25)
+  fill.position.set(-8, 4, -6)
+  scene.add(fill)
+
+  const registry = []   // { mesh, stackLabel, item, baseColors }
+
+  function _rebuildScene(version) {
+    // Remove all existing meshes/sprites
+    while (scene.children.length > 0) scene.remove(scene.children[0])
+    registry.length = 0
+    panel.classList.remove('open')
+
+    // Re-add lights
+    scene.add(new THREE.AmbientLight(0xffffff, 0.45))
+    const k = new THREE.DirectionalLight(0xffffff, 1.1)
+    k.position.set(10, 20, 10)
+    scene.add(k)
+    const f2 = new THREE.DirectionalLight(0x6688cc, 0.25)
+    f2.position.set(-8, 4, -6)
+    scene.add(f2)
+
+    const snap = structures[version]
+    if (!snap) return
+
+    const stacks = [
+      {
+        id: 'system_prompt',
+        label: 'System Prompt',
+        x: -6.5,
+        items: snap.sections.map(s => ({
+          title: s.title, size: s.char_count, type: 'section',
+        })),
+      },
+      {
+        id: 'tools',
+        label: 'Tools',
+        x: 0,
+        items: snap.tools.map(t => ({
+          title: t.title, size: t.total_chars, type: 'tool',
+          prose_chars: t.prose_chars, schema_chars: t.schema_chars,
+        })),
+      },
+      {
+        id: 'user_message',
+        label: 'User Message',
+        x: 6.5,
+        items: [
+          ...(snap.xml_tags || []).map(tag => ({
+            title: tag, size: 600, type: 'xml_tag',
+          })),
+          { title: 'actual_prompt', size: 300, type: 'actual_prompt' },
+        ],
+      },
+    ]
+
+    stacks.forEach(s => _buildStack(scene, s, snap, registry))
   }
 
-  renderContent()
+  _rebuildScene(currentVersion)
 
-  // Handle resize to update bar widths
-  let resizeTimer
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer)
-    resizeTimer = setTimeout(renderContent, 200)
+  // ── Raycaster ──────────────────────────────────────────────────────────────
+  const ray   = new THREE.Raycaster()
+  const mouse = new THREE.Vector2()
+  let hoveredReg = null
+
+  function _pick(e) {
+    const r = canvas.getBoundingClientRect()
+    mouse.x = ((e.clientX - r.left) / r.width)  *  2 - 1
+    mouse.y = ((e.clientY - r.top)  / r.height) * -2 + 1
+    ray.setFromCamera(mouse, cam)
+    const hits = ray.intersectObjects(registry.map(r => r.mesh))
+    return hits.length ? registry.find(r => r.mesh === hits[0].object) : null
+  }
+
+  canvas.addEventListener('mousemove', e => {
+    // Reset previous hover
+    if (hoveredReg) {
+      hoveredReg.mesh.material.forEach((m, i) =>
+        m.color.setHex(hoveredReg.baseColors[i])
+      )
+    }
+    hoveredReg = _pick(e)
+    if (hoveredReg) {
+      hoveredReg.mesh.material.forEach(m => {
+        m.color.setRGB(
+          Math.min(m.color.r * 1.35, 1),
+          Math.min(m.color.g * 1.35, 1),
+          Math.min(m.color.b * 1.35, 1),
+        )
+      })
+      canvas.style.cursor = 'pointer'
+    } else {
+      canvas.style.cursor = 'default'
+    }
   })
+
+  canvas.addEventListener('click', e => {
+    const hit = _pick(e)
+    if (hit) _openPanel(panel, hit)
+    else panel.classList.remove('open')
+  })
+
+  // ── Resize ─────────────────────────────────────────────────────────────────
+  const onResize = () => {
+    if (!_renderer) return
+    const nW = container.clientWidth
+    const nH = container.clientHeight
+    const nA = nW / nH
+    _renderer.setSize(nW, nH, false)
+    cam.left = -F * nA; cam.right = F * nA
+    cam.updateProjectionMatrix()
+  }
+  window.addEventListener('resize', onResize)
+
+  // ── Render loop ─────────────────────────────────────────────────────────────
+  function tick() {
+    _animId = requestAnimationFrame(tick)
+    _renderer.render(scene, cam)
+  }
+  tick()
 }
