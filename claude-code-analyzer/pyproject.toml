@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "claude-code-analyzer"
+version = "0.1.0"
+description = "Structured snapshot analyzer for Claude Code prompt captures"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+cca = "claude_code_analyzer.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/claude_code_analyzer"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
