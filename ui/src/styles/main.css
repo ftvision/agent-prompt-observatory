@@ -354,18 +354,22 @@ main {
 
 .stack-panel {
   position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 280px;
-  background: rgba(20, 20, 20, 0.92);
+  top: 16px;
+  bottom: 16px;
+  right: 16px;
+  width: 360px;
+  background: rgba(15, 15, 15, 0.96);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #333;
+  border: 1px solid #2a2a2a;
   border-radius: 12px;
   padding: 20px;
-  transform: translateX(320px);
+  transform: translateX(400px);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .stack-panel.open {
@@ -412,6 +416,60 @@ main {
   font-size: 13px;
   color: #888;
   font-variant-numeric: tabular-nums;
+  margin-bottom: 14px;
+}
+
+.stack-panel-loading { font-style: italic; }
+
+.stack-panel-body {
+  overflow-y: auto;
+  max-height: calc(100vh - 220px);
+}
+
+.stack-panel-text {
+  margin: 0;
+  font-family: 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: #ccc;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.stack-panel-text.hidden { display: none; }
+
+.stack-panel-note {
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  margin: 0;
+}
+
+.stack-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.stack-tab {
+  background: #222;
+  color: #888;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  font-weight: 500;
+}
+
+.stack-tab:hover { color: #ccc; background: #2a2a2a; }
+.stack-tab.active { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+
+.stack-tab-count {
+  font-size: 10px;
+  opacity: 0.7;
+  margin-left: 4px;
 }
 
 /* ===== Scrollbar ===== */

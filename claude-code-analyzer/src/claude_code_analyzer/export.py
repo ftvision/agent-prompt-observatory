@@ -135,6 +135,7 @@ def run_export(
                 sections_out[child.title] = {
                     "hash": child.hash,
                     "char_count": len(child.normalized),
+                    "text": child.normalized,
                 }
 
         # Tools: prose_hash, schema_hash, prose_chars, schema_chars per tool title
@@ -152,6 +153,8 @@ def run_export(
                     "schema_hash": schema.hash if schema else None,
                     "prose_chars": len(prose.normalized) if prose else None,
                     "schema_chars": len(schema.normalized) if schema else None,
+                    "prose": prose.normalized if prose else None,
+                    "schema": schema.normalized if schema else None,
                 }
 
         comp_data = {

@@ -136,22 +136,72 @@ function _buildPanel(container) {
   return panel
 }
 
-function _openPanel(panel, reg) {
+async function _openPanel(panel, reg, version) {
   const { item, stackLabel } = reg
-  const typeLabel = item.type === 'tool'
-    ? `prose: ${item.prose_chars?.toLocaleString() ?? '—'} · schema: ${item.schema_chars?.toLocaleString() ?? '—'}`
-    : `${item.size.toLocaleString()} chars`
 
+  // Render skeleton immediately so the panel opens without delay
   panel.innerHTML = `
     <div class="stack-panel-head">
       <span class="stack-panel-tag">${stackLabel}</span>
       <button class="stack-panel-close">×</button>
     </div>
     <div class="stack-panel-title">${item.title}</div>
-    <div class="stack-panel-meta">${typeLabel}</div>
+    <div class="stack-panel-meta stack-panel-loading">Loading…</div>
+    <div class="stack-panel-body"></div>
   `
   panel.classList.add('open')
   panel.querySelector('.stack-panel-close').onclick = () => panel.classList.remove('open')
+
+  // Lazily fetch the component detail for this version
+  let detail = null
+  try {
+    const { getComponents } = await import('../data/loader.js')
+    detail = await getComponents(version)
+  } catch (_) {}
+
+  const meta  = panel.querySelector('.stack-panel-meta')
+  const body  = panel.querySelector('.stack-panel-body')
+
+  if (!detail) {
+    meta.textContent = `${item.size.toLocaleString()} chars`
+    body.innerHTML = '<p class="stack-panel-note">No component detail available.</p>'
+    return
+  }
+
+  if (item.type === 'tool') {
+    const d = detail.tools?.[item.title]
+    if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
+    meta.textContent = `prose: ${d.prose_chars?.toLocaleString() ?? '—'} · schema: ${d.schema_chars?.toLocaleString() ?? '—'} chars`
+    body.innerHTML = _renderToolBody(d)
+  } else if (item.type === 'section') {
+    const d = detail.sections?.[item.title]
+    if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
+    meta.textContent = `${d.char_count?.toLocaleString() ?? item.size.toLocaleString()} chars`
+    body.innerHTML = `<pre class="stack-panel-text">${_esc(d.text ?? '')}</pre>`
+  } else {
+    meta.textContent = `${item.size.toLocaleString()} chars`
+  }
+}
+
+function _renderToolBody(d) {
+  const tabs = []
+  if (d.prose) tabs.push({ label: 'Prose',  content: d.prose,  chars: d.prose_chars })
+  if (d.schema) tabs.push({ label: 'Schema', content: d.schema, chars: d.schema_chars })
+  if (!tabs.length) return '<p class="stack-panel-note">No content available.</p>'
+
+  const tabsHtml = tabs.map((t, i) =>
+    `<button class="stack-tab ${i === 0 ? 'active' : ''}" data-idx="${i}">${t.label} <span class="stack-tab-count">${t.chars?.toLocaleString()}</span></button>`
+  ).join('')
+
+  const pagesHtml = tabs.map((t, i) =>
+    `<pre class="stack-panel-text${i === 0 ? '' : ' hidden'}" data-page="${i}">${_esc(t.content)}</pre>`
+  ).join('')
+
+  return `<div class="stack-tabs">${tabsHtml}</div>${pagesHtml}`
+}
+
+function _esc(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
 export async function renderStructure(container) {
@@ -303,8 +353,17 @@ export async function renderStructure(container) {
 
   canvas.addEventListener('click', e => {
     const hit = _pick(e)
-    if (hit) _openPanel(panel, hit)
+    if (hit) _openPanel(panel, hit, currentVersion)
     else panel.classList.remove('open')
+  })
+
+  // Tab switching (delegated)
+  panel.addEventListener('click', e => {
+    const btn = e.target.closest('.stack-tab')
+    if (!btn) return
+    const idx = +btn.dataset.idx
+    panel.querySelectorAll('.stack-tab').forEach((b, i) => b.classList.toggle('active', i === idx))
+    panel.querySelectorAll('.stack-panel-text[data-page]').forEach(p => p.classList.toggle('hidden', +p.dataset.page !== idx))
   })
 
   // ── Resize ─────────────────────────────────────────────────────────────────
