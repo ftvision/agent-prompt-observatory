@@ -6,9 +6,9 @@ export async function renderEvolution(container) {
   const [meta, structures] = await Promise.all([getMeta(), getStructures()])
   const versions = meta.versions.map(v => v.version)
 
-  let startVersion = versions[0]
+  let startVersion = versions[Math.max(0, versions.length - 40)]
   let endVersion = versions[versions.length - 1]
-  let mode = 'Both' // 'Sections' | 'Tools' | 'Both'
+  let mode = 'All' // 'User Prompt' | 'System Prompt' | 'Tools' | 'All'
 
   // Controls
   const controls = document.createElement('div')
@@ -26,7 +26,7 @@ export async function renderEvolution(container) {
 
   const toggleWrap = document.createElement('div')
   toggleWrap.className = 'toggle-group'
-  ;['Sections', 'Tools', 'Both'].forEach(m => {
+  ;['All', 'User Prompt', 'System Prompt', 'Tools'].forEach(m => {
     const btn = document.createElement('button')
     btn.className = 'toggle-btn' + (m === mode ? ' active' : '')
     btn.textContent = m
@@ -81,23 +81,38 @@ export async function renderEvolution(container) {
   function buildRows(range) {
     const rows = []
 
-    if (mode === 'Sections' || mode === 'Both') {
-      // Collect all section titles across range
+    if (mode === 'User Prompt' || mode === 'All') {
+      const allUser = new Map()
+      range.forEach(v => {
+        (structures[v]?.user_message || []).forEach(s => allUser.set(s.key || s.title || s.kind, s.title || s.kind || s.key))
+      })
+      allUser.forEach((label, key) => {
+        const values = {}
+        range.forEach(v => {
+          const item = (structures[v]?.user_message || []).find(s => (s.key || s.title || s.kind) === key)
+          if (item) values[v] = item.char_count
+        })
+        rows.push({ title: label, type: 'user', values })
+      })
+    }
+
+    if (mode === 'System Prompt' || mode === 'All') {
+      // Collect all system message section titles across range
       const allSections = new Set()
       range.forEach(v => {
-        (structures[v]?.sections || []).forEach(s => allSections.add(s.title))
+        (structures[v]?.system_message || []).forEach(s => allSections.add(s.title))
       })
       allSections.forEach(title => {
         const values = {}
         range.forEach(v => {
-          const sec = (structures[v]?.sections || []).find(s => s.title === title)
+          const sec = (structures[v]?.system_message || []).find(s => s.title === title)
           if (sec) values[v] = sec.char_count
         })
         rows.push({ title, type: 'section', values })
       })
     }
 
-    if (mode === 'Tools' || mode === 'Both') {
+    if (mode === 'Tools' || mode === 'All') {
       const allTools = new Set()
       range.forEach(v => {
         (structures[v]?.tools || []).forEach(t => allTools.add(t.title))
@@ -124,9 +139,10 @@ export async function renderEvolution(container) {
     const margin = { top: 20, right: 20, bottom: 60, left: 180 }
     const totalWidth = chartContainer.getBoundingClientRect().width || 900
     const cellH = 28
-    const separatorH = (mode === 'Both') ? 16 : 0
+    const separatorH = (mode === 'All') ? 16 : 0
     const sectionRows = rows.filter(r => r.type === 'section').length
-    const innerH = rows.length * cellH + separatorH
+    const userRows = rows.filter(r => r.type === 'user').length
+    const innerH = rows.length * cellH + (mode === 'All' ? separatorH * 2 : 0)
     const totalHeight = innerH + margin.top + margin.bottom
 
     const svg = d3.select(chartContainer)
@@ -145,33 +161,42 @@ export async function renderEvolution(container) {
       .range([0, innerW])
       .padding(0.1)
 
+    const tickEvery = Math.max(1, Math.ceil(range.length / 16))
+    const visibleTicks = range.filter((_, i) => i % tickEvery === 0 || i === range.length - 1)
+
     // X axis
     g.append('g')
       .attr('transform', `translate(0,${innerH})`)
-      .call(d3.axisBottom(xScale))
+      .call(d3.axisBottom(xScale).tickValues(visibleTicks))
       .selectAll('text')
       .attr('transform', 'rotate(-45)')
       .attr('text-anchor', 'end')
-      .attr('fill', '#999')
+      .attr('fill', 'var(--text-muted)')
       .attr('font-size', 11)
 
-    g.selectAll('.domain, .tick line').attr('stroke', '#333')
+    g.selectAll('.domain, .tick line').attr('stroke', 'var(--border-default)')
 
     // Y layout: compute y position for each row
-    // In "Both" mode, add a gap between sections and tools
+    // In "All" mode, add gaps between the three component groups.
     rows.forEach((row, i) => {
-      const extra = (mode === 'Both' && row.type === 'tool') ? separatorH : 0
+      const extra = mode === 'All'
+        ? (row.type === 'section' ? separatorH : row.type === 'tool' ? separatorH * 2 : 0)
+        : 0
       row._y = i * cellH + extra
     })
 
-    // Visual separator line between sections and tools in Both mode
-    if (mode === 'Both' && sectionRows > 0 && rows.length > sectionRows) {
-      const sepY = sectionRows * cellH + separatorH / 2
-      g.append('line')
-        .attr('x1', 0).attr('x2', innerW)
-        .attr('y1', sepY).attr('y2', sepY)
-        .attr('stroke', '#333')
-        .attr('stroke-dasharray', '4,4')
+    if (mode === 'All') {
+      const separators = [
+        userRows ? userRows * cellH + separatorH / 2 : null,
+        sectionRows ? (userRows + sectionRows) * cellH + separatorH * 1.5 : null,
+      ].filter(Boolean)
+      separators.forEach(sepY => {
+        g.append('line')
+          .attr('x1', 0).attr('x2', innerW)
+          .attr('y1', sepY).attr('y2', sepY)
+          .attr('stroke', 'var(--border-default)')
+          .attr('stroke-dasharray', '4,4')
+      })
     }
 
     // Y axis labels
@@ -181,7 +206,7 @@ export async function renderEvolution(container) {
         .attr('y', row._y + cellH / 2)
         .attr('dy', '0.35em')
         .attr('text-anchor', 'end')
-        .attr('fill', row.type === 'section' ? '#60a5fa' : '#a78bfa')
+        .attr('fill', row.type === 'user' ? 'var(--viz-user)' : row.type === 'section' ? 'var(--viz-system)' : 'var(--viz-tools)')
         .attr('font-size', 11)
         .text(row.title)
     })
@@ -201,7 +226,7 @@ export async function renderEvolution(container) {
         const x = xScale(v)
         const bw = xScale.bandwidth()
         const fullH = Math.max(4, (val / row._max) * (cellH - 4))
-        const color = row.type === 'section' ? '#60a5fa' : '#a78bfa'
+        const color = row.type === 'user' ? 'var(--viz-user)' : row.type === 'section' ? 'var(--viz-system)' : 'var(--viz-tools)'
 
         const rect = g.append('rect')
           .attr('x', x)

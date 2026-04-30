@@ -5,20 +5,42 @@ import { createVersionPicker } from '../components/version-picker.js'
 
 marked.setOptions({ breaks: true })
 
-// Module-level Three.js state — cleaned up on each re-render
 let _renderer = null
 let _animId = null
+let _onResize = null
+let _dirty = true
+let _meshes = []
+const _disposables = []
+let _focusedRegIdx = -1
 
 function _cleanup() {
   if (_animId) { cancelAnimationFrame(_animId); _animId = null }
   if (_renderer) { _renderer.dispose(); _renderer = null }
+  if (_onResize) { window.removeEventListener('resize', _onResize); _onResize = null }
+  _disposables.forEach(d => { try { d.dispose() } catch (_e) {} })
+  _disposables.length = 0
+  _meshes = []
+  _focusedRegIdx = -1
 }
 
-// Stack color palettes — deep to light (bottom to top of each stack)
-const PALETTES = {
-  system_prompt: [0x1e3a8a, 0x1d4ed8, 0x2563eb, 0x3b82f6, 0x60a5fa, 0x93c5fd, 0xbfdbfe, 0xdbeafe],
-  tools:         [0x2e1065, 0x4c1d95, 0x5b21b6, 0x6d28d9, 0x7c3aed, 0x8b5cf6, 0xa78bfa, 0xc4b5fd],
-  user_message:  [0x7c2d12, 0x9a3412, 0xc2410c, 0xea580c, 0xf97316, 0xfb923c, 0xfed7aa, 0xfff7ed],
+// Clean light-mode categorical palettes. Ordered mid→light; material shading
+// handles face contrast, so base colors avoid the muddy low-light range.
+const SECTION_COLORS = {
+  user_message:  [0xc98713, 0xd99924, 0xe8ad3d, 0xf3c46a, 0xf8d998],
+  system_prompt: [0x25779a, 0x2d8ab1, 0x45a0c2, 0x6bb8d4, 0x95d0e4, 0xbfe3ee],
+  tools:         [0x238761, 0x2f9c73, 0x47b286, 0x6dc79f, 0x9bdcbd, 0xc5ecd8],
+}
+
+const LABEL_COLORS = {
+  user_message:  '#8a5b08',
+  system_prompt: '#225f7a',
+  tools:         '#1f6b4d',
+}
+
+const SECTION_NAMES = {
+  user_message:  'User Messages',
+  system_prompt: 'System Message',
+  tools:         'Tools',
 }
 
 function _darken(hex, f) {
@@ -29,109 +51,7 @@ function _darken(hex, f) {
   )
 }
 
-// Bake a label texture onto a canvas — text on a solid color background
-function _makeLabelTex(text, baseColor) {
-  const W = 420, H = 240
-  const c = document.createElement('canvas')
-  c.width = W; c.height = H
-  const ctx = c.getContext('2d')
-
-  // Background fill
-  const r = (baseColor >> 16) & 0xff
-  const g = (baseColor >> 8)  & 0xff
-  const b =  baseColor        & 0xff
-  ctx.fillStyle = `rgb(${r},${g},${b})`
-  ctx.fillRect(0, 0, W, H)
-
-  // Subtle inner border
-  ctx.strokeStyle = `rgba(255,255,255,0.15)`
-  ctx.lineWidth = 4
-  ctx.strokeRect(6, 6, W - 12, H - 12)
-
-  // Label text
-  ctx.fillStyle = 'rgba(255,255,255,0.92)'
-  ctx.textAlign = 'center'
-  ctx.textBaseline = 'middle'
-
-  // Fit text to width
-  let fontSize = 44
-  ctx.font = `600 ${fontSize}px system-ui, sans-serif`
-  while (ctx.measureText(text).width > W - 32 && fontSize > 14) {
-    fontSize -= 2
-    ctx.font = `600 ${fontSize}px system-ui, sans-serif`
-  }
-  ctx.fillText(text, W / 2, H / 2)
-
-  return new THREE.CanvasTexture(c)
-}
-
-// Floating stack-title sprite above each stack
-function _makeTitleSprite(text) {
-  const W = 512, H = 96
-  const c = document.createElement('canvas')
-  c.width = W; c.height = H
-  const ctx = c.getContext('2d')
-  ctx.clearRect(0, 0, W, H)
-  ctx.fillStyle = '#ffffff'
-  ctx.font = '700 44px system-ui, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.textBaseline = 'middle'
-  ctx.fillText(text, W / 2, H / 2)
-  const tex = new THREE.CanvasTexture(c)
-  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false })
-  const sprite = new THREE.Sprite(mat)
-  sprite.scale.set(5.5, 1.0, 1)
-  return sprite
-}
-
-// Build one stack; push hit-testable entries into `registry`
-function _buildStack(scene, stackDef, snap, registry) {
-  const { id, label, x, items } = stackDef
-  const palette = PALETTES[id]
-  const BOX_W = 4.2, BOX_D = 2.4, GAP = 0.07
-  const MAX_H = 1.6, MIN_H = 0.22
-
-  const maxSize = Math.max(...items.map(i => i.size), 1)
-  let y = 0
-
-  items.forEach((item, idx) => {
-    // Square-root scaling so large sections don't dwarf small ones
-    const h = MIN_H + (MAX_H - MIN_H) * Math.sqrt(item.size / maxSize)
-    const baseColor = palette[idx % palette.length]
-    const tex = _makeLabelTex(item.title, baseColor)
-
-    // Six-face material array: +x, -x, +y(top), -y, +z, -z
-    const mats = [
-      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.72) }),          // right
-      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.60) }),          // left
-      new THREE.MeshPhongMaterial({ map: tex, color: baseColor }),                // top ← label
-      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.35) }),          // bottom
-      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.82) }),          // front
-      new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.50) }),          // back
-    ]
-
-    const geo  = new THREE.BoxGeometry(BOX_W, h, BOX_D)
-    const mesh = new THREE.Mesh(geo, mats)
-    mesh.position.set(x, y + h / 2, 0)
-    scene.add(mesh)
-
-    registry.push({
-      mesh,
-      stackLabel: label,
-      item,
-      baseColors: mats.map(m => m.color.getHex()),
-    })
-
-    y += h + GAP
-  })
-
-  // Floating title above the stack
-  const sprite = _makeTitleSprite(label)
-  sprite.position.set(x, y + 0.9, 0)
-  scene.add(sprite)
-}
-
-// Slide-in detail panel (HTML overlay on top of canvas)
+// Build the detail panel overlay
 function _buildPanel(container) {
   const panel = document.createElement('div')
   panel.className = 'stack-panel'
@@ -142,11 +62,10 @@ function _buildPanel(container) {
 async function _openPanel(panel, reg, version) {
   const { item, stackLabel } = reg
 
-  // Render skeleton immediately so the panel opens without delay
   panel.innerHTML = `
     <div class="stack-panel-head">
       <span class="stack-panel-tag">${stackLabel}</span>
-      <button class="stack-panel-close">×</button>
+      <button class="stack-panel-close" aria-label="Close panel">×</button>
     </div>
     <div class="stack-panel-title">${item.title}</div>
     <div class="stack-panel-meta stack-panel-loading">Loading…</div>
@@ -155,15 +74,15 @@ async function _openPanel(panel, reg, version) {
   panel.classList.add('open')
   panel.querySelector('.stack-panel-close').onclick = () => panel.classList.remove('open')
 
-  // Lazily fetch the component detail for this version
   let detail = null
   try {
     const { getComponents } = await import('../data/loader.js')
     detail = await getComponents(version)
   } catch (_) {}
 
-  const meta  = panel.querySelector('.stack-panel-meta')
-  const body  = panel.querySelector('.stack-panel-body')
+  const meta = panel.querySelector('.stack-panel-meta')
+  const body = panel.querySelector('.stack-panel-body')
+  meta.classList.remove('stack-panel-loading')
 
   if (!detail) {
     meta.textContent = `${item.size.toLocaleString()} chars`
@@ -177,13 +96,13 @@ async function _openPanel(panel, reg, version) {
     meta.textContent = `prose: ${d.prose_chars?.toLocaleString() ?? '—'} · schema: ${d.schema_chars?.toLocaleString() ?? '—'} chars`
     body.innerHTML = _renderToolBody(d)
   } else if (item.type === 'section') {
-    const d = detail.sections?.[item.title]
+    const d = detail.system_message?.[item.title]
     if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
     meta.textContent = `${d.char_count?.toLocaleString() ?? item.size.toLocaleString()} chars`
     body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
-  } else if (item.type === 'xml_tag' || item.type === 'actual_prompt') {
+  } else if (item.type === 'xml_tag') {
     const key = item.lookupKey ?? item.title
-    const d = detail.xml_tags?.[key]
+    const d = detail.user_message?.[key]
     if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
     meta.textContent = `${d.char_count?.toLocaleString()} chars`
     body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
@@ -204,17 +123,16 @@ function _renderToolBody(d) {
 
   const pagesHtml = tabs.map((t, i) => {
     const hidden = i === 0 ? '' : ' hidden'
-    const body = t.md
+    return t.md
       ? `<div class="stack-panel-md${hidden}" data-page="${i}">${marked.parse(t.content)}</div>`
       : `<pre class="stack-panel-text${hidden}" data-page="${i}">${_esc(t.content)}</pre>`
-    return body
   }).join('')
 
   return `<div class="stack-tabs">${tabsHtml}</div>${pagesHtml}`
 }
 
-function _esc(str) {
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+function _esc(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
 export async function renderStructure(container) {
@@ -222,17 +140,30 @@ export async function renderStructure(container) {
 
   const [meta, structures] = await Promise.all([getMeta(), getStructures()])
   const versions = meta.versions.map(v => v.version)
-  let currentVersion = versions.at(-1)
+  const structureKeys = Object.keys(structures)
+  let currentVersion = versions.findLast(v => structureKeys.includes(v)) || structureKeys.at(-1) || versions.at(-1)
 
   container.innerHTML = ''
-  container.style.cssText = 'position:relative; height:calc(100vh - 54px); overflow:hidden; background:#0a0a0a'
+  container.style.cssText = 'position:relative; height:min(72vh, 760px); min-height:560px; overflow:hidden; background:oklch(97.5% 0.006 70); border-top:1px solid var(--border-subtle)'
 
-  // Canvas fills the container
   const canvas = document.createElement('canvas')
   canvas.style.cssText = 'display:block; width:100%; height:100%'
+  canvas.setAttribute('role', 'application')
+  canvas.setAttribute('aria-label', 'Claude Code prompt structure as stacked layers. Arrow keys navigate, Enter opens detail, Escape closes.')
+  canvas.setAttribute('tabindex', '0')
   container.appendChild(canvas)
 
-  // Version picker overlay (top-left)
+  const ariaLive = document.createElement('div')
+  ariaLive.setAttribute('aria-live', 'polite')
+  ariaLive.setAttribute('aria-atomic', 'true')
+  ariaLive.className = 'sr-only'
+  container.appendChild(ariaLive)
+
+  // HTML label overlay — positioned by projecting 3D slab edges to screen
+  const labelContainer = document.createElement('div')
+  labelContainer.className = 'label-container'
+  container.appendChild(labelContainer)
+
   const pickerWrap = document.createElement('div')
   pickerWrap.className = 'stack-picker-overlay'
   container.appendChild(pickerWrap)
@@ -241,143 +172,292 @@ export async function renderStructure(container) {
     _rebuildScene(currentVersion)
   })
 
-  // Detail panel
   const panel = _buildPanel(container)
 
-  // ── Three.js setup ──────────────────────────────────────────────────────────
   const W = container.clientWidth  || 800
   const H = container.clientHeight || 600
 
   _renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
   _renderer.setSize(W, H, false)
   _renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  _renderer.setClearColor(0x0a0a0a, 1)
+  _renderer.setClearColor(0xf8f5ee, 1)
 
   const scene  = new THREE.Scene()
   const aspect = W / H
-  const F      = 11   // frustum half-size
+  const F = 9
 
-  const cam = new THREE.OrthographicCamera(
-    -F * aspect, F * aspect, F, -F, 0.1, 200
-  )
-  cam.position.set(20, 20, 20)
-  cam.lookAt(0, 4, 0)
+  const cam = new THREE.OrthographicCamera(-F * aspect, F * aspect, F, -F, 0.1, 200)
+  // Front view: camera almost directly ahead, ~15° above horizontal.
+  // lookAt shifted left so building appears right-of-center, giving labels room.
+  cam.position.set(0, 10, 22)
+  cam.lookAt(-1.5, 4, 0)
 
-  // Lighting
-  scene.add(new THREE.AmbientLight(0xffffff, 0.45))
-  const key = new THREE.DirectionalLight(0xffffff, 1.1)
-  key.position.set(10, 20, 10)
-  scene.add(key)
-  const fill = new THREE.DirectionalLight(0x6688cc, 0.25)
-  fill.position.set(-8, 4, -6)
-  scene.add(fill)
+  // Lights — boost ambient for front view where the front face dominates
+  scene.add(new THREE.AmbientLight(0xffffff, 0.90))
+  const keyLight = new THREE.DirectionalLight(0xffffff, 0.50)
+  keyLight.position.set(4, 12, 20)
+  scene.add(keyLight)
+  const fillLight = new THREE.DirectionalLight(0xfff8f0, 0.20)
+  fillLight.position.set(-6, 8, -4)
+  scene.add(fillLight)
 
-  const registry = []   // { mesh, stackLabel, item, baseColors }
+  const registry = []
+  let labelDefs = []  // { el, worldPos: THREE.Vector3 }
+
+  // Flat slab dimensions
+  const BOX_W = 7.5, BOX_D = 5.5
+  const GAP = 0.08         // gap between slabs within a section
+  const SECT_GAP = 0.45    // extra gap between section groups
+  const MAX_H = 0.60, MIN_H = 0.12
 
   function _rebuildScene(version) {
-    // Remove all existing meshes/sprites
-    while (scene.children.length > 0) scene.remove(scene.children[0])
+    _disposables.forEach(d => { try { d.dispose() } catch (_e) {} })
+    _disposables.length = 0
+
+    const toRemove = scene.children.filter(c => c.isMesh || c.isSprite)
+    toRemove.forEach(c => scene.remove(c))
     registry.length = 0
+    _meshes = []
+    _focusedRegIdx = -1
     panel.classList.remove('open')
 
-    // Re-add lights
-    scene.add(new THREE.AmbientLight(0xffffff, 0.45))
-    const k = new THREE.DirectionalLight(0xffffff, 1.1)
-    k.position.set(10, 20, 10)
-    scene.add(k)
-    const f2 = new THREE.DirectionalLight(0x6688cc, 0.25)
-    f2.position.set(-8, 4, -6)
-    scene.add(f2)
+    // Clear labels
+    while (labelContainer.firstChild) labelContainer.removeChild(labelContainer.firstChild)
+    labelDefs = []
 
     const snap = structures[version]
     if (!snap) return
 
-    const stacks = [
-      {
-        id: 'system_prompt',
-        label: 'System Prompt',
-        x: -6.5,
-        items: snap.sections.map(s => ({
-          title: s.title, size: s.char_count, type: 'section',
-        })),
-      },
-      {
-        id: 'tools',
-        label: 'Tools',
-        x: 0,
-        items: snap.tools.map(t => ({
-          title: t.title, size: t.total_chars, type: 'tool',
-          prose_chars: t.prose_chars, schema_chars: t.schema_chars,
-        })),
-      },
-      {
-        id: 'user_message',
-        label: 'User Message',
-        x: 6.5,
-        items: [
-          ...(snap.xml_tags || []).map(tag => {
-            // tag is now an object {key, kind, index, char_count}
-            const isObj = typeof tag === 'object'
-            const key   = isObj ? tag.key   : tag
-            const kind  = isObj ? tag.kind  : tag
-            const idx   = isObj ? tag.index : 0
-            const size  = isObj ? tag.char_count : 600
-            const label = idx === 0 ? kind : `${kind} #${idx + 1}`
-            return { title: label, lookupKey: key, size, type: 'xml_tag' }
-          }),
-          { title: 'actual_prompt', lookupKey: 'actual_prompt', size: 300, type: 'actual_prompt' },
-        ],
-      },
+    // structures.json uses arrays for all three fields.
+    // Order in the building: Tools (bottom) → System Message → User Messages (top).
+    const toolsItems = (snap.tools || []).map(t => ({
+      title: t.title, size: t.total_chars, type: 'tool', sectionType: 'tools',
+      prose_chars: t.prose_chars, schema_chars: t.schema_chars,
+    }))
+
+    const spItems = (snap.system_message || []).map(s => ({
+      title: s.title, size: s.char_count, type: 'section', sectionType: 'system_prompt',
+    }))
+
+    // user_message items carry key/kind/index. actual_prompt is always implied and appended.
+    const xmlItems = (snap.user_message || []).map(tag => ({
+      title: tag.index === 0 ? tag.kind : `${tag.kind} #${tag.index + 1}`,
+      lookupKey: tag.key, size: tag.char_count, type: 'xml_tag', sectionType: 'user_message',
+    }))
+    const umItems = [
+      ...xmlItems,
+      { title: 'actual_prompt', lookupKey: 'actual_prompt', size: 300, type: 'xml_tag', sectionType: 'user_message' },
     ]
 
-    stacks.forEach(s => _buildStack(scene, s, snap, registry))
+    const sections = [
+      { type: 'tools',         items: toolsItems },
+      { type: 'system_prompt', items: spItems    },
+      { type: 'user_message',  items: umItems    },
+    ]
+
+    let y = 0
+    let firstSection = true
+
+    sections.forEach(section => {
+      if (!firstSection) y += SECT_GAP
+      firstSection = false
+
+      const palette = SECTION_COLORS[section.type]
+      const maxSize = Math.max(...section.items.map(i => i.size), 1)
+      const pLen    = palette.length
+      const n       = section.items.length
+
+      // Pre-compute slab heights so we can place top-to-bottom within the section.
+      const heights = section.items.map(item =>
+        MIN_H + (MAX_H - MIN_H) * Math.sqrt(item.size / maxSize)
+      )
+      const totalSectH = heights.reduce((s, h) => s + h + GAP, -GAP)
+
+      // yTop = world Y of the top surface of this section's first (topmost) slab.
+      // We place item[0] at the top and work downward.
+      let yCursor = y + totalSectH  // start at the top of the section
+
+      section.items.forEach((item, idxInSection) => {
+        const h = heights[idxInSection]
+        yCursor -= h  // bottom of this slab
+        const yCenterWorld = yCursor + h / 2
+
+        // Lighter colors at top (item 0) → darker at bottom (item n-1).
+        const colorIdx = Math.round((idxInSection / Math.max(n - 1, 1)) * (pLen - 1))
+        const baseColor = palette[colorIdx]
+
+        const mats = [
+          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.76) }),  // +x right
+          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.66) }),  // -x left
+          new THREE.MeshPhongMaterial({ color: baseColor }),                   // +y top
+          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.48) }),  // -y bottom
+          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.86) }),  // +z front
+          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.58) }),  // -z back
+        ]
+        mats.forEach(m => _disposables.push(m))
+
+        const geo = new THREE.BoxGeometry(BOX_W, h, BOX_D)
+        _disposables.push(geo)
+
+        const mesh = new THREE.Mesh(geo, mats)
+        mesh.position.set(0, yCenterWorld, 0)
+        scene.add(mesh)
+
+        const regEntry = {
+          mesh,
+          stackLabel: SECTION_NAMES[section.type],
+          item,
+          baseColors: mats.map(m => m.color.getHex()),
+          targetX: 0,       // lerp target for slide-out animation
+          yCenterWorld,     // used by _syncLabels to track moving anchors
+        }
+        registry.push(regEntry)
+
+        const labelEl = document.createElement('div')
+        labelEl.className = 'layer-label'
+        labelEl.textContent = item.title
+        labelEl.style.color = LABEL_COLORS[section.type]
+        labelEl.style.pointerEvents = 'auto'
+        labelEl.style.cursor = 'pointer'
+
+        const regIdx = registry.length - 1
+        labelEl.addEventListener('click', () => _openPanel(panel, registry[regIdx], currentVersion))
+        labelEl.addEventListener('mouseenter', () => {
+          const r = registry[regIdx]
+          if (!r) return
+          r.targetX = 0.6
+          r.mesh.material.forEach(m => {
+            m.color.setRGB(Math.min(m.color.r * 1.22, 1), Math.min(m.color.g * 1.22, 1), Math.min(m.color.b * 1.22, 1))
+          })
+          _dirty = true
+        })
+        labelEl.addEventListener('mouseleave', () => {
+          const r = registry[regIdx]
+          if (!r) return
+          r.targetX = 0
+          r.mesh.material.forEach((m, i) => m.color.setHex(r.baseColors[i]))
+          _dirty = true
+        })
+        labelContainer.appendChild(labelEl)
+
+        // reg reference lets _syncLabels read mesh.position.x as the slab slides.
+        labelDefs.push({ el: labelEl, reg: regEntry })
+
+        yCursor -= GAP
+      })
+
+      y += totalSectH
+    })
+
+    _meshes = registry.map(r => r.mesh)
+    _dirty = true
+  }
+
+  // Labels are fixed to the base slab position (not the animated x).
+  // xAnchor uses z=BOX_D/2 (front-left corner) for screen-X boundary.
+  // yAnchor uses z=0 (slab center depth) for accurate screen-Y in the nearly-horizontal camera.
+  const _vx = new THREE.Vector3()
+  const _vy = new THREE.Vector3()
+  function _syncLabels() {
+    const cW = canvas.offsetWidth
+    const cH = canvas.offsetHeight
+    if (cW === 0 || cH === 0) return
+
+    labelDefs.forEach(({ el, reg }) => {
+      const y = reg.yCenterWorld
+      _vx.set(-BOX_W / 2, y, BOX_D / 2).project(cam)
+      _vy.set(-BOX_W / 2, y, 0).project(cam)
+      const sx = Math.round((_vx.x + 1) / 2 * cW)
+      const sy = Math.round((-_vy.y + 1) / 2 * cH)
+      el.style.left      = '0'
+      el.style.width     = `${Math.max(sx - 8, 40)}px`
+      el.style.top       = `${sy}px`
+      el.style.transform = 'translateY(-50%)'
+      el.style.textAlign = 'right'
+    })
   }
 
   _rebuildScene(currentVersion)
 
-  // ── Raycaster ──────────────────────────────────────────────────────────────
   const ray   = new THREE.Raycaster()
   const mouse = new THREE.Vector2()
   let hoveredReg = null
 
-  function _pick(e) {
-    const r = canvas.getBoundingClientRect()
-    mouse.x = ((e.clientX - r.left) / r.width)  *  2 - 1
-    mouse.y = ((e.clientY - r.top)  / r.height) * -2 + 1
+  function _pick(clientX, clientY) {
+    const rect = canvas.getBoundingClientRect()
+    mouse.x = ((clientX - rect.left) / rect.width)  *  2 - 1
+    mouse.y = ((clientY - rect.top)  / rect.height) * -2 + 1
     ray.setFromCamera(mouse, cam)
-    const hits = ray.intersectObjects(registry.map(r => r.mesh))
-    return hits.length ? registry.find(r => r.mesh === hits[0].object) : null
+    const hits = ray.intersectObjects(_meshes)
+    return hits.length ? registry.find(e => e.mesh === hits[0].object) : null
   }
 
   canvas.addEventListener('mousemove', e => {
-    // Reset previous hover
     if (hoveredReg) {
-      hoveredReg.mesh.material.forEach((m, i) =>
-        m.color.setHex(hoveredReg.baseColors[i])
-      )
+      hoveredReg.targetX = 0
+      hoveredReg.mesh.material.forEach((m, i) => m.color.setHex(hoveredReg.baseColors[i]))
     }
-    hoveredReg = _pick(e)
+    hoveredReg = _pick(e.clientX, e.clientY)
     if (hoveredReg) {
+      hoveredReg.targetX = 0.6
       hoveredReg.mesh.material.forEach(m => {
-        m.color.setRGB(
-          Math.min(m.color.r * 1.35, 1),
-          Math.min(m.color.g * 1.35, 1),
-          Math.min(m.color.b * 1.35, 1),
-        )
+        m.color.setRGB(Math.min(m.color.r * 1.22, 1), Math.min(m.color.g * 1.22, 1), Math.min(m.color.b * 1.22, 1))
       })
       canvas.style.cursor = 'pointer'
     } else {
       canvas.style.cursor = 'default'
     }
+    _dirty = true
   })
 
   canvas.addEventListener('click', e => {
-    const hit = _pick(e)
+    const hit = _pick(e.clientX, e.clientY)
     if (hit) _openPanel(panel, hit, currentVersion)
     else panel.classList.remove('open')
   })
 
-  // Tab switching (delegated)
+  canvas.addEventListener('touchend', e => {
+    e.preventDefault()
+    const touch = e.changedTouches[0]
+    if (!touch) return
+    const hit = _pick(touch.clientX, touch.clientY)
+    if (hit) _openPanel(panel, hit, currentVersion)
+    else panel.classList.remove('open')
+  }, { passive: false })
+
+  canvas.addEventListener('keydown', e => {
+    if (!registry.length) return
+    const navKeys = ['ArrowUp', 'ArrowDown', 'Enter', 'Escape']
+    if (!navKeys.includes(e.key)) return
+    e.preventDefault()
+
+    if (e.key === 'Escape') { panel.classList.remove('open'); return }
+    if (e.key === 'Enter') {
+      if (_focusedRegIdx >= 0) _openPanel(panel, registry[_focusedRegIdx], currentVersion)
+      return
+    }
+
+    const prevIdx = _focusedRegIdx
+    if (e.key === 'ArrowDown') {
+      _focusedRegIdx = _focusedRegIdx < registry.length - 1 ? _focusedRegIdx + 1 : 0
+    } else {
+      _focusedRegIdx = _focusedRegIdx > 0 ? _focusedRegIdx - 1 : registry.length - 1
+    }
+
+    if (prevIdx >= 0 && registry[prevIdx]) {
+      const prev = registry[prevIdx]
+      prev.mesh.material.forEach((m, i) => m.color.setHex(prev.baseColors[i]))
+    }
+    const focused = registry[_focusedRegIdx]
+    if (focused) {
+      focused.mesh.material.forEach(m => {
+        m.color.setRGB(Math.min(m.color.r * 1.22, 1), Math.min(m.color.g * 1.22, 1), Math.min(m.color.b * 1.22, 1))
+      })
+      ariaLive.textContent = `${focused.stackLabel}: ${focused.item.title}, ${focused.item.size.toLocaleString()} chars`
+    }
+    _dirty = true
+  })
+
   panel.addEventListener('click', e => {
     const btn = e.target.closest('.stack-tab')
     if (!btn) return
@@ -386,8 +466,7 @@ export async function renderStructure(container) {
     panel.querySelectorAll('[data-page]').forEach(p => p.classList.toggle('hidden', +p.dataset.page !== idx))
   })
 
-  // ── Resize ─────────────────────────────────────────────────────────────────
-  const onResize = () => {
+  _onResize = () => {
     if (!_renderer) return
     const nW = container.clientWidth
     const nH = container.clientHeight
@@ -395,13 +474,27 @@ export async function renderStructure(container) {
     _renderer.setSize(nW, nH, false)
     cam.left = -F * nA; cam.right = F * nA
     cam.updateProjectionMatrix()
+    _dirty = true
   }
-  window.addEventListener('resize', onResize)
+  window.addEventListener('resize', _onResize)
 
-  // ── Render loop ─────────────────────────────────────────────────────────────
   function tick() {
     _animId = requestAnimationFrame(tick)
+    // Lerp each slab toward its targetX; keep rendering until all settle.
+    let animating = false
+    registry.forEach(r => {
+      const dx = r.targetX - r.mesh.position.x
+      if (Math.abs(dx) > 0.001) {
+        r.mesh.position.x += dx * 0.18
+        animating = true
+      } else if (dx !== 0) {
+        r.mesh.position.x = r.targetX
+      }
+    })
+    if (!_dirty && !animating) return
+    _dirty = false
     _renderer.render(scene, cam)
+    _syncLabels()
   }
   tick()
 }
