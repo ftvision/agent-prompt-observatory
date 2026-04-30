@@ -1,6 +1,9 @@
 import * as THREE from 'three'
+import { marked } from 'marked'
 import { getMeta, getStructures } from '../data/loader.js'
 import { createVersionPicker } from '../components/version-picker.js'
+
+marked.setOptions({ breaks: true })
 
 // Module-level Three.js state — cleaned up on each re-render
 let _renderer = null
@@ -177,7 +180,7 @@ async function _openPanel(panel, reg, version) {
     const d = detail.sections?.[item.title]
     if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
     meta.textContent = `${d.char_count?.toLocaleString() ?? item.size.toLocaleString()} chars`
-    body.innerHTML = `<pre class="stack-panel-text">${_esc(d.text ?? '')}</pre>`
+    body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
   } else {
     meta.textContent = `${item.size.toLocaleString()} chars`
   }
@@ -185,17 +188,21 @@ async function _openPanel(panel, reg, version) {
 
 function _renderToolBody(d) {
   const tabs = []
-  if (d.prose) tabs.push({ label: 'Prose',  content: d.prose,  chars: d.prose_chars })
-  if (d.schema) tabs.push({ label: 'Schema', content: d.schema, chars: d.schema_chars })
+  if (d.prose)  tabs.push({ label: 'Prose',  content: d.prose,  chars: d.prose_chars,  md: true })
+  if (d.schema) tabs.push({ label: 'Schema', content: d.schema, chars: d.schema_chars, md: false })
   if (!tabs.length) return '<p class="stack-panel-note">No content available.</p>'
 
   const tabsHtml = tabs.map((t, i) =>
     `<button class="stack-tab ${i === 0 ? 'active' : ''}" data-idx="${i}">${t.label} <span class="stack-tab-count">${t.chars?.toLocaleString()}</span></button>`
   ).join('')
 
-  const pagesHtml = tabs.map((t, i) =>
-    `<pre class="stack-panel-text${i === 0 ? '' : ' hidden'}" data-page="${i}">${_esc(t.content)}</pre>`
-  ).join('')
+  const pagesHtml = tabs.map((t, i) => {
+    const hidden = i === 0 ? '' : ' hidden'
+    const body = t.md
+      ? `<div class="stack-panel-md${hidden}" data-page="${i}">${marked.parse(t.content)}</div>`
+      : `<pre class="stack-panel-text${hidden}" data-page="${i}">${_esc(t.content)}</pre>`
+    return body
+  }).join('')
 
   return `<div class="stack-tabs">${tabsHtml}</div>${pagesHtml}`
 }
@@ -363,7 +370,7 @@ export async function renderStructure(container) {
     if (!btn) return
     const idx = +btn.dataset.idx
     panel.querySelectorAll('.stack-tab').forEach((b, i) => b.classList.toggle('active', i === idx))
-    panel.querySelectorAll('.stack-panel-text[data-page]').forEach(p => p.classList.toggle('hidden', +p.dataset.page !== idx))
+    panel.querySelectorAll('[data-page]').forEach(p => p.classList.toggle('hidden', +p.dataset.page !== idx))
   })
 
   // ── Resize ─────────────────────────────────────────────────────────────────
