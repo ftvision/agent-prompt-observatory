@@ -6,6 +6,7 @@ import argparse
 
 from .diagnose import add_diagnose_subparser
 from .diff import add_diff_subparser
+from .export import add_export_subparser
 
 
 def main() -> None:
@@ -16,6 +17,7 @@ def main() -> None:
     sub = parser.add_subparsers(dest="command", required=True)
     add_diagnose_subparser(sub)
     add_diff_subparser(sub)
+    add_export_subparser(sub)
 
     args = parser.parse_args()
     args.func(args)

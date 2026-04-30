@@ -1,0 +1,50 @@
+[
+  {
+    "from": "2.1.108",
+    "to": "2.1.109",
+    "added_sections": ["New guidelines"],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.109",
+    "to": "2.1.110",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.110",
+    "to": "2.1.111",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": ["Skill"],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.111",
+    "to": "2.1.112",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  }
+]

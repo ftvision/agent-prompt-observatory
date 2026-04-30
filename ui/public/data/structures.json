@@ -1,0 +1,119 @@
+{
+  "2.1.108": {
+    "sections": [
+      {"title": "System", "char_count": 1840},
+      {"title": "Doing tasks", "char_count": 2950},
+      {"title": "Executing actions with care", "char_count": 1420},
+      {"title": "Using your tools", "char_count": 890},
+      {"title": "Tone and style", "char_count": 640},
+      {"title": "auto memory", "char_count": 310},
+      {"title": "Environment", "char_count": 220}
+    ],
+    "tools": [
+      {"title": "Agent", "prose_chars": 480, "schema_chars": 310, "total_chars": 790},
+      {"title": "Bash", "prose_chars": 920, "schema_chars": 180, "total_chars": 1100},
+      {"title": "Edit", "prose_chars": 660, "schema_chars": 220, "total_chars": 880},
+      {"title": "Glob", "prose_chars": 340, "schema_chars": 150, "total_chars": 490},
+      {"title": "Grep", "prose_chars": 510, "schema_chars": 270, "total_chars": 780},
+      {"title": "Read", "prose_chars": 430, "schema_chars": 160, "total_chars": 590},
+      {"title": "Skill", "prose_chars": 290, "schema_chars": 130, "total_chars": 420},
+      {"title": "ToolSearch", "prose_chars": 370, "schema_chars": 140, "total_chars": 510},
+      {"title": "Write", "prose_chars": 500, "schema_chars": 170, "total_chars": 670}
+    ],
+    "xml_tags": ["system_reminder", "available_deferred_tools"]
+  },
+  "2.1.109": {
+    "sections": [
+      {"title": "System", "char_count": 1840},
+      {"title": "Doing tasks", "char_count": 3100},
+      {"title": "Executing actions with care", "char_count": 1420},
+      {"title": "Using your tools", "char_count": 890},
+      {"title": "Tone and style", "char_count": 640},
+      {"title": "auto memory", "char_count": 310},
+      {"title": "Environment", "char_count": 220},
+      {"title": "New guidelines", "char_count": 540}
+    ],
+    "tools": [
+      {"title": "Agent", "prose_chars": 480, "schema_chars": 310, "total_chars": 790},
+      {"title": "Bash", "prose_chars": 960, "schema_chars": 180, "total_chars": 1140},
+      {"title": "Edit", "prose_chars": 660, "schema_chars": 220, "total_chars": 880},
+      {"title": "Glob", "prose_chars": 340, "schema_chars": 150, "total_chars": 490},
+      {"title": "Grep", "prose_chars": 510, "schema_chars": 270, "total_chars": 780},
+      {"title": "Read", "prose_chars": 430, "schema_chars": 160, "total_chars": 590},
+      {"title": "Skill", "prose_chars": 290, "schema_chars": 130, "total_chars": 420},
+      {"title": "ToolSearch", "prose_chars": 370, "schema_chars": 140, "total_chars": 510},
+      {"title": "Write", "prose_chars": 500, "schema_chars": 170, "total_chars": 670}
+    ],
+    "xml_tags": ["system_reminder", "available_deferred_tools"]
+  },
+  "2.1.110": {
+    "sections": [
+      {"title": "System", "char_count": 1920},
+      {"title": "Doing tasks", "char_count": 3100},
+      {"title": "Executing actions with care", "char_count": 1580},
+      {"title": "Using your tools", "char_count": 890},
+      {"title": "Tone and style", "char_count": 640},
+      {"title": "auto memory", "char_count": 310},
+      {"title": "Environment", "char_count": 220},
+      {"title": "New guidelines", "char_count": 540}
+    ],
+    "tools": [
+      {"title": "Agent", "prose_chars": 480, "schema_chars": 310, "total_chars": 790},
+      {"title": "Bash", "prose_chars": 960, "schema_chars": 180, "total_chars": 1140},
+      {"title": "Edit", "prose_chars": 700, "schema_chars": 220, "total_chars": 920},
+      {"title": "Glob", "prose_chars": 340, "schema_chars": 150, "total_chars": 490},
+      {"title": "Grep", "prose_chars": 510, "schema_chars": 270, "total_chars": 780},
+      {"title": "Read", "prose_chars": 430, "schema_chars": 160, "total_chars": 590},
+      {"title": "Skill", "prose_chars": 290, "schema_chars": 130, "total_chars": 420},
+      {"title": "ToolSearch", "prose_chars": 370, "schema_chars": 140, "total_chars": 510},
+      {"title": "Write", "prose_chars": 500, "schema_chars": 170, "total_chars": 670}
+    ],
+    "xml_tags": ["system_reminder", "available_deferred_tools"]
+  },
+  "2.1.111": {
+    "sections": [
+      {"title": "System", "char_count": 1920},
+      {"title": "Doing tasks", "char_count": 3100},
+      {"title": "Executing actions with care", "char_count": 1580},
+      {"title": "Using your tools", "char_count": 890},
+      {"title": "Tone and style", "char_count": 640},
+      {"title": "auto memory", "char_count": 310},
+      {"title": "Environment", "char_count": 220},
+      {"title": "New guidelines", "char_count": 540}
+    ],
+    "tools": [
+      {"title": "Agent", "prose_chars": 480, "schema_chars": 310, "total_chars": 790},
+      {"title": "Bash", "prose_chars": 960, "schema_chars": 180, "total_chars": 1140},
+      {"title": "Edit", "prose_chars": 700, "schema_chars": 220, "total_chars": 920},
+      {"title": "Glob", "prose_chars": 340, "schema_chars": 150, "total_chars": 490},
+      {"title": "Grep", "prose_chars": 510, "schema_chars": 270, "total_chars": 780},
+      {"title": "Read", "prose_chars": 430, "schema_chars": 160, "total_chars": 590},
+      {"title": "ToolSearch", "prose_chars": 410, "schema_chars": 140, "total_chars": 550},
+      {"title": "Write", "prose_chars": 500, "schema_chars": 170, "total_chars": 670}
+    ],
+    "xml_tags": ["system_reminder", "available_deferred_tools"]
+  },
+  "2.1.112": {
+    "sections": [
+      {"title": "System", "char_count": 1920},
+      {"title": "Doing tasks", "char_count": 3100},
+      {"title": "Executing actions with care", "char_count": 1580},
+      {"title": "Using your tools", "char_count": 890},
+      {"title": "Tone and style", "char_count": 720},
+      {"title": "auto memory", "char_count": 310},
+      {"title": "Environment", "char_count": 220},
+      {"title": "New guidelines", "char_count": 540}
+    ],
+    "tools": [
+      {"title": "Agent", "prose_chars": 480, "schema_chars": 310, "total_chars": 790},
+      {"title": "Bash", "prose_chars": 1020, "schema_chars": 180, "total_chars": 1200},
+      {"title": "Edit", "prose_chars": 700, "schema_chars": 220, "total_chars": 920},
+      {"title": "Glob", "prose_chars": 340, "schema_chars": 150, "total_chars": 490},
+      {"title": "Grep", "prose_chars": 510, "schema_chars": 270, "total_chars": 780},
+      {"title": "Read", "prose_chars": 430, "schema_chars": 160, "total_chars": 590},
+      {"title": "ToolSearch", "prose_chars": 410, "schema_chars": 140, "total_chars": 550},
+      {"title": "Write", "prose_chars": 500, "schema_chars": 170, "total_chars": 670}
+    ],
+    "xml_tags": ["system_reminder", "available_deferred_tools"]
+  }
+}

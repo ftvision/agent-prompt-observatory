@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-04-30T00:00:00Z",
+  "total_versions": 5,
+  "versions": [
+    {"version": "2.1.108", "release_date": "2026-04-01"},
+    {"version": "2.1.109", "release_date": "2026-04-08"},
+    {"version": "2.1.110", "release_date": "2026-04-15"},
+    {"version": "2.1.111", "release_date": "2026-04-22"},
+    {"version": "2.1.112", "release_date": "2026-04-29"}
+  ]
+}
