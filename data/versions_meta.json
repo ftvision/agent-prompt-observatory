@@ -1042,5 +1042,117 @@
   {
     "version": "2.1.77",
     "release_date": "2026-03-16"
+  },
+  {
+    "version": "2.1.78",
+    "release_date": "2026-03-17"
+  },
+  {
+    "version": "2.1.79",
+    "release_date": "2026-03-18"
+  },
+  {
+    "version": "2.1.80",
+    "release_date": "2026-03-19"
+  },
+  {
+    "version": "2.1.81",
+    "release_date": "2026-03-20"
+  },
+  {
+    "version": "2.1.83",
+    "release_date": "2026-03-24"
+  },
+  {
+    "version": "2.1.84",
+    "release_date": "2026-03-25"
+  },
+  {
+    "version": "2.1.85",
+    "release_date": "2026-03-26"
+  },
+  {
+    "version": "2.1.86",
+    "release_date": "2026-03-27"
+  },
+  {
+    "version": "2.1.87",
+    "release_date": "2026-03-29"
+  },
+  {
+    "version": "2.1.88",
+    "release_date": "2026-03-30"
+  },
+  {
+    "version": "2.1.89",
+    "release_date": "2026-03-31"
+  },
+  {
+    "version": "2.1.90",
+    "release_date": "2026-04-01"
+  },
+  {
+    "version": "2.1.91",
+    "release_date": "2026-04-02"
+  },
+  {
+    "version": "2.1.92",
+    "release_date": "2026-04-04"
+  },
+  {
+    "version": "2.1.94",
+    "release_date": "2026-04-07"
+  },
+  {
+    "version": "2.1.96",
+    "release_date": "2026-04-08"
+  },
+  {
+    "version": "2.1.97",
+    "release_date": "2026-04-08"
+  },
+  {
+    "version": "2.1.98",
+    "release_date": "2026-04-09"
+  },
+  {
+    "version": "2.1.100",
+    "release_date": "2026-04-10"
+  },
+  {
+    "version": "2.1.101",
+    "release_date": "2026-04-10"
+  },
+  {
+    "version": "2.1.104",
+    "release_date": "2026-04-12"
+  },
+  {
+    "version": "2.1.105",
+    "release_date": "2026-04-13"
+  },
+  {
+    "version": "2.1.107",
+    "release_date": "2026-04-14"
+  },
+  {
+    "version": "2.1.108",
+    "release_date": "2026-04-14"
+  },
+  {
+    "version": "2.1.109",
+    "release_date": "2026-04-15"
+  },
+  {
+    "version": "2.1.110",
+    "release_date": "2026-04-15"
+  },
+  {
+    "version": "2.1.111",
+    "release_date": "2026-04-16"
+  },
+  {
+    "version": "2.1.112",
+    "release_date": "2026-04-16"
   }
 ]
