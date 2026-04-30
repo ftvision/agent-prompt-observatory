@@ -157,9 +157,31 @@ def run_export(
                     "schema": schema.normalized if schema else None,
                 }
 
+        # XML tags from user_message (first occurrence of each tag kind)
+        xml_tags_out: dict[str, dict] = {}
+        um = snap.components.get("user_message")
+        if um:
+            for child in um.children.values():
+                if child.kind == "actual_prompt":
+                    xml_tags_out["actual_prompt"] = {
+                        "hash": child.hash,
+                        "char_count": len(child.normalized),
+                        "text": child.normalized,
+                    }
+                elif child.kind != "actual_prompt":
+                    # Use tag kind as key; keep first occurrence only
+                    key = child.kind
+                    if key not in xml_tags_out:
+                        xml_tags_out[key] = {
+                            "hash": child.hash,
+                            "char_count": len(child.normalized),
+                            "text": child.normalized,
+                        }
+
         comp_data = {
             "sections": sections_out,
             "tools": tools_out,
+            "xml_tags": xml_tags_out,
         }
         (components_dir / f"{snap.version}.json").write_text(
             json.dumps(comp_data, indent=2), encoding="utf-8"

@@ -181,6 +181,11 @@ async function _openPanel(panel, reg, version) {
     if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
     meta.textContent = `${d.char_count?.toLocaleString() ?? item.size.toLocaleString()} chars`
     body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
+  } else if (item.type === 'xml_tag' || item.type === 'actual_prompt') {
+    const d = detail.xml_tags?.[item.title]
+    if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
+    meta.textContent = `${d.char_count?.toLocaleString()} chars`
+    body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
   } else {
     meta.textContent = `${item.size.toLocaleString()} chars`
   }
