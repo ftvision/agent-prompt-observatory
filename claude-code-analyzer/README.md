@@ -68,6 +68,56 @@ uv run cca diagnose ../data/raw --only-changes --no-summary
   ToolSearch   first=2.1.69  last=2.1.77     9/261 versions  (3%)
 ```
 
+### `cca diff`
+
+Show the structural and content diff between two specific versions.
+
+```bash
+uv run cca diff 2.1.69 2.1.77 --raw-dir ../data/raw
+```
+
+**Options**
+
+| Flag | Description |
+|---|---|
+| `--raw-dir DIR` | Directory containing raw .md captures (default: data/raw) |
+| `--structural-only` | Skip content diff, show only structural changes |
+| `--context N` | Lines of context in unified diff (default: 3) |
+
+**Examples**
+
+```bash
+# Full diff between two versions
+uv run cca diff 2.1.100 2.1.112 --raw-dir ../data/raw
+
+# Structural changes only
+uv run cca diff 2.1.100 2.1.112 --raw-dir ../data/raw --structural-only
+
+# More context around each change
+uv run cca diff 2.1.100 2.1.112 --raw-dir ../data/raw --context 10
+```
+
+**What it reports**
+
+*Structural diff* — same format as `diagnose`, but for exactly two versions:
+
+```
+=== STRUCTURAL DIFF: 2.1.110 → 2.1.112 ===
+  [system_prompt] +section: Text output (does not apply to tool calls)
+```
+
+*Content diff* — unified diff per changed component leaf (tool prose, tool schema, system prompt section, or actual_prompt):
+
+```
+=== CONTENT DIFF: 2.1.110 → 2.1.112 ===
+
+system_prompt/auto memory:
+  @@ -1,4 +1,6 @@
+   ## auto memory
+  -You have a persistent auto memory directory …
+  +You have a persistent, file-based memory system …
+```
+
 ## Python API
 
 ```python
@@ -100,7 +150,10 @@ src/claude_code_analyzer/
 ├── models.py                  # shared dataclasses (Snapshot, Component, …)
 ├── snapshot.py                # parse_snapshot() — top-level entry point
 ├── diagnose.py                # structural diff and timeline logic
-├── cli.py                     # cca CLI
+├── cli/                       # cca CLI
+│   ├── __init__.py            # main() + subparser registration
+│   ├── diagnose.py            # diagnose subcommand
+│   └── diff.py                # diff subcommand
 └── parsers/
     ├── markdown.py            # Layer 1: XML-aware markdown parser
     ├── structural.py          # Layer 2: maps headings to user_message / system_prompt / tools
