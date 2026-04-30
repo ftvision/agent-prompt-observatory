@@ -1,3490 +1,1046 @@
 [
   {
     "version": "1.0.0",
-    "release_date": "2025-05-22",
-    "total_chars": 53727,
-    "unit_count": 577,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 47,
-      "output": 45,
-      "tools": 427
-    }
+    "release_date": "2025-05-22"
   },
   {
     "version": "1.0.1",
-    "release_date": "2025-05-22",
-    "total_chars": 53727,
-    "unit_count": 577,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 47,
-      "output": 45,
-      "tools": 427
-    }
+    "release_date": "2025-05-22"
   },
   {
     "version": "1.0.2",
-    "release_date": "2025-05-22",
-    "total_chars": 53727,
-    "unit_count": 577,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 47,
-      "output": 45,
-      "tools": 427
-    }
+    "release_date": "2025-05-22"
   },
   {
     "version": "1.0.3",
-    "release_date": "2025-05-23",
-    "total_chars": 53652,
-    "unit_count": 576,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 45,
-      "tools": 427
-    }
+    "release_date": "2025-05-23"
   },
   {
     "version": "1.0.4",
-    "release_date": "2025-05-28",
-    "total_chars": 53789,
-    "unit_count": 578,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 45,
-      "tools": 429
-    }
+    "release_date": "2025-05-28"
   },
   {
     "version": "1.0.5",
-    "release_date": "2025-05-28",
-    "total_chars": 53790,
-    "unit_count": 578,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 45,
-      "tools": 429
-    }
+    "release_date": "2025-05-28"
   },
   {
     "version": "1.0.6",
-    "release_date": "2025-05-29",
-    "total_chars": 53783,
-    "unit_count": 578,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 45,
-      "tools": 429
-    }
+    "release_date": "2025-05-29"
   },
   {
     "version": "1.0.7",
-    "release_date": "2025-05-30",
-    "total_chars": 54547,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-05-30"
   },
   {
     "version": "1.0.8",
-    "release_date": "2025-06-02",
-    "total_chars": 54855,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-06-02"
   },
   {
     "version": "1.0.9",
-    "release_date": "2025-06-02",
-    "total_chars": 54855,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-06-02"
   },
   {
     "version": "1.0.10",
-    "release_date": "2025-06-03",
-    "total_chars": 54857,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-06-03"
   },
   {
     "version": "1.0.11",
-    "release_date": "2025-06-04",
-    "total_chars": 54857,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-06-04"
   },
   {
     "version": "1.0.14",
-    "release_date": "2025-06-05",
-    "total_chars": 54857,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-06-05"
   },
   {
     "version": "1.0.15",
-    "release_date": "2025-06-05",
-    "total_chars": 54857,
-    "unit_count": 589,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 438
-    }
+    "release_date": "2025-06-05"
   },
   {
     "version": "1.0.16",
-    "release_date": "2025-06-06",
-    "total_chars": 54925,
-    "unit_count": 590,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 439
-    }
+    "release_date": "2025-06-06"
   },
   {
     "version": "1.0.17",
-    "release_date": "2025-06-06",
-    "total_chars": 54925,
-    "unit_count": 590,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 439
-    }
+    "release_date": "2025-06-06"
   },
   {
     "version": "1.0.18",
-    "release_date": "2025-06-09",
-    "total_chars": 54843,
-    "unit_count": 590,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 47,
-      "output": 47,
-      "tools": 439
-    }
+    "release_date": "2025-06-09"
   },
   {
     "version": "1.0.19",
-    "release_date": "2025-06-10",
-    "total_chars": 53954,
-    "unit_count": 582,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 49,
-      "output": 47,
-      "tools": 429
-    }
+    "release_date": "2025-06-10"
   },
   {
     "version": "1.0.20",
-    "release_date": "2025-06-11",
-    "total_chars": 53492,
-    "unit_count": 566,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 429
-    }
+    "release_date": "2025-06-11"
   },
   {
     "version": "1.0.21",
-    "release_date": "2025-06-11",
-    "total_chars": 53492,
-    "unit_count": 566,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 429
-    }
+    "release_date": "2025-06-11"
   },
   {
     "version": "1.0.22",
-    "release_date": "2025-06-12",
-    "total_chars": 53760,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-12"
   },
   {
     "version": "1.0.23",
-    "release_date": "2025-06-13",
-    "total_chars": 53700,
-    "unit_count": 568,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 431
-    }
+    "release_date": "2025-06-13"
   },
   {
     "version": "1.0.24",
-    "release_date": "2025-06-14",
-    "total_chars": 53700,
-    "unit_count": 568,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 431
-    }
+    "release_date": "2025-06-14"
   },
   {
     "version": "1.0.25",
-    "release_date": "2025-06-16",
-    "total_chars": 53770,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-16"
   },
   {
     "version": "1.0.26",
-    "release_date": "2025-06-17",
-    "total_chars": 53770,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-17"
   },
   {
     "version": "1.0.27",
-    "release_date": "2025-06-17",
-    "total_chars": 53770,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-17"
   },
   {
     "version": "1.0.28",
-    "release_date": "2025-06-18",
-    "total_chars": 53770,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-18"
   },
   {
     "version": "1.0.29",
-    "release_date": "2025-06-18",
-    "total_chars": 53770,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-18"
   },
   {
     "version": "1.0.30",
-    "release_date": "2025-06-19",
-    "total_chars": 53770,
-    "unit_count": 569,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 32,
-      "output": 47,
-      "tools": 432
-    }
+    "release_date": "2025-06-19"
   },
   {
     "version": "1.0.31",
-    "release_date": "2025-06-20",
-    "total_chars": 53257,
-    "unit_count": 567,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 47,
-      "tools": 431
-    }
+    "release_date": "2025-06-20"
   },
   {
     "version": "1.0.32",
-    "release_date": "2025-06-23",
-    "total_chars": 53898,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 47,
-      "tools": 437
-    }
+    "release_date": "2025-06-23"
   },
   {
     "version": "1.0.33",
-    "release_date": "2025-06-23",
-    "total_chars": 53898,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 47,
-      "tools": 437
-    }
+    "release_date": "2025-06-23"
   },
   {
     "version": "1.0.34",
-    "release_date": "2025-06-24",
-    "total_chars": 53900,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 47,
-      "tools": 437
-    }
+    "release_date": "2025-06-24"
   },
   {
     "version": "1.0.35",
-    "release_date": "2025-06-25",
-    "total_chars": 53621,
-    "unit_count": 570,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 44,
-      "tools": 437
-    }
+    "release_date": "2025-06-25"
   },
   {
     "version": "1.0.36",
-    "release_date": "2025-06-27",
-    "total_chars": 53661,
-    "unit_count": 571,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 44,
-      "tools": 438
-    }
+    "release_date": "2025-06-27"
   },
   {
     "version": "1.0.37",
-    "release_date": "2025-06-27",
-    "total_chars": 53661,
-    "unit_count": 571,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 58,
-      "environment": 31,
-      "output": 44,
-      "tools": 438
-    }
+    "release_date": "2025-06-27"
   },
   {
     "version": "1.0.38",
-    "release_date": "2025-06-30",
-    "total_chars": 53928,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 438
-    }
+    "release_date": "2025-06-30"
   },
   {
     "version": "1.0.39",
-    "release_date": "2025-07-01",
-    "total_chars": 53928,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 438
-    }
+    "release_date": "2025-07-01"
   },
   {
     "version": "1.0.40",
-    "release_date": "2025-07-01",
-    "total_chars": 54067,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 438
-    }
+    "release_date": "2025-07-01"
   },
   {
     "version": "1.0.41",
-    "release_date": "2025-07-02",
-    "total_chars": 54067,
-    "unit_count": 573,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 438
-    }
+    "release_date": "2025-07-02"
   },
   {
     "version": "1.0.42",
-    "release_date": "2025-07-03",
-    "total_chars": 54447,
-    "unit_count": 575,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 440
-    }
+    "release_date": "2025-07-03"
   },
   {
     "version": "1.0.43",
-    "release_date": "2025-07-03",
-    "total_chars": 54447,
-    "unit_count": 575,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 440
-    }
+    "release_date": "2025-07-03"
   },
   {
     "version": "1.0.44",
-    "release_date": "2025-07-07",
-    "total_chars": 53114,
-    "unit_count": 557,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 422
-    }
+    "release_date": "2025-07-07"
   },
   {
     "version": "1.0.45",
-    "release_date": "2025-07-08",
-    "total_chars": 55237,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-08"
   },
   {
     "version": "1.0.46",
-    "release_date": "2025-07-09",
-    "total_chars": 55237,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-09"
   },
   {
     "version": "1.0.47",
-    "release_date": "2025-07-09",
-    "total_chars": 55237,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-09"
   },
   {
     "version": "1.0.48",
-    "release_date": "2025-07-10",
-    "total_chars": 55237,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-10"
   },
   {
     "version": "1.0.49",
-    "release_date": "2025-07-11",
-    "total_chars": 55236,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-11"
   },
   {
     "version": "1.0.50",
-    "release_date": "2025-07-11",
-    "total_chars": 55236,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-11"
   },
   {
     "version": "1.0.51",
-    "release_date": "2025-07-11",
-    "total_chars": 55236,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-11"
   },
   {
     "version": "1.0.52",
-    "release_date": "2025-07-15",
-    "total_chars": 55236,
-    "unit_count": 568,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 31,
-      "output": 44,
-      "tools": 433
-    }
+    "release_date": "2025-07-15"
   },
   {
     "version": "1.0.53",
-    "release_date": "2025-07-15",
-    "total_chars": 55623,
-    "unit_count": 570,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 31,
-      "output": 44,
-      "tools": 434
-    }
+    "release_date": "2025-07-15"
   },
   {
     "version": "1.0.54",
-    "release_date": "2025-07-16",
-    "total_chars": 55623,
-    "unit_count": 570,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 31,
-      "output": 44,
-      "tools": 434
-    }
+    "release_date": "2025-07-16"
   },
   {
     "version": "1.0.55",
-    "release_date": "2025-07-17",
-    "total_chars": 55623,
-    "unit_count": 570,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 31,
-      "output": 44,
-      "tools": 434
-    }
+    "release_date": "2025-07-17"
   },
   {
     "version": "1.0.56",
-    "release_date": "2025-07-18",
-    "total_chars": 55668,
-    "unit_count": 571,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 31,
-      "output": 44,
-      "tools": 435
-    }
+    "release_date": "2025-07-18"
   },
   {
     "version": "1.0.57",
-    "release_date": "2025-07-21",
-    "total_chars": 55664,
-    "unit_count": 571,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 31,
-      "output": 44,
-      "tools": 435
-    }
+    "release_date": "2025-07-21"
   },
   {
     "version": "1.0.58",
-    "release_date": "2025-07-22",
-    "total_chars": 55790,
-    "unit_count": 572,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 31,
-      "output": 44,
-      "tools": 436
-    }
+    "release_date": "2025-07-22"
   },
   {
     "version": "1.0.59",
-    "release_date": "2025-07-23",
-    "total_chars": 55707,
-    "unit_count": 572,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 436
-    }
+    "release_date": "2025-07-23"
   },
   {
     "version": "1.0.60",
-    "release_date": "2025-07-24",
-    "total_chars": 57659,
-    "unit_count": 596,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 460
-    }
+    "release_date": "2025-07-24"
   },
   {
     "version": "1.0.61",
-    "release_date": "2025-07-25",
-    "total_chars": 57659,
-    "unit_count": 596,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 460
-    }
+    "release_date": "2025-07-25"
   },
   {
     "version": "1.0.62",
-    "release_date": "2025-07-28",
-    "total_chars": 57659,
-    "unit_count": 596,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 460
-    }
+    "release_date": "2025-07-28"
   },
   {
     "version": "1.0.63",
-    "release_date": "2025-07-29",
-    "total_chars": 57525,
-    "unit_count": 595,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 459
-    }
+    "release_date": "2025-07-29"
   },
   {
     "version": "1.0.64",
-    "release_date": "2025-07-30",
-    "total_chars": 56942,
-    "unit_count": 592,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 456
-    }
+    "release_date": "2025-07-30"
   },
   {
     "version": "1.0.65",
-    "release_date": "2025-07-31",
-    "total_chars": 56942,
-    "unit_count": 592,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 456
-    }
+    "release_date": "2025-07-31"
   },
   {
     "version": "1.0.66",
-    "release_date": "2025-08-01",
-    "total_chars": 56942,
-    "unit_count": 592,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 456
-    }
+    "release_date": "2025-08-01"
   },
   {
     "version": "1.0.67",
-    "release_date": "2025-08-01",
-    "total_chars": 56942,
-    "unit_count": 592,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 456
-    }
+    "release_date": "2025-08-01"
   },
   {
     "version": "1.0.68",
-    "release_date": "2025-08-04",
-    "total_chars": 56187,
-    "unit_count": 587,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 60,
-      "environment": 30,
-      "output": 46,
-      "tools": 451
-    }
+    "release_date": "2025-08-04"
   },
   {
     "version": "1.0.69",
-    "release_date": "2025-08-05",
-    "total_chars": 56054,
-    "unit_count": 588,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 451
-    }
+    "release_date": "2025-08-05"
   },
   {
     "version": "1.0.70",
-    "release_date": "2025-08-06",
-    "total_chars": 56046,
-    "unit_count": 588,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 451
-    }
+    "release_date": "2025-08-06"
   },
   {
     "version": "1.0.71",
-    "release_date": "2025-08-07",
-    "total_chars": 56157,
-    "unit_count": 589,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 452
-    }
+    "release_date": "2025-08-07"
   },
   {
     "version": "1.0.72",
-    "release_date": "2025-08-08",
-    "total_chars": 58289,
-    "unit_count": 609,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 472
-    }
+    "release_date": "2025-08-08"
   },
   {
     "version": "1.0.73",
-    "release_date": "2025-08-11",
-    "total_chars": 58289,
-    "unit_count": 609,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 472
-    }
+    "release_date": "2025-08-11"
   },
   {
     "version": "1.0.74",
-    "release_date": "2025-08-12",
-    "total_chars": 58399,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-12"
   },
   {
     "version": "1.0.76",
-    "release_date": "2025-08-12",
-    "total_chars": 58399,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-12"
   },
   {
     "version": "1.0.77",
-    "release_date": "2025-08-12",
-    "total_chars": 58399,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-12"
   },
   {
     "version": "1.0.78",
-    "release_date": "2025-08-13",
-    "total_chars": 58401,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-13"
   },
   {
     "version": "1.0.79",
-    "release_date": "2025-08-13",
-    "total_chars": 58401,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-13"
   },
   {
     "version": "1.0.80",
-    "release_date": "2025-08-13",
-    "total_chars": 58401,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-13"
   },
   {
     "version": "1.0.81",
-    "release_date": "2025-08-14",
-    "total_chars": 58405,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-14"
   },
   {
     "version": "1.0.82",
-    "release_date": "2025-08-15",
-    "total_chars": 58405,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-15"
   },
   {
     "version": "1.0.83",
-    "release_date": "2025-08-15",
-    "total_chars": 58405,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-15"
   },
   {
     "version": "1.0.84",
-    "release_date": "2025-08-18",
-    "total_chars": 58405,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-18"
   },
   {
     "version": "1.0.85",
-    "release_date": "2025-08-19",
-    "total_chars": 58405,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-19"
   },
   {
     "version": "1.0.86",
-    "release_date": "2025-08-20",
-    "total_chars": 58356,
-    "unit_count": 610,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-20"
   },
   {
     "version": "1.0.87",
-    "release_date": "2025-08-21",
-    "total_chars": 57882,
-    "unit_count": 609,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-21"
   },
   {
     "version": "1.0.88",
-    "release_date": "2025-08-22",
-    "total_chars": 57882,
-    "unit_count": 609,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 473
-    }
+    "release_date": "2025-08-22"
   },
   {
     "version": "1.0.89",
-    "release_date": "2025-08-22",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-22"
   },
   {
     "version": "1.0.90",
-    "release_date": "2025-08-24",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-24"
   },
   {
     "version": "1.0.91",
-    "release_date": "2025-08-25",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-25"
   },
   {
     "version": "1.0.92",
-    "release_date": "2025-08-25",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-25"
   },
   {
     "version": "1.0.93",
-    "release_date": "2025-08-26",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-26"
   },
   {
     "version": "1.0.94",
-    "release_date": "2025-08-27",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-27"
   },
   {
     "version": "1.0.95",
-    "release_date": "2025-08-28",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-28"
   },
   {
     "version": "1.0.96",
-    "release_date": "2025-08-28",
-    "total_chars": 58435,
-    "unit_count": 615,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 29,
-      "output": 46,
-      "tools": 479
-    }
+    "release_date": "2025-08-28"
   },
   {
     "version": "1.0.98",
-    "release_date": "2025-08-29",
-    "total_chars": 58028,
-    "unit_count": 613,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 476
-    }
+    "release_date": "2025-08-29"
   },
   {
     "version": "1.0.100",
-    "release_date": "2025-09-01",
-    "total_chars": 58029,
-    "unit_count": 613,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 476
-    }
+    "release_date": "2025-09-01"
   },
   {
     "version": "1.0.102",
-    "release_date": "2025-09-02",
-    "total_chars": 58041,
-    "unit_count": 613,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 476
-    }
+    "release_date": "2025-09-02"
   },
   {
     "version": "1.0.103",
-    "release_date": "2025-09-03",
-    "total_chars": 58040,
-    "unit_count": 613,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 476
-    }
+    "release_date": "2025-09-03"
   },
   {
     "version": "1.0.105",
-    "release_date": "2025-09-04",
-    "total_chars": 58040,
-    "unit_count": 613,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 30,
-      "output": 46,
-      "tools": 476
-    }
+    "release_date": "2025-09-04"
   },
   {
     "version": "1.0.106",
-    "release_date": "2025-09-04",
-    "total_chars": 58678,
-    "unit_count": 617,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 476
-    }
+    "release_date": "2025-09-04"
   },
   {
     "version": "1.0.107",
-    "release_date": "2025-09-05",
-    "total_chars": 58678,
-    "unit_count": 617,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 476
-    }
+    "release_date": "2025-09-05"
   },
   {
     "version": "1.0.108",
-    "release_date": "2025-09-05",
-    "total_chars": 58677,
-    "unit_count": 617,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 476
-    }
+    "release_date": "2025-09-05"
   },
   {
     "version": "1.0.109",
-    "release_date": "2025-09-08",
-    "total_chars": 58677,
-    "unit_count": 617,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 476
-    }
+    "release_date": "2025-09-08"
   },
   {
     "version": "1.0.110",
-    "release_date": "2025-09-09",
-    "total_chars": 58677,
-    "unit_count": 617,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 476
-    }
+    "release_date": "2025-09-09"
   },
   {
     "version": "1.0.111",
-    "release_date": "2025-09-10",
-    "total_chars": 59226,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 478
-    }
+    "release_date": "2025-09-10"
   },
   {
     "version": "1.0.112",
-    "release_date": "2025-09-12",
-    "total_chars": 59226,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 35,
-      "output": 45,
-      "tools": 478
-    }
+    "release_date": "2025-09-12"
   },
   {
     "version": "1.0.113",
-    "release_date": "2025-09-13",
-    "total_chars": 59227,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-13"
   },
   {
     "version": "1.0.114",
-    "release_date": "2025-09-15",
-    "total_chars": 59227,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-15"
   },
   {
     "version": "1.0.115",
-    "release_date": "2025-09-16",
-    "total_chars": 59227,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-16"
   },
   {
     "version": "1.0.116",
-    "release_date": "2025-09-16",
-    "total_chars": 59227,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-16"
   },
   {
     "version": "1.0.117",
-    "release_date": "2025-09-16",
-    "total_chars": 59227,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-16"
   },
   {
     "version": "1.0.118",
-    "release_date": "2025-09-17",
-    "total_chars": 59227,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-17"
   },
   {
     "version": "1.0.119",
-    "release_date": "2025-09-18",
-    "total_chars": 59299,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-18"
   },
   {
     "version": "1.0.120",
-    "release_date": "2025-09-19",
-    "total_chars": 59296,
-    "unit_count": 619,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 474
-    }
+    "release_date": "2025-09-19"
   },
   {
     "version": "1.0.122",
-    "release_date": "2025-09-23",
-    "total_chars": 60222,
-    "unit_count": 630,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 485
-    }
+    "release_date": "2025-09-23"
   },
   {
     "version": "1.0.123",
-    "release_date": "2025-09-23",
-    "total_chars": 60222,
-    "unit_count": 630,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 485
-    }
+    "release_date": "2025-09-23"
   },
   {
     "version": "1.0.124",
-    "release_date": "2025-09-25",
-    "total_chars": 61654,
-    "unit_count": 643,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 498
-    }
+    "release_date": "2025-09-25"
   },
   {
     "version": "1.0.125",
-    "release_date": "2025-09-25",
-    "total_chars": 62004,
-    "unit_count": 644,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 499
-    }
+    "release_date": "2025-09-25"
   },
   {
     "version": "1.0.126",
-    "release_date": "2025-09-26",
-    "total_chars": 62004,
-    "unit_count": 644,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 499
-    }
+    "release_date": "2025-09-26"
   },
   {
     "version": "1.0.127",
-    "release_date": "2025-09-26",
-    "total_chars": 62006,
-    "unit_count": 644,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 45,
-      "tools": 499
-    }
+    "release_date": "2025-09-26"
   },
   {
     "version": "1.0.128",
-    "release_date": "2025-09-27",
-    "total_chars": 61390,
-    "unit_count": 643,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 61,
-      "environment": 39,
-      "output": 46,
-      "tools": 497
-    }
+    "release_date": "2025-09-27"
   },
   {
     "version": "2.0.0",
-    "release_date": "2025-09-29",
-    "total_chars": 57315,
-    "unit_count": 603,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 55,
-      "environment": 33,
-      "output": 45,
-      "tools": 470
-    }
+    "release_date": "2025-09-29"
   },
   {
     "version": "2.0.1",
-    "release_date": "2025-09-30",
-    "total_chars": 57315,
-    "unit_count": 603,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 55,
-      "environment": 33,
-      "output": 45,
-      "tools": 470
-    }
+    "release_date": "2025-09-30"
   },
   {
     "version": "2.0.2",
-    "release_date": "2025-09-30",
-    "total_chars": 57812,
-    "unit_count": 601,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 33,
-      "output": 45,
-      "tools": 478
-    }
+    "release_date": "2025-09-30"
   },
   {
     "version": "2.0.3",
-    "release_date": "2025-10-02",
-    "total_chars": 57812,
-    "unit_count": 601,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 33,
-      "output": 45,
-      "tools": 478
-    }
+    "release_date": "2025-10-02"
   },
   {
     "version": "2.0.5",
-    "release_date": "2025-10-02",
-    "total_chars": 57315,
-    "unit_count": 603,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 55,
-      "environment": 33,
-      "output": 45,
-      "tools": 470
-    }
+    "release_date": "2025-10-02"
   },
   {
     "version": "2.0.8",
-    "release_date": "2025-10-04",
-    "total_chars": 58119,
-    "unit_count": 602,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 33,
-      "output": 45,
-      "tools": 479
-    }
+    "release_date": "2025-10-04"
   },
   {
     "version": "2.0.9",
-    "release_date": "2025-10-06",
-    "total_chars": 58119,
-    "unit_count": 602,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 33,
-      "output": 45,
-      "tools": 479
-    }
+    "release_date": "2025-10-06"
   },
   {
     "version": "2.0.10",
-    "release_date": "2025-10-07",
-    "total_chars": 58118,
-    "unit_count": 602,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 33,
-      "output": 45,
-      "tools": 479
-    }
+    "release_date": "2025-10-07"
   },
   {
     "version": "2.0.11",
-    "release_date": "2025-10-08",
-    "total_chars": 54480,
-    "unit_count": 553,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 2,
-      "tools": 479
-    }
+    "release_date": "2025-10-08"
   },
   {
     "version": "2.0.12",
-    "release_date": "2025-10-09",
-    "total_chars": 54663,
-    "unit_count": 554,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 2,
-      "tools": 480
-    }
+    "release_date": "2025-10-09"
   },
   {
     "version": "2.0.13",
-    "release_date": "2025-10-09",
-    "total_chars": 54663,
-    "unit_count": 554,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 2,
-      "tools": 480
-    }
+    "release_date": "2025-10-09"
   },
   {
     "version": "2.0.14",
-    "release_date": "2025-10-10",
-    "total_chars": 55082,
-    "unit_count": 556,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 480
-    }
+    "release_date": "2025-10-10"
   },
   {
     "version": "2.0.15",
-    "release_date": "2025-10-14",
-    "total_chars": 55093,
-    "unit_count": 556,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 480
-    }
+    "release_date": "2025-10-14"
   },
   {
     "version": "2.0.17",
-    "release_date": "2025-10-15",
-    "total_chars": 55990,
-    "unit_count": 564,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 488
-    }
+    "release_date": "2025-10-15"
   },
   {
     "version": "2.0.18",
-    "release_date": "2025-10-15",
-    "total_chars": 56215,
-    "unit_count": 564,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 488
-    }
+    "release_date": "2025-10-15"
   },
   {
     "version": "2.0.19",
-    "release_date": "2025-10-15",
-    "total_chars": 56215,
-    "unit_count": 564,
-    "section_count": 25,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 488
-    }
+    "release_date": "2025-10-15"
   },
   {
     "version": "2.0.20",
-    "release_date": "2025-10-16",
-    "total_chars": 57504,
-    "unit_count": 586,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 510
-    }
+    "release_date": "2025-10-16"
   },
   {
     "version": "2.0.21",
-    "release_date": "2025-10-16",
-    "total_chars": 58155,
-    "unit_count": 593,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 517
-    }
+    "release_date": "2025-10-16"
   },
   {
     "version": "2.0.22",
-    "release_date": "2025-10-17",
-    "total_chars": 58155,
-    "unit_count": 593,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 517
-    }
+    "release_date": "2025-10-17"
   },
   {
     "version": "2.0.23",
-    "release_date": "2025-10-20",
-    "total_chars": 58155,
-    "unit_count": 593,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 517
-    }
+    "release_date": "2025-10-20"
   },
   {
     "version": "2.0.24",
-    "release_date": "2025-10-20",
-    "total_chars": 58503,
-    "unit_count": 591,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 27,
-      "output": 4,
-      "tools": 516
-    }
+    "release_date": "2025-10-20"
   },
   {
     "version": "2.0.25",
-    "release_date": "2025-10-21",
-    "total_chars": 58427,
-    "unit_count": 591,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 27,
-      "output": 4,
-      "tools": 516
-    }
+    "release_date": "2025-10-21"
   },
   {
     "version": "2.0.26",
-    "release_date": "2025-10-23",
-    "total_chars": 58426,
-    "unit_count": 591,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 27,
-      "output": 4,
-      "tools": 516
-    }
+    "release_date": "2025-10-23"
   },
   {
     "version": "2.0.27",
-    "release_date": "2025-10-24",
-    "total_chars": 58426,
-    "unit_count": 591,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 27,
-      "output": 4,
-      "tools": 516
-    }
+    "release_date": "2025-10-24"
   },
   {
     "version": "2.0.28",
-    "release_date": "2025-10-27",
-    "total_chars": 59251,
-    "unit_count": 595,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 519
-    }
+    "release_date": "2025-10-27"
   },
   {
     "version": "2.0.29",
-    "release_date": "2025-10-29",
-    "total_chars": 59565,
-    "unit_count": 596,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 44,
-      "environment": 28,
-      "output": 4,
-      "tools": 520
-    }
+    "release_date": "2025-10-29"
   },
   {
     "version": "2.0.30",
-    "release_date": "2025-10-30",
-    "total_chars": 59462,
-    "unit_count": 597,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 28,
-      "output": 4,
-      "tools": 520
-    }
+    "release_date": "2025-10-30"
   },
   {
     "version": "2.0.31",
-    "release_date": "2025-10-31",
-    "total_chars": 59615,
-    "unit_count": 600,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 28,
-      "output": 4,
-      "tools": 523
-    }
+    "release_date": "2025-10-31"
   },
   {
     "version": "2.0.32",
-    "release_date": "2025-11-03",
-    "total_chars": 59867,
-    "unit_count": 603,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 28,
-      "output": 4,
-      "tools": 526
-    }
+    "release_date": "2025-11-03"
   },
   {
     "version": "2.0.33",
-    "release_date": "2025-11-04",
-    "total_chars": 59866,
-    "unit_count": 603,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 45,
-      "environment": 28,
-      "output": 4,
-      "tools": 526
-    }
+    "release_date": "2025-11-04"
   },
   {
     "version": "2.0.34",
-    "release_date": "2025-11-05",
-    "total_chars": 60211,
-    "unit_count": 605,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 46,
-      "environment": 28,
-      "output": 4,
-      "tools": 527
-    }
+    "release_date": "2025-11-05"
   },
   {
     "version": "2.0.35",
-    "release_date": "2025-11-06",
-    "total_chars": 60207,
-    "unit_count": 605,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 46,
-      "environment": 28,
-      "output": 4,
-      "tools": 527
-    }
+    "release_date": "2025-11-06"
   },
   {
     "version": "2.0.36",
-    "release_date": "2025-11-07",
-    "total_chars": 59994,
-    "unit_count": 603,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 46,
-      "environment": 28,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-07"
   },
   {
     "version": "2.0.37",
-    "release_date": "2025-11-10",
-    "total_chars": 59994,
-    "unit_count": 603,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 46,
-      "environment": 28,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-10"
   },
   {
     "version": "2.0.41",
-    "release_date": "2025-11-14",
-    "total_chars": 59982,
-    "unit_count": 603,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 46,
-      "environment": 28,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-14"
   },
   {
     "version": "2.0.42",
-    "release_date": "2025-11-14",
-    "total_chars": 59982,
-    "unit_count": 603,
-    "section_count": 26,
-    "layer_distribution": {
-      "task_execution": 46,
-      "environment": 28,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-14"
   },
   {
     "version": "2.0.43",
-    "release_date": "2025-11-17",
-    "total_chars": 60473,
-    "unit_count": 607,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 50,
-      "environment": 28,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-17"
   },
   {
     "version": "2.0.44",
-    "release_date": "2025-11-18",
-    "total_chars": 60473,
-    "unit_count": 607,
-    "section_count": 27,
-    "layer_distribution": {
-      "task_execution": 50,
-      "environment": 28,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-18"
   },
   {
     "version": "2.0.45",
-    "release_date": "2025-11-18",
-    "total_chars": 60711,
-    "unit_count": 612,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 50,
-      "environment": 33,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-18"
   },
   {
     "version": "2.0.46",
-    "release_date": "2025-11-19",
-    "total_chars": 61184,
-    "unit_count": 617,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 50,
-      "environment": 38,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-19"
   },
   {
     "version": "2.0.47",
-    "release_date": "2025-11-19",
-    "total_chars": 62372,
-    "unit_count": 622,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 55,
-      "environment": 38,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-19"
   },
   {
     "version": "2.0.49",
-    "release_date": "2025-11-21",
-    "total_chars": 61899,
-    "unit_count": 617,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 55,
-      "environment": 33,
-      "output": 4,
-      "tools": 525
-    }
+    "release_date": "2025-11-21"
   },
   {
     "version": "2.0.50",
-    "release_date": "2025-11-21",
-    "total_chars": 62424,
-    "unit_count": 626,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 55,
-      "environment": 33,
-      "output": 4,
-      "tools": 534
-    }
+    "release_date": "2025-11-21"
   },
   {
     "version": "2.0.51",
-    "release_date": "2025-11-24",
-    "total_chars": 66054,
-    "unit_count": 683,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 56,
-      "environment": 33,
-      "output": 4,
-      "tools": 590
-    }
+    "release_date": "2025-11-24"
   },
   {
     "version": "2.0.52",
-    "release_date": "2025-11-24",
-    "total_chars": 66054,
-    "unit_count": 683,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 56,
-      "environment": 33,
-      "output": 4,
-      "tools": 590
-    }
+    "release_date": "2025-11-24"
   },
   {
     "version": "2.0.53",
-    "release_date": "2025-11-25",
-    "total_chars": 66054,
-    "unit_count": 683,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 56,
-      "environment": 33,
-      "output": 4,
-      "tools": 590
-    }
+    "release_date": "2025-11-25"
   },
   {
     "version": "2.0.54",
-    "release_date": "2025-11-25",
-    "total_chars": 66053,
-    "unit_count": 683,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 56,
-      "environment": 33,
-      "output": 4,
-      "tools": 590
-    }
+    "release_date": "2025-11-25"
   },
   {
     "version": "2.0.55",
-    "release_date": "2025-11-26",
-    "total_chars": 66053,
-    "unit_count": 683,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 56,
-      "environment": 33,
-      "output": 4,
-      "tools": 590
-    }
+    "release_date": "2025-11-26"
   },
   {
     "version": "2.0.56",
-    "release_date": "2025-12-01",
-    "total_chars": 66064,
-    "unit_count": 686,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 33,
-      "output": 4,
-      "tools": 592
-    }
+    "release_date": "2025-12-01"
   },
   {
     "version": "2.0.57",
-    "release_date": "2025-12-03",
-    "total_chars": 66064,
-    "unit_count": 686,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 33,
-      "output": 4,
-      "tools": 592
-    }
+    "release_date": "2025-12-03"
   },
   {
     "version": "2.0.58",
-    "release_date": "2025-12-03",
-    "total_chars": 66060,
-    "unit_count": 686,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 33,
-      "output": 4,
-      "tools": 592
-    }
+    "release_date": "2025-12-03"
   },
   {
     "version": "2.0.59",
-    "release_date": "2025-12-04",
-    "total_chars": 66060,
-    "unit_count": 686,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 33,
-      "output": 4,
-      "tools": 592
-    }
+    "release_date": "2025-12-04"
   },
   {
     "version": "2.0.60",
-    "release_date": "2025-12-05",
-    "total_chars": 67952,
-    "unit_count": 694,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 42,
-      "output": 4,
-      "tools": 591
-    }
+    "release_date": "2025-12-05"
   },
   {
     "version": "2.0.61",
-    "release_date": "2025-12-07",
-    "total_chars": 67952,
-    "unit_count": 694,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 57,
-      "environment": 42,
-      "output": 4,
-      "tools": 591
-    }
+    "release_date": "2025-12-07"
   },
   {
     "version": "2.0.62",
-    "release_date": "2025-12-09",
-    "total_chars": 69281,
-    "unit_count": 712,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 4,
-      "tools": 603
-    }
+    "release_date": "2025-12-09"
   },
   {
     "version": "2.0.63",
-    "release_date": "2025-12-09",
-    "total_chars": 69281,
-    "unit_count": 712,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 4,
-      "tools": 603
-    }
+    "release_date": "2025-12-09"
   },
   {
     "version": "2.0.64",
-    "release_date": "2025-12-10",
-    "total_chars": 69281,
-    "unit_count": 712,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 4,
-      "tools": 603
-    }
+    "release_date": "2025-12-10"
   },
   {
     "version": "2.0.65",
-    "release_date": "2025-12-11",
-    "total_chars": 68165,
-    "unit_count": 704,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 4,
-      "tools": 595
-    }
+    "release_date": "2025-12-11"
   },
   {
     "version": "2.0.66",
-    "release_date": "2025-12-11",
-    "total_chars": 68165,
-    "unit_count": 704,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 4,
-      "tools": 595
-    }
+    "release_date": "2025-12-11"
   },
   {
     "version": "2.0.67",
-    "release_date": "2025-12-11",
-    "total_chars": 68165,
-    "unit_count": 704,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 4,
-      "tools": 595
-    }
+    "release_date": "2025-12-11"
   },
   {
     "version": "2.0.68",
-    "release_date": "2025-12-12",
-    "total_chars": 68382,
-    "unit_count": 705,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 5,
-      "tools": 595
-    }
+    "release_date": "2025-12-12"
   },
   {
     "version": "2.0.69",
-    "release_date": "2025-12-13",
-    "total_chars": 68382,
-    "unit_count": 705,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 5,
-      "tools": 595
-    }
+    "release_date": "2025-12-13"
   },
   {
     "version": "2.0.70",
-    "release_date": "2025-12-15",
-    "total_chars": 68382,
-    "unit_count": 705,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 63,
-      "environment": 42,
-      "output": 5,
-      "tools": 595
-    }
+    "release_date": "2025-12-15"
   },
   {
     "version": "2.0.71",
-    "release_date": "2025-12-16",
-    "total_chars": 72510,
-    "unit_count": 732,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 59,
-      "environment": 48,
-      "output": 5,
-      "tools": 620
-    }
+    "release_date": "2025-12-16"
   },
   {
     "version": "2.0.72",
-    "release_date": "2025-12-17",
-    "total_chars": 72594,
-    "unit_count": 733,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 59,
-      "environment": 48,
-      "output": 5,
-      "tools": 621
-    }
+    "release_date": "2025-12-17"
   },
   {
     "version": "2.0.73",
-    "release_date": "2025-12-18",
-    "total_chars": 71100,
-    "unit_count": 717,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 48,
-      "output": 5,
-      "tools": 610
-    }
+    "release_date": "2025-12-18"
   },
   {
     "version": "2.0.74",
-    "release_date": "2025-12-19",
-    "total_chars": 72530,
-    "unit_count": 730,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 48,
-      "output": 5,
-      "tools": 623
-    }
+    "release_date": "2025-12-19"
   },
   {
     "version": "2.0.75",
-    "release_date": "2025-12-20",
-    "total_chars": 72313,
-    "unit_count": 729,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 48,
-      "output": 4,
-      "tools": 623
-    }
+    "release_date": "2025-12-20"
   },
   {
     "version": "2.0.76",
-    "release_date": "2025-12-22",
-    "total_chars": 72313,
-    "unit_count": 729,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 48,
-      "output": 4,
-      "tools": 623
-    }
+    "release_date": "2025-12-22"
   },
   {
     "version": "2.0.77",
-    "release_date": "2026-01-06",
-    "total_chars": 72564,
-    "unit_count": 718,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 618
-    }
+    "release_date": "2026-01-06"
   },
   {
     "version": "2.1.0",
-    "release_date": "2026-01-07",
-    "total_chars": 70444,
-    "unit_count": 700,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 600
-    }
+    "release_date": "2026-01-07"
   },
   {
     "version": "2.1.1",
-    "release_date": "2026-01-07",
-    "total_chars": 70444,
-    "unit_count": 700,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 600
-    }
+    "release_date": "2026-01-07"
   },
   {
     "version": "2.1.2",
-    "release_date": "2026-01-08",
-    "total_chars": 70677,
-    "unit_count": 701,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 601
-    }
+    "release_date": "2026-01-08"
   },
   {
     "version": "2.1.3",
-    "release_date": "2026-01-09",
-    "total_chars": 72252,
-    "unit_count": 703,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 603
-    }
+    "release_date": "2026-01-09"
   },
   {
     "version": "2.1.4",
-    "release_date": "2026-01-10",
-    "total_chars": 72255,
-    "unit_count": 703,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 603
-    }
+    "release_date": "2026-01-10"
   },
   {
     "version": "2.1.5",
-    "release_date": "2026-01-11",
-    "total_chars": 72255,
-    "unit_count": 703,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 603
-    }
+    "release_date": "2026-01-11"
   },
   {
     "version": "2.1.6",
-    "release_date": "2026-01-13",
-    "total_chars": 75076,
-    "unit_count": 735,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 635
-    }
+    "release_date": "2026-01-13"
   },
   {
     "version": "2.1.7",
-    "release_date": "2026-01-13",
-    "total_chars": 75182,
-    "unit_count": 735,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 635
-    }
+    "release_date": "2026-01-13"
   },
   {
     "version": "2.1.8",
-    "release_date": "2026-01-15",
-    "total_chars": 75158,
-    "unit_count": 735,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "environment": 41,
-      "output": 5,
-      "tools": 635
-    }
+    "release_date": "2026-01-15"
   },
   {
     "version": "2.1.9",
-    "release_date": "2026-01-15",
-    "total_chars": 75315,
-    "unit_count": 735,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 635
-    }
+    "release_date": "2026-01-15"
   },
   {
     "version": "2.1.10",
-    "release_date": "2026-01-17",
-    "total_chars": 75172,
-    "unit_count": 732,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 632
-    }
+    "release_date": "2026-01-17"
   },
   {
     "version": "2.1.11",
-    "release_date": "2026-01-17",
-    "total_chars": 75172,
-    "unit_count": 732,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 632
-    }
+    "release_date": "2026-01-17"
   },
   {
     "version": "2.1.12",
-    "release_date": "2026-01-17",
-    "total_chars": 75172,
-    "unit_count": 732,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 632
-    }
+    "release_date": "2026-01-17"
   },
   {
     "version": "2.1.14",
-    "release_date": "2026-01-20",
-    "total_chars": 73419,
-    "unit_count": 704,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 604
-    }
+    "release_date": "2026-01-20"
   },
   {
     "version": "2.1.15",
-    "release_date": "2026-01-21",
-    "total_chars": 74116,
-    "unit_count": 705,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 605
-    }
+    "release_date": "2026-01-21"
   },
   {
     "version": "2.1.16",
-    "release_date": "2026-01-22",
-    "total_chars": 74934,
-    "unit_count": 707,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 607
-    }
+    "release_date": "2026-01-22"
   },
   {
     "version": "2.1.17",
-    "release_date": "2026-01-22",
-    "total_chars": 74934,
-    "unit_count": 707,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 607
-    }
+    "release_date": "2026-01-22"
   },
   {
     "version": "2.1.18",
-    "release_date": "2026-01-22",
-    "total_chars": 74934,
-    "unit_count": 707,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 44,
-      "output": 5,
-      "tools": 607
-    }
+    "release_date": "2026-01-22"
   },
   {
     "version": "2.1.19",
-    "release_date": "2026-01-23",
-    "total_chars": 74420,
-    "unit_count": 707,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 40,
-      "output": 5,
-      "tools": 611
-    }
+    "release_date": "2026-01-23"
   },
   {
     "version": "2.1.20",
-    "release_date": "2026-01-27",
-    "total_chars": 74110,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 41,
-      "output": 5,
-      "tools": 612
-    }
+    "release_date": "2026-01-27"
   },
   {
     "version": "2.1.21",
-    "release_date": "2026-01-28",
-    "total_chars": 74200,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 41,
-      "output": 5,
-      "tools": 612
-    }
+    "release_date": "2026-01-28"
   },
   {
     "version": "2.1.22",
-    "release_date": "2026-01-28",
-    "total_chars": 74200,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 41,
-      "output": 5,
-      "tools": 612
-    }
+    "release_date": "2026-01-28"
   },
   {
     "version": "2.1.23",
-    "release_date": "2026-01-29",
-    "total_chars": 74029,
-    "unit_count": 704,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 51,
-      "environment": 40,
-      "output": 5,
-      "tools": 608
-    }
+    "release_date": "2026-01-29"
   },
   {
     "version": "2.1.25",
-    "release_date": "2026-01-29",
-    "total_chars": 74688,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 610,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-01-29"
   },
   {
     "version": "2.1.26",
-    "release_date": "2026-01-30",
-    "total_chars": 74688,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 610,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-01-30"
   },
   {
     "version": "2.1.27",
-    "release_date": "2026-01-30",
-    "total_chars": 74688,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 610,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-01-30"
   },
   {
     "version": "2.1.28",
-    "release_date": "2026-01-31",
-    "total_chars": 74688,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 610,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-01-31"
   },
   {
     "version": "2.1.29",
-    "release_date": "2026-01-31",
-    "total_chars": 74688,
-    "unit_count": 709,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 610,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-01-31"
   },
   {
     "version": "2.1.30",
-    "release_date": "2026-02-03",
-    "total_chars": 75003,
-    "unit_count": 711,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 612,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-02-03"
   },
   {
     "version": "2.1.31",
-    "release_date": "2026-02-04",
-    "total_chars": 75478,
-    "unit_count": 713,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 614,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-02-04"
   },
   {
     "version": "2.1.32",
-    "release_date": "2026-02-05",
-    "total_chars": 75469,
-    "unit_count": 713,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 54,
-      "tools": 614,
-      "environment": 40,
-      "output": 5
-    }
+    "release_date": "2026-02-05"
   },
   {
     "version": "2.1.33",
-    "release_date": "2026-02-06",
-    "total_chars": 75960,
-    "unit_count": 691,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 24,
-      "safety": 19,
-      "output": 4,
-      "memory": 15
-    }
+    "release_date": "2026-02-06"
   },
   {
     "version": "2.1.34",
-    "release_date": "2026-02-06",
-    "total_chars": 75960,
-    "unit_count": 691,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 24,
-      "safety": 19,
-      "output": 4,
-      "memory": 15
-    }
+    "release_date": "2026-02-06"
   },
   {
     "version": "2.1.36",
-    "release_date": "2026-02-07",
-    "total_chars": 76150,
-    "unit_count": 696,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 15
-    }
+    "release_date": "2026-02-07"
   },
   {
     "version": "2.1.37",
-    "release_date": "2026-02-07",
-    "total_chars": 76150,
-    "unit_count": 696,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 15
-    }
+    "release_date": "2026-02-07"
   },
   {
     "version": "2.1.38",
-    "release_date": "2026-02-10",
-    "total_chars": 76911,
-    "unit_count": 708,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-10"
   },
   {
     "version": "2.1.39",
-    "release_date": "2026-02-10",
-    "total_chars": 76519,
-    "unit_count": 708,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-10"
   },
   {
     "version": "2.1.40",
-    "release_date": "2026-02-12",
-    "total_chars": 76519,
-    "unit_count": 708,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-12"
   },
   {
     "version": "2.1.41",
-    "release_date": "2026-02-13",
-    "total_chars": 76519,
-    "unit_count": 708,
-    "section_count": 28,
-    "layer_distribution": {
-      "task_execution": 22,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-13"
   },
   {
     "version": "2.1.42",
-    "release_date": "2026-02-13",
-    "total_chars": 76817,
-    "unit_count": 714,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 28,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-13"
   },
   {
     "version": "2.1.44",
-    "release_date": "2026-02-16",
-    "total_chars": 76817,
-    "unit_count": 714,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 28,
-      "tools": 607,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-16"
   },
   {
     "version": "2.1.45",
-    "release_date": "2026-02-17",
-    "total_chars": 77835,
-    "unit_count": 717,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 28,
-      "tools": 610,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-17"
   },
   {
     "version": "2.1.47",
-    "release_date": "2026-02-18",
-    "total_chars": 79670,
-    "unit_count": 732,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 33,
-      "tools": 612,
-      "identity": 8,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-18"
   },
   {
     "version": "2.1.48",
-    "release_date": "2026-02-19",
-    "total_chars": 79792,
-    "unit_count": 733,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 33,
-      "tools": 613,
-      "identity": 8,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-19"
   },
   {
     "version": "2.1.49",
-    "release_date": "2026-02-19",
-    "total_chars": 79792,
-    "unit_count": 733,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 33,
-      "tools": 613,
-      "identity": 8,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 27
-    }
+    "release_date": "2026-02-19"
   },
   {
     "version": "2.1.50",
-    "release_date": "2026-02-20",
-    "total_chars": 79602,
-    "unit_count": 730,
-    "section_count": 29,
-    "layer_distribution": {
-      "task_execution": 35,
-      "tools": 612,
-      "identity": 8,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-20"
   },
   {
     "version": "2.1.51",
-    "release_date": "2026-02-23",
-    "total_chars": 80761,
-    "unit_count": 752,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 634,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-23"
   },
   {
     "version": "2.1.52",
-    "release_date": "2026-02-24",
-    "total_chars": 80761,
-    "unit_count": 752,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 634,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-24"
   },
   {
     "version": "2.1.53",
-    "release_date": "2026-02-24",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-24"
   },
   {
     "version": "2.1.54",
-    "release_date": "2026-02-25",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-25"
   },
   {
     "version": "2.1.55",
-    "release_date": "2026-02-25",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-25"
   },
   {
     "version": "2.1.56",
-    "release_date": "2026-02-25",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-25"
   },
   {
     "version": "2.1.58",
-    "release_date": "2026-02-25",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-25"
   },
   {
     "version": "2.1.59",
-    "release_date": "2026-02-25",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-25"
   },
   {
     "version": "2.1.61",
-    "release_date": "2026-02-26",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-26"
   },
   {
     "version": "2.1.62",
-    "release_date": "2026-02-27",
-    "total_chars": 80844,
-    "unit_count": 743,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 39,
-      "tools": 625,
-      "identity": 4,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-27"
   },
   {
     "version": "2.1.63",
-    "release_date": "2026-02-28",
-    "total_chars": 80081,
-    "unit_count": 734,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 30,
-      "tools": 627,
-      "identity": 2,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-02-28"
   },
   {
     "version": "2.1.64",
-    "release_date": "2026-03-03",
-    "total_chars": 79207,
-    "unit_count": 730,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 30,
-      "tools": 623,
-      "identity": 2,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-03-03"
   },
   {
     "version": "2.1.66",
-    "release_date": "2026-03-04",
-    "total_chars": 80078,
-    "unit_count": 734,
-    "section_count": 30,
-    "layer_distribution": {
-      "task_execution": 30,
-      "tools": 627,
-      "identity": 2,
-      "environment": 29,
-      "safety": 19,
-      "output": 4,
-      "memory": 23
-    }
+    "release_date": "2026-03-04"
   },
   {
     "version": "2.1.67",
-    "release_date": "2026-03-04",
-    "total_chars": 80488,
-    "unit_count": 747,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 29,
-      "tools": 627,
-      "environment": 29,
-      "safety": 19,
-      "output": 20,
-      "memory": 23
-    }
+    "release_date": "2026-03-04"
   },
   {
     "version": "2.1.68",
-    "release_date": "2026-03-04",
-    "total_chars": 80488,
-    "unit_count": 747,
-    "section_count": 31,
-    "layer_distribution": {
-      "task_execution": 29,
-      "tools": 627,
-      "environment": 29,
-      "safety": 19,
-      "output": 20,
-      "memory": 23
-    }
+    "release_date": "2026-03-04"
   },
   {
     "version": "2.1.69",
-    "release_date": "2026-03-04",
-    "total_chars": 19534,
-    "unit_count": 171,
-    "section_count": 13,
-    "layer_distribution": {
-      "task_execution": 17,
-      "tools": 62,
-      "environment": 29,
-      "safety": 19,
-      "output": 20,
-      "memory": 24
-    }
+    "release_date": "2026-03-04"
   },
   {
     "version": "2.1.70",
-    "release_date": "2026-03-06",
-    "total_chars": 19534,
-    "unit_count": 171,
-    "section_count": 13,
-    "layer_distribution": {
-      "task_execution": 17,
-      "tools": 62,
-      "environment": 29,
-      "safety": 19,
-      "output": 20,
-      "memory": 24
-    }
+    "release_date": "2026-03-06"
   },
   {
     "version": "2.1.71",
-    "release_date": "2026-03-06",
-    "total_chars": 19534,
-    "unit_count": 171,
-    "section_count": 13,
-    "layer_distribution": {
-      "task_execution": 17,
-      "tools": 62,
-      "environment": 29,
-      "safety": 19,
-      "output": 20,
-      "memory": 24
-    }
+    "release_date": "2026-03-06"
   },
   {
     "version": "2.1.72",
-    "release_date": "2026-03-09",
-    "total_chars": 17529,
-    "unit_count": 136,
-    "section_count": 13,
-    "layer_distribution": {
-      "task_execution": 18,
-      "environment": 30,
-      "safety": 19,
-      "tools": 25,
-      "output": 20,
-      "memory": 24
-    }
+    "release_date": "2026-03-09"
   },
   {
     "version": "2.1.73",
-    "release_date": "2026-03-11",
-    "total_chars": 49667,
-    "unit_count": 398,
-    "section_count": 21,
-    "layer_distribution": {
-      "task_execution": 18,
-      "environment": 30,
-      "safety": 19,
-      "tools": 287,
-      "output": 20,
-      "memory": 24
-    }
+    "release_date": "2026-03-11"
   },
   {
     "version": "2.1.74",
-    "release_date": "2026-03-11",
-    "total_chars": 58229,
-    "unit_count": 467,
-    "section_count": 21,
-    "layer_distribution": {
-      "task_execution": 18,
-      "environment": 30,
-      "safety": 19,
-      "tools": 287,
-      "output": 20,
-      "memory": 93
-    }
+    "release_date": "2026-03-11"
   },
   {
     "version": "2.1.75",
-    "release_date": "2026-03-13",
-    "total_chars": 58086,
-    "unit_count": 466,
-    "section_count": 21,
-    "layer_distribution": {
-      "task_execution": 18,
-      "environment": 30,
-      "safety": 19,
-      "tools": 286,
-      "output": 20,
-      "memory": 93
-    }
+    "release_date": "2026-03-13"
   },
   {
     "version": "2.1.76",
-    "release_date": "2026-03-14",
-    "total_chars": 58086,
-    "unit_count": 466,
-    "section_count": 21,
-    "layer_distribution": {
-      "task_execution": 18,
-      "environment": 30,
-      "safety": 19,
-      "tools": 286,
-      "output": 20,
-      "memory": 93
-    }
+    "release_date": "2026-03-14"
   },
   {
     "version": "2.1.77",
-    "release_date": "2026-03-16",
-    "total_chars": 57656,
-    "unit_count": 464,
-    "section_count": 21,
-    "layer_distribution": {
-      "task_execution": 18,
-      "environment": 30,
-      "safety": 19,
-      "tools": 284,
-      "output": 20,
-      "memory": 93
-    }
+    "release_date": "2026-03-16"
   }
 ]
