@@ -1,0 +1,784 @@
+/* ===== Evolution view ===== */
+
+/* Hide global section-chrome for the evolution surface — the rebuilt
+   surface owns its own title band so the global header would duplicate. */
+.work-section-evolution .section-chrome { display: none; }
+.work-section-evolution .section-surface {
+  border-top: 0;
+  min-height: 0;
+}
+
+/* Outer surface frame */
+.evo-surface {
+  background: oklch(99.2% 0.004 70);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 22px 26px 14px;
+  box-shadow:
+    0 1px 0 oklch(60% 0.012 60 / 0.04),
+    0 16px 48px oklch(50% 0.012 60 / 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header band --- */
+.evo-header-band {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 22px 30px;
+  flex-wrap: wrap;
+  padding: 6px 4px 22px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 16px;
+}
+
+.evo-eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+  min-width: 0;
+  flex: 1 1 240px;
+}
+
+.evo-eyebrow-num {
+  font-size: 19px;
+  font-weight: 350;
+  font-feature-settings: "lnum";
+  font-variant-numeric: lining-nums;
+  color: oklch(74% 0.012 60);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  flex: none;
+  position: relative;
+  top: 1px;
+}
+
+.evo-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.evo-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.005em;
+  color: var(--text-primary);
+  line-height: 1.15;
+}
+
+.evo-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.evo-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.evo-ctrl-grp {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.evo-ctrl-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.evo-ctrl-body { display: flex; align-items: center; }
+
+.evo-range-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.evo-range-dash {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Custom select */
+.evo-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 7px;
+  padding: 7px 28px 7px 11px;
+  font-size: 13px;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12' fill='none' stroke='%2389817a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  background-size: 10px 10px;
+  box-shadow: 0 1px 0 oklch(60% 0.010 60 / 0.04);
+}
+
+.evo-select:hover { border-color: var(--border-default); }
+.evo-select:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px oklch(60% 0.115 215 / 0.18);
+}
+
+.evo-select-version { min-width: 90px; }
+
+/* Export */
+.evo-export {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface-0);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.14s, color 0.14s, border-color 0.14s, box-shadow 0.14s;
+  align-self: end;
+  box-shadow: 0 1px 0 oklch(60% 0.010 60 / 0.04);
+}
+
+.evo-export svg:first-child { color: var(--text-muted); }
+.evo-export svg:last-child { color: oklch(70% 0.012 60); }
+
+.evo-export:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--surface-1);
+}
+
+.evo-export:focus-visible {
+  outline: 0;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px oklch(60% 0.115 215 / 0.18);
+}
+
+/* --- Body --- */
+.evo-body {
+  display: block;
+}
+
+.evo-ledger {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.evo-table-wrap {
+  min-width: 0;
+  padding-bottom: 4px;
+}
+
+/* --- Table --- */
+.evo-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  table-layout: fixed;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.evo-col-comp { width: 196px; }
+/* .evo-col-v intentionally has no width — version columns share remaining width equally */
+
+.evo-th {
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 8px 10px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: left;
+  white-space: nowrap;
+  background: oklch(99.2% 0.004 70);
+}
+
+.evo-th-comp {
+  position: sticky;
+  left: 0;
+  z-index: 4;
+  padding-left: 14px;
+}
+
+.evo-th-v {
+  padding: 0;
+  vertical-align: bottom;
+  position: relative;
+  background: transparent;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.evo-th-v-label {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.evo-th-v::before {
+  content: "";
+  display: block;
+  height: 28px;
+}
+
+.evo-th-v.labeled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 4px;
+  background: var(--border-default);
+}
+
+/* Group rows — head row carries its own per-version stream graph */
+.evo-group-row {
+  cursor: pointer;
+  user-select: none;
+}
+
+.evo-group-row .evo-cell,
+.evo-group-row .evo-td-comp {
+  height: 32px;
+  background: var(--surface-1);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.evo-group-comp {
+  display: flex !important;
+  align-items: center;
+  gap: 0 !important;
+  padding: 6px 14px !important;
+}
+
+.evo-group-row:hover .evo-cell,
+.evo-group-row:hover .evo-td-comp { background: oklch(91% 0.010 70); }
+
+.evo-group-chev {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  margin-right: 8px;
+  vertical-align: -3px;
+  transition: transform 0.18s var(--ease-out);
+}
+
+.evo-group-chev.collapsed { transform: rotate(-90deg); }
+
+.evo-group-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: 1px;
+}
+.evo-group-dot.sys  { background: oklch(60% 0.130 220); }
+.evo-group-dot.tool { background: oklch(60% 0.115 155); }
+.evo-group-dot.user { background: oklch(60% 0.135 82); }
+
+.evo-group-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Component rows */
+.evo-row {
+  cursor: pointer;
+  transition: background 0.10s;
+}
+
+.evo-row:hover .evo-td-comp,
+.evo-row:hover .evo-cell {
+  background: oklch(96.8% 0.006 70);
+}
+
+.evo-row.selected .evo-td-comp,
+.evo-row.selected .evo-cell {
+  background: oklch(94% 0.018 220 / 0.55);
+}
+
+.evo-row:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.evo-td-comp {
+  font-size: 12px;
+  border-bottom: 1px solid oklch(92% 0.008 70);
+  background: oklch(99.2% 0.004 70);
+  white-space: nowrap;
+  overflow: hidden;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  padding: 6px 8px 6px 14px;
+  max-width: 196px;
+}
+
+.evo-comp-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.evo-row-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.evo-comp-label {
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evo-row.selected .evo-comp-label,
+.evo-row:hover .evo-comp-label { color: var(--text-primary); }
+
+/* Version cells — bars share remaining width equally with a 1px white gap */
+.evo-cell {
+  position: relative;
+  height: 28px;
+  padding: 0;
+  vertical-align: bottom;
+  border-bottom: 1px solid oklch(94% 0.006 70);
+  background: oklch(99.2% 0.004 70);
+}
+
+.evo-bar {
+  position: absolute;
+  left: 0;
+  right: 1px;
+  bottom: 0;
+  height: 28%;
+  pointer-events: none;
+}
+
+.evo-bar.sys   { background: oklch(48% 0.110 220); }
+.evo-bar.tool  { background: oklch(50% 0.105 155); }
+.evo-bar.user  { background: oklch(54% 0.130 82); }
+.evo-bar.total { background: oklch(32% 0.020 60); }
+
+/* Top-level totals row */
+.evo-total-row .evo-cell {
+  height: 36px;
+  background: oklch(99.2% 0.004 70);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.evo-total-row .evo-td-comp {
+  height: 36px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.evo-total-comp {
+  display: flex !important;
+  align-items: baseline;
+  gap: 10px;
+  padding: 6px 14px !important;
+}
+
+.evo-total-label {
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--text-primary);
+  letter-spacing: 0.005em;
+}
+
+/* User Message summary row (single-row section, no breakdown) */
+.evo-user-row .evo-cell,
+.evo-user-row .evo-td-comp {
+  height: 32px;
+  background: oklch(98.2% 0.005 70);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.evo-user-comp {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px !important;
+}
+
+.evo-user-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Legend strip */
+.evo-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  padding: 16px 4px 0;
+  margin-top: 4px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.evo-leg {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.evo-leg-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 8px;
+  border-radius: 1px;
+}
+
+.evo-leg-swatch.sys  { background: oklch(48% 0.110 220); }
+.evo-leg-swatch.tool { background: oklch(50% 0.105 155); }
+.evo-leg-swatch.user { background: oklch(54% 0.130 82); }
+
+.evo-leg-note {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* --- Inline detail expansion --- */
+.evo-expand-row td.evo-expand-td {
+  background: oklch(98.4% 0.005 70);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 22px 18px;
+  position: sticky;
+  left: 0;
+}
+
+.evo-expand-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+}
+
+.evo-panel-close {
+  flex: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, color 0.12s;
+}
+
+.evo-panel-close:hover { color: var(--text-primary); background: var(--surface-2); }
+
+.evo-curr {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 16px;
+}
+
+.evo-curr-line {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.evo-curr-chars {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.evo-curr-date {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.evo-log-hd {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 14px 0 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.evo-log {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px 24px;
+}
+
+.evo-log-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.evo-log-dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  background: var(--text-muted);
+}
+.evo-log-dot-added { background: oklch(58% 0.135 145); }
+.evo-log-dot-changed { background: oklch(62% 0.140 76); }
+.evo-log-dot-removed { background: var(--viz-removed); }
+.evo-log-dot-initial { background: oklch(54% 0.115 220); }
+
+.evo-log-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.evo-log-top {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.evo-log-ver {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.evo-log-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.evo-log-desc {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.evo-log-empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 8px 0;
+}
+
+/* Surface footnote */
+.evo-footnote {
+  margin-top: 14px;
+  padding: 4px 4px 0;
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Bar tooltip */
+.evo-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: oklch(99.6% 0.003 70);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 9px 11px 10px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.10s ease;
+  z-index: 9999;
+  min-width: 168px;
+  max-width: 260px;
+  box-shadow:
+    0 1px 0 oklch(60% 0.012 60 / 0.05),
+    0 8px 24px oklch(40% 0.012 60 / 0.16);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.evo-tooltip.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.evo-tt-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.evo-tt-version {
+  font-weight: 600;
+  font-size: 12.5px;
+  color: var(--text-primary);
+}
+
+.evo-tt-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.evo-tt-title {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 6px;
+}
+
+.evo-tt-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 1px 0;
+}
+
+.evo-tt-row span { color: var(--text-secondary); }
+.evo-tt-row b { color: var(--text-primary); font-weight: 600; }
+
+.evo-tt-sub {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 1px 0;
+}
+
+.evo-tt-empty {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 720px) {
+  .evo-surface { padding: 18px 16px 12px; border-radius: 12px; }
+  .evo-header-band {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-bottom: 16px;
+  }
+  .evo-controls { flex-wrap: wrap; }
+  .evo-export { align-self: flex-start; }
+
+  /* Stack each row: component name on its own line, bars across full width below.
+     The matrix gets the full surface width instead of competing with a 196px label column. */
+  .evo-table {
+    display: block;
+    table-layout: auto;
+  }
+  .evo-table thead,
+  .evo-table tbody { display: block; }
+  .evo-table colgroup { display: none; }
+
+  .evo-table thead tr,
+  .evo-row,
+  .evo-group-row,
+  .evo-total-row,
+  .evo-user-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .evo-th-comp,
+  .evo-td-comp {
+    position: static !important;
+    flex: 1 0 100%;
+    width: 100%;
+    max-width: none;
+    z-index: auto;
+  }
+
+  /* Version columns share the second line equally. flex-basis: 1px gives them
+     enough wanted-width to push past comp's 100% on line 1 and trigger flex-wrap. */
+  .evo-th-v,
+  .evo-row .evo-cell,
+  .evo-group-row .evo-cell,
+  .evo-total-row .evo-cell,
+  .evo-user-row .evo-cell {
+    flex: 1 1 1px;
+    min-width: 0;
+    width: auto;
+  }
+
+  /* Tighten heights since each component now occupies two lines */
+  .evo-row .evo-cell        { height: 22px; }
+  .evo-group-row .evo-cell,
+  .evo-group-row .evo-td-comp { height: auto; min-height: 26px; }
+  .evo-user-row .evo-cell,
+  .evo-user-row .evo-td-comp  { height: auto; min-height: 24px; }
+  .evo-total-row .evo-cell,
+  .evo-total-row .evo-td-comp { height: auto; min-height: 30px; }
+  .evo-row .evo-td-comp { padding: 6px 4px 2px 14px; }
+
+  /* Axis labels sit above the bar strip; the labels still overflow rightward */
+  .evo-th-v { min-height: 28px; }
+  .evo-th-v::before { display: none; }
+  .evo-th-v-label { bottom: 4px; }
+
+  /* Inline expand row goes full width below the selected component */
+  .evo-expand-row { display: block; }
+  .evo-expand-row td.evo-expand-td {
+    display: block;
+    width: 100%;
+    position: static;
+    padding: 14px 16px 16px;
+  }
+}
+

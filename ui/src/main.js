@@ -70,7 +70,11 @@ async function main() {
 
   for (const section of SECTIONS) {
     const surface = document.getElementById(`${section.id}-surface`)
-    await section.render(surface)
+    try {
+      await section.render(surface)
+    } catch (err) {
+      console.error(`Failed to render section "${section.id}"`, err)
+    }
   }
 
   wireSectionNav()

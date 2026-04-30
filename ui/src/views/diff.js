@@ -1,3 +1,4 @@
+import './diff.css'
 import { getMeta, getStructures, getComponents } from '../data/loader.js'
 import { createVersionPicker } from '../components/version-picker.js'
 

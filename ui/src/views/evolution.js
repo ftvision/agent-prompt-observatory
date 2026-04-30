@@ -1,261 +1,785 @@
-import * as d3 from 'd3'
+import './evolution.css'
 import { getMeta, getStructures } from '../data/loader.js'
-import { createVersionPicker } from '../components/version-picker.js'
+
+const MIN_LABEL_PX = 56
 
 export async function renderEvolution(container) {
   const [meta, structures] = await Promise.all([getMeta(), getStructures()])
-  const versions = meta.versions.map(v => v.version)
+  const allVersions = meta.versions.map(v => v.version)
+  const versionMeta = Object.fromEntries(meta.versions.map(v => [v.version, v]))
 
-  let startVersion = versions[Math.max(0, versions.length - 40)]
-  let endVersion = versions[versions.length - 1]
-  let mode = 'All' // 'User Prompt' | 'System Prompt' | 'Tools' | 'All'
+  let startVersion = allVersions[0]
+  let endVersion = allVersions[allVersions.length - 1]
+  let granularity = 'all'
+  let selectedKey = null
+  const collapsedGroups = new Set()
+
+  function getRange() {
+    const si = allVersions.indexOf(startVersion)
+    const ei = allVersions.indexOf(endVersion)
+    if (si < 0 || ei < 0 || si > ei) return allVersions.slice(-40)
+    return allVersions.slice(si, ei + 1)
+  }
+
+  function applyGranularity(range) {
+    if (granularity === 'all') return range
+    const step = granularity === 'major' ? 5 : 10
+    return range.filter((_, i) => i % step === 0 || i === range.length - 1)
+  }
+
+  function getItem(version, type, title) {
+    const s = structures[version]
+    if (!s) return null
+    if (type === 'system') return (s.system_message || []).find(x => x.title === title) ?? null
+    if (type === 'tool')   return (s.tools || []).find(x => x.title === title) ?? null
+    return null
+  }
+
+  function charCount(item, type) {
+    if (!item) return 0
+    return type === 'tool' ? (item.total_chars ?? 0) : (item.char_count ?? 0)
+  }
+
+  function buildDataRows(range) {
+    const systemTitles = [], systemSeen = new Set()
+    range.forEach(v => {
+      ;(structures[v]?.system_message || []).forEach(s => {
+        if (!systemSeen.has(s.title)) { systemSeen.add(s.title); systemTitles.push(s.title) }
+      })
+    })
+    const systemRows = systemTitles.map(title => buildRow('system', title, range))
+
+    const toolTitles = [], toolSeen = new Set()
+    range.forEach(v => {
+      ;(structures[v]?.tools || []).forEach(t => {
+        if (!toolSeen.has(t.title)) { toolSeen.add(t.title); toolTitles.push(t.title) }
+      })
+    })
+    const toolRows = toolTitles.map(title => buildRow('tool', title, range))
+
+    return { systemRows, toolRows }
+  }
+
+  function buildRow(type, title, range) {
+    const values = {}
+    range.forEach(v => {
+      const item = getItem(v, type, title)
+      if (item) values[v] = charCount(item, type)
+    })
+    const vals = Object.values(values)
+    const max = vals.length ? Math.max(1, ...vals) : 1
+    return { key: `${type}:${title}`, type, title, values, _max: max }
+  }
+
+  function computeHistory(type, title) {
+    const entries = []
+    let prev = null
+    allVersions.forEach(v => {
+      const item = getItem(v, type, title)
+      const count = item ? charCount(item, type) : null
+      if (count !== null && prev === null) {
+        entries.push({ version: v, event: 'added', count })
+      } else if (count === null && prev !== null) {
+        entries.push({ version: v, event: 'removed' })
+      } else if (count !== null && prev !== null && count !== prev) {
+        entries.push({ version: v, event: 'changed', count, delta: count - prev })
+      }
+      prev = count
+    })
+    return entries.reverse()
+  }
+
+  function fmtDate(version) {
+    const raw = versionMeta[version]?.release_date
+    if (!raw) return null
+    const d = new Date(raw)
+    if (isNaN(d)) return raw
+    return d.toLocaleDateString(undefined, { month: 'short', day: '2-digit', year: 'numeric' })
+  }
+
+  // --- Surface scaffold ---
+  container.classList.add('evo-surface')
+  container.innerHTML = ''
+
+  const headerBand = document.createElement('div')
+  headerBand.className = 'evo-header-band'
+
+  // Eyebrow (section marker + title block)
+  const eyebrow = document.createElement('div')
+  eyebrow.className = 'evo-eyebrow'
+  const marker = document.createElement('span')
+  marker.className = 'evo-eyebrow-num'
+  marker.textContent = '3'
+  marker.setAttribute('aria-hidden', 'true')
+  const titleBlock = document.createElement('div')
+  titleBlock.className = 'evo-title-block'
+  const titleEl = document.createElement('h2')
+  titleEl.className = 'evo-title'
+  titleEl.textContent = 'Evolution'
+  const subEl = document.createElement('div')
+  subEl.className = 'evo-subtitle'
+  subEl.textContent = 'Track changes across versions'
+  titleBlock.appendChild(titleEl)
+  titleBlock.appendChild(subEl)
+  eyebrow.appendChild(marker)
+  eyebrow.appendChild(titleBlock)
+  headerBand.appendChild(eyebrow)
 
   // Controls
   const controls = document.createElement('div')
-  controls.className = 'evolution-controls'
+  controls.className = 'evo-controls'
 
-  const startWrap = document.createElement('div')
-  startWrap.className = 'picker-labeled'
-  startWrap.innerHTML = '<label>Start</label>'
-  createVersionPicker(startWrap, versions, startVersion, v => { startVersion = v; draw() })
+  const rangeGrp = ctrlGroup('Range')
+  const rangeRow = document.createElement('div')
+  rangeRow.className = 'evo-range-row'
+  const startSelect = makeRangeSelect(allVersions, startVersion, v => { startVersion = v; draw() })
+  const dash = document.createElement('span')
+  dash.className = 'evo-range-dash'
+  dash.textContent = '–'
+  dash.setAttribute('aria-hidden', 'true')
+  const endSelect = makeRangeSelect(allVersions, endVersion, v => { endVersion = v; draw() })
+  rangeRow.appendChild(startSelect)
+  rangeRow.appendChild(dash)
+  rangeRow.appendChild(endSelect)
+  rangeGrp.body.appendChild(rangeRow)
+  controls.appendChild(rangeGrp.root)
 
-  const endWrap = document.createElement('div')
-  endWrap.className = 'picker-labeled'
-  endWrap.innerHTML = '<label>End</label>'
-  createVersionPicker(endWrap, versions, endVersion, v => { endVersion = v; draw() })
-
-  const toggleWrap = document.createElement('div')
-  toggleWrap.className = 'toggle-group'
-  ;['All', 'User Prompt', 'System Prompt', 'Tools'].forEach(m => {
-    const btn = document.createElement('button')
-    btn.className = 'toggle-btn' + (m === mode ? ' active' : '')
-    btn.textContent = m
-    btn.addEventListener('click', () => {
-      mode = m
-      toggleWrap.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'))
-      btn.classList.add('active')
-      draw()
-    })
-    toggleWrap.appendChild(btn)
+  const granGrp = ctrlGroup('Granularity')
+  const granSel = document.createElement('select')
+  granSel.className = 'evo-select'
+  ;[['all', 'All versions'], ['major', 'Every 5th'], ['coarse', 'Every 10th']].forEach(([v, l]) => {
+    const o = document.createElement('option')
+    o.value = v; o.textContent = l
+    if (v === granularity) o.selected = true
+    granSel.appendChild(o)
   })
+  granSel.addEventListener('change', () => { granularity = granSel.value; draw() })
+  granGrp.body.appendChild(granSel)
+  controls.appendChild(granGrp.root)
 
-  controls.appendChild(startWrap)
-  controls.appendChild(endWrap)
-  controls.appendChild(toggleWrap)
-  container.appendChild(controls)
+  headerBand.appendChild(controls)
+
+  const exportBtn = document.createElement('button')
+  exportBtn.type = 'button'
+  exportBtn.className = 'evo-export'
+  exportBtn.innerHTML = `
+    <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 2v8.5"/><path d="M4.7 7.3 8 10.5l3.3-3.2"/><path d="M3 13.2h10"/>
+    </svg>
+    <span>Export</span>
+    <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 3.5 10.5 8 6 12.5"/>
+    </svg>
+  `
+  exportBtn.addEventListener('click', exportCSV)
+  headerBand.appendChild(exportBtn)
+
+  container.appendChild(headerBand)
+
+  // Body
+  const body = document.createElement('div')
+  body.className = 'evo-body'
+  container.appendChild(body)
+
+  const ledger = document.createElement('div')
+  ledger.className = 'evo-ledger'
+  body.appendChild(ledger)
+
+  const tableWrap = document.createElement('div')
+  tableWrap.className = 'evo-table-wrap'
+  ledger.appendChild(tableWrap)
+
+  const legend = document.createElement('div')
+  legend.className = 'evo-legend'
+  ledger.appendChild(legend)
+
+
+  // Surface footer
+  const footnote = document.createElement('div')
+  footnote.className = 'evo-footnote'
+  footnote.textContent = 'All times in your local timezone'
+  container.appendChild(footnote)
 
   // Tooltip
   const tooltip = document.createElement('div')
-  tooltip.className = 'tooltip'
+  tooltip.className = 'evo-tooltip'
+  tooltip.setAttribute('role', 'tooltip')
+  tooltip.setAttribute('aria-hidden', 'true')
   document.body.appendChild(tooltip)
 
-  // Chart container
-  const chartContainer = document.createElement('div')
-  chartContainer.className = 'evolution-chart'
-  container.appendChild(chartContainer)
+  let activeCell = null
 
-  let resizeTimer
-  function onResize() {
-    clearTimeout(resizeTimer)
-    resizeTimer = setTimeout(draw, 150)
+  function fmtDelta(d) {
+    if (d == null) return null
+    if (d === 0) return 'no change'
+    const sign = d > 0 ? '+' : ''
+    return `${sign}${d.toLocaleString()} chars`
   }
-  window.addEventListener('resize', onResize)
 
-  // Clean up tooltip and listener when view changes
-  const observer = new MutationObserver(() => {
-    if (!document.body.contains(chartContainer)) {
-      tooltip.remove()
-      window.removeEventListener('resize', onResize)
-      observer.disconnect()
+  function renderTooltip(info) {
+    const date = info.date ? `<span class="evo-tt-date">${info.date}</span>` : ''
+    const head = `<div class="evo-tt-head"><span class="evo-tt-version">${info.version}</span>${date}</div>`
+    if (info.kind === 'total') {
+      if (info.value == null) {
+        return head + `<div class="evo-tt-empty">No prompt data for this release</div>`
+      }
+      return head +
+        `<div class="evo-tt-row"><span>Total</span><b>${info.value.toLocaleString()} chars</b></div>` +
+        `<div class="evo-tt-sub"><span>User Message</span><span>${info.user.toLocaleString()}</span></div>` +
+        `<div class="evo-tt-sub"><span>System Prompt</span><span>${info.system.toLocaleString()}</span></div>` +
+        `<div class="evo-tt-sub"><span>Tools</span><span>${info.tools.toLocaleString()}</span></div>`
     }
+    const title = `<div class="evo-tt-title">${info.title}</div>`
+    if (info.value == null) {
+      return head + title + `<div class="evo-tt-empty">Section not present in this release</div>`
+    }
+    const delta = fmtDelta(info.delta)
+    const deltaRow = delta ? `<div class="evo-tt-sub"><span>Δ from previous</span><span>${delta}</span></div>` : ''
+    return head + title +
+      `<div class="evo-tt-row"><span>Size</span><b>${info.value.toLocaleString()} chars</b></div>` +
+      deltaRow
+  }
+
+  function positionTooltip(x, y) {
+    const r = tooltip.getBoundingClientRect()
+    const margin = 8
+    let nx = x - r.width / 2
+    let ny = y - r.height - 14
+    if (nx < margin) nx = margin
+    if (nx + r.width > window.innerWidth - margin) nx = window.innerWidth - r.width - margin
+    if (ny < margin) ny = y + 16
+    tooltip.style.transform = `translate(${nx}px, ${ny}px)`
+  }
+
+  tableWrap.addEventListener('mousemove', e => {
+    const cell = e.target.closest('.evo-cell')
+    if (!cell || !cell._info) {
+      if (activeCell) { tooltip.classList.remove('open'); activeCell = null }
+      return
+    }
+    if (cell !== activeCell) {
+      activeCell = cell
+      tooltip.innerHTML = renderTooltip(cell._info)
+      tooltip.classList.add('open')
+    }
+    positionTooltip(e.clientX, e.clientY)
   })
-  observer.observe(document.body, { childList: true, subtree: true })
 
-  function getVersionRange() {
-    const si = versions.indexOf(startVersion)
-    const ei = versions.indexOf(endVersion)
-    if (si < 0 || ei < 0 || si > ei) return versions
-    return versions.slice(si, ei + 1)
+  tableWrap.addEventListener('mouseleave', () => {
+    tooltip.classList.remove('open')
+    activeCell = null
+  })
+
+  function ctrlGroup(label) {
+    const root = document.createElement('div')
+    root.className = 'evo-ctrl-grp'
+    const lab = document.createElement('span')
+    lab.className = 'evo-ctrl-label'
+    lab.textContent = label
+    const bod = document.createElement('div')
+    bod.className = 'evo-ctrl-body'
+    root.appendChild(lab)
+    root.appendChild(bod)
+    return { root, body: bod }
   }
 
-  function buildRows(range) {
-    const rows = []
-
-    if (mode === 'User Prompt' || mode === 'All') {
-      const allUser = new Map()
-      range.forEach(v => {
-        (structures[v]?.user_message || []).forEach(s => allUser.set(s.key || s.title || s.kind, s.title || s.kind || s.key))
-      })
-      allUser.forEach((label, key) => {
-        const values = {}
-        range.forEach(v => {
-          const item = (structures[v]?.user_message || []).find(s => (s.key || s.title || s.kind) === key)
-          if (item) values[v] = item.char_count
-        })
-        rows.push({ title: label, type: 'user', values })
-      })
-    }
-
-    if (mode === 'System Prompt' || mode === 'All') {
-      // Collect all system message section titles across range
-      const allSections = new Set()
-      range.forEach(v => {
-        (structures[v]?.system_message || []).forEach(s => allSections.add(s.title))
-      })
-      allSections.forEach(title => {
-        const values = {}
-        range.forEach(v => {
-          const sec = (structures[v]?.system_message || []).find(s => s.title === title)
-          if (sec) values[v] = sec.char_count
-        })
-        rows.push({ title, type: 'section', values })
-      })
-    }
-
-    if (mode === 'Tools' || mode === 'All') {
-      const allTools = new Set()
-      range.forEach(v => {
-        (structures[v]?.tools || []).forEach(t => allTools.add(t.title))
-      })
-      allTools.forEach(title => {
-        const values = {}
-        range.forEach(v => {
-          const tool = (structures[v]?.tools || []).find(t => t.title === title)
-          if (tool) values[v] = tool.total_chars
-        })
-        rows.push({ title, type: 'tool', values })
-      })
-    }
-
-    return rows
+  function makeRangeSelect(versions, current, onChange) {
+    const sel = document.createElement('select')
+    sel.className = 'evo-select evo-select-version'
+    sel.setAttribute('aria-label', 'Version')
+    versions.forEach(v => {
+      const opt = document.createElement('option')
+      opt.value = v
+      opt.textContent = v
+      if (v === current) opt.selected = true
+      sel.appendChild(opt)
+    })
+    sel.addEventListener('change', () => onChange(sel.value))
+    return sel
   }
 
+  // --- Inline expansion ---
+  function closePanel() {
+    selectedKey = null
+    tableWrap.querySelectorAll('.evo-row.selected').forEach(r => r.classList.remove('selected'))
+    tableWrap.querySelectorAll('.evo-expand-row').forEach(r => r.remove())
+  }
+
+  function openPanel(key, type, title) {
+    if (selectedKey === key) { closePanel(); return }
+    closePanel()
+    selectedKey = key
+
+    const row = tableWrap.querySelector(`tr[data-key="${CSS.escape(key)}"]`)
+    if (!row) return
+    row.classList.add('selected')
+
+    const expandRow = document.createElement('tr')
+    expandRow.className = 'evo-expand-row'
+    const td = document.createElement('td')
+    td.className = 'evo-expand-td'
+    td.colSpan = row.children.length
+    td.appendChild(buildHistoryFragment(type, title))
+    expandRow.appendChild(td)
+    row.insertAdjacentElement('afterend', expandRow)
+  }
+
+  function buildHistoryFragment(type, title) {
+    const frag = document.createDocumentFragment()
+
+    const latestV = allVersions[allVersions.length - 1]
+    const latestItem = getItem(latestV, type, title)
+    const latestChars = latestItem ? charCount(latestItem, type) : null
+
+    const head = document.createElement('div')
+    head.className = 'evo-expand-head'
+
+    const summary = document.createElement('div')
+    summary.className = 'evo-curr'
+    const currVerLine = document.createElement('div')
+    currVerLine.className = 'evo-curr-line'
+    currVerLine.textContent = `Current (${latestV})`
+    const currChars = document.createElement('div')
+    currChars.className = 'evo-curr-chars'
+    currChars.textContent = latestChars != null ? `${latestChars.toLocaleString()} chars` : 'Not present'
+    summary.appendChild(currVerLine)
+    summary.appendChild(currChars)
+    const currDate = fmtDate(latestV)
+    if (currDate) {
+      const d = document.createElement('div')
+      d.className = 'evo-curr-date'
+      d.textContent = `Updated ${currDate}`
+      summary.appendChild(d)
+    }
+    head.appendChild(summary)
+
+    const closeBtn = document.createElement('button')
+    closeBtn.type = 'button'
+    closeBtn.className = 'evo-panel-close'
+    closeBtn.setAttribute('aria-label', 'Close detail')
+    closeBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>`
+    closeBtn.addEventListener('click', e => { e.stopPropagation(); closePanel() })
+    head.appendChild(closeBtn)
+    frag.appendChild(head)
+
+    const logHd = document.createElement('div')
+    logHd.className = 'evo-log-hd'
+    logHd.textContent = 'Change log'
+    frag.appendChild(logHd)
+
+    const log = document.createElement('div')
+    log.className = 'evo-log'
+    frag.appendChild(log)
+
+    const history = computeHistory(type, title)
+    if (history.length === 0) {
+      const empty = document.createElement('p')
+      empty.className = 'evo-log-empty'
+      empty.textContent = 'No recorded changes in version history.'
+      log.appendChild(empty)
+    } else {
+      history.forEach((entry, i) => {
+        const row = document.createElement('div')
+        row.className = 'evo-log-row'
+
+        const isInitial = entry.event === 'added' && i === history.length - 1
+        const dotKind = isInitial ? 'initial'
+          : entry.event === 'added' ? 'added'
+          : entry.event === 'removed' ? 'removed'
+          : 'changed'
+        const dot = document.createElement('span')
+        dot.className = `evo-log-dot evo-log-dot-${dotKind}`
+
+        const main = document.createElement('div')
+        main.className = 'evo-log-main'
+
+        const top = document.createElement('div')
+        top.className = 'evo-log-top'
+        const ver = document.createElement('span')
+        ver.className = 'evo-log-ver'
+        ver.textContent = entry.version
+        const date = fmtDate(entry.version)
+        if (date) {
+          const dateEl = document.createElement('span')
+          dateEl.className = 'evo-log-date'
+          dateEl.textContent = date
+          top.appendChild(ver)
+          top.appendChild(dateEl)
+        } else {
+          top.appendChild(ver)
+        }
+
+        const desc = document.createElement('div')
+        desc.className = 'evo-log-desc'
+        if (isInitial) desc.textContent = 'Initial version'
+        else if (entry.event === 'added') desc.textContent = 'Re-added'
+        else if (entry.event === 'removed') desc.textContent = 'Removed'
+        else if (entry.delta != null) {
+          const sign = entry.delta > 0 ? '+' : ''
+          desc.textContent = `${sign}${entry.delta.toLocaleString()} chars`
+        }
+
+        main.appendChild(top)
+        main.appendChild(desc)
+        row.appendChild(dot)
+        row.appendChild(main)
+        log.appendChild(row)
+      })
+    }
+
+    return frag
+  }
+
+  // --- Export ---
+  function exportCSV() {
+    const range = getRange()
+    const displayVers = applyGranularity(range)
+    const { systemRows, toolRows } = buildDataRows(range)
+
+    const header = ['Component', 'Type', ...displayVers].join(',')
+    const lines = [...systemRows, ...toolRows].map(r =>
+      [`"${r.title.replace(/"/g, '""')}"`, r.type, ...displayVers.map(v => r.values[v] ?? '')].join(',')
+    )
+
+    const csv = [header, ...lines].join('\n')
+    const blob = new Blob([csv], { type: 'text/csv' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `evolution-${startVersion}-to-${endVersion}.csv`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  // --- Draw ---
   function draw() {
-    chartContainer.innerHTML = ''
+    tableWrap.innerHTML = ''
+    legend.innerHTML = ''
 
-    const range = getVersionRange()
-    const rows = buildRows(range)
+    const range = getRange()
+    const displayVers = applyGranularity(range)
+    const { systemRows, toolRows } = buildDataRows(range)
 
-    const margin = { top: 20, right: 20, bottom: 60, left: 180 }
-    const totalWidth = chartContainer.getBoundingClientRect().width || 900
-    const cellH = 28
-    const separatorH = (mode === 'All') ? 16 : 0
-    const sectionRows = rows.filter(r => r.type === 'section').length
-    const userRows = rows.filter(r => r.type === 'user').length
-    const innerH = rows.length * cellH + (mode === 'All' ? separatorH * 2 : 0)
-    const totalHeight = innerH + margin.top + margin.bottom
+    const table = document.createElement('table')
+    table.className = 'evo-table'
 
-    const svg = d3.select(chartContainer)
-      .append('svg')
-      .attr('width', totalWidth)
-      .attr('height', totalHeight)
+    // Compute label density from the matrix width so labels never crowd.
+    const wrapWidth = tableWrap.clientWidth || 1200
+    const matrixWidth = Math.max(0, wrapWidth - 196 /* Component column */)
+    const maxLabels = Math.max(2, Math.floor(matrixWidth / MIN_LABEL_PX))
+    const labelStep = Math.max(1, Math.ceil(displayVers.length / maxLabels))
 
-    const g = svg.append('g')
-      .attr('transform', `translate(${margin.left},${margin.top})`)
-
-    const innerW = totalWidth - margin.left - margin.right
-
-    // X scale
-    const xScale = d3.scaleBand()
-      .domain(range)
-      .range([0, innerW])
-      .padding(0.1)
-
-    const tickEvery = Math.max(1, Math.ceil(range.length / 16))
-    const visibleTicks = range.filter((_, i) => i % tickEvery === 0 || i === range.length - 1)
-
-    // X axis
-    g.append('g')
-      .attr('transform', `translate(0,${innerH})`)
-      .call(d3.axisBottom(xScale).tickValues(visibleTicks))
-      .selectAll('text')
-      .attr('transform', 'rotate(-45)')
-      .attr('text-anchor', 'end')
-      .attr('fill', 'var(--text-muted)')
-      .attr('font-size', 11)
-
-    g.selectAll('.domain, .tick line').attr('stroke', 'var(--border-default)')
-
-    // Y layout: compute y position for each row
-    // In "All" mode, add gaps between the three component groups.
-    rows.forEach((row, i) => {
-      const extra = mode === 'All'
-        ? (row.type === 'section' ? separatorH : row.type === 'tool' ? separatorH * 2 : 0)
-        : 0
-      row._y = i * cellH + extra
+    const colgroup = document.createElement('colgroup')
+    const colComp = document.createElement('col'); colComp.className = 'evo-col-comp'
+    colgroup.appendChild(colComp)
+    displayVers.forEach(() => {
+      const c = document.createElement('col'); c.className = 'evo-col-v'
+      colgroup.appendChild(c)
     })
+    table.appendChild(colgroup)
 
-    if (mode === 'All') {
-      const separators = [
-        userRows ? userRows * cellH + separatorH / 2 : null,
-        sectionRows ? (userRows + sectionRows) * cellH + separatorH * 1.5 : null,
-      ].filter(Boolean)
-      separators.forEach(sepY => {
-        g.append('line')
-          .attr('x1', 0).attr('x2', innerW)
-          .attr('y1', sepY).attr('y2', sepY)
-          .attr('stroke', 'var(--border-default)')
-          .attr('stroke-dasharray', '4,4')
+    const thead = document.createElement('thead')
+    const hrow = document.createElement('tr')
+    const thComp = document.createElement('th'); thComp.scope = 'col'; thComp.className = 'evo-th evo-th-comp'; thComp.textContent = 'Component'
+    hrow.appendChild(thComp)
+
+    displayVers.forEach((v, i) => {
+      const th = document.createElement('th')
+      th.scope = 'col'
+      th.className = 'evo-th evo-th-v'
+      const isLast = i === displayVers.length - 1
+      const labeled = i % labelStep === 0 || isLast
+      if (labeled) {
+        th.classList.add('labeled')
+        const span = document.createElement('span')
+        span.className = 'evo-th-v-label'
+        span.textContent = v
+        th.appendChild(span)
+      }
+      th.title = versionMeta[v]?.release_date || v
+      hrow.appendChild(th)
+    })
+    thead.appendChild(hrow)
+    table.appendChild(thead)
+
+    const tbody = document.createElement('tbody')
+
+    function addGroupRow(label, groupKey, dotClass) {
+      // Per-version section totals
+      const totals = {}
+      range.forEach(v => {
+        const s = structures[v]
+        if (!s) return
+        let sum = 0
+        if (groupKey === 'system') {
+          ;(s.system_message || []).forEach(item => { sum += item.char_count || 0 })
+        } else if (groupKey === 'tools') {
+          ;(s.tools || []).forEach(item => { sum += item.total_chars || 0 })
+        }
+        if (sum > 0) totals[v] = sum
       })
+      const vals = Object.values(totals)
+      const max = vals.length ? Math.max(...vals) : 1
+
+      const isCollapsed = collapsedGroups.has(groupKey)
+      const row = document.createElement('tr')
+      row.className = 'evo-group-row'
+      row.setAttribute('aria-expanded', String(!isCollapsed))
+
+      const tdComp = document.createElement('td')
+      tdComp.className = 'evo-td-comp evo-group-comp'
+
+      const chev = document.createElement('span')
+      chev.className = 'evo-group-chev' + (isCollapsed ? ' collapsed' : '')
+      chev.setAttribute('aria-hidden', 'true')
+      chev.innerHTML = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5l3 3 3-3"/></svg>`
+
+      const dot = document.createElement('span')
+      dot.className = `evo-group-dot ${dotClass}`
+
+      const name = document.createElement('span')
+      name.className = 'evo-group-name'
+      name.textContent = label
+
+      tdComp.appendChild(chev)
+      tdComp.appendChild(dot)
+      tdComp.appendChild(name)
+      row.appendChild(tdComp)
+
+      const barClass = dotClass === 'sys' ? 'sys' : 'tool'
+      let lastPresent = null
+      displayVers.forEach(v => {
+        const td = document.createElement('td')
+        td.className = 'evo-cell'
+        const val = totals[v]
+        if (val !== undefined) {
+          const bar = document.createElement('span')
+          bar.className = `evo-bar ${barClass}`
+          bar.style.height = `${(Math.max(0.06, val / max) * 100).toFixed(1)}%`
+          td.appendChild(bar)
+        }
+        td._info = {
+          kind: 'component',
+          version: v,
+          date: fmtDate(v),
+          title: label,
+          value: val,
+          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
+        }
+        if (val !== undefined) lastPresent = val
+        row.appendChild(td)
+      })
+
+      row.addEventListener('click', () => {
+        if (collapsedGroups.has(groupKey)) collapsedGroups.delete(groupKey)
+        else collapsedGroups.add(groupKey)
+        draw()
+      })
+      tbody.appendChild(row)
+      return isCollapsed
     }
 
-    // Y axis labels
-    rows.forEach(row => {
-      g.append('text')
-        .attr('x', -8)
-        .attr('y', row._y + cellH / 2)
-        .attr('dy', '0.35em')
-        .attr('text-anchor', 'end')
-        .attr('fill', row.type === 'user' ? 'var(--viz-user)' : row.type === 'section' ? 'var(--viz-system)' : 'var(--viz-tools)')
-        .attr('font-size', 11)
-        .text(row.title)
-    })
+    function addComponentRow(rowData) {
+      const tr = document.createElement('tr')
+      tr.className = 'evo-row'
+      tr.setAttribute('data-key', rowData.key)
+      tr.setAttribute('tabindex', '0')
+      if (rowData.key === selectedKey) tr.classList.add('selected')
 
-    // For each row compute max across range for height scaling
-    rows.forEach(row => {
-      const vals = Object.values(row.values)
-      row._max = d3.max(vals) || 1
-    })
+      const tdComp = document.createElement('td')
+      tdComp.className = 'evo-td-comp'
+      const compInner = document.createElement('span')
+      compInner.className = 'evo-comp-inner'
+      const icon = document.createElement('span')
+      icon.className = 'evo-row-icon'
+      icon.setAttribute('aria-hidden', 'true')
+      icon.innerHTML = `<svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3l3 3-3 3"/></svg>`
+      const label = document.createElement('span')
+      label.className = 'evo-comp-label'
+      label.textContent = rowData.title
+      label.title = rowData.title
+      compInner.appendChild(icon)
+      compInner.appendChild(label)
+      tdComp.appendChild(compInner)
+      tr.appendChild(tdComp)
 
-    // Draw cells
-    rows.forEach((row, rowIdx) => {
-      range.forEach((v, vi) => {
-        const val = row.values[v]
-        if (val === undefined) return
-
-        const x = xScale(v)
-        const bw = xScale.bandwidth()
-        const fullH = Math.max(4, (val / row._max) * (cellH - 4))
-        const color = row.type === 'user' ? 'var(--viz-user)' : row.type === 'section' ? 'var(--viz-system)' : 'var(--viz-tools)'
-
-        const rect = g.append('rect')
-          .attr('x', x)
-          .attr('y', row._y + (cellH - 0) - 0)
-          .attr('width', bw)
-          .attr('height', 0)
-          .attr('rx', 3)
-          .attr('fill', color)
-          .attr('opacity', 0.8)
-
-        rect.transition()
-          .delay(rowIdx * 30 + vi * 10)
-          .duration(500)
-          .attr('y', row._y + cellH - fullH)
-          .attr('height', fullH)
-
-        // Hover
-        rect.on('mousemove', (event) => {
-          tooltip.style.opacity = '1'
-          tooltip.style.left = (event.clientX + 14) + 'px'
-          tooltip.style.top = (event.clientY - 28) + 'px'
-          tooltip.innerHTML = `<strong>${v}</strong><br>${row.title}<br>${val.toLocaleString()} chars`
-        })
-        .on('mouseleave', () => {
-          tooltip.style.opacity = '0'
-        })
+      const typeClass = rowData.type === 'tool' ? 'tool' : 'sys'
+      let lastPresent = null
+      displayVers.forEach(v => {
+        const td = document.createElement('td')
+        td.className = 'evo-cell'
+        const val = rowData.values[v]
+        if (val !== undefined) {
+          const fill = val / rowData._max
+          const bar = document.createElement('span')
+          bar.className = `evo-bar ${typeClass}`
+          bar.style.height = `${(Math.max(0.06, fill) * 100).toFixed(1)}%`
+          td.appendChild(bar)
+        }
+        td._info = {
+          kind: 'component',
+          version: v,
+          date: fmtDate(v),
+          title: rowData.title,
+          value: val,
+          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
+        }
+        if (val !== undefined) lastPresent = val
+        tr.appendChild(td)
       })
-    })
+
+      const activate = () => openPanel(rowData.key, rowData.type, rowData.title)
+      tr.addEventListener('click', activate)
+      tr.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate() }
+      })
+
+      tbody.appendChild(tr)
+    }
+
+    function addTotalRow() {
+      const totals = {}
+      range.forEach(v => {
+        const s = structures[v]
+        if (!s) return
+        let sum = 0
+        ;(s.user_message || []).forEach(item => { sum += item.char_count || 0 })
+        ;(s.system_message || []).forEach(item => { sum += item.char_count || 0 })
+        ;(s.tools || []).forEach(item => { sum += item.total_chars || 0 })
+        if (sum > 0) totals[v] = sum
+      })
+      const vals = Object.values(totals)
+      const max = vals.length ? Math.max(...vals) : 1
+
+      const tr = document.createElement('tr')
+      tr.className = 'evo-total-row'
+
+      const tdComp = document.createElement('td')
+      tdComp.className = 'evo-td-comp evo-total-comp'
+      const label = document.createElement('span')
+      label.className = 'evo-total-label'
+      label.textContent = 'Total'
+      tdComp.appendChild(label)
+      tr.appendChild(tdComp)
+
+      displayVers.forEach(v => {
+        const td = document.createElement('td')
+        td.className = 'evo-cell'
+        const val = totals[v]
+        if (val !== undefined) {
+          const bar = document.createElement('span')
+          bar.className = 'evo-bar total'
+          bar.style.height = `${(Math.max(0.06, val / max) * 100).toFixed(1)}%`
+          td.appendChild(bar)
+        }
+        const s = structures[v]
+        const userSum = s ? (s.user_message || []).reduce((a, x) => a + (x.char_count || 0), 0) : 0
+        const sysSum = s ? (s.system_message || []).reduce((a, x) => a + (x.char_count || 0), 0) : 0
+        const toolsSum = s ? (s.tools || []).reduce((a, x) => a + (x.total_chars || 0), 0) : 0
+        td._info = {
+          kind: 'total',
+          version: v,
+          date: fmtDate(v),
+          value: val,
+          user: userSum,
+          system: sysSum,
+          tools: toolsSum,
+        }
+        tr.appendChild(td)
+      })
+
+      tbody.appendChild(tr)
+    }
+
+    function addUserMessageRow() {
+      const totals = {}
+      range.forEach(v => {
+        const s = structures[v]
+        if (!s) return
+        const sum = (s.user_message || []).reduce((a, x) => a + (x.char_count || 0), 0)
+        if (sum > 0) totals[v] = sum
+      })
+      const vals = Object.values(totals)
+      if (vals.length === 0) return
+      const max = Math.max(...vals)
+
+      const tr = document.createElement('tr')
+      tr.className = 'evo-user-row'
+
+      const tdComp = document.createElement('td')
+      tdComp.className = 'evo-td-comp evo-user-comp'
+      const dot = document.createElement('span')
+      dot.className = 'evo-group-dot user'
+      const label = document.createElement('span')
+      label.className = 'evo-user-label'
+      label.textContent = 'User Message'
+      tdComp.appendChild(dot)
+      tdComp.appendChild(label)
+      tr.appendChild(tdComp)
+
+      let lastPresent = null
+      displayVers.forEach(v => {
+        const td = document.createElement('td')
+        td.className = 'evo-cell'
+        const val = totals[v]
+        if (val !== undefined) {
+          const bar = document.createElement('span')
+          bar.className = 'evo-bar user'
+          bar.style.height = `${(Math.max(0.06, val / max) * 100).toFixed(1)}%`
+          td.appendChild(bar)
+        }
+        td._info = {
+          kind: 'component',
+          version: v,
+          date: fmtDate(v),
+          title: 'User Message',
+          value: val,
+          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
+        }
+        if (val !== undefined) lastPresent = val
+        tr.appendChild(td)
+      })
+
+      tbody.appendChild(tr)
+    }
+
+    addTotalRow()
+    addUserMessageRow()
+
+    const sysCollapsed = addGroupRow('System Prompt', 'system', 'sys')
+    if (!sysCollapsed) systemRows.forEach(r => addComponentRow(r))
+
+    const toolsCollapsed = addGroupRow('Tools', 'tools', 'tool')
+    if (!toolsCollapsed) toolRows.forEach(r => addComponentRow(r))
+
+    table.appendChild(tbody)
+    tableWrap.appendChild(table)
+
+    legend.innerHTML = `
+      <span class="evo-leg"><span class="evo-leg-swatch user"></span>User Message</span>
+      <span class="evo-leg"><span class="evo-leg-swatch sys"></span>System Prompt</span>
+      <span class="evo-leg"><span class="evo-leg-swatch tool"></span>Tools</span>
+      <span class="evo-leg evo-leg-note">Bar height = character count · empty cell = section absent in that release</span>`
+
+    // Restore selection if a row was open before redraw
+    if (selectedKey) {
+      const [type, title] = selectedKey.split(/:(.*)/)
+      const restoreKey = selectedKey
+      selectedKey = null
+      openPanel(restoreKey, type, title)
+    }
   }
 
   draw()
+
+  // Re-render on resize so the label density tracks the actual matrix width.
+  let resizeTimer = null
+  let lastWidth = tableWrap.clientWidth
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer)
+    resizeTimer = setTimeout(() => {
+      const w = tableWrap.clientWidth
+      if (w !== lastWidth) { lastWidth = w; draw() }
+    }, 120)
+  })
 }
