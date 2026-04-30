@@ -129,15 +129,25 @@
     }
   },
   "xml_tags": {
-    "system_reminder": {
-      "hash": "80632372d58d5488",
-      "char_count": 487,
-      "text": "<system-reminder>\nThe following deferred tools are now available via ToolSearch. Their schemas are NOT loaded \u2014 calling them directly will fail with InputValidationError. Use ToolSearch with query \"select:<name>[,<name>...]\" to load tool schemas before calling them:\nAskUserQuestion\nCronCreate\nCronDelete\nCronList\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nExitWorktree\nMonitor\nNotebookEdit\nPushNotification\nRemoteTrigger\nTaskOutput\nTaskStop\nTodoWrite\nWebFetch\nWebSearch\n</system-reminder>"
+    "system_reminder/0": {
+      "hash": "aabb1122",
+      "char_count": 420,
+      "text": "## gitStatus\n\nThis is the git status at the start of the conversation.\n\nCurrent branch: master\n\nStatus:\n(clean)\n\n## currentDate\n\nToday's date is 2026-04-30."
+    },
+    "system_reminder/1": {
+      "hash": "bbcc2233",
+      "char_count": 180,
+      "text": "## Available Skills\n\nThe following user-invocable skills are available:\n- `/commit` \u2014 create a git commit\n- `/review` \u2014 review the current diff\n- `/schedule` \u2014 schedule a background agent"
+    },
+    "available_deferred_tools/0": {
+      "hash": "ccdd3344",
+      "char_count": 180,
+      "text": "The following deferred tools are now available via ToolSearch:\n- CronCreate\n- CronDelete\n- CronList\n- EnterPlanMode\n- Monitor\n- TodoWrite\n- WebFetch\n- WebSearch"
     },
     "actual_prompt": {
-      "hash": "fd6379baf6a7b887",
-      "char_count": 116,
-      "text": "# User Message\n</system-reminder>\n</system-reminder>\n\n\n2026-04-16T21:28:33.122Z is the date. Write a haiku about it."
+      "hash": "eeff5566",
+      "char_count": 60,
+      "text": "different system reminder somehow got the same content"
     }
   }
 }

@@ -79,15 +79,23 @@ def run_export(
                     "total_chars": prose_chars + schema_chars,
                 })
 
-        # XML tags from user_message children (excluding actual_prompt)
-        xml_tags: list[str] = []
+        # XML tags: one entry per occurrence, keyed by "kind/index"
+        xml_tags: list[dict] = []
         um = snap.components.get("user_message")
         if um:
-            xml_tags = sorted(
-                child.kind
-                for child in um.children.values()
-                if child.kind != "actual_prompt"
-            )
+            for child in um.children.values():
+                if child.kind == "actual_prompt":
+                    continue
+                # child.id is "user_message/kind/index" — extract the index
+                parts = child.id.split("/")
+                idx = int(parts[-1]) if parts[-1].isdigit() else 0
+                xml_tags.append({
+                    "key": f"{child.kind}/{idx}",
+                    "kind": child.kind,
+                    "index": idx,
+                    "char_count": len(child.normalized),
+                })
+            xml_tags.sort(key=lambda x: (x["kind"], x["index"]))
 
         structures_data[snap.version] = {
             "sections": sections,
@@ -157,26 +165,22 @@ def run_export(
                     "schema": schema.normalized if schema else None,
                 }
 
-        # XML tags from user_message (first occurrence of each tag kind)
+        # XML tags: keyed by "kind/index"; actual_prompt keyed as "actual_prompt"
         xml_tags_out: dict[str, dict] = {}
         um = snap.components.get("user_message")
         if um:
             for child in um.children.values():
                 if child.kind == "actual_prompt":
-                    xml_tags_out["actual_prompt"] = {
-                        "hash": child.hash,
-                        "char_count": len(child.normalized),
-                        "text": child.normalized,
-                    }
-                elif child.kind != "actual_prompt":
-                    # Use tag kind as key; keep first occurrence only
-                    key = child.kind
-                    if key not in xml_tags_out:
-                        xml_tags_out[key] = {
-                            "hash": child.hash,
-                            "char_count": len(child.normalized),
-                            "text": child.normalized,
-                        }
+                    key = "actual_prompt"
+                else:
+                    parts = child.id.split("/")
+                    idx = int(parts[-1]) if parts[-1].isdigit() else 0
+                    key = f"{child.kind}/{idx}"
+                xml_tags_out[key] = {
+                    "hash": child.hash,
+                    "char_count": len(child.normalized),
+                    "text": child.normalized,
+                }
 
         comp_data = {
             "sections": sections_out,

@@ -182,7 +182,8 @@ async function _openPanel(panel, reg, version) {
     meta.textContent = `${d.char_count?.toLocaleString() ?? item.size.toLocaleString()} chars`
     body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
   } else if (item.type === 'xml_tag' || item.type === 'actual_prompt') {
-    const d = detail.xml_tags?.[item.title]
+    const key = item.lookupKey ?? item.title
+    const d = detail.xml_tags?.[key]
     if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
     meta.textContent = `${d.char_count?.toLocaleString()} chars`
     body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
@@ -314,10 +315,17 @@ export async function renderStructure(container) {
         label: 'User Message',
         x: 6.5,
         items: [
-          ...(snap.xml_tags || []).map(tag => ({
-            title: tag, size: 600, type: 'xml_tag',
-          })),
-          { title: 'actual_prompt', size: 300, type: 'actual_prompt' },
+          ...(snap.xml_tags || []).map(tag => {
+            // tag is now an object {key, kind, index, char_count}
+            const isObj = typeof tag === 'object'
+            const key   = isObj ? tag.key   : tag
+            const kind  = isObj ? tag.kind  : tag
+            const idx   = isObj ? tag.index : 0
+            const size  = isObj ? tag.char_count : 600
+            const label = idx === 0 ? kind : `${kind} #${idx + 1}`
+            return { title: label, lookupKey: key, size, type: 'xml_tag' }
+          }),
+          { title: 'actual_prompt', lookupKey: 'actual_prompt', size: 300, type: 'actual_prompt' },
         ],
       },
     ]
