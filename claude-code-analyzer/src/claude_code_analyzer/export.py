@@ -98,9 +98,9 @@ def run_export(
             xml_tags.sort(key=lambda x: (x["kind"], x["index"]))
 
         structures_data[snap.version] = {
-            "sections": sections,
+            "system_message": sections,
             "tools": tools,
-            "xml_tags": xml_tags,
+            "user_message": xml_tags,
         }
 
     (output_dir / "structures.json").write_text(
@@ -183,9 +183,9 @@ def run_export(
                 }
 
         comp_data = {
-            "sections": sections_out,
+            "system_message": sections_out,
             "tools": tools_out,
-            "xml_tags": xml_tags_out,
+            "user_message": xml_tags_out,
         }
         (components_dir / f"{snap.version}.json").write_text(
             json.dumps(comp_data, indent=2), encoding="utf-8"

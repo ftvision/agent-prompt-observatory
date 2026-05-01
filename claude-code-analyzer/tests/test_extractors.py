@@ -297,12 +297,27 @@ class TestExtractSystemPrompt:
         codes = [d.code for d in diagnostics]
         assert "unexpected_heading_depth" in codes
 
-    def test_no_children_produces_empty_children_dict(self):
-        """A system prompt with no ## sections has an empty children dict."""
+    def test_no_children_produces_only_preamble(self):
+        """A system prompt with no ## sections still surfaces its body as a Preamble child."""
         section = _section(
             title="System Prompt",
             level=1,
             body="Just raw text.",
+            line_start=1,
+            line_end=5,
+        )
+        comp = extract_system_prompt(section, [])
+        assert list(comp.children.keys()) == ["system_prompt/Preamble"]
+        preamble = comp.children["system_prompt/Preamble"]
+        assert preamble.title == "Preamble"
+        assert preamble.normalized == "Just raw text."
+
+    def test_empty_body_produces_no_preamble(self):
+        """A system prompt whose body is whitespace-only does NOT emit a preamble."""
+        section = _section(
+            title="System Prompt",
+            level=1,
+            body="   \n  \n",
             line_start=1,
             line_end=5,
         )

@@ -1,9 +1,20 @@
 import { getMeta } from './data/loader.js'
 import { renderStructure } from './views/structure.js'
-import { renderDiff } from './views/diff.js'
 import { renderEvolution } from './views/evolution.js'
 
 const app = document.getElementById('app')
+
+function esc(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+function formatCount(value) {
+  return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(Number(value || 0))
+}
 
 const SECTIONS = [
   {
@@ -13,14 +24,6 @@ const SECTIONS = [
     title: 'Prompt architecture as a layered object',
     meta: 'One vertical stack: User Prompt, System Prompt, Tools',
     render: renderStructure,
-  },
-  {
-    id: 'diff',
-    label: 'Diff',
-    kicker: 'Two versions',
-    title: 'Structural change before text evidence',
-    meta: 'Compare persistence, additions, removals, and edits',
-    render: renderDiff,
   },
   {
     id: 'evolution',
@@ -33,14 +36,28 @@ const SECTIONS = [
 ]
 
 async function main() {
-  const meta = await getMeta()
+  let meta
+  try {
+    meta = await getMeta()
+  } catch (error) {
+    app.innerHTML = `
+      <main class="app-fatal" role="alert">
+        <h1>Claude Code Prompt Observatory could not load</h1>
+        <p>${esc(error?.message || 'Version metadata is unavailable. Check the local data export and dev server.')}</p>
+        <button type="button" data-app-retry>Retry</button>
+      </main>
+    `
+    app.querySelector('[data-app-retry]')?.addEventListener('click', main)
+    return
+  }
+
   const latest = meta.versions?.at(-1)
 
   app.innerHTML = `
     <header class="top-rail">
-      <a class="rail-brand" href="#structure" aria-label="Prompt Drift Observatory home">
+      <a class="rail-brand" href="#structure" aria-label="Claude Code Prompt Observatory home">
         <span class="brand-mark" aria-hidden="true"></span>
-        <span>Prompt Drift Observatory</span>
+        <span>Claude Code Prompt Observatory</span>
       </a>
       <nav class="rail-nav" aria-label="Page sections">
         ${SECTIONS.map(section =>
@@ -48,8 +65,10 @@ async function main() {
         ).join('')}
       </nav>
       <div class="rail-meta">
-        <span>${meta.versions?.length ?? 0} versions</span>
-        <span>${latest?.version ?? 'latest unavailable'}</span>
+        <span>${formatCount(meta.versions?.length ?? 0)} versions</span>
+        <span>${esc(latest?.version ?? 'latest unavailable')}</span>
+        <span class="rail-divider" aria-hidden="true">·</span>
+        <a class="rail-credit" href="https://cchistory.mariozechner.at/" target="_blank" rel="noopener noreferrer">data: cchistory.mariozechner.at</a>
       </div>
     </header>
     <main class="scroll-page">
@@ -57,10 +76,10 @@ async function main() {
         <section class="work-section work-section-${section.id}" id="${section.id}" data-section="${section.id}" aria-labelledby="${section.id}-title">
           <div class="section-chrome">
             <div>
-              <div class="section-kicker">${section.kicker}</div>
-              <h1 id="${section.id}-title">${section.title}</h1>
+              <div class="section-kicker">${esc(section.kicker)}</div>
+              <h1 id="${section.id}-title">${esc(section.title)}</h1>
             </div>
-            <div class="section-meta">${section.meta}</div>
+            <div class="section-meta">${esc(section.meta)}</div>
           </div>
           <div class="section-surface" id="${section.id}-surface"></div>
         </section>
@@ -74,6 +93,26 @@ async function main() {
       await section.render(surface)
     } catch (err) {
       console.error(`Failed to render section "${section.id}"`, err)
+      surface.innerHTML = `
+        <div class="section-error" role="alert">
+          <h2>${esc(section.label)} could not render</h2>
+          <p>${esc(err?.message || 'The section failed while reading local prompt data.')}</p>
+          <button type="button" data-section-retry="${esc(section.id)}">Retry</button>
+        </div>
+      `
+      surface.querySelector('[data-section-retry]')?.addEventListener('click', async () => {
+        surface.innerHTML = '<p class="loading">Loading section…</p>'
+        try {
+          await section.render(surface)
+        } catch (retryErr) {
+          surface.innerHTML = `
+            <div class="section-error" role="alert">
+              <h2>${esc(section.label)} could not render</h2>
+              <p>${esc(retryErr?.message || 'The retry failed while reading local prompt data.')}</p>
+            </div>
+          `
+        }
+      })
     }
   }
 
@@ -97,7 +136,10 @@ function wireSectionNav() {
     link.addEventListener('click', event => {
       event.preventDefault()
       const target = document.getElementById(link.dataset.sectionLink)
-      target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start',
+      })
       history.replaceState(null, '', `#${link.dataset.sectionLink}`)
       setActive(link.dataset.sectionLink)
     })
@@ -112,11 +154,16 @@ function wireSectionNav() {
 
   sections.forEach(section => observer.observe(section))
 
-  const initial = location.hash?.replace('#', '') || 'structure'
+  const requested = location.hash?.replace('#', '') || 'structure'
+  const initial = sections.some(section => section.id === requested) ? requested : 'structure'
+  if (requested !== initial) history.replaceState(null, '', `#${initial}`)
   setActive(initial)
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      document.getElementById(initial)?.scrollIntoView({ block: 'start' })
+      document.getElementById(initial)?.scrollIntoView({
+        block: 'start',
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      })
     })
   })
 }

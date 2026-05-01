@@ -1,77 +1,460 @@
-.structure-three-prototype {
-  min-height: 720px;
+.structure-workbench {
+  min-height: calc(100vh - var(--rail-height) - 84px);
   display: grid;
-  grid-template-columns: 260px minmax(520px, 1fr);
-  gap: 30px;
-  align-items: center;
-  padding: 44px 42px;
+  /* Left rail | fixed-width model | greedy inspector that grows on big screens.
+     Model column is wide enough that slab text reads at 10-12px effective; the
+     inspector still earns extra horizontal space on huge displays. */
+  grid-template-columns: 156px 540px minmax(440px, 1fr);
+  gap: 28px;
+  padding: 30px 26px 36px;
+  max-width: 1640px;
+  margin: 0 auto;
   background:
-    radial-gradient(ellipse at 58% 45%, oklch(91% 0.016 76 / 0.72), transparent 38%),
-    linear-gradient(180deg, oklch(98.8% 0.006 70), oklch(96.6% 0.007 70));
-  border-top: 1px solid var(--border-subtle);
+    radial-gradient(ellipse at 36% 44%, oklch(91% 0.014 75 / 0.55), transparent 34%),
+    linear-gradient(180deg, oklch(99.2% 0.004 70), oklch(97.5% 0.006 70));
 }
 
-.prototype-copy {
-  align-self: start;
-  padding-top: 34px;
+.structure-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
-.prototype-copy span {
-  display: block;
-  color: oklch(51% 0.125 76);
-  font-size: 11px;
-  font-weight: 760;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+.structure-index {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-content: start;
+  gap: 0 12px;
+  padding-top: 6px;
 }
 
-.prototype-copy h2 {
-  margin: 0 0 10px;
+.section-number {
+  width: 24px;
+  height: 24px;
+  border: 1px solid oklch(83% 0.012 70);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   color: var(--text-primary);
-  font-size: 24px;
-  line-height: 1.08;
+  font-size: 12px;
+  font-weight: 650;
+  background: oklch(99% 0.003 70);
 }
 
-.prototype-copy p {
-  max-width: 28ch;
+.structure-index h2 {
+  margin: 0 0 3px;
+  color: var(--text-primary);
+  font-size: clamp(18px, calc(15px + 0.25vw), 22px);
+  line-height: 1.15;
+}
+
+.structure-index p {
   margin: 0;
   color: var(--text-secondary);
+  font-size: clamp(11px, calc(10px + 0.08vw), 13px);
+  line-height: 1.3;
+}
+
+.structure-version-pick {
+  grid-column: 2;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.structure-version-pick label {
+  color: var(--text-muted);
+  font-size: clamp(11px, calc(10px + 0.08vw), 13px);
+}
+
+.structure-version-pick .version-select {
+  min-width: 116px;
+  background: oklch(99% 0.003 70 / 0.92);
+}
+
+.metric-list {
+  grid-column: 2;
+  margin: 22px 0 0;
+}
+
+.metric-list div {
+  margin-bottom: 24px;
+}
+
+.metric-list dt {
+  color: var(--text-muted);
+  font-size: clamp(11px, calc(10px + 0.08vw), 13px);
+  line-height: 1.2;
+}
+
+.metric-list dd {
+  margin: 7px 0 0;
+  color: var(--text-primary);
+  font-size: clamp(16px, calc(13px + 0.22vw), 21px);
+  line-height: 1.16;
+  font-weight: 650;
+}
+
+.metric-list dd span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-secondary);
+  font-size: clamp(11px, calc(10px + 0.08vw), 13px);
+  font-weight: 500;
+}
+
+.structure-visual {
+  position: relative;
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  /* Aligns the model's first callout (User Prompt) with the metric list's
+     "Total size" row in the rail. Tracks the rail header height exactly:
+     padding-top 6 + h2/p row 38 + version-pick row 38 + metric-list margin 22 ≈ 104. */
+  padding-top: 104px;
+}
+
+.structure-version-pick .version-select:focus-visible,
+.panel-close:focus-visible,
+.panel-tab:focus-visible {
+  outline: 2px solid oklch(48% 0.13 255);
+  outline-offset: 2px;
+}
+
+.structure-stack-svg {
+  width: 100%;
+  /* viewBox is 660×950 (taller than wide); SVG sizes to its width-determined
+     aspect so there's no centering empty space above/below the content. */
+  aspect-ratio: 660 / 950;
+  max-height: calc(100vh - 132px);
+  display: block;
+}
+
+.svg-slab {
+  cursor: pointer;
+  outline: none;
+}
+
+.svg-slab .slab-front {
+  transition: filter 140ms ease, stroke-width 140ms ease;
+}
+
+.svg-slab:hover .slab-front,
+.svg-slab:focus-visible .slab-front,
+.svg-slab.selected .slab-front {
+  filter: brightness(1.045) saturate(1.05);
+  stroke-width: 1.5;
+}
+
+.svg-slab.selected .slab-front {
+  stroke: oklch(38% 0.13 255);
+}
+
+.svg-slab:focus-visible .slab-front {
+  stroke: oklch(45% 0.14 255);
+}
+
+.slab-label,
+.slab-icon {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, sans-serif;
+  paint-order: stroke;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 0.7px;
+  pointer-events: none;
+}
+
+.slab-icon {
+  font-size: 19px;
+  stroke-width: 0;
+}
+
+.group-callout {
+  pointer-events: none;
+}
+
+.callout-title {
+  font-size: 19px;
+  font-weight: 750;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.callout-meta {
+  font-size: 15px;
+  font-weight: 520;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.structure-panel {
+  align-self: stretch;
+  min-height: 0;
+  max-height: calc(100vh - var(--rail-height) - 132px);
+  margin-top: 0;
+  border: 1px solid oklch(84% 0.009 70);
+  border-radius: 14px;
+  background: oklch(99.3% 0.003 70 / 0.92);
+  box-shadow: 0 18px 50px oklch(45% 0.018 60 / 0.08);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.structure-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  padding: 20px 20px 12px;
+}
+
+.structure-breadcrumb {
+  min-width: 0;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.structure-breadcrumb span {
+  color: var(--text-muted);
+  padding: 0 8px;
+}
+
+.panel-close {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--text-muted);
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.panel-close:hover {
+  color: var(--text-primary);
+  background: oklch(94% 0.006 70);
+}
+
+.panel-tabs {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+  border-bottom: 1px solid oklch(88% 0.008 70);
+}
+
+.panel-tab {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 12px 0 10px;
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 620;
+  cursor: pointer;
+}
+
+.panel-tab.active {
+  color: var(--text-primary);
+  border-bottom-color: var(--text-primary);
+}
+
+.panel-body {
+  min-height: 0;
+  overflow: auto;
+  padding: 18px 20px 22px;
+}
+
+.panel-pane.hidden {
+  display: none;
+}
+
+.panel-pane h3 {
+  margin: 0 0 14px;
+  color: var(--text-primary);
+  font-size: clamp(15px, calc(13px + 0.18vw), 18px);
+}
+
+/* Cap-and-grow: the panel column itself can be wide on big screens, but the
+   prose body stays at a comfortable reading measure (~70-75ch). */
+.rendered-md,
+.panel-pane pre {
+  max-width: 720px;
+}
+
+.rendered-md {
+  border: 1px solid oklch(88% 0.008 70);
+  border-radius: 8px;
+  padding: 16px;
+  background: oklch(99.7% 0.002 70);
+  color: var(--text-primary);
+  font-size: clamp(13px, calc(12px + 0.1vw), 15px);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.rendered-md :first-child {
+  margin-top: 0;
+}
+
+.rendered-md :last-child {
+  margin-bottom: 0;
+}
+
+.rendered-md h1,
+.rendered-md h2,
+.rendered-md h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.rendered-md ul {
+  padding-left: 18px;
+}
+
+.panel-pane pre {
+  margin: 0;
+  min-height: 280px;
+  border: 1px solid oklch(88% 0.008 70);
+  border-radius: 8px;
+  padding: 16px;
+  overflow: auto;
+  background: oklch(98% 0.004 70);
+  color: var(--text-primary);
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.metadata-list {
+  margin: 0;
+  border: 1px solid oklch(88% 0.008 70);
+  border-radius: 8px;
+  padding: 16px;
+  background: oklch(99.7% 0.002 70);
+}
+
+.metadata-list div {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 14px;
+  padding: 8px 0;
+}
+
+.metadata-list dt {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.metadata-list dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.structure-panel-empty,
+.structure-error {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  min-height: 100%;
+  padding: 28px;
+  color: var(--text-secondary);
+}
+
+.structure-panel-empty h3,
+.structure-error h2 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.structure-panel-empty p,
+.structure-error p {
+  max-width: 54ch;
+  margin: 0;
   font-size: 13px;
   line-height: 1.55;
 }
 
-.single-slab-stage {
-  position: relative;
-  height: 560px;
-  min-width: 0;
-  border-radius: 18px;
-  background:
-    radial-gradient(ellipse at 50% 70%, oklch(83% 0.018 72 / 0.35), transparent 38%),
-    linear-gradient(180deg, oklch(99.4% 0.004 70), oklch(97.4% 0.006 70));
-  box-shadow:
-    inset 0 0 0 1px oklch(86% 0.010 70),
-    0 28px 70px oklch(44% 0.018 60 / 0.11);
-  overflow: hidden;
+.structure-error {
+  min-height: 420px;
+  place-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, oklch(99.2% 0.004 70), oklch(97.5% 0.006 70));
 }
 
-.single-slab-stage canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
+.structure-error button {
+  justify-self: center;
+  border: 1px solid oklch(72% 0.012 60);
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: var(--text-primary);
+  background: oklch(99% 0.003 70);
+  font: inherit;
+  cursor: pointer;
 }
 
-@media (max-width: 900px) {
-  .structure-three-prototype {
+.structure-error button:hover {
+  background: oklch(95% 0.006 70);
+}
+
+@media (max-width: 1180px) {
+  .structure-workbench {
+    grid-template-columns: 140px minmax(440px, 1fr) 320px;
+    gap: 18px;
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 940px) {
+  .structure-workbench {
     grid-template-columns: 1fr;
-    padding: 28px 16px;
   }
 
-  .prototype-copy {
-    padding-top: 0;
+  .metric-list {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
   }
 
-  .single-slab-stage {
-    height: 430px;
+  .metric-list div {
+    margin: 0;
+  }
+
+  .structure-toolbar {
+    position: static;
+    justify-content: end;
+    margin: 4px 28px 8px;
+  }
+
+  .structure-stack-svg {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 760 / 700;
+  }
+
+  .structure-panel {
+    max-height: none;
+    min-height: 420px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg-slab .slab-front {
+    transition: none;
   }
 }

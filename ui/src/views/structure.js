@@ -1,500 +1,450 @@
-import * as THREE from 'three'
 import { marked } from 'marked'
-import { getMeta, getStructures } from '../data/loader.js'
+import { getComponents, getMeta, getStructures } from '../data/loader.js'
 import { createVersionPicker } from '../components/version-picker.js'
+import './structure.css'
 
 marked.setOptions({ breaks: true })
 
-let _renderer = null
-let _animId = null
-let _onResize = null
-let _dirty = true
-let _meshes = []
-const _disposables = []
-let _focusedRegIdx = -1
-
-function _cleanup() {
-  if (_animId) { cancelAnimationFrame(_animId); _animId = null }
-  if (_renderer) { _renderer.dispose(); _renderer = null }
-  if (_onResize) { window.removeEventListener('resize', _onResize); _onResize = null }
-  _disposables.forEach(d => { try { d.dispose() } catch (_e) {} })
-  _disposables.length = 0
-  _meshes = []
-  _focusedRegIdx = -1
+const PALETTE = {
+  user: {
+    label: 'User Prompt',
+    className: 'amber',
+    ink: '#674407',
+    topA: '#ffe6b5',
+    topB: '#f6c776',
+    frontA: '#f7d28f',
+    frontB: '#efb84f',
+    sideA: '#f0bf64',
+    sideB: '#d49a34',
+    stroke: '#c58d27',
+  },
+  system: {
+    label: 'System Prompt',
+    className: 'blue',
+    ink: '#174d7d',
+    topA: '#d9ecfb',
+    topB: '#a7cce9',
+    frontA: '#c6def2',
+    frontB: '#8db9dc',
+    sideA: '#9fc5e4',
+    sideB: '#77a8cf',
+    stroke: '#6d9bc2',
+  },
+  tools: {
+    label: 'Tools',
+    className: 'green',
+    ink: '#205d37',
+    topA: '#dff0da',
+    topB: '#b7d9ad',
+    frontA: '#cce5c5',
+    frontB: '#9fc98f',
+    sideA: '#afd5a4',
+    sideB: '#89b97a',
+    stroke: '#7faa70',
+  },
 }
 
-// Clean light-mode categorical palettes. Ordered mid→light; material shading
-// handles face contrast, so base colors avoid the muddy low-light range.
-const SECTION_COLORS = {
-  user_message:  [0xc98713, 0xd99924, 0xe8ad3d, 0xf3c46a, 0xf8d998],
-  system_prompt: [0x25779a, 0x2d8ab1, 0x45a0c2, 0x6bb8d4, 0x95d0e4, 0xbfe3ee],
-  tools:         [0x238761, 0x2f9c73, 0x47b286, 0x6dc79f, 0x9bdcbd, 0xc5ecd8],
+function esc(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
 }
 
-const LABEL_COLORS = {
-  user_message:  '#8a5b08',
-  system_prompt: '#225f7a',
-  tools:         '#1f6b4d',
+function formatNumber(value) {
+  return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(Number(value || 0))
 }
 
-const SECTION_NAMES = {
-  user_message:  'User Messages',
-  system_prompt: 'System Message',
-  tools:         'Tools',
+function formatDate(value) {
+  if (!value) return 'Unknown'
+  const date = new Date(`${value}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return value
+  return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: 'numeric' }).format(date)
 }
 
-function _darken(hex, f) {
-  return (
-    (Math.round(((hex >> 16) & 0xff) * f) << 16) |
-    (Math.round(((hex >> 8)  & 0xff) * f) << 8)  |
-     Math.round( (hex        & 0xff) * f)
-  )
+function plural(count, one, many = `${one}s`) {
+  return `${formatNumber(count)} ${count === 1 ? one : many}`
 }
 
-// Build the detail panel overlay
-function _buildPanel(container) {
-  const panel = document.createElement('div')
-  panel.className = 'stack-panel'
-  container.appendChild(panel)
-  return panel
+function truncate(value, max = 34) {
+  const text = String(value || '')
+  if (text.length <= max) return text
+  return `${text.slice(0, max - 1)}…`
 }
 
-async function _openPanel(panel, reg, version) {
-  const { item, stackLabel } = reg
+function formatTitle(item) {
+  if (item.title) return item.title
+  if (item.kind === 'system_reminder') return `System reminder ${item.index + 1}`
+  return item.key || 'User prompt'
+}
 
-  panel.innerHTML = `
-    <div class="stack-panel-head">
-      <span class="stack-panel-tag">${stackLabel}</span>
-      <button class="stack-panel-close" aria-label="Close panel">×</button>
-    </div>
-    <div class="stack-panel-title">${item.title}</div>
-    <div class="stack-panel-meta stack-panel-loading">Loading…</div>
-    <div class="stack-panel-body"></div>
+function getSize(item) {
+  return item.char_count ?? item.total_chars ?? item.prose_chars ?? 0
+}
+
+function buildGroups(structure) {
+  return [
+    {
+      key: 'user',
+      ...PALETTE.user,
+      items: (structure.user_message || []).map(item => ({
+        ...item,
+        title: formatTitle(item),
+        type: 'user',
+        lookupKey: item.key,
+        size: getSize(item),
+      })),
+    },
+    {
+      key: 'system',
+      ...PALETTE.system,
+      items: (structure.system_message || []).map(item => ({
+        ...item,
+        type: 'system',
+        lookupKey: item.title,
+        size: getSize(item),
+      })),
+    },
+    {
+      key: 'tools',
+      ...PALETTE.tools,
+      items: (structure.tools || []).map(item => ({
+        ...item,
+        type: 'tool',
+        lookupKey: item.title,
+        size: getSize(item),
+      })),
+    },
+  ].filter(group => group.items.length)
+}
+
+function flattenGroups(groups) {
+  return groups.flatMap(group => group.items)
+}
+
+function slab({ x, y, w, h, d, item, group, showTop = false, selected = false }) {
+  const top = `${x + d},${y - d} ${x + w - d * 0.35},${y - d} ${x + w},${y} ${x},${y}`
+  const front = `${x},${y} ${x + w},${y} ${x + w},${y + h} ${x},${y + h}`
+  const side = `${x + w},${y} ${x + w - d * 0.35},${y - d} ${x + w - d * 0.35},${y + h - d} ${x + w},${y + h}`
+  const icon = item.type === 'tool' ? `<text class="slab-icon" x="${x + 16}" y="${y + h / 2 + 3}" fill="${group.ink}">□</text>` : ''
+
+  return `
+    <g class="svg-slab ${group.className} ${selected ? 'selected' : ''}" data-component-id="${esc(item.id)}" tabindex="0" role="button" aria-label="${esc(group.label)}: ${esc(item.title)}">
+      <title>${esc(group.label)}: ${esc(item.title)}, ${formatNumber(item.size)} characters</title>
+      ${showTop ? `<polygon points="${side}" fill="url(#${group.key}-side)" stroke="${group.stroke}" stroke-width="0.6" opacity="0.52"/>` : ''}
+      ${showTop ? `<polygon points="${top}" fill="url(#${group.key}-top)" stroke="${group.stroke}" stroke-width="0.8"/>` : ''}
+      <polygon class="slab-front" points="${front}" fill="url(#${group.key}-front)" stroke="${group.stroke}" stroke-width="0.9"/>
+      <path d="M${x + 6},${y + 2.5} H${x + w - 8}" stroke="rgba(255,255,255,0.48)" stroke-width="1.2"/>
+      <path d="M${x + w - 5},${y + 2.5} V${y + h - 2}" stroke="rgba(35,45,55,0.12)" stroke-width="1"/>
+      <path d="M${x + w - 2},${y + 3} V${y + h - 3}" stroke="rgba(255,255,255,0.24)" stroke-width="0.8"/>
+      ${icon}
+      <text class="slab-label" x="${x + (item.type === 'tool' ? 33 : 24)}" y="${y + h / 2 + 3}" fill="${group.ink}">${esc(truncate(item.title, item.type === 'tool' ? 32 : 38))}</text>
+    </g>
   `
-  panel.classList.add('open')
-  panel.querySelector('.stack-panel-close').onclick = () => panel.classList.remove('open')
+}
 
-  let detail = null
-  try {
-    const { getComponents } = await import('../data/loader.js')
-    detail = await getComponents(version)
-  } catch (_) {}
+function groupCallout({ group, anchorX, anchorY, labelX }) {
+  return `
+    <g class="group-callout ${group.className}">
+      <path d="M${labelX + 74},${anchorY} H${anchorX - 28}" stroke="${group.stroke}" stroke-width="1.4"/>
+      <circle cx="${anchorX - 28}" cy="${anchorY}" r="3" fill="${group.stroke}"/>
+      <text class="callout-title" x="${labelX}" y="${anchorY - 6}" fill="${group.ink}">${group.label}</text>
+      <text class="callout-meta" x="${labelX}" y="${anchorY + 12}" fill="#5f5a51">${plural(group.items.length, group.key === 'tools' ? 'tool' : 'section')}</text>
+      <text class="callout-meta" x="${labelX}" y="${anchorY + 29}" fill="#5f5a51">${formatNumber(group.total)} chars</text>
+    </g>
+  `
+}
 
-  const meta = panel.querySelector('.stack-panel-meta')
-  const body = panel.querySelector('.stack-panel-body')
-  meta.classList.remove('stack-panel-loading')
+function renderSvgStack(groups, selectedId) {
+  const x = 200
+  const w = 320
+  const h = 34
+  const d = 8
+  const gap = 1
+  const dividerGap = 24
+  let y = 32
+  const parts = []
+  const callouts = []
 
-  if (!detail) {
-    meta.textContent = `${item.size.toLocaleString()} chars`
-    body.innerHTML = '<p class="stack-panel-note">No component detail available.</p>'
-    return
-  }
+  groups.forEach((group, groupIndex) => {
+    if (groupIndex > 0) {
+      y += dividerGap
+    }
 
+    const firstY = y
+    group.items.forEach((item, itemIndex) => {
+      parts.push(slab({ x, y, w, h, d, item, group, showTop: itemIndex === 0, selected: item.id === selectedId }))
+      y += h + gap
+    })
+    const anchorY = firstY + Math.min(34, (group.items.length * (h + gap)) / 2)
+    callouts.push(groupCallout({ group, anchorX: x, anchorY, labelX: 30 }))
+  })
+
+  return `
+    <svg class="structure-stack-svg" viewBox="0 0 660 950" role="list" aria-label="Prompt structure stack. Use arrow keys to move between layers, Enter to read details.">
+      <defs>
+        ${groups.map(group => `
+          <linearGradient id="${group.key}-top" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="${group.topA}"/>
+            <stop offset="1" stop-color="${group.topB}"/>
+          </linearGradient>
+          <linearGradient id="${group.key}-front" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="${group.frontA}"/>
+            <stop offset="1" stop-color="${group.frontB}"/>
+          </linearGradient>
+          <linearGradient id="${group.key}-side" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="${group.sideA}"/>
+            <stop offset="1" stop-color="${group.sideB}"/>
+          </linearGradient>
+        `).join('')}
+        <filter id="stackShadow" x="-20%" y="-10%" width="140%" height="135%">
+          <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#7a6c58" flood-opacity="0.08"/>
+        </filter>
+      </defs>
+      ${callouts.join('')}
+      <g filter="url(#stackShadow)">
+        ${parts.join('')}
+      </g>
+    </svg>
+  `
+}
+
+function getTextForItem(components, item) {
+  if (!components) return ''
   if (item.type === 'tool') {
-    const d = detail.tools?.[item.title]
-    if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
-    meta.textContent = `prose: ${d.prose_chars?.toLocaleString() ?? '—'} · schema: ${d.schema_chars?.toLocaleString() ?? '—'} chars`
-    body.innerHTML = _renderToolBody(d)
-  } else if (item.type === 'section') {
-    const d = detail.system_message?.[item.title]
-    if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
-    meta.textContent = `${d.char_count?.toLocaleString() ?? item.size.toLocaleString()} chars`
-    body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
-  } else if (item.type === 'xml_tag') {
-    const key = item.lookupKey ?? item.title
-    const d = detail.user_message?.[key]
-    if (!d) { meta.textContent = `${item.size.toLocaleString()} chars`; return }
-    meta.textContent = `${d.char_count?.toLocaleString()} chars`
-    body.innerHTML = `<div class="stack-panel-md">${marked.parse(d.text ?? '')}</div>`
-  } else {
-    meta.textContent = `${item.size.toLocaleString()} chars`
+    const detail = components.tools?.[item.lookupKey]
+    if (!detail) return ''
+    return [detail.prose, detail.schema ? `\`\`\`json\n${detail.schema}\n\`\`\`` : ''].filter(Boolean).join('\n\n')
   }
+  if (item.type === 'system') return components.system_message?.[item.lookupKey]?.text || ''
+  return components.user_message?.[item.lookupKey]?.text || ''
 }
 
-function _renderToolBody(d) {
-  const tabs = []
-  if (d.prose)  tabs.push({ label: 'Prose',  content: d.prose,  chars: d.prose_chars,  md: true })
-  if (d.schema) tabs.push({ label: 'Schema', content: d.schema, chars: d.schema_chars, md: false })
-  if (!tabs.length) return '<p class="stack-panel-note">No content available.</p>'
-
-  const tabsHtml = tabs.map((t, i) =>
-    `<button class="stack-tab ${i === 0 ? 'active' : ''}" data-idx="${i}">${t.label} <span class="stack-tab-count">${t.chars?.toLocaleString()}</span></button>`
-  ).join('')
-
-  const pagesHtml = tabs.map((t, i) => {
-    const hidden = i === 0 ? '' : ' hidden'
-    return t.md
-      ? `<div class="stack-panel-md${hidden}" data-page="${i}">${marked.parse(t.content)}</div>`
-      : `<pre class="stack-panel-text${hidden}" data-page="${i}">${_esc(t.content)}</pre>`
-  }).join('')
-
-  return `<div class="stack-tabs">${tabsHtml}</div>${pagesHtml}`
+function getMetadata(item) {
+  const rows = [
+    ['Size', `${formatNumber(item.size)} characters`],
+    ['Type', item.type],
+  ]
+  if (item.type === 'tool') {
+    rows.push(['Prose', `${formatNumber(item.prose_chars)} chars`])
+    rows.push(['Schema', `${formatNumber(item.schema_chars)} chars`])
+  }
+  if (item.key) rows.push(['Path', item.key])
+  rows.push(['ID', item.id])
+  return rows
 }
 
-function _esc(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+function renderPanel(item, components, activeTab = 'rendered') {
+  const text = getTextForItem(components, item)
+  const metadata = getMetadata(item)
+
+  return `
+    <div class="structure-panel-head">
+      <div>
+        <div class="structure-breadcrumb">${item.groupLabel} <span>›</span> ${esc(item.title)}</div>
+      </div>
+      <button class="panel-close" type="button" aria-label="Clear selection">×</button>
+    </div>
+    <div class="panel-tabs" role="tablist">
+      ${['rendered', 'raw', 'metadata'].map(tab => `
+        <button class="panel-tab ${activeTab === tab ? 'active' : ''}" type="button" data-panel-tab="${tab}">${tab[0].toUpperCase()}${tab.slice(1)}</button>
+      `).join('')}
+    </div>
+    <div class="panel-body">
+      <div class="panel-pane ${activeTab === 'rendered' ? '' : 'hidden'}" data-panel-pane="rendered">
+        <h3>${esc(item.title)}</h3>
+        <div class="rendered-md">${marked.parse(text ? esc(text) : '_No detail text available._')}</div>
+      </div>
+      <div class="panel-pane ${activeTab === 'raw' ? '' : 'hidden'}" data-panel-pane="raw">
+        <pre>${esc(text || 'No detail text available.')}</pre>
+      </div>
+      <div class="panel-pane ${activeTab === 'metadata' ? '' : 'hidden'}" data-panel-pane="metadata">
+        <dl class="metadata-list">
+          ${metadata.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}
+        </dl>
+      </div>
+    </div>
+  `
+}
+
+function renderEmptyPanel() {
+  return `
+    <div class="structure-panel-empty">
+      <h3>No layer selected</h3>
+      <p>Select a slab in the stack to inspect rendered text, raw prompt content, and metadata.</p>
+    </div>
+  `
+}
+
+function renderError(message) {
+  return `
+    <div class="structure-error">
+      <h2>Structure could not load</h2>
+      <p>${esc(message)}</p>
+      <button type="button" data-structure-retry>Retry</button>
+    </div>
+  `
+}
+
+function renderMetrics(structure, version, versionMeta) {
+  const userTotal = (structure.user_message || []).reduce((sum, item) => sum + getSize(item), 0)
+  const systemTotal = (structure.system_message || []).reduce((sum, item) => sum + getSize(item), 0)
+  const toolTotal = (structure.tools || []).reduce((sum, item) => sum + getSize(item), 0)
+  const systemSectionCount = (structure.system_message || []).length
+  const total = userTotal + systemTotal + toolTotal
+
+  return `
+    <div class="structure-index">
+      <div class="section-number">1</div>
+      <div class="structure-index-titles">
+        <h2>Structure</h2>
+        <p>Claude Code ${esc(version)}</p>
+      </div>
+      <div class="structure-version-pick">
+        <label>Version</label>
+        <div data-version-picker></div>
+      </div>
+      <dl class="metric-list">
+        <div><dt>Total size</dt><dd>${formatNumber(total)}<span>characters</span></dd></div>
+        <div><dt>System sections</dt><dd>${formatNumber(systemSectionCount)}</dd></div>
+        <div><dt>Tools</dt><dd>${formatNumber((structure.tools || []).length)}</dd></div>
+        <div><dt>Last updated</dt><dd>${esc(formatDate(versionMeta?.release_date))}<span>local dataset</span></dd></div>
+      </dl>
+    </div>
+  `
 }
 
 export async function renderStructure(container) {
-  _cleanup()
-
-  const [meta, structures] = await Promise.all([getMeta(), getStructures()])
-  const versions = meta.versions.map(v => v.version)
-  const structureKeys = Object.keys(structures)
-  let currentVersion = versions.findLast(v => structureKeys.includes(v)) || structureKeys.at(-1) || versions.at(-1)
-
-  container.innerHTML = ''
-  container.style.cssText = 'position:relative; height:min(72vh, 760px); min-height:560px; overflow:hidden; background:oklch(97.5% 0.006 70); border-top:1px solid var(--border-subtle)'
-
-  const canvas = document.createElement('canvas')
-  canvas.style.cssText = 'display:block; width:100%; height:100%'
-  canvas.setAttribute('role', 'application')
-  canvas.setAttribute('aria-label', 'Claude Code prompt structure as stacked layers. Arrow keys navigate, Enter opens detail, Escape closes.')
-  canvas.setAttribute('tabindex', '0')
-  container.appendChild(canvas)
-
-  const ariaLive = document.createElement('div')
-  ariaLive.setAttribute('aria-live', 'polite')
-  ariaLive.setAttribute('aria-atomic', 'true')
-  ariaLive.className = 'sr-only'
-  container.appendChild(ariaLive)
-
-  // HTML label overlay — positioned by projecting 3D slab edges to screen
-  const labelContainer = document.createElement('div')
-  labelContainer.className = 'label-container'
-  container.appendChild(labelContainer)
-
-  const pickerWrap = document.createElement('div')
-  pickerWrap.className = 'stack-picker-overlay'
-  container.appendChild(pickerWrap)
-  createVersionPicker(pickerWrap, versions, currentVersion, v => {
-    currentVersion = v
-    _rebuildScene(currentVersion)
-  })
-
-  const panel = _buildPanel(container)
-
-  const W = container.clientWidth  || 800
-  const H = container.clientHeight || 600
-
-  _renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
-  _renderer.setSize(W, H, false)
-  _renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-  _renderer.setClearColor(0xf8f5ee, 1)
-
-  const scene  = new THREE.Scene()
-  const aspect = W / H
-  const F = 9
-
-  const cam = new THREE.OrthographicCamera(-F * aspect, F * aspect, F, -F, 0.1, 200)
-  // Front view: camera almost directly ahead, ~15° above horizontal.
-  // lookAt shifted left so building appears right-of-center, giving labels room.
-  cam.position.set(0, 10, 22)
-  cam.lookAt(-1.5, 4, 0)
-
-  // Lights — boost ambient for front view where the front face dominates
-  scene.add(new THREE.AmbientLight(0xffffff, 0.90))
-  const keyLight = new THREE.DirectionalLight(0xffffff, 0.50)
-  keyLight.position.set(4, 12, 20)
-  scene.add(keyLight)
-  const fillLight = new THREE.DirectionalLight(0xfff8f0, 0.20)
-  fillLight.position.set(-6, 8, -4)
-  scene.add(fillLight)
-
-  const registry = []
-  let labelDefs = []  // { el, worldPos: THREE.Vector3 }
-
-  // Flat slab dimensions
-  const BOX_W = 7.5, BOX_D = 5.5
-  const GAP = 0.08         // gap between slabs within a section
-  const SECT_GAP = 0.45    // extra gap between section groups
-  const MAX_H = 0.60, MIN_H = 0.12
-
-  function _rebuildScene(version) {
-    _disposables.forEach(d => { try { d.dispose() } catch (_e) {} })
-    _disposables.length = 0
-
-    const toRemove = scene.children.filter(c => c.isMesh || c.isSprite)
-    toRemove.forEach(c => scene.remove(c))
-    registry.length = 0
-    _meshes = []
-    _focusedRegIdx = -1
-    panel.classList.remove('open')
-
-    // Clear labels
-    while (labelContainer.firstChild) labelContainer.removeChild(labelContainer.firstChild)
-    labelDefs = []
-
-    const snap = structures[version]
-    if (!snap) return
-
-    // structures.json uses arrays for all three fields.
-    // Order in the building: Tools (bottom) → System Message → User Messages (top).
-    const toolsItems = (snap.tools || []).map(t => ({
-      title: t.title, size: t.total_chars, type: 'tool', sectionType: 'tools',
-      prose_chars: t.prose_chars, schema_chars: t.schema_chars,
-    }))
-
-    const spItems = (snap.system_message || []).map(s => ({
-      title: s.title, size: s.char_count, type: 'section', sectionType: 'system_prompt',
-    }))
-
-    // user_message items carry key/kind/index. actual_prompt is always implied and appended.
-    const xmlItems = (snap.user_message || []).map(tag => ({
-      title: tag.index === 0 ? tag.kind : `${tag.kind} #${tag.index + 1}`,
-      lookupKey: tag.key, size: tag.char_count, type: 'xml_tag', sectionType: 'user_message',
-    }))
-    const umItems = [
-      ...xmlItems,
-      { title: 'actual_prompt', lookupKey: 'actual_prompt', size: 300, type: 'xml_tag', sectionType: 'user_message' },
-    ]
-
-    const sections = [
-      { type: 'tools',         items: toolsItems },
-      { type: 'system_prompt', items: spItems    },
-      { type: 'user_message',  items: umItems    },
-    ]
-
-    let y = 0
-    let firstSection = true
-
-    sections.forEach(section => {
-      if (!firstSection) y += SECT_GAP
-      firstSection = false
-
-      const palette = SECTION_COLORS[section.type]
-      const maxSize = Math.max(...section.items.map(i => i.size), 1)
-      const pLen    = palette.length
-      const n       = section.items.length
-
-      // Pre-compute slab heights so we can place top-to-bottom within the section.
-      const heights = section.items.map(item =>
-        MIN_H + (MAX_H - MIN_H) * Math.sqrt(item.size / maxSize)
-      )
-      const totalSectH = heights.reduce((s, h) => s + h + GAP, -GAP)
-
-      // yTop = world Y of the top surface of this section's first (topmost) slab.
-      // We place item[0] at the top and work downward.
-      let yCursor = y + totalSectH  // start at the top of the section
-
-      section.items.forEach((item, idxInSection) => {
-        const h = heights[idxInSection]
-        yCursor -= h  // bottom of this slab
-        const yCenterWorld = yCursor + h / 2
-
-        // Lighter colors at top (item 0) → darker at bottom (item n-1).
-        const colorIdx = Math.round((idxInSection / Math.max(n - 1, 1)) * (pLen - 1))
-        const baseColor = palette[colorIdx]
-
-        const mats = [
-          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.76) }),  // +x right
-          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.66) }),  // -x left
-          new THREE.MeshPhongMaterial({ color: baseColor }),                   // +y top
-          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.48) }),  // -y bottom
-          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.86) }),  // +z front
-          new THREE.MeshPhongMaterial({ color: _darken(baseColor, 0.58) }),  // -z back
-        ]
-        mats.forEach(m => _disposables.push(m))
-
-        const geo = new THREE.BoxGeometry(BOX_W, h, BOX_D)
-        _disposables.push(geo)
-
-        const mesh = new THREE.Mesh(geo, mats)
-        mesh.position.set(0, yCenterWorld, 0)
-        scene.add(mesh)
-
-        const regEntry = {
-          mesh,
-          stackLabel: SECTION_NAMES[section.type],
-          item,
-          baseColors: mats.map(m => m.color.getHex()),
-          targetX: 0,       // lerp target for slide-out animation
-          yCenterWorld,     // used by _syncLabels to track moving anchors
-        }
-        registry.push(regEntry)
-
-        const labelEl = document.createElement('div')
-        labelEl.className = 'layer-label'
-        labelEl.textContent = item.title
-        labelEl.style.color = LABEL_COLORS[section.type]
-        labelEl.style.pointerEvents = 'auto'
-        labelEl.style.cursor = 'pointer'
-
-        const regIdx = registry.length - 1
-        labelEl.addEventListener('click', () => _openPanel(panel, registry[regIdx], currentVersion))
-        labelEl.addEventListener('mouseenter', () => {
-          const r = registry[regIdx]
-          if (!r) return
-          r.targetX = 0.6
-          r.mesh.material.forEach(m => {
-            m.color.setRGB(Math.min(m.color.r * 1.22, 1), Math.min(m.color.g * 1.22, 1), Math.min(m.color.b * 1.22, 1))
-          })
-          _dirty = true
-        })
-        labelEl.addEventListener('mouseleave', () => {
-          const r = registry[regIdx]
-          if (!r) return
-          r.targetX = 0
-          r.mesh.material.forEach((m, i) => m.color.setHex(r.baseColors[i]))
-          _dirty = true
-        })
-        labelContainer.appendChild(labelEl)
-
-        // reg reference lets _syncLabels read mesh.position.x as the slab slides.
-        labelDefs.push({ el: labelEl, reg: regEntry })
-
-        yCursor -= GAP
-      })
-
-      y += totalSectH
-    })
-
-    _meshes = registry.map(r => r.mesh)
-    _dirty = true
+  let meta
+  let structures
+  try {
+    ;[meta, structures] = await Promise.all([getMeta(), getStructures()])
+  } catch (error) {
+    container.innerHTML = renderError(error?.message || 'The local prompt dataset is unavailable.')
+    container.querySelector('[data-structure-retry]')?.addEventListener('click', () => renderStructure(container))
+    return
   }
 
-  // Labels are fixed to the base slab position (not the animated x).
-  // xAnchor uses z=BOX_D/2 (front-left corner) for screen-X boundary.
-  // yAnchor uses z=0 (slab center depth) for accurate screen-Y in the nearly-horizontal camera.
-  const _vx = new THREE.Vector3()
-  const _vy = new THREE.Vector3()
-  function _syncLabels() {
-    const cW = canvas.offsetWidth
-    const cH = canvas.offsetHeight
-    if (cW === 0 || cH === 0) return
+  const versionMetaList = Array.isArray(meta.versions) ? meta.versions : []
+  const versions = versionMetaList.map(v => v.version)
+  let currentVersion = versionMetaList.at(-1)?.version || versions.at(-1)
+  let currentTab = 'rendered'
+  let currentId
+  let currentComponents = null
+  let drawToken = 0
+  let focusSelectedAfterDraw = false
 
-    labelDefs.forEach(({ el, reg }) => {
-      const y = reg.yCenterWorld
-      _vx.set(-BOX_W / 2, y, BOX_D / 2).project(cam)
-      _vy.set(-BOX_W / 2, y, 0).project(cam)
-      const sx = Math.round((_vx.x + 1) / 2 * cW)
-      const sy = Math.round((-_vy.y + 1) / 2 * cH)
-      el.style.left      = '0'
-      el.style.width     = `${Math.max(sx - 8, 40)}px`
-      el.style.top       = `${sy}px`
-      el.style.transform = 'translateY(-50%)'
-      el.style.textAlign = 'right'
-    })
+  if (!versions.length) {
+    container.innerHTML = renderError('No prompt versions are available in the local dataset.')
+    return
   }
 
-  _rebuildScene(currentVersion)
-
-  const ray   = new THREE.Raycaster()
-  const mouse = new THREE.Vector2()
-  let hoveredReg = null
-
-  function _pick(clientX, clientY) {
-    const rect = canvas.getBoundingClientRect()
-    mouse.x = ((clientX - rect.left) / rect.width)  *  2 - 1
-    mouse.y = ((clientY - rect.top)  / rect.height) * -2 + 1
-    ray.setFromCamera(mouse, cam)
-    const hits = ray.intersectObjects(_meshes)
-    return hits.length ? registry.find(e => e.mesh === hits[0].object) : null
-  }
-
-  canvas.addEventListener('mousemove', e => {
-    if (hoveredReg) {
-      hoveredReg.targetX = 0
-      hoveredReg.mesh.material.forEach((m, i) => m.color.setHex(hoveredReg.baseColors[i]))
-    }
-    hoveredReg = _pick(e.clientX, e.clientY)
-    if (hoveredReg) {
-      hoveredReg.targetX = 0.6
-      hoveredReg.mesh.material.forEach(m => {
-        m.color.setRGB(Math.min(m.color.r * 1.22, 1), Math.min(m.color.g * 1.22, 1), Math.min(m.color.b * 1.22, 1))
-      })
-      canvas.style.cursor = 'pointer'
-    } else {
-      canvas.style.cursor = 'default'
-    }
-    _dirty = true
-  })
-
-  canvas.addEventListener('click', e => {
-    const hit = _pick(e.clientX, e.clientY)
-    if (hit) _openPanel(panel, hit, currentVersion)
-    else panel.classList.remove('open')
-  })
-
-  canvas.addEventListener('touchend', e => {
-    e.preventDefault()
-    const touch = e.changedTouches[0]
-    if (!touch) return
-    const hit = _pick(touch.clientX, touch.clientY)
-    if (hit) _openPanel(panel, hit, currentVersion)
-    else panel.classList.remove('open')
-  }, { passive: false })
-
-  canvas.addEventListener('keydown', e => {
-    if (!registry.length) return
-    const navKeys = ['ArrowUp', 'ArrowDown', 'Enter', 'Escape']
-    if (!navKeys.includes(e.key)) return
-    e.preventDefault()
-
-    if (e.key === 'Escape') { panel.classList.remove('open'); return }
-    if (e.key === 'Enter') {
-      if (_focusedRegIdx >= 0) _openPanel(panel, registry[_focusedRegIdx], currentVersion)
+  async function draw() {
+    const token = ++drawToken
+    const structure = structures[currentVersion]
+    if (!structure) {
+      container.innerHTML = renderError(`Version ${currentVersion} is missing structure data.`)
+      container.querySelector('[data-structure-retry]')?.addEventListener('click', () => draw())
       return
     }
 
-    const prevIdx = _focusedRegIdx
-    if (e.key === 'ArrowDown') {
-      _focusedRegIdx = _focusedRegIdx < registry.length - 1 ? _focusedRegIdx + 1 : 0
-    } else {
-      _focusedRegIdx = _focusedRegIdx > 0 ? _focusedRegIdx - 1 : registry.length - 1
+    const versionMeta = versionMetaList.find(v => v.version === currentVersion)
+    try {
+      currentComponents = await getComponents(currentVersion)
+    } catch (_error) {
+      currentComponents = null
     }
+    if (token !== drawToken) return
 
-    if (prevIdx >= 0 && registry[prevIdx]) {
-      const prev = registry[prevIdx]
-      prev.mesh.material.forEach((m, i) => m.color.setHex(prev.baseColors[i]))
-    }
-    const focused = registry[_focusedRegIdx]
-    if (focused) {
-      focused.mesh.material.forEach(m => {
-        m.color.setRGB(Math.min(m.color.r * 1.22, 1), Math.min(m.color.g * 1.22, 1), Math.min(m.color.b * 1.22, 1))
-      })
-      ariaLive.textContent = `${focused.stackLabel}: ${focused.item.title}, ${focused.item.size.toLocaleString()} chars`
-    }
-    _dirty = true
-  })
+    const groups = buildGroups(structure).map(group => ({
+      ...group,
+      total: group.items.reduce((sum, item) => sum + item.size, 0),
+      items: group.items.map((item, index) => ({
+        ...item,
+        id: `${group.key}:${item.lookupKey || item.title || index}`,
+        groupKey: group.key,
+        groupLabel: group.label,
+      })),
+    }))
+    const allItems = flattenGroups(groups)
+    const firstSystem = groups.find(group => group.key === 'system')?.items[0]
+    const selectedItem = currentId === null
+      ? null
+      : allItems.find(item => item.id === currentId) || firstSystem || groups[0]?.items[0] || null
+    currentId = selectedItem?.id ?? currentId ?? ''
 
-  panel.addEventListener('click', e => {
-    const btn = e.target.closest('.stack-tab')
-    if (!btn) return
-    const idx = +btn.dataset.idx
-    panel.querySelectorAll('.stack-tab').forEach((b, i) => b.classList.toggle('active', i === idx))
-    panel.querySelectorAll('[data-page]').forEach(p => p.classList.toggle('hidden', +p.dataset.page !== idx))
-  })
+    container.innerHTML = `
+      <div class="structure-workbench">
+        ${renderMetrics(structure, currentVersion, versionMeta)}
+        <div class="structure-visual">
+          ${renderSvgStack(groups, currentId)}
+        </div>
+        <aside class="structure-panel" aria-live="polite">
+          ${selectedItem ? renderPanel(selectedItem, currentComponents, currentTab) : renderEmptyPanel()}
+        </aside>
+        <div class="structure-live" aria-live="polite">${selectedItem ? `${selectedItem.groupLabel}: ${selectedItem.title}, ${formatNumber(selectedItem.size)} characters` : 'No layer selected'}</div>
+      </div>
+    `
 
-  _onResize = () => {
-    if (!_renderer) return
-    const nW = container.clientWidth
-    const nH = container.clientHeight
-    const nA = nW / nH
-    _renderer.setSize(nW, nH, false)
-    cam.left = -F * nA; cam.right = F * nA
-    cam.updateProjectionMatrix()
-    _dirty = true
-  }
-  window.addEventListener('resize', _onResize)
-
-  function tick() {
-    _animId = requestAnimationFrame(tick)
-    // Lerp each slab toward its targetX; keep rendering until all settle.
-    let animating = false
-    registry.forEach(r => {
-      const dx = r.targetX - r.mesh.position.x
-      if (Math.abs(dx) > 0.001) {
-        r.mesh.position.x += dx * 0.18
-        animating = true
-      } else if (dx !== 0) {
-        r.mesh.position.x = r.targetX
-      }
+    const pickerHost = container.querySelector('[data-version-picker]')
+    createVersionPicker(pickerHost, versions, currentVersion, version => {
+      currentVersion = version
+      currentId = undefined
+      currentTab = 'rendered'
+      draw()
     })
-    if (!_dirty && !animating) return
-    _dirty = false
-    _renderer.render(scene, cam)
-    _syncLabels()
+
+    container.querySelectorAll('[data-component-id]').forEach(node => {
+      node.addEventListener('click', () => {
+        currentId = node.dataset.componentId
+        currentTab = 'rendered'
+        draw()
+      })
+      node.addEventListener('keydown', event => {
+        const activeIndex = allItems.findIndex(item => item.id === node.dataset.componentId)
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+          event.preventDefault()
+          currentId = allItems[Math.min(activeIndex + 1, allItems.length - 1)]?.id || node.dataset.componentId
+          focusSelectedAfterDraw = true
+          draw()
+          return
+        }
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+          event.preventDefault()
+          currentId = allItems[Math.max(activeIndex - 1, 0)]?.id || node.dataset.componentId
+          focusSelectedAfterDraw = true
+          draw()
+          return
+        }
+        if (event.key !== 'Enter' && event.key !== ' ') return
+        event.preventDefault()
+        currentId = node.dataset.componentId
+        currentTab = 'rendered'
+        draw()
+      })
+    })
+
+    container.querySelectorAll('[data-panel-tab]').forEach(tab => {
+      tab.addEventListener('click', () => {
+        currentTab = tab.dataset.panelTab
+        container.querySelectorAll('[data-panel-tab]').forEach(btn => btn.classList.toggle('active', btn === tab))
+        container.querySelectorAll('[data-panel-pane]').forEach(pane => pane.classList.toggle('hidden', pane.dataset.panelPane !== currentTab))
+      })
+    })
+
+    container.querySelector('.panel-close')?.addEventListener('click', () => {
+      currentId = null
+      draw()
+    })
+
+    if (focusSelectedAfterDraw) {
+      focusSelectedAfterDraw = false
+      requestAnimationFrame(() => {
+        container.querySelector('.svg-slab.selected')?.focus()
+      })
+    }
   }
-  tick()
+
+  await draw()
 }

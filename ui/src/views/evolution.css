@@ -1,24 +1,20 @@
 /* ===== Evolution view ===== */
 
-/* Hide global section-chrome for the evolution surface — the rebuilt
-   surface owns its own title band so the global header would duplicate. */
-.work-section-evolution .section-chrome { display: none; }
+/* Page chrome (kicker / h1 / meta) is shown above the surface, matching the
+   Structure section. The surface itself drops the card frame. */
 .work-section-evolution .section-surface {
-  border-top: 0;
   min-height: 0;
 }
 
-/* Outer surface frame */
+/* Surface — flat, with the same warm gradient as .structure-workbench
+   so both sections feel like part of one page rather than two cards. */
 .evo-surface {
-  background: oklch(99.2% 0.004 70);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
-  padding: 22px 26px 14px;
-  box-shadow:
-    0 1px 0 oklch(60% 0.012 60 / 0.04),
-    0 16px 48px oklch(50% 0.012 60 / 0.05);
   display: flex;
   flex-direction: column;
+  padding: 26px 26px 22px;
+  background:
+    radial-gradient(ellipse at 50% 28%, oklch(91% 0.014 75 / 0.40), transparent 42%),
+    linear-gradient(180deg, oklch(99.2% 0.004 70), oklch(97.5% 0.006 70));
 }
 
 /* --- Header band --- */
@@ -35,35 +31,39 @@
 
 .evo-eyebrow {
   display: flex;
-  align-items: baseline;
-  gap: 13px;
+  align-items: center;
+  gap: 12px;
   min-width: 0;
   flex: 1 1 240px;
 }
 
+/* Mirrors .section-number from structure.css so both sections share the badge */
 .evo-eyebrow-num {
-  font-size: 19px;
-  font-weight: 350;
+  width: 24px;
+  height: 24px;
+  border: 1px solid oklch(83% 0.012 70);
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 650;
+  background: oklch(99% 0.003 70);
   font-feature-settings: "lnum";
   font-variant-numeric: lining-nums;
-  color: oklch(74% 0.012 60);
-  letter-spacing: -0.01em;
-  line-height: 1;
   flex: none;
-  position: relative;
-  top: 1px;
 }
 
 .evo-title-block {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   min-width: 0;
 }
 
 .evo-title {
   margin: 0;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 650;
   letter-spacing: -0.005em;
   color: var(--text-primary);
@@ -71,8 +71,8 @@
 }
 
 .evo-subtitle {
-  font-size: 12px;
-  color: var(--text-muted);
+  font-size: 11px;
+  color: var(--text-secondary);
   line-height: 1.3;
 }
 
@@ -256,6 +256,71 @@
   background: var(--border-default);
 }
 
+/* Model release axis: a row above the version axis with anchored labels.
+   Labels stagger between an upper and lower lane so adjacent releases
+   (e.g. Sonnet 4.5 / Haiku 4.5 sixteen days apart) don't overlap. */
+.evo-model-row .evo-th-models {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 6px 10px 0 14px;
+  border-bottom: 0;
+  background: transparent;
+  vertical-align: bottom;
+}
+
+.evo-model-cell {
+  position: relative;
+  padding: 0;
+  vertical-align: bottom;
+  border-bottom: 0;
+  background: transparent;
+}
+
+.evo-model-cell::before {
+  content: "";
+  display: block;
+  height: 36px;
+}
+
+.evo-model-marker {
+  position: absolute;
+  left: 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.evo-model-marker.upper { bottom: 18px; }
+.evo-model-marker.lower { bottom: 2px; }
+.evo-model-marker.offset { left: 6ch; }
+
+/* Vertical tick connecting the marker to the version axis below */
+.evo-model-marker::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(100% + 1px);
+  width: 1px;
+  background: var(--border-default);
+}
+.evo-model-marker.upper::before { height: 18px; }
+.evo-model-marker.lower::before { height: 2px;  }
+
+/* Continuous vertical guide line: every cell in a model-release column gets
+   a dashed left border. Stacked across rows, the borders form one line that
+   visually threads the model release down through the matrix to the bars at
+   that version. */
+.evo-th-v.model-anchor,
+.evo-cell.model-anchor,
+.evo-model-cell.model-anchor {
+  box-shadow: inset 1px 0 0 oklch(50% 0.014 60 / 0.28);
+}
+
 /* Group rows — head row carries its own per-version stream graph */
 .evo-group-row {
   cursor: pointer;
@@ -302,9 +367,9 @@
   margin-right: 8px;
   vertical-align: 1px;
 }
-.evo-group-dot.sys  { background: oklch(60% 0.130 220); }
-.evo-group-dot.tool { background: oklch(60% 0.115 155); }
-.evo-group-dot.user { background: oklch(60% 0.135 82); }
+.evo-group-dot.sys  { background: var(--viz-system); }
+.evo-group-dot.tool { background: var(--viz-tools); }
+.evo-group-dot.user { background: var(--viz-user); }
 
 .evo-group-name {
   font-size: 13px;
@@ -319,16 +384,24 @@
 }
 
 .evo-row:hover .evo-td-comp,
-.evo-row:hover .evo-cell {
+.evo-row:hover .evo-cell,
+.evo-user-row:hover .evo-td-comp,
+.evo-user-row:hover .evo-cell {
   background: oklch(96.8% 0.006 70);
 }
 
 .evo-row.selected .evo-td-comp,
-.evo-row.selected .evo-cell {
+.evo-row.selected .evo-cell,
+.evo-user-row.selected .evo-td-comp,
+.evo-user-row.selected .evo-cell {
   background: oklch(94% 0.018 220 / 0.55);
 }
 
-.evo-row:focus-visible {
+.evo-user-row { cursor: pointer; }
+
+.evo-group-row:focus-visible,
+.evo-row:focus-visible,
+.evo-user-row:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
@@ -394,9 +467,9 @@
   pointer-events: none;
 }
 
-.evo-bar.sys   { background: oklch(48% 0.110 220); }
-.evo-bar.tool  { background: oklch(50% 0.105 155); }
-.evo-bar.user  { background: oklch(54% 0.130 82); }
+.evo-bar.sys   { background: var(--viz-system); }
+.evo-bar.tool  { background: var(--viz-tools); }
+.evo-bar.user  { background: var(--viz-user); }
 .evo-bar.total { background: oklch(32% 0.020 60); }
 
 /* Top-level totals row */
@@ -471,9 +544,9 @@
   border-radius: 1px;
 }
 
-.evo-leg-swatch.sys  { background: oklch(48% 0.110 220); }
-.evo-leg-swatch.tool { background: oklch(50% 0.105 155); }
-.evo-leg-swatch.user { background: oklch(54% 0.130 82); }
+.evo-leg-swatch.sys  { background: var(--viz-system); }
+.evo-leg-swatch.tool { background: var(--viz-tools); }
+.evo-leg-swatch.user { background: var(--viz-user); }
 
 .evo-leg-note {
   margin-left: auto;
@@ -614,6 +687,86 @@
   margin: 8px 0;
 }
 
+/* Click-to-diff change-log entry */
+.evo-log-clickable {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: -4px -6px;
+  padding: 4px 6px;
+  transition: background 0.10s;
+}
+
+.evo-log-clickable:hover { background: oklch(96% 0.006 70); }
+.evo-log-clickable:hover .evo-log-ver { color: var(--accent); }
+.evo-log-clickable:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  background: oklch(96% 0.006 70);
+}
+
+.evo-log-row.expanded {
+  background: oklch(94% 0.014 220 / 0.5);
+}
+.evo-log-row.expanded .evo-log-ver { color: var(--accent); }
+
+/* Inline content diff under a clicked entry — spans the full grid width */
+.evo-diff {
+  grid-column: 1 / -1;
+  margin: 6px 0 12px;
+  background: oklch(99.6% 0.003 70);
+  border: 1px solid var(--border-subtle);
+  border-radius: 7px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.evo-diff.loading,
+.evo-diff.error {
+  padding: 10px 12px;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.evo-diff.error { color: var(--viz-removed); }
+
+.evo-diff-meta {
+  padding: 7px 12px;
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.005em;
+}
+
+.evo-diff-body {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.evo-diff-line {
+  display: block;
+  padding: 1px 14px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border-left: 3px solid transparent;
+}
+
+.evo-diff-eq  { color: var(--text-muted); }
+.evo-diff-add { background: oklch(94% 0.045 145 / 0.50); color: oklch(28% 0.085 150); border-left-color: oklch(58% 0.135 145); }
+.evo-diff-del { background: oklch(94% 0.040 25  / 0.50); color: oklch(34% 0.090 25);  border-left-color: var(--viz-removed); }
+.evo-diff-init { color: var(--text-secondary); }
+
+.evo-diff-empty {
+  padding: 8px 14px;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 11.5px;
+}
+
 /* Surface footnote */
 .evo-footnote {
   margin-top: 14px;
@@ -622,6 +775,69 @@
   font-size: 11px;
   color: var(--text-muted);
   font-style: italic;
+}
+
+/* Error / empty state surface */
+.evo-state {
+  padding: 28px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.evo-state-title {
+  font-size: 14.5px;
+  font-weight: 650;
+  color: var(--text-primary);
+}
+
+.evo-state-body {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 64ch;
+}
+
+.evo-state-retry {
+  margin-top: 10px;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 7px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.evo-state-retry:hover {
+  border-color: var(--border-default);
+  background: var(--surface-1);
+}
+
+.evo-state-error .evo-state-title { color: var(--viz-removed); }
+
+/* Forced-colors mode (Windows high contrast):
+   bars are the data — preserve the OKLCH fills so the chart stays readable.
+   Selection, focus, and link affordances fall back to system colors. */
+@media (forced-colors: active) {
+  .evo-bar { forced-color-adjust: none; }
+  .evo-leg-swatch { forced-color-adjust: none; }
+  .evo-row.selected,
+  .evo-user-row.selected {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+  .evo-log-row.expanded {
+    outline: 1px solid Highlight;
+    outline-offset: -1px;
+  }
+  .evo-diff-add { border-left-color: LinkText; }
+  .evo-diff-del { border-left-color: Mark; }
 }
 
 /* Bar tooltip */
@@ -716,6 +932,14 @@
   .evo-controls { flex-wrap: wrap; }
   .evo-export { align-self: flex-start; }
 
+  /* Model release axis hides at narrow widths: 8 labels can't fit in <500px
+     of matrix space without stacking unreadably. The vertical guide lines also
+     hide so we don't leave orphan strokes pointing at no label. */
+  .evo-table thead tr.evo-model-row { display: none; }
+  .evo-th-v.model-anchor,
+  .evo-cell.model-anchor,
+  .evo-model-cell.model-anchor { box-shadow: none; }
+
   /* Stack each row: component name on its own line, bars across full width below.
      The matrix gets the full surface width instead of competing with a 196px label column. */
   .evo-table {
@@ -781,4 +1005,3 @@
     padding: 14px 16px 16px;
   }
 }
-

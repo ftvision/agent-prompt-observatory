@@ -1,10 +1,80 @@
 import './evolution.css'
-import { getMeta, getStructures } from '../data/loader.js'
+import { getMeta, getStructures, getComponents } from '../data/loader.js'
 
 const MIN_LABEL_PX = 56
 
+// Claude model releases that fall within the Claude Code 1.0 → 2.x history.
+// Anchored to the first version whose release_date is on or after the model's
+// launch date, so the marker reads "this is the version where {model} became
+// available."
+const MODEL_RELEASES = [
+  { date: '2025-05-22', label: 'Claude 4' },
+  { date: '2025-08-05', label: 'Opus 4.1' },
+  { date: '2025-09-29', label: 'Sonnet 4.5' },
+  { date: '2025-10-15', label: 'Haiku 4.5' },
+  { date: '2025-11-24', label: 'Opus 4.5' },
+  { date: '2026-02-04', label: 'Opus 4.6' },
+  { date: '2026-02-17', label: 'Sonnet 4.6' },
+  { date: '2026-04-16', label: 'Opus 4.7' },
+]
+
+function esc(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+function fmtNumber(value) {
+  return new Intl.NumberFormat(undefined, { maximumFractionDigits: 0 }).format(Number(value || 0))
+}
+
+function renderSurfaceState(container, kind, message) {
+  container.classList.add('evo-surface')
+  container.innerHTML = ''
+  const wrap = document.createElement('div')
+  wrap.className = `evo-state evo-state-${kind}`
+  wrap.setAttribute('role', kind === 'error' ? 'alert' : 'status')
+  const title = document.createElement('div')
+  title.className = 'evo-state-title'
+  title.textContent = kind === 'error' ? 'Could not load evolution data' : 'No evolution data available'
+  const body = document.createElement('p')
+  body.className = 'evo-state-body'
+  body.textContent = message
+  wrap.appendChild(title)
+  wrap.appendChild(body)
+  if (kind === 'error') {
+    const retry = document.createElement('button')
+    retry.type = 'button'
+    retry.className = 'evo-state-retry'
+    retry.textContent = 'Retry'
+    retry.addEventListener('click', () => {
+      container.classList.remove('evo-surface')
+      container.innerHTML = ''
+      renderEvolution(container)
+    })
+    wrap.appendChild(retry)
+  }
+  container.appendChild(wrap)
+}
+
 export async function renderEvolution(container) {
-  const [meta, structures] = await Promise.all([getMeta(), getStructures()])
+  container._evoCleanup?.()
+  container._evoCleanup = null
+
+  let meta, structures
+  try {
+    ;[meta, structures] = await Promise.all([getMeta(), getStructures()])
+  } catch (err) {
+    console.error('Evolution: failed to load data', err)
+    renderSurfaceState(container, 'error', 'Network or parse error while loading version metadata. Check the dev server and refresh.')
+    return
+  }
+  if (!meta?.versions?.length || !structures || Object.keys(structures).length === 0) {
+    renderSurfaceState(container, 'empty', 'No prompt captures were found. Run the analyzer export to populate /data/.')
+    return
+  }
   const allVersions = meta.versions.map(v => v.version)
   const versionMeta = Object.fromEntries(meta.versions.map(v => [v.version, v]))
 
@@ -32,6 +102,12 @@ export async function renderEvolution(container) {
     if (!s) return null
     if (type === 'system') return (s.system_message || []).find(x => x.title === title) ?? null
     if (type === 'tool')   return (s.tools || []).find(x => x.title === title) ?? null
+    if (type === 'user') {
+      const items = s.user_message || []
+      if (items.length === 0) return null
+      const total = items.reduce((sum, x) => sum + (x.char_count || 0), 0)
+      return { char_count: total }
+    }
     return null
   }
 
@@ -74,16 +150,18 @@ export async function renderEvolution(container) {
   function computeHistory(type, title) {
     const entries = []
     let prev = null
+    let prevVer = null
     allVersions.forEach(v => {
       const item = getItem(v, type, title)
       const count = item ? charCount(item, type) : null
       if (count !== null && prev === null) {
-        entries.push({ version: v, event: 'added', count })
+        entries.push({ version: v, event: 'added', count, prevVer: null })
       } else if (count === null && prev !== null) {
-        entries.push({ version: v, event: 'removed' })
+        entries.push({ version: v, event: 'removed', prevVer })
       } else if (count !== null && prev !== null && count !== prev) {
-        entries.push({ version: v, event: 'changed', count, delta: count - prev })
+        entries.push({ version: v, event: 'changed', count, delta: count - prev, prevVer })
       }
+      if (count !== null) prevVer = v
       prev = count
     })
     return entries.reverse()
@@ -109,7 +187,7 @@ export async function renderEvolution(container) {
   eyebrow.className = 'evo-eyebrow'
   const marker = document.createElement('span')
   marker.className = 'evo-eyebrow-num'
-  marker.textContent = '3'
+  marker.textContent = '2'
   marker.setAttribute('aria-hidden', 'true')
   const titleBlock = document.createElement('div')
   titleBlock.className = 'evo-title-block'
@@ -206,6 +284,11 @@ export async function renderEvolution(container) {
   tooltip.setAttribute('role', 'tooltip')
   tooltip.setAttribute('aria-hidden', 'true')
   document.body.appendChild(tooltip)
+  const cleanupFns = [() => tooltip.remove()]
+  container._evoCleanup = () => {
+    cleanupFns.forEach(fn => fn())
+    container._evoCleanup = null
+  }
 
   let activeCell = null
 
@@ -213,30 +296,30 @@ export async function renderEvolution(container) {
     if (d == null) return null
     if (d === 0) return 'no change'
     const sign = d > 0 ? '+' : ''
-    return `${sign}${d.toLocaleString()} chars`
+    return `${sign}${fmtNumber(d)} chars`
   }
 
   function renderTooltip(info) {
-    const date = info.date ? `<span class="evo-tt-date">${info.date}</span>` : ''
-    const head = `<div class="evo-tt-head"><span class="evo-tt-version">${info.version}</span>${date}</div>`
+    const date = info.date ? `<span class="evo-tt-date">${esc(info.date)}</span>` : ''
+    const head = `<div class="evo-tt-head"><span class="evo-tt-version">${esc(info.version)}</span>${date}</div>`
     if (info.kind === 'total') {
       if (info.value == null) {
         return head + `<div class="evo-tt-empty">No prompt data for this release</div>`
       }
       return head +
-        `<div class="evo-tt-row"><span>Total</span><b>${info.value.toLocaleString()} chars</b></div>` +
-        `<div class="evo-tt-sub"><span>User Message</span><span>${info.user.toLocaleString()}</span></div>` +
-        `<div class="evo-tt-sub"><span>System Prompt</span><span>${info.system.toLocaleString()}</span></div>` +
-        `<div class="evo-tt-sub"><span>Tools</span><span>${info.tools.toLocaleString()}</span></div>`
+        `<div class="evo-tt-row"><span>Total</span><b>${fmtNumber(info.value)} chars</b></div>` +
+        `<div class="evo-tt-sub"><span>User Message</span><span>${fmtNumber(info.user)}</span></div>` +
+        `<div class="evo-tt-sub"><span>System Prompt</span><span>${fmtNumber(info.system)}</span></div>` +
+        `<div class="evo-tt-sub"><span>Tools</span><span>${fmtNumber(info.tools)}</span></div>`
     }
-    const title = `<div class="evo-tt-title">${info.title}</div>`
+    const title = `<div class="evo-tt-title">${esc(info.title)}</div>`
     if (info.value == null) {
       return head + title + `<div class="evo-tt-empty">Section not present in this release</div>`
     }
     const delta = fmtDelta(info.delta)
     const deltaRow = delta ? `<div class="evo-tt-sub"><span>Δ from previous</span><span>${delta}</span></div>` : ''
     return head + title +
-      `<div class="evo-tt-row"><span>Size</span><b>${info.value.toLocaleString()} chars</b></div>` +
+      `<div class="evo-tt-row"><span>Size</span><b>${fmtNumber(info.value)} chars</b></div>` +
       deltaRow
   }
 
@@ -301,7 +384,7 @@ export async function renderEvolution(container) {
   // --- Inline expansion ---
   function closePanel() {
     selectedKey = null
-    tableWrap.querySelectorAll('.evo-row.selected').forEach(r => r.classList.remove('selected'))
+    tableWrap.querySelectorAll('tr.selected').forEach(r => r.classList.remove('selected'))
     tableWrap.querySelectorAll('.evo-expand-row').forEach(r => r.remove())
   }
 
@@ -341,7 +424,7 @@ export async function renderEvolution(container) {
     currVerLine.textContent = `Current (${latestV})`
     const currChars = document.createElement('div')
     currChars.className = 'evo-curr-chars'
-    currChars.textContent = latestChars != null ? `${latestChars.toLocaleString()} chars` : 'Not present'
+    currChars.textContent = latestChars != null ? `${fmtNumber(latestChars)} chars` : 'Not present'
     summary.appendChild(currVerLine)
     summary.appendChild(currChars)
     const currDate = fmtDate(latestV)
@@ -416,18 +499,173 @@ export async function renderEvolution(container) {
         else if (entry.event === 'removed') desc.textContent = 'Removed'
         else if (entry.delta != null) {
           const sign = entry.delta > 0 ? '+' : ''
-          desc.textContent = `${sign}${entry.delta.toLocaleString()} chars`
+          desc.textContent = `${sign}${fmtNumber(entry.delta)} chars`
         }
 
         main.appendChild(top)
         main.appendChild(desc)
         row.appendChild(dot)
         row.appendChild(main)
+
+        row.classList.add('evo-log-clickable')
+        row.setAttribute('role', 'button')
+        row.setAttribute('tabindex', '0')
+        const verLabel = entry.version + (fmtDate(entry.version) ? ' (' + fmtDate(entry.version) + ')' : '')
+        row.setAttribute('aria-label', `Show diff for ${verLabel}`)
+        const activate = () => toggleDiff(row, log, type, title, entry)
+        row.addEventListener('click', activate)
+        row.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate() }
+        })
+
         log.appendChild(row)
       })
     }
 
     return frag
+  }
+
+  // O(m·n) cap so a pathological diff (5000-line schema vs 5000-line schema = 25M cells)
+  // can't hang the tab. Above the cap we fall back to naive zip/diff: pairwise compare lines
+  // up to the shorter side, then mark the rest add/del. Loses LCS optimality but stays linear.
+  const LCS_MAX_CELLS = 2_000_000
+
+  function naiveDiff(a, b) {
+    const A = a.split('\n')
+    const B = b.split('\n')
+    const out = []
+    const min = Math.min(A.length, B.length)
+    for (let i = 0; i < min; i++) {
+      if (A[i] === B[i]) out.push({ t: 'eq', l: A[i] })
+      else { out.push({ t: 'del', l: A[i] }); out.push({ t: 'add', l: B[i] }) }
+    }
+    for (let i = min; i < A.length; i++) out.push({ t: 'del', l: A[i] })
+    for (let i = min; i < B.length; i++) out.push({ t: 'add', l: B[i] })
+    return out
+  }
+
+  // Linear-time-friendly LCS line diff. Returns an array of { t: 'eq'|'add'|'del', l: line }.
+  function lineDiff(a, b) {
+    const A = a.split('\n')
+    const B = b.split('\n')
+    const m = A.length, n = B.length
+    if ((m + 1) * (n + 1) > LCS_MAX_CELLS) return naiveDiff(a, b)
+    const dp = Array(m + 1).fill(null).map(() => new Int32Array(n + 1))
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        dp[i][j] = A[i - 1] === B[j - 1] ? dp[i - 1][j - 1] + 1 : Math.max(dp[i - 1][j], dp[i][j - 1])
+      }
+    }
+    const out = []
+    let i = m, j = n
+    while (i > 0 && j > 0) {
+      if (A[i - 1] === B[j - 1]) { out.push({ t: 'eq', l: A[i - 1] }); i--; j-- }
+      else if (dp[i - 1][j] >= dp[i][j - 1]) { out.push({ t: 'del', l: A[i - 1] }); i-- }
+      else { out.push({ t: 'add', l: B[j - 1] }); j-- }
+    }
+    while (i > 0) { out.push({ t: 'del', l: A[i - 1] }); i-- }
+    while (j > 0) { out.push({ t: 'add', l: B[j - 1] }); j-- }
+    return out.reverse()
+  }
+
+  async function fetchComponentText(version, type, title) {
+    const data = await getComponents(version)
+    if (!data) return null
+    if (type === 'tool') {
+      const t = data.tools?.[title]
+      if (!t) return null
+      const parts = []
+      if (t.prose) parts.push(t.prose)
+      if (t.schema) parts.push('\n--- Schema ---\n' + t.schema)
+      return parts.join('\n')
+    }
+    if (type === 'user') {
+      const um = data.user_message || {}
+      const keys = Object.keys(um)
+      if (keys.length === 0) return null
+      return keys.map(k => `=== ${k} ===\n${um[k].text || ''}`).join('\n\n')
+    }
+    return data.system_message?.[title]?.text ?? null
+  }
+
+  async function toggleDiff(row, log, type, title, entry) {
+    const existing = row.nextElementSibling
+    if (existing && existing.classList.contains('evo-diff')) {
+      existing.remove()
+      row.classList.remove('expanded')
+      return
+    }
+
+    log.querySelectorAll('.evo-diff').forEach(d => d.remove())
+    log.querySelectorAll('.evo-log-row.expanded').forEach(r => r.classList.remove('expanded'))
+    row.classList.add('expanded')
+
+    const diffEl = document.createElement('div')
+    diffEl.className = 'evo-diff loading'
+    diffEl.textContent = 'Loading content…'
+    row.insertAdjacentElement('afterend', diffEl)
+
+    // Race guard — if the user clicks another entry (or closes this one) while
+    // our fetch is in flight, the diffEl is detached or replaced. Bail before
+    // painting into it.
+    const isStale = () => !diffEl.isConnected || row.nextElementSibling !== diffEl
+
+    try {
+      const [aText, bText] = await Promise.all([
+        entry.prevVer ? fetchComponentText(entry.prevVer, type, title) : Promise.resolve(''),
+        entry.event === 'removed' ? Promise.resolve('') : fetchComponentText(entry.version, type, title),
+      ])
+      if (isStale()) return
+
+      diffEl.textContent = ''
+      diffEl.classList.remove('loading')
+
+      const isInitial = entry.event === 'added' && !entry.prevVer
+      const meta = document.createElement('div')
+      meta.className = 'evo-diff-meta'
+      if (isInitial) {
+        meta.textContent = `${entry.version}: initial version`
+      } else if (entry.event === 'removed') {
+        meta.textContent = `${entry.prevVer} → ${entry.version}: removed`
+      } else if (entry.event === 'added') {
+        meta.textContent = `${entry.prevVer} → ${entry.version}: re-added`
+      } else {
+        meta.textContent = `${entry.prevVer} → ${entry.version}`
+      }
+      diffEl.appendChild(meta)
+
+      const body = document.createElement('div')
+      body.className = 'evo-diff-body'
+      diffEl.appendChild(body)
+
+      const a = aText || ''
+      const b = bText || ''
+      const lines = isInitial
+        ? b.split('\n').map(l => ({ t: 'init', l }))
+        : entry.event === 'removed'
+          ? a.split('\n').map(l => ({ t: 'del', l }))
+          : lineDiff(a, b)
+
+      lines.forEach(d => {
+        const lineEl = document.createElement('div')
+        lineEl.className = `evo-diff-line evo-diff-${d.t}`
+        lineEl.textContent = d.l || ' '
+        body.appendChild(lineEl)
+      })
+
+      if (lines.length === 0 || (lines.every(d => d.t === 'eq'))) {
+        const note = document.createElement('div')
+        note.className = 'evo-diff-empty'
+        note.textContent = 'No textual change.'
+        body.appendChild(note)
+      }
+    } catch (err) {
+      if (isStale()) return
+      console.error('Evolution diff: load failed', err)
+      diffEl.textContent = 'Could not load content for this version. Try again.'
+      diffEl.classList.remove('loading')
+      diffEl.classList.add('error')
+    }
   }
 
   // --- Export ---
@@ -448,11 +686,15 @@ export async function renderEvolution(container) {
     a.href = url
     a.download = `evolution-${startVersion}-to-${endVersion}.csv`
     a.click()
-    URL.revokeObjectURL(url)
+    setTimeout(() => URL.revokeObjectURL(url), 0)
   }
 
   // --- Draw ---
   function draw() {
+    // Tear down any tooltip pointing at a cell we're about to delete.
+    tooltip.classList.remove('open')
+    activeCell = null
+
     tableWrap.innerHTML = ''
     legend.innerHTML = ''
 
@@ -478,6 +720,24 @@ export async function renderEvolution(container) {
     })
     table.appendChild(colgroup)
 
+    // Compute model-release anchors first so we can tag both the version-axis
+    // cells and the data cells with .model-anchor for a continuous guide line.
+    // Each release lands on the first displayed version with release_date >= launch date.
+    // `order` (chronological index) drives the upper/lower lane assignment so
+    // adjacent releases never share a lane.
+    const modelMarkers = MODEL_RELEASES.map((event, order) => {
+      const target = new Date(event.date).getTime()
+      let idx = -1
+      for (let i = 0; i < displayVers.length; i++) {
+        const verDate = versionMeta[displayVers[i]]?.release_date
+        if (!verDate) continue
+        if (new Date(verDate).getTime() >= target) { idx = i; break }
+      }
+      return idx >= 0 ? { ...event, idx, order } : null
+    }).filter(Boolean)
+
+    const modelAnchorIndices = new Set(modelMarkers.map(m => m.idx))
+
     const thead = document.createElement('thead')
     const hrow = document.createElement('tr')
     const thComp = document.createElement('th'); thComp.scope = 'col'; thComp.className = 'evo-th evo-th-comp'; thComp.textContent = 'Component'
@@ -496,9 +756,48 @@ export async function renderEvolution(container) {
         span.textContent = v
         th.appendChild(span)
       }
+      if (modelAnchorIndices.has(i)) th.classList.add('model-anchor')
       th.title = versionMeta[v]?.release_date || v
       hrow.appendChild(th)
     })
+
+    if (modelMarkers.length > 0) {
+      const modelRow = document.createElement('tr')
+      modelRow.className = 'evo-model-row'
+      const thMarker = document.createElement('th')
+      thMarker.className = 'evo-th evo-th-comp evo-th-models'
+      thMarker.scope = 'col'
+      thMarker.textContent = 'Models'
+      modelRow.appendChild(thMarker)
+
+      const markerByIdx = new Map()
+      modelMarkers.forEach(m => {
+        const list = markerByIdx.get(m.idx) || []
+        list.push(m)
+        markerByIdx.set(m.idx, list)
+      })
+
+      displayVers.forEach((_, i) => {
+        const th = document.createElement('th')
+        th.scope = 'col'
+        th.className = 'evo-model-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
+        const events = markerByIdx.get(i)
+        if (events) {
+          events.forEach((e, k) => {
+            const marker = document.createElement('span')
+            // Alternate lanes by chronological order, so adjacent releases never share one.
+            marker.className = `evo-model-marker ${e.order % 2 === 0 ? 'upper' : 'lower'}${k > 0 ? ' offset' : ''}`
+            marker.textContent = e.label
+            marker.title = `${e.label} released ${e.date}`
+            th.appendChild(marker)
+          })
+        }
+        modelRow.appendChild(th)
+      })
+
+      thead.appendChild(modelRow)
+    }
+
     thead.appendChild(hrow)
     table.appendChild(thead)
 
@@ -525,6 +824,9 @@ export async function renderEvolution(container) {
       const row = document.createElement('tr')
       row.className = 'evo-group-row'
       row.setAttribute('aria-expanded', String(!isCollapsed))
+      row.setAttribute('role', 'button')
+      row.setAttribute('tabindex', '0')
+      row.setAttribute('aria-label', `${isCollapsed ? 'Expand' : 'Collapse'} ${label}`)
 
       const tdComp = document.createElement('td')
       tdComp.className = 'evo-td-comp evo-group-comp'
@@ -548,9 +850,9 @@ export async function renderEvolution(container) {
 
       const barClass = dotClass === 'sys' ? 'sys' : 'tool'
       let lastPresent = null
-      displayVers.forEach(v => {
+      displayVers.forEach((v, i) => {
         const td = document.createElement('td')
-        td.className = 'evo-cell'
+        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = totals[v]
         if (val !== undefined) {
           const bar = document.createElement('span')
@@ -571,6 +873,13 @@ export async function renderEvolution(container) {
       })
 
       row.addEventListener('click', () => {
+        if (collapsedGroups.has(groupKey)) collapsedGroups.delete(groupKey)
+        else collapsedGroups.add(groupKey)
+        draw()
+      })
+      row.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' && e.key !== ' ') return
+        e.preventDefault()
         if (collapsedGroups.has(groupKey)) collapsedGroups.delete(groupKey)
         else collapsedGroups.add(groupKey)
         draw()
@@ -605,9 +914,9 @@ export async function renderEvolution(container) {
 
       const typeClass = rowData.type === 'tool' ? 'tool' : 'sys'
       let lastPresent = null
-      displayVers.forEach(v => {
+      displayVers.forEach((v, i) => {
         const td = document.createElement('td')
-        td.className = 'evo-cell'
+        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = rowData.values[v]
         if (val !== undefined) {
           const fill = val / rowData._max
@@ -662,9 +971,9 @@ export async function renderEvolution(container) {
       tdComp.appendChild(label)
       tr.appendChild(tdComp)
 
-      displayVers.forEach(v => {
+      displayVers.forEach((v, i) => {
         const td = document.createElement('td')
-        td.className = 'evo-cell'
+        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = totals[v]
         if (val !== undefined) {
           const bar = document.createElement('span')
@@ -703,8 +1012,12 @@ export async function renderEvolution(container) {
       if (vals.length === 0) return
       const max = Math.max(...vals)
 
+      const key = 'user:User Message'
       const tr = document.createElement('tr')
       tr.className = 'evo-user-row'
+      tr.setAttribute('data-key', key)
+      tr.setAttribute('tabindex', '0')
+      if (key === selectedKey) tr.classList.add('selected')
 
       const tdComp = document.createElement('td')
       tdComp.className = 'evo-td-comp evo-user-comp'
@@ -717,10 +1030,16 @@ export async function renderEvolution(container) {
       tdComp.appendChild(label)
       tr.appendChild(tdComp)
 
+      const activate = () => openPanel(key, 'user', 'User Message')
+      tr.addEventListener('click', activate)
+      tr.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate() }
+      })
+
       let lastPresent = null
-      displayVers.forEach(v => {
+      displayVers.forEach((v, i) => {
         const td = document.createElement('td')
-        td.className = 'evo-cell'
+        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = totals[v]
         if (val !== undefined) {
           const bar = document.createElement('span')
@@ -775,11 +1094,14 @@ export async function renderEvolution(container) {
   // Re-render on resize so the label density tracks the actual matrix width.
   let resizeTimer = null
   let lastWidth = tableWrap.clientWidth
-  window.addEventListener('resize', () => {
+  const onResize = () => {
     clearTimeout(resizeTimer)
     resizeTimer = setTimeout(() => {
       const w = tableWrap.clientWidth
       if (w !== lastWidth) { lastWidth = w; draw() }
     }, 120)
-  })
+  }
+  window.addEventListener('resize', onResize)
+  cleanupFns.push(() => window.removeEventListener('resize', onResize))
+  cleanupFns.push(() => clearTimeout(resizeTimer))
 }

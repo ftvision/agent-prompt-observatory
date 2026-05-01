@@ -98,11 +98,39 @@ def extract_system_prompt(
     child Component with ``kind="system_prompt_section"``.  Deeper headings
     are recursed into; if any grandchild has its own children a
     ``unexpected_heading_depth`` diagnostic is emitted.
+
+    Any non-empty body text appearing before the first ``##`` child is
+    surfaced as a synthetic ``"Preamble"`` child so it isn't dropped.
     """
     base_id = "system_prompt"
     base_path = ["System Prompt"]
 
     children: dict[str, Component] = {}
+
+    # Preamble: text between the System Prompt heading and its first H2 child.
+    preamble_raw = section.body or ""
+    preamble_norm = _normalize(preamble_raw)
+    if preamble_norm:
+        preamble_id = f"{base_id}/Preamble"
+        preamble_end = (
+            section.children[0].line_start - 1
+            if section.children
+            else section.line_end
+        )
+        preamble_comp = Component(
+            id=preamble_id,
+            kind="system_prompt_section",
+            title="Preamble",
+            path=base_path + ["Preamble"],
+            raw=preamble_raw,
+            normalized=preamble_norm,
+            hash=_hash(preamble_norm),
+            line_start=section.line_start,
+            line_end=max(preamble_end, section.line_start),
+            children={},
+        )
+        children[preamble_id] = preamble_comp
+
     for child in section.children:
         child_comp = _build_section_component(
             section=child,
