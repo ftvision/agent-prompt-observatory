@@ -383,6 +383,12 @@
   transition: background 0.10s;
 }
 
+/* Group toggle hides rows in place rather than re-rendering 8000+ cells. */
+.evo-row.evo-row-hidden,
+.evo-expand-row.evo-row-hidden {
+  display: none;
+}
+
 .evo-row:hover .evo-td-comp,
 .evo-row:hover .evo-cell,
 .evo-user-row:hover .evo-td-comp,

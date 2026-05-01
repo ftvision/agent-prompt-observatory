@@ -87,8 +87,7 @@ async function main() {
     </main>
   `
 
-  for (const section of SECTIONS) {
-    const surface = document.getElementById(`${section.id}-surface`)
+  async function mount(section, surface) {
     try {
       await section.render(surface)
     } catch (err) {
@@ -116,6 +115,36 @@ async function main() {
     }
   }
 
+  // Structure renders immediately (it owns the first viewport). Evolution
+  // defers until its surface is within ~one screen of the viewport, so the
+  // 800 KB structures.json fetch + parse stays off the critical path.
+  const structureSection = SECTIONS.find(s => s.id === 'structure')
+  const structureSurface = document.getElementById('structure-surface')
+  const structurePromise = mount(structureSection, structureSurface)
+
+  const evolutionSection = SECTIONS.find(s => s.id === 'evolution')
+  const evolutionSurface = document.getElementById('evolution-surface')
+  let evolutionStarted = false
+  const startEvolution = () => {
+    if (evolutionStarted) return
+    evolutionStarted = true
+    mount(evolutionSection, evolutionSurface)
+  }
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) {
+        observer.disconnect()
+        startEvolution()
+      }
+    }, { rootMargin: '600px 0px' })
+    observer.observe(evolutionSurface)
+    // Clicking the rail nav for Evolution scrolls into view, which trips the
+    // observer; explicit handler isn't needed.
+  } else {
+    startEvolution()
+  }
+
+  await structurePromise
   wireSectionNav()
 }
 

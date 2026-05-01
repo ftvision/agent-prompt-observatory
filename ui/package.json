@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/build-latest.mjs",
+    "predev": "node scripts/build-latest.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

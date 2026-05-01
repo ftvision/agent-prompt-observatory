@@ -872,28 +872,40 @@ export async function renderEvolution(container) {
         row.appendChild(td)
       })
 
-      row.addEventListener('click', () => {
-        if (collapsedGroups.has(groupKey)) collapsedGroups.delete(groupKey)
-        else collapsedGroups.add(groupKey)
-        draw()
-      })
+      const toggle = () => {
+        const willCollapse = !collapsedGroups.has(groupKey)
+        if (willCollapse) collapsedGroups.add(groupKey)
+        else collapsedGroups.delete(groupKey)
+        row.setAttribute('aria-expanded', String(!willCollapse))
+        row.setAttribute('aria-label', `${willCollapse ? 'Expand' : 'Collapse'} ${label}`)
+        chev.classList.toggle('collapsed', willCollapse)
+        // Hide rows in place; rebuilding 8000+ cells just to flip visibility
+        // was the previous bottleneck.
+        tableWrap.querySelectorAll(`tr[data-group="${groupKey}"]`).forEach(r => {
+          r.classList.toggle('evo-row-hidden', willCollapse)
+          const next = r.nextElementSibling
+          if (next?.classList.contains('evo-expand-row')) {
+            next.classList.toggle('evo-row-hidden', willCollapse)
+          }
+        })
+      }
+      row.addEventListener('click', toggle)
       row.addEventListener('keydown', e => {
         if (e.key !== 'Enter' && e.key !== ' ') return
         e.preventDefault()
-        if (collapsedGroups.has(groupKey)) collapsedGroups.delete(groupKey)
-        else collapsedGroups.add(groupKey)
-        draw()
+        toggle()
       })
       tbody.appendChild(row)
-      return isCollapsed
     }
 
-    function addComponentRow(rowData) {
+    function addComponentRow(rowData, groupKey) {
       const tr = document.createElement('tr')
       tr.className = 'evo-row'
       tr.setAttribute('data-key', rowData.key)
+      tr.setAttribute('data-group', groupKey)
       tr.setAttribute('tabindex', '0')
       if (rowData.key === selectedKey) tr.classList.add('selected')
+      if (collapsedGroups.has(groupKey)) tr.classList.add('evo-row-hidden')
 
       const tdComp = document.createElement('td')
       tdComp.className = 'evo-td-comp'
@@ -1065,11 +1077,11 @@ export async function renderEvolution(container) {
     addTotalRow()
     addUserMessageRow()
 
-    const sysCollapsed = addGroupRow('System Prompt', 'system', 'sys')
-    if (!sysCollapsed) systemRows.forEach(r => addComponentRow(r))
+    addGroupRow('System Prompt', 'system', 'sys')
+    systemRows.forEach(r => addComponentRow(r, 'system'))
 
-    const toolsCollapsed = addGroupRow('Tools', 'tools', 'tool')
-    if (!toolsCollapsed) toolRows.forEach(r => addComponentRow(r))
+    addGroupRow('Tools', 'tools', 'tool')
+    toolRows.forEach(r => addComponentRow(r, 'tools'))
 
     table.appendChild(tbody)
     tableWrap.appendChild(table)

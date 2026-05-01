@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Code Prompt Observatory</title>
+  <!-- Critical-path data: start fetching in parallel with the JS bundle so
+       Structure has its bytes ready when the module finishes evaluating. -->
+  <link rel="preload" as="fetch" href="/data/meta.json">
+  <link rel="preload" as="fetch" href="/data/latest.json">
   <link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body>
