@@ -1,9 +1,9 @@
 # Claude Code Prompt Observatory
 
-[![Refresh](https://github.com/ftvision/claude-system-evolution/actions/workflows/update-data.yml/badge.svg)](https://github.com/ftvision/claude-system-evolution/actions/workflows/update-data.yml)
-[![Deploy](https://github.com/ftvision/claude-system-evolution/actions/workflows/deploy.yml/badge.svg)](https://github.com/ftvision/claude-system-evolution/actions/workflows/deploy.yml)
+[![Refresh](https://github.com/ftvision/agent-prompt-observatory/actions/workflows/update-data.yml/badge.svg)](https://github.com/ftvision/agent-prompt-observatory/actions/workflows/update-data.yml)
+[![Deploy](https://github.com/ftvision/agent-prompt-observatory/actions/workflows/deploy.yml/badge.svg)](https://github.com/ftvision/agent-prompt-observatory/actions/workflows/deploy.yml)
 
-Live: <https://ftvision.github.io/claude-system-evolution/>
+Live: <https://ftvision.github.io/agent-prompt-observatory/>
 
 A research interface for exploring how Claude Code's system prompt has evolved across all 289 published versions (1.0.0 → 2.1.112). Prompt captures come from [cchistory.mariozechner.at](https://cchistory.mariozechner.at/); a Python analyzer parses them into a structured model, and a Vite static UI renders that model as two views.
 
