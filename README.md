@@ -1,4 +1,9 @@
-# Prompt Drift Observatory
+# Claude Code Prompt Observatory
+
+[![Refresh](https://github.com/ftvision/claude-system-evolution/actions/workflows/update-data.yml/badge.svg)](https://github.com/ftvision/claude-system-evolution/actions/workflows/update-data.yml)
+[![Deploy](https://github.com/ftvision/claude-system-evolution/actions/workflows/deploy.yml/badge.svg)](https://github.com/ftvision/claude-system-evolution/actions/workflows/deploy.yml)
+
+Live: <https://ftvision.github.io/claude-system-evolution/>
 
 This repository contains a small static web UI for exploring how Claude Code system prompts evolve across the latest five available releases.
 
