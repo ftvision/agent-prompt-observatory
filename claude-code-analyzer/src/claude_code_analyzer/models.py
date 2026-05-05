@@ -43,13 +43,19 @@ class MarkdownDoc:
 
 @dataclass
 class StructuralRegions:
-    """Top-level regions identified by the structural parser."""
+    """Top-level regions identified by the structural parser.
+
+    ``user_message`` and ``tools`` are treated specially because they have
+    dedicated extractors. Every other H1 in the document — System Prompt,
+    Executing actions with care, Text output (does not apply to tool calls),
+    or any future addition — lands in ``h1_sections`` keyed by slug, in
+    document order.
+    """
     version: str
     release_date: str
     user_message: MarkdownSection | None
-    system_prompt: MarkdownSection | None
     tools: MarkdownSection | None
-    unknown: list[MarkdownSection] = field(default_factory=list)
+    h1_sections: dict[str, MarkdownSection] = field(default_factory=dict)
 
 
 # ── Final output: Snapshot model ──────────────────────────────────────────────
@@ -78,10 +84,9 @@ class Component:
 
 @dataclass
 class Manifest:
-    top_level_headings: list[str]
-    system_prompt_sections: list[str]
-    tools: list[str]
-    unknown_top_level_headings: list[str]
+    top_level_headings: list[str]                  # H1 titles in document order
+    h1_subsections: dict[str, list[str]]           # slug → H2 child titles for each non-special H1
+    tools: list[str]                               # tool titles in order
     diagnostic_count: int
 
 

@@ -3,6 +3,10 @@ import { getMeta, getStructures, getComponents } from '../data/loader.js'
 
 const MIN_LABEL_PX = 56
 
+// Reserved top-level slugs whose row treatment is special.
+const USER_SLUG = 'user_message'
+const TOOLS_SLUG = 'tools'
+
 // Claude model releases that fall within the Claude Code 1.0 → 2.x history.
 // Anchored to the first version whose release_date is on or after the model's
 // launch date, so the marker reads "this is the version where {model} became
@@ -59,6 +63,12 @@ function renderSurfaceState(container, kind, message) {
   container.appendChild(wrap)
 }
 
+// True iff the slug corresponds to an H1-section group whose children are
+// the H2 subsections we want to track in the Evolution matrix.
+function isH1SectionSlug(slug) {
+  return slug !== USER_SLUG && slug !== TOOLS_SLUG
+}
+
 export async function renderEvolution(container) {
   container._evoCleanup?.()
   container._evoCleanup = null
@@ -77,12 +87,16 @@ export async function renderEvolution(container) {
   }
   const allVersions = meta.versions.map(v => v.version)
   const versionMeta = Object.fromEntries(meta.versions.map(v => [v.version, v]))
+  const topLevelTitles = meta.top_level_titles || {}
+
+  function topLevelTitleFor(slug) {
+    return topLevelTitles[slug] || slug
+  }
 
   let startVersion = allVersions[0]
   let endVersion = allVersions[allVersions.length - 1]
   let granularity = 'all'
   let selectedKey = null
-  const collapsedGroups = new Set()
 
   function getRange() {
     const si = allVersions.indexOf(startVersion)
@@ -97,11 +111,28 @@ export async function renderEvolution(container) {
     return range.filter((_, i) => i % step === 0 || i === range.length - 1)
   }
 
+  // For a given version, look up which H1 slug currently owns the H2
+  // *title*, plus the corresponding entry. Returns {slug, item} or null.
+  function findH1Subsection(version, title) {
+    const s = structures[version]
+    if (!s) return null
+    for (const [slug, items] of Object.entries(s)) {
+      if (!isH1SectionSlug(slug)) continue
+      const arr = Array.isArray(items) ? items : []
+      const found = arr.find(x => x.title === title)
+      if (found) return { slug, item: found }
+    }
+    return null
+  }
+
   function getItem(version, type, title) {
     const s = structures[version]
     if (!s) return null
-    if (type === 'system') return (s.system_message || []).find(x => x.title === title) ?? null
-    if (type === 'tool')   return (s.tools || []).find(x => x.title === title) ?? null
+    if (type === 'h1') {
+      const hit = findH1Subsection(version, title)
+      return hit ? hit.item : null
+    }
+    if (type === 'tool') return (s.tools || []).find(x => x.title === title) ?? null
     if (type === 'user') {
       const items = s.user_message || []
       if (items.length === 0) return null
@@ -111,40 +142,146 @@ export async function renderEvolution(container) {
     return null
   }
 
+  function getParentSlug(version, type, title) {
+    if (type === 'tool') return TOOLS_SLUG
+    if (type === 'user') return USER_SLUG
+    if (type === 'h1') {
+      const hit = findH1Subsection(version, title)
+      return hit ? hit.slug : null
+    }
+    return null
+  }
+
   function charCount(item, type) {
     if (!item) return 0
     return type === 'tool' ? (item.total_chars ?? 0) : (item.char_count ?? 0)
   }
 
+  // Build a row per unique H2 title across the range, plus tool rows.
+  // For each H2 row, its display "current parent" is the slug it lives
+  // under in the latest in-range version that contains it.
   function buildDataRows(range) {
-    const systemTitles = [], systemSeen = new Set()
-    range.forEach(v => {
-      ;(structures[v]?.system_message || []).forEach(s => {
-        if (!systemSeen.has(s.title)) { systemSeen.add(s.title); systemTitles.push(s.title) }
-      })
-    })
-    const systemRows = systemTitles.map(title => buildRow('system', title, range))
+    // Iterate the range newest→oldest so the FIRST seen parent for a title
+    // is its most-recent parent — the one we want as "current category."
+    const titleMeta = new Map() // title -> { currentSlug, firstSeenIdx (within range), lastSeenIdx }
+    for (let i = range.length - 1; i >= 0; i--) {
+      const v = range[i]
+      const s = structures[v]
+      if (!s) continue
+      for (const [slug, items] of Object.entries(s)) {
+        if (!isH1SectionSlug(slug)) continue
+        for (const it of (items || [])) {
+          if (!titleMeta.has(it.title)) {
+            titleMeta.set(it.title, { currentSlug: slug, lastSeenIdx: i, firstSeenIdx: i })
+          } else {
+            const m = titleMeta.get(it.title)
+            m.firstSeenIdx = Math.min(m.firstSeenIdx, i)
+          }
+        }
+      }
+    }
 
-    const toolTitles = [], toolSeen = new Set()
+    // Stable sort: by current slug's first-seen H1 column position, then by
+    // first-seen index of the title within that H1 in the latest version.
+    // We approximate that by reading the title's order from the latest in-range
+    // version where its current slug is present.
+    const slugOrder = new Map() // slug -> ordering index from latest version's keys
+    for (let i = range.length - 1; i >= 0; i--) {
+      const v = range[i]
+      const s = structures[v]
+      if (!s) continue
+      let oi = 0
+      for (const slug of Object.keys(s)) {
+        if (!isH1SectionSlug(slug)) continue
+        if (!slugOrder.has(slug)) slugOrder.set(slug, oi++)
+      }
+      // Take only the first version we see (latest in range that has data).
+      break
+    }
+
+    // Order titles within their current slug by their position in the latest
+    // version's list (where they live under that slug now).
+    const titleOrder = new Map() // title -> integer
+    {
+      const latestV = [...range].reverse().find(v => structures[v])
+      if (latestV) {
+        const s = structures[latestV]
+        for (const [slug, items] of Object.entries(s)) {
+          if (!isH1SectionSlug(slug)) continue
+          (items || []).forEach((it, idx) => {
+            if (!titleOrder.has(it.title)) titleOrder.set(it.title, idx)
+          })
+        }
+      }
+    }
+
+    const h1Rows = [...titleMeta.entries()]
+      .map(([title, m]) => buildH1Row(title, m.currentSlug, range))
+      .sort((a, b) => {
+        const sa = slugOrder.has(a.currentSlug) ? slugOrder.get(a.currentSlug) : 999
+        const sb = slugOrder.has(b.currentSlug) ? slugOrder.get(b.currentSlug) : 999
+        if (sa !== sb) return sa - sb
+        const ta = titleOrder.has(a.title) ? titleOrder.get(a.title) : 999
+        const tb = titleOrder.has(b.title) ? titleOrder.get(b.title) : 999
+        if (ta !== tb) return ta - tb
+        return a.title.localeCompare(b.title)
+      })
+
+    // Tool rows: union across the range, ordered by first appearance.
+    const toolTitles = []
+    const toolSeen = new Set()
     range.forEach(v => {
       ;(structures[v]?.tools || []).forEach(t => {
         if (!toolSeen.has(t.title)) { toolSeen.add(t.title); toolTitles.push(t.title) }
       })
     })
-    const toolRows = toolTitles.map(title => buildRow('tool', title, range))
+    const toolRows = toolTitles.map(title => buildToolRow(title, range))
 
-    return { systemRows, toolRows }
+    return { h1Rows, toolRows }
   }
 
-  function buildRow(type, title, range) {
+  function buildH1Row(title, currentSlug, range) {
+    // values: per-version char count
+    // perVersionParent: per-version slug (color encoding)
     const values = {}
+    const perVersionParent = {}
     range.forEach(v => {
-      const item = getItem(v, type, title)
-      if (item) values[v] = charCount(item, type)
+      const hit = findH1Subsection(v, title)
+      if (hit) {
+        values[v] = hit.item.char_count || 0
+        perVersionParent[v] = hit.slug
+      }
     })
     const vals = Object.values(values)
     const max = vals.length ? Math.max(1, ...vals) : 1
-    return { key: `${type}:${title}`, type, title, values, _max: max }
+    return {
+      key: `h1:${title}`,
+      type: 'h1',
+      title,
+      currentSlug,
+      values,
+      perVersionParent,
+      _max: max,
+    }
+  }
+
+  function buildToolRow(title, range) {
+    const values = {}
+    range.forEach(v => {
+      const t = (structures[v]?.tools || []).find(x => x.title === title)
+      if (t) values[v] = t.total_chars || 0
+    })
+    const vals = Object.values(values)
+    const max = vals.length ? Math.max(1, ...vals) : 1
+    return {
+      key: `tool:${title}`,
+      type: 'tool',
+      title,
+      currentSlug: TOOLS_SLUG,
+      values,
+      perVersionParent: Object.fromEntries(Object.keys(values).map(v => [v, TOOLS_SLUG])),
+      _max: max,
+    }
   }
 
   function computeHistory(type, title) {
@@ -182,7 +319,6 @@ export async function renderEvolution(container) {
   const headerBand = document.createElement('div')
   headerBand.className = 'evo-header-band'
 
-  // Eyebrow (section marker + title block)
   const eyebrow = document.createElement('div')
   eyebrow.className = 'evo-eyebrow'
   const marker = document.createElement('span')
@@ -203,7 +339,6 @@ export async function renderEvolution(container) {
   eyebrow.appendChild(titleBlock)
   headerBand.appendChild(eyebrow)
 
-  // Controls
   const controls = document.createElement('div')
   controls.className = 'evo-controls'
 
@@ -254,7 +389,6 @@ export async function renderEvolution(container) {
 
   container.appendChild(headerBand)
 
-  // Body
   const body = document.createElement('div')
   body.className = 'evo-body'
   container.appendChild(body)
@@ -271,14 +405,11 @@ export async function renderEvolution(container) {
   legend.className = 'evo-legend'
   ledger.appendChild(legend)
 
-
-  // Surface footer
   const footnote = document.createElement('div')
   footnote.className = 'evo-footnote'
   footnote.textContent = 'All times in your local timezone'
   container.appendChild(footnote)
 
-  // Tooltip
   const tooltip = document.createElement('div')
   tooltip.className = 'evo-tooltip'
   tooltip.setAttribute('role', 'tooltip')
@@ -306,19 +437,22 @@ export async function renderEvolution(container) {
       if (info.value == null) {
         return head + `<div class="evo-tt-empty">No prompt data for this release</div>`
       }
-      return head +
-        `<div class="evo-tt-row"><span>Total</span><b>${fmtNumber(info.value)} chars</b></div>` +
-        `<div class="evo-tt-sub"><span>User Message</span><span>${fmtNumber(info.user)}</span></div>` +
-        `<div class="evo-tt-sub"><span>System Prompt</span><span>${fmtNumber(info.system)}</span></div>` +
-        `<div class="evo-tt-sub"><span>Tools</span><span>${fmtNumber(info.tools)}</span></div>`
+      let body = `<div class="evo-tt-row"><span>Total</span><b>${fmtNumber(info.value)} chars</b></div>`
+      // Show every top-level slug present in this version, in document order.
+      for (const [slug, label, sum] of (info.breakdown || [])) {
+        body += `<div class="evo-tt-sub"><span>${esc(label)}</span><span>${fmtNumber(sum)}</span></div>`
+      }
+      return head + body
     }
-    const title = `<div class="evo-tt-title">${esc(info.title)}</div>`
+    const titleLine = info.parentLabel
+      ? `<div class="evo-tt-title">${esc(info.parentLabel)} · ${esc(info.title)}</div>`
+      : `<div class="evo-tt-title">${esc(info.title)}</div>`
     if (info.value == null) {
-      return head + title + `<div class="evo-tt-empty">Section not present in this release</div>`
+      return head + titleLine + `<div class="evo-tt-empty">Section not present in this release</div>`
     }
     const delta = fmtDelta(info.delta)
     const deltaRow = delta ? `<div class="evo-tt-sub"><span>Δ from previous</span><span>${delta}</span></div>` : ''
-    return head + title +
+    return head + titleLine +
       `<div class="evo-tt-row"><span>Size</span><b>${fmtNumber(info.value)} chars</b></div>` +
       deltaRow
   }
@@ -526,8 +660,7 @@ export async function renderEvolution(container) {
   }
 
   // O(m·n) cap so a pathological diff (5000-line schema vs 5000-line schema = 25M cells)
-  // can't hang the tab. Above the cap we fall back to naive zip/diff: pairwise compare lines
-  // up to the shorter side, then mark the rest add/del. Loses LCS optimality but stays linear.
+  // can't hang the tab. Above the cap we fall back to naive zip/diff.
   const LCS_MAX_CELLS = 2_000_000
 
   function naiveDiff(a, b) {
@@ -544,7 +677,6 @@ export async function renderEvolution(container) {
     return out
   }
 
-  // Linear-time-friendly LCS line diff. Returns an array of { t: 'eq'|'add'|'del', l: line }.
   function lineDiff(a, b) {
     const A = a.split('\n')
     const B = b.split('\n')
@@ -585,7 +717,16 @@ export async function renderEvolution(container) {
       if (keys.length === 0) return null
       return keys.map(k => `=== ${k} ===\n${um[k].text || ''}`).join('\n\n')
     }
-    return data.system_message?.[title]?.text ?? null
+    if (type === 'h1') {
+      // The subsection lives under whichever H1 slug currently owns it.
+      // Search every non-special slug.
+      for (const [slug, sub] of Object.entries(data)) {
+        if (slug === USER_SLUG || slug === TOOLS_SLUG) continue
+        if (sub && sub[title]) return sub[title].text ?? null
+      }
+      return null
+    }
+    return null
   }
 
   async function toggleDiff(row, log, type, title, entry) {
@@ -605,9 +746,6 @@ export async function renderEvolution(container) {
     diffEl.textContent = 'Loading content…'
     row.insertAdjacentElement('afterend', diffEl)
 
-    // Race guard — if the user clicks another entry (or closes this one) while
-    // our fetch is in flight, the diffEl is detached or replaced. Bail before
-    // painting into it.
     const isStale = () => !diffEl.isConnected || row.nextElementSibling !== diffEl
 
     try {
@@ -649,7 +787,7 @@ export async function renderEvolution(container) {
       lines.forEach(d => {
         const lineEl = document.createElement('div')
         lineEl.className = `evo-diff-line evo-diff-${d.t}`
-        lineEl.textContent = d.l || ' '
+        lineEl.textContent = d.l || ' '
         body.appendChild(lineEl)
       })
 
@@ -672,12 +810,27 @@ export async function renderEvolution(container) {
   function exportCSV() {
     const range = getRange()
     const displayVers = applyGranularity(range)
-    const { systemRows, toolRows } = buildDataRows(range)
+    const { h1Rows, toolRows } = buildDataRows(range)
 
-    const header = ['Component', 'Type', ...displayVers].join(',')
-    const lines = [...systemRows, ...toolRows].map(r =>
-      [`"${r.title.replace(/"/g, '""')}"`, r.type, ...displayVers.map(v => r.values[v] ?? '')].join(',')
-    )
+    const header = ['Category', 'Section', 'Type', ...displayVers].join(',')
+    const lines = []
+    h1Rows.forEach(r => {
+      const cat = topLevelTitleFor(r.currentSlug)
+      lines.push([
+        `"${cat.replace(/"/g, '""')}"`,
+        `"${r.title.replace(/"/g, '""')}"`,
+        'h1',
+        ...displayVers.map(v => r.values[v] ?? ''),
+      ].join(','))
+    })
+    toolRows.forEach(r => {
+      lines.push([
+        '"Tools"',
+        `"${r.title.replace(/"/g, '""')}"`,
+        'tool',
+        ...displayVers.map(v => r.values[v] ?? ''),
+      ].join(','))
+    })
 
     const csv = [header, ...lines].join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
@@ -691,7 +844,6 @@ export async function renderEvolution(container) {
 
   // --- Draw ---
   function draw() {
-    // Tear down any tooltip pointing at a cell we're about to delete.
     tooltip.classList.remove('open')
     activeCell = null
 
@@ -700,31 +852,29 @@ export async function renderEvolution(container) {
 
     const range = getRange()
     const displayVers = applyGranularity(range)
-    const { systemRows, toolRows } = buildDataRows(range)
+    const { h1Rows, toolRows } = buildDataRows(range)
 
     const table = document.createElement('table')
     table.className = 'evo-table'
 
-    // Compute label density from the matrix width so labels never crowd.
+    // Compute label density. Two label columns now take ~280 px combined.
     const wrapWidth = tableWrap.clientWidth || 1200
-    const matrixWidth = Math.max(0, wrapWidth - 196 /* Component column */)
+    const matrixWidth = Math.max(0, wrapWidth - 280)
     const maxLabels = Math.max(2, Math.floor(matrixWidth / MIN_LABEL_PX))
     const labelStep = Math.max(1, Math.ceil(displayVers.length / maxLabels))
 
     const colgroup = document.createElement('colgroup')
-    const colComp = document.createElement('col'); colComp.className = 'evo-col-comp'
-    colgroup.appendChild(colComp)
+    const colCat = document.createElement('col'); colCat.className = 'evo-col-cat'
+    const colSec = document.createElement('col'); colSec.className = 'evo-col-sec'
+    colgroup.appendChild(colCat)
+    colgroup.appendChild(colSec)
     displayVers.forEach(() => {
       const c = document.createElement('col'); c.className = 'evo-col-v'
       colgroup.appendChild(c)
     })
     table.appendChild(colgroup)
 
-    // Compute model-release anchors first so we can tag both the version-axis
-    // cells and the data cells with .model-anchor for a continuous guide line.
-    // Each release lands on the first displayed version with release_date >= launch date.
-    // `order` (chronological index) drives the upper/lower lane assignment so
-    // adjacent releases never share a lane.
+    // Model-release anchors
     const modelMarkers = MODEL_RELEASES.map((event, order) => {
       const target = new Date(event.date).getTime()
       let idx = -1
@@ -735,13 +885,14 @@ export async function renderEvolution(container) {
       }
       return idx >= 0 ? { ...event, idx, order } : null
     }).filter(Boolean)
-
     const modelAnchorIndices = new Set(modelMarkers.map(m => m.idx))
 
     const thead = document.createElement('thead')
     const hrow = document.createElement('tr')
-    const thComp = document.createElement('th'); thComp.scope = 'col'; thComp.className = 'evo-th evo-th-comp'; thComp.textContent = 'Component'
-    hrow.appendChild(thComp)
+    const thCat = document.createElement('th'); thCat.scope = 'col'; thCat.className = 'evo-th evo-th-cat'; thCat.textContent = 'Category'
+    const thSec = document.createElement('th'); thSec.scope = 'col'; thSec.className = 'evo-th evo-th-sec'; thSec.textContent = 'Section'
+    hrow.appendChild(thCat)
+    hrow.appendChild(thSec)
 
     displayVers.forEach((v, i) => {
       const th = document.createElement('th')
@@ -765,8 +916,9 @@ export async function renderEvolution(container) {
       const modelRow = document.createElement('tr')
       modelRow.className = 'evo-model-row'
       const thMarker = document.createElement('th')
-      thMarker.className = 'evo-th evo-th-comp evo-th-models'
+      thMarker.className = 'evo-th evo-th-cat evo-th-models'
       thMarker.scope = 'col'
+      thMarker.colSpan = 2
       thMarker.textContent = 'Models'
       modelRow.appendChild(thMarker)
 
@@ -785,7 +937,6 @@ export async function renderEvolution(container) {
         if (events) {
           events.forEach((e, k) => {
             const marker = document.createElement('span')
-            // Alternate lanes by chronological order, so adjacent releases never share one.
             marker.className = `evo-model-marker ${e.order % 2 === 0 ? 'upper' : 'lower'}${k > 0 ? ' offset' : ''}`
             marker.textContent = e.label
             marker.title = `${e.label} released ${e.date}`
@@ -794,7 +945,6 @@ export async function renderEvolution(container) {
         }
         modelRow.appendChild(th)
       })
-
       thead.appendChild(modelRow)
     }
 
@@ -803,185 +953,53 @@ export async function renderEvolution(container) {
 
     const tbody = document.createElement('tbody')
 
-    function addGroupRow(label, groupKey, dotClass) {
-      // Per-version section totals
-      const totals = {}
-      range.forEach(v => {
-        const s = structures[v]
-        if (!s) return
+    function buildBreakdown(version) {
+      const s = structures[version]
+      if (!s) return null
+      const out = []
+      let total = 0
+      for (const [slug, items] of Object.entries(s)) {
+        const label = topLevelTitleFor(slug)
+        const arr = Array.isArray(items) ? items : []
         let sum = 0
-        if (groupKey === 'system') {
-          ;(s.system_message || []).forEach(item => { sum += item.char_count || 0 })
-        } else if (groupKey === 'tools') {
-          ;(s.tools || []).forEach(item => { sum += item.total_chars || 0 })
+        if (slug === TOOLS_SLUG) {
+          arr.forEach(it => { sum += it.total_chars || 0 })
+        } else {
+          arr.forEach(it => { sum += it.char_count || 0 })
         }
-        if (sum > 0) totals[v] = sum
-      })
-      const vals = Object.values(totals)
-      const max = vals.length ? Math.max(...vals) : 1
-
-      const isCollapsed = collapsedGroups.has(groupKey)
-      const row = document.createElement('tr')
-      row.className = 'evo-group-row'
-      row.setAttribute('aria-expanded', String(!isCollapsed))
-      row.setAttribute('role', 'button')
-      row.setAttribute('tabindex', '0')
-      row.setAttribute('aria-label', `${isCollapsed ? 'Expand' : 'Collapse'} ${label}`)
-
-      const tdComp = document.createElement('td')
-      tdComp.className = 'evo-td-comp evo-group-comp'
-
-      const chev = document.createElement('span')
-      chev.className = 'evo-group-chev' + (isCollapsed ? ' collapsed' : '')
-      chev.setAttribute('aria-hidden', 'true')
-      chev.innerHTML = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5l3 3 3-3"/></svg>`
-
-      const dot = document.createElement('span')
-      dot.className = `evo-group-dot ${dotClass}`
-
-      const name = document.createElement('span')
-      name.className = 'evo-group-name'
-      name.textContent = label
-
-      tdComp.appendChild(chev)
-      tdComp.appendChild(dot)
-      tdComp.appendChild(name)
-      row.appendChild(tdComp)
-
-      const barClass = dotClass === 'sys' ? 'sys' : 'tool'
-      let lastPresent = null
-      displayVers.forEach((v, i) => {
-        const td = document.createElement('td')
-        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
-        const val = totals[v]
-        if (val !== undefined) {
-          const bar = document.createElement('span')
-          bar.className = `evo-bar ${barClass}`
-          bar.style.height = `${(Math.max(0.06, val / max) * 100).toFixed(1)}%`
-          td.appendChild(bar)
+        if (sum > 0) {
+          out.push([slug, label, sum])
+          total += sum
         }
-        td._info = {
-          kind: 'component',
-          version: v,
-          date: fmtDate(v),
-          title: label,
-          value: val,
-          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
-        }
-        if (val !== undefined) lastPresent = val
-        row.appendChild(td)
-      })
-
-      const toggle = () => {
-        const willCollapse = !collapsedGroups.has(groupKey)
-        if (willCollapse) collapsedGroups.add(groupKey)
-        else collapsedGroups.delete(groupKey)
-        row.setAttribute('aria-expanded', String(!willCollapse))
-        row.setAttribute('aria-label', `${willCollapse ? 'Expand' : 'Collapse'} ${label}`)
-        chev.classList.toggle('collapsed', willCollapse)
-        // Hide rows in place; rebuilding 8000+ cells just to flip visibility
-        // was the previous bottleneck.
-        tableWrap.querySelectorAll(`tr[data-group="${groupKey}"]`).forEach(r => {
-          r.classList.toggle('evo-row-hidden', willCollapse)
-          const next = r.nextElementSibling
-          if (next?.classList.contains('evo-expand-row')) {
-            next.classList.toggle('evo-row-hidden', willCollapse)
-          }
-        })
       }
-      row.addEventListener('click', toggle)
-      row.addEventListener('keydown', e => {
-        if (e.key !== 'Enter' && e.key !== ' ') return
-        e.preventDefault()
-        toggle()
-      })
-      tbody.appendChild(row)
-    }
-
-    function addComponentRow(rowData, groupKey) {
-      const tr = document.createElement('tr')
-      tr.className = 'evo-row'
-      tr.setAttribute('data-key', rowData.key)
-      tr.setAttribute('data-group', groupKey)
-      tr.setAttribute('tabindex', '0')
-      if (rowData.key === selectedKey) tr.classList.add('selected')
-      if (collapsedGroups.has(groupKey)) tr.classList.add('evo-row-hidden')
-
-      const tdComp = document.createElement('td')
-      tdComp.className = 'evo-td-comp'
-      const compInner = document.createElement('span')
-      compInner.className = 'evo-comp-inner'
-      const icon = document.createElement('span')
-      icon.className = 'evo-row-icon'
-      icon.setAttribute('aria-hidden', 'true')
-      icon.innerHTML = `<svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3l3 3-3 3"/></svg>`
-      const label = document.createElement('span')
-      label.className = 'evo-comp-label'
-      label.textContent = rowData.title
-      label.title = rowData.title
-      compInner.appendChild(icon)
-      compInner.appendChild(label)
-      tdComp.appendChild(compInner)
-      tr.appendChild(tdComp)
-
-      const typeClass = rowData.type === 'tool' ? 'tool' : 'sys'
-      let lastPresent = null
-      displayVers.forEach((v, i) => {
-        const td = document.createElement('td')
-        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
-        const val = rowData.values[v]
-        if (val !== undefined) {
-          const fill = val / rowData._max
-          const bar = document.createElement('span')
-          bar.className = `evo-bar ${typeClass}`
-          bar.style.height = `${(Math.max(0.06, fill) * 100).toFixed(1)}%`
-          td.appendChild(bar)
-        }
-        td._info = {
-          kind: 'component',
-          version: v,
-          date: fmtDate(v),
-          title: rowData.title,
-          value: val,
-          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
-        }
-        if (val !== undefined) lastPresent = val
-        tr.appendChild(td)
-      })
-
-      const activate = () => openPanel(rowData.key, rowData.type, rowData.title)
-      tr.addEventListener('click', activate)
-      tr.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate() }
-      })
-
-      tbody.appendChild(tr)
+      return { total, breakdown: out }
     }
 
     function addTotalRow() {
       const totals = {}
+      const breakdowns = {}
       range.forEach(v => {
-        const s = structures[v]
-        if (!s) return
-        let sum = 0
-        ;(s.user_message || []).forEach(item => { sum += item.char_count || 0 })
-        ;(s.system_message || []).forEach(item => { sum += item.char_count || 0 })
-        ;(s.tools || []).forEach(item => { sum += item.total_chars || 0 })
-        if (sum > 0) totals[v] = sum
+        const b = buildBreakdown(v)
+        if (b && b.total > 0) {
+          totals[v] = b.total
+          breakdowns[v] = b.breakdown
+        }
       })
       const vals = Object.values(totals)
-      const max = vals.length ? Math.max(...vals) : 1
+      if (vals.length === 0) return
+      const max = Math.max(...vals)
 
       const tr = document.createElement('tr')
       tr.className = 'evo-total-row'
 
-      const tdComp = document.createElement('td')
-      tdComp.className = 'evo-td-comp evo-total-comp'
+      const tdCat = document.createElement('td')
+      tdCat.className = 'evo-td-cat evo-total-cat'
+      tdCat.colSpan = 2
       const label = document.createElement('span')
       label.className = 'evo-total-label'
       label.textContent = 'Total'
-      tdComp.appendChild(label)
-      tr.appendChild(tdComp)
+      tdCat.appendChild(label)
+      tr.appendChild(tdCat)
 
       displayVers.forEach((v, i) => {
         const td = document.createElement('td')
@@ -993,18 +1011,12 @@ export async function renderEvolution(container) {
           bar.style.height = `${(Math.max(0.06, val / max) * 100).toFixed(1)}%`
           td.appendChild(bar)
         }
-        const s = structures[v]
-        const userSum = s ? (s.user_message || []).reduce((a, x) => a + (x.char_count || 0), 0) : 0
-        const sysSum = s ? (s.system_message || []).reduce((a, x) => a + (x.char_count || 0), 0) : 0
-        const toolsSum = s ? (s.tools || []).reduce((a, x) => a + (x.total_chars || 0), 0) : 0
         td._info = {
           kind: 'total',
           version: v,
           date: fmtDate(v),
           value: val,
-          user: userSum,
-          system: sysSum,
-          tools: toolsSum,
+          breakdown: breakdowns[v] || [],
         }
         tr.appendChild(td)
       })
@@ -1026,21 +1038,29 @@ export async function renderEvolution(container) {
 
       const key = 'user:User Message'
       const tr = document.createElement('tr')
-      tr.className = 'evo-user-row'
+      tr.className = 'evo-row evo-user-row'
       tr.setAttribute('data-key', key)
       tr.setAttribute('tabindex', '0')
       if (key === selectedKey) tr.classList.add('selected')
 
-      const tdComp = document.createElement('td')
-      tdComp.className = 'evo-td-comp evo-user-comp'
+      const tdCat = document.createElement('td')
+      tdCat.className = 'evo-td-cat'
       const dot = document.createElement('span')
-      dot.className = 'evo-group-dot user'
-      const label = document.createElement('span')
-      label.className = 'evo-user-label'
-      label.textContent = 'User Message'
-      tdComp.appendChild(dot)
-      tdComp.appendChild(label)
-      tr.appendChild(tdComp)
+      dot.className = 'evo-cat-dot slug-user_message'
+      const catLabel = document.createElement('span')
+      catLabel.className = 'evo-cat-label'
+      catLabel.textContent = topLevelTitleFor(USER_SLUG)
+      tdCat.appendChild(dot)
+      tdCat.appendChild(catLabel)
+      tr.appendChild(tdCat)
+
+      const tdSec = document.createElement('td')
+      tdSec.className = 'evo-td-sec'
+      const sec = document.createElement('span')
+      sec.className = 'evo-sec-label'
+      sec.textContent = 'User Message'
+      tdSec.appendChild(sec)
+      tr.appendChild(tdSec)
 
       const activate = () => openPanel(key, 'user', 'User Message')
       tr.addEventListener('click', activate)
@@ -1055,7 +1075,7 @@ export async function renderEvolution(container) {
         const val = totals[v]
         if (val !== undefined) {
           const bar = document.createElement('span')
-          bar.className = 'evo-bar user'
+          bar.className = 'evo-bar slug-user_message'
           bar.style.height = `${(Math.max(0.06, val / max) * 100).toFixed(1)}%`
           td.appendChild(bar)
         }
@@ -1064,6 +1084,7 @@ export async function renderEvolution(container) {
           version: v,
           date: fmtDate(v),
           title: 'User Message',
+          parentLabel: topLevelTitleFor(USER_SLUG),
           value: val,
           delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
         }
@@ -1074,23 +1095,105 @@ export async function renderEvolution(container) {
       tbody.appendChild(tr)
     }
 
+    function addRow(rowData, currentParentLabel) {
+      const tr = document.createElement('tr')
+      tr.className = 'evo-row'
+      tr.setAttribute('data-key', rowData.key)
+      tr.setAttribute('tabindex', '0')
+      if (rowData.key === selectedKey) tr.classList.add('selected')
+
+      const tdCat = document.createElement('td')
+      tdCat.className = 'evo-td-cat'
+      const dot = document.createElement('span')
+      dot.className = `evo-cat-dot slug-${rowData.currentSlug}`
+      const catLabel = document.createElement('span')
+      catLabel.className = 'evo-cat-label'
+      catLabel.textContent = currentParentLabel
+      catLabel.title = currentParentLabel
+      tdCat.appendChild(dot)
+      tdCat.appendChild(catLabel)
+      tr.appendChild(tdCat)
+
+      const tdSec = document.createElement('td')
+      tdSec.className = 'evo-td-sec'
+      const compInner = document.createElement('span')
+      compInner.className = 'evo-comp-inner'
+      const icon = document.createElement('span')
+      icon.className = 'evo-row-icon'
+      icon.setAttribute('aria-hidden', 'true')
+      icon.innerHTML = `<svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3l3 3-3 3"/></svg>`
+      const label = document.createElement('span')
+      label.className = 'evo-sec-label'
+      label.textContent = rowData.title
+      label.title = rowData.title
+      compInner.appendChild(icon)
+      compInner.appendChild(label)
+      tdSec.appendChild(compInner)
+      tr.appendChild(tdSec)
+
+      let lastPresent = null
+      displayVers.forEach((v, i) => {
+        const td = document.createElement('td')
+        td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
+        const val = rowData.values[v]
+        const slugAtVer = rowData.perVersionParent[v] || rowData.currentSlug
+        if (val !== undefined) {
+          const fill = val / rowData._max
+          const bar = document.createElement('span')
+          bar.className = `evo-bar slug-${slugAtVer}`
+          bar.style.height = `${(Math.max(0.06, fill) * 100).toFixed(1)}%`
+          td.appendChild(bar)
+        }
+        td._info = {
+          kind: 'component',
+          version: v,
+          date: fmtDate(v),
+          title: rowData.title,
+          parentLabel: topLevelTitleFor(slugAtVer),
+          value: val,
+          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
+        }
+        if (val !== undefined) lastPresent = val
+        tr.appendChild(td)
+      })
+
+      const activate = () => openPanel(rowData.key, rowData.type, rowData.title)
+      tr.addEventListener('click', activate)
+      tr.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate() }
+      })
+
+      tbody.appendChild(tr)
+    }
+
     addTotalRow()
     addUserMessageRow()
 
-    addGroupRow('System Prompt', 'system', 'sys')
-    systemRows.forEach(r => addComponentRow(r, 'system'))
-
-    addGroupRow('Tools', 'tools', 'tool')
-    toolRows.forEach(r => addComponentRow(r, 'tools'))
+    // H1 subsection rows (already sorted by current parent + position).
+    h1Rows.forEach(r => addRow(r, topLevelTitleFor(r.currentSlug)))
+    // Tool rows.
+    toolRows.forEach(r => addRow(r, topLevelTitleFor(TOOLS_SLUG)))
 
     table.appendChild(tbody)
     tableWrap.appendChild(table)
 
-    legend.innerHTML = `
-      <span class="evo-leg"><span class="evo-leg-swatch user"></span>User Message</span>
-      <span class="evo-leg"><span class="evo-leg-swatch sys"></span>System Prompt</span>
-      <span class="evo-leg"><span class="evo-leg-swatch tool"></span>Tools</span>
-      <span class="evo-leg evo-leg-note">Bar height = character count · empty cell = section absent in that release</span>`
+    // Legend: one swatch per top-level slug present in the corpus.
+    const slugsInCorpus = new Set()
+    Object.values(structures).forEach(s => Object.keys(s).forEach(k => slugsInCorpus.add(k)))
+    // Order: user_message first, then h1 sections in title-map order, then tools.
+    const legendSlugs = []
+    if (slugsInCorpus.has(USER_SLUG)) legendSlugs.push(USER_SLUG)
+    Object.keys(topLevelTitles).forEach(slug => {
+      if (slug !== USER_SLUG && slug !== TOOLS_SLUG && slugsInCorpus.has(slug)) {
+        legendSlugs.push(slug)
+      }
+    })
+    if (slugsInCorpus.has(TOOLS_SLUG)) legendSlugs.push(TOOLS_SLUG)
+
+    legend.innerHTML = legendSlugs.map(slug =>
+      `<span class="evo-leg"><span class="evo-leg-swatch slug-${slug}"></span>${esc(topLevelTitleFor(slug))}</span>`
+    ).join('') +
+      `<span class="evo-leg evo-leg-note">Bar height = character count · color = parent section in that release · empty cell = absent</span>`
 
     // Restore selection if a row was open before redraw
     if (selectedKey) {
@@ -1103,7 +1206,6 @@ export async function renderEvolution(container) {
 
   draw()
 
-  // Re-render on resize so the label density tracks the actual matrix width.
   let resizeTimer = null
   let lastWidth = tableWrap.clientWidth
   const onResize = () => {

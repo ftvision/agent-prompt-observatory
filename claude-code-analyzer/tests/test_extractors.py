@@ -240,7 +240,7 @@ class TestExtractSystemPrompt:
         doing_tasks = comp.children["system_prompt/Doing tasks"]
         assert "system_prompt/Doing tasks/Sub-task" in doing_tasks.children
         sub_task = doing_tasks.children["system_prompt/Doing tasks/Sub-task"]
-        assert sub_task.kind == "system_prompt_section"
+        assert sub_task.kind == "h1_subsection"
 
     def test_section_kinds(self):
         """All child/grandchild components have kind='system_prompt_section'."""
@@ -248,9 +248,9 @@ class TestExtractSystemPrompt:
         comp = extract_system_prompt(section, [])
 
         for child in comp.children.values():
-            assert child.kind == "system_prompt_section"
+            assert child.kind == "h1_subsection"
             for grandchild in child.children.values():
-                assert grandchild.kind == "system_prompt_section"
+                assert grandchild.kind == "h1_subsection"
 
     def test_path_includes_parent_and_child_titles(self):
         """Grandchild path contains System Prompt → parent title → child title."""
@@ -298,7 +298,9 @@ class TestExtractSystemPrompt:
         assert "unexpected_heading_depth" in codes
 
     def test_no_children_produces_only_preamble(self):
-        """A system prompt with no ## sections still surfaces its body as a Preamble child."""
+        """A H1 with no ## sections surfaces its body as a synthetic child whose
+        title matches the H1's own title (so row-identity in Evolution merges
+        with any H2 of the same name in earlier versions)."""
         section = _section(
             title="System Prompt",
             level=1,
@@ -307,9 +309,9 @@ class TestExtractSystemPrompt:
             line_end=5,
         )
         comp = extract_system_prompt(section, [])
-        assert list(comp.children.keys()) == ["system_prompt/Preamble"]
-        preamble = comp.children["system_prompt/Preamble"]
-        assert preamble.title == "Preamble"
+        assert list(comp.children.keys()) == ["system_prompt/System Prompt"]
+        preamble = comp.children["system_prompt/System Prompt"]
+        assert preamble.title == "System Prompt"
         assert preamble.normalized == "Just raw text."
 
     def test_empty_body_produces_no_preamble(self):
