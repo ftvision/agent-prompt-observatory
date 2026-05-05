@@ -1,7 +1,12 @@
 """Layer 2: Structural parser.
 
-Maps the markdown section tree produced by Layer 1 into the three known
-top-level components of a Claude Code prompt capture.
+Maps the markdown section tree produced by Layer 1 into top-level regions.
+
+The two reserved H1s (``User Message`` and ``Tools``) have dedicated
+extractors and live in their own slots on :class:`StructuralRegions`. Every
+other H1 — System Prompt, Executing actions with care, Text output …, or any
+future addition — is a generic "h1 section" parsed via the same extractor
+and stored in ``h1_sections`` keyed by a stable slug derived from its title.
 """
 
 from __future__ import annotations
@@ -11,38 +16,40 @@ import sys
 
 from ..models import MarkdownDoc, MarkdownSection, StructuralRegions
 
-# Regex patterns
 _VERSION_RE = re.compile(r"^#\s+Claude Code Version\s+(.+)", re.MULTILINE)
 _VERSION_TITLE_RE = re.compile(r"^Claude Code Version\s+(.+)$")
 _RELEASE_DATE_RE = re.compile(r"Release Date:\s*(.+)")
 
-# Known top-level component titles
-_KNOWN_TITLES = {"User Message", "System Prompt", "Tools"}
+RESERVED_H1_TITLES = {"User Message", "Tools"}
+
+
+def slugify_h1(title: str) -> str:
+    """Stable slug for an H1 title.
+
+    Lowercased; runs of non-alphanumeric characters become a single underscore;
+    leading/trailing underscores stripped. ``"Text output (does not apply to
+    tool calls)"`` → ``"text_output_does_not_apply_to_tool_calls"``.
+    """
+    slug = re.sub(r"[^0-9a-zA-Z]+", "_", title.lower()).strip("_")
+    return slug or "section"
 
 
 def _extract_version(preamble: str, sections: list[MarkdownSection]) -> tuple[str, str]:
-    """Return (version, release_date) extracted from the preamble or version section.
-
-    Falls back to empty strings when information is not found.
-    """
+    """Return (version, release_date) from the preamble or a top-level version section."""
     version = ""
     release_date = ""
     search_text = preamble
 
-    # Try to find version in preamble first (inline heading syntax: `# Claude Code Version …`)
     m = _VERSION_RE.search(preamble)
     if m:
         version = m.group(1).strip()
     elif sections:
-        # Check the first section's title for the version heading pattern
         first = sections[0]
         m2 = _VERSION_TITLE_RE.match(first.title)
         if m2:
             version = m2.group(1).strip()
-            # Use that section's body as the text to scan for release date
             search_text = first.body
 
-    # Extract release date from whichever text we identified above
     rd = _RELEASE_DATE_RE.search(search_text)
     if rd:
         release_date = rd.group(1).strip()
@@ -53,21 +60,20 @@ def _extract_version(preamble: str, sections: list[MarkdownSection]) -> tuple[st
 def parse_structural(doc: MarkdownDoc) -> StructuralRegions:
     """Map a *MarkdownDoc* into a *StructuralRegions* instance.
 
-    Top-level headings are classified as one of the three known components
-    (User Message, System Prompt, Tools) or collected in ``unknown``.
-    The version heading (``Claude Code Version …``) is silently skipped.
+    User Message and Tools land in their dedicated slots. Every other H1
+    becomes an entry in ``h1_sections`` (slug-keyed, insertion-ordered to
+    preserve document order). The ``Claude Code Version …`` heading is
+    silently skipped.
     """
     version, release_date = _extract_version(doc.preamble, doc.sections)
 
     user_message: MarkdownSection | None = None
-    system_prompt: MarkdownSection | None = None
     tools: MarkdownSection | None = None
-    unknown: list[MarkdownSection] = []
+    h1_sections: dict[str, MarkdownSection] = {}
 
     for section in doc.sections:
         title = section.title
 
-        # Skip the version heading — it is metadata, not a component
         if _VERSION_TITLE_RE.match(title):
             continue
 
@@ -80,16 +86,9 @@ def parse_structural(doc: MarkdownDoc) -> StructuralRegions:
                     f"{section.line_start}; keeping the first occurrence.",
                     file=sys.stderr,
                 )
-        elif title == "System Prompt":
-            if system_prompt is None:
-                system_prompt = section
-            else:
-                print(
-                    f"structural: duplicate 'System Prompt' section at line "
-                    f"{section.line_start}; keeping the first occurrence.",
-                    file=sys.stderr,
-                )
-        elif title == "Tools":
+            continue
+
+        if title == "Tools":
             if tools is None:
                 tools = section
             else:
@@ -98,14 +97,22 @@ def parse_structural(doc: MarkdownDoc) -> StructuralRegions:
                     f"{section.line_start}; keeping the first occurrence.",
                     file=sys.stderr,
                 )
-        else:
-            unknown.append(section)
+            continue
+
+        slug = slugify_h1(title)
+        if slug in h1_sections:
+            print(
+                f"structural: duplicate H1 section '{title}' (slug '{slug}') "
+                f"at line {section.line_start}; keeping the first occurrence.",
+                file=sys.stderr,
+            )
+            continue
+        h1_sections[slug] = section
 
     return StructuralRegions(
         version=version,
         release_date=release_date,
         user_message=user_message,
-        system_prompt=system_prompt,
         tools=tools,
-        unknown=unknown,
+        h1_sections=h1_sections,
     )

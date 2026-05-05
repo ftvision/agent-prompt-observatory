@@ -21,7 +21,9 @@ jobs:
       - name: Set up Python
         run: uv python install 3.11
 
-      - name: Fetch new captures from cchistory.mariozechner.at
+      - name: Fetch new captures from marckrenn/claude-code-changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run python scripts/fetch_versions.py
 
       - name: Re-export structured data for the UI

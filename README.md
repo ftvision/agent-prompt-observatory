@@ -5,7 +5,7 @@
 
 Live: <https://ccprompt.feitong.phd/>
 
-A research interface for exploring how Claude Code's system prompt has evolved across all 289 published versions (1.0.0 → 2.1.112). Prompt captures come from [cchistory.mariozechner.at](https://cchistory.mariozechner.at/); a Python analyzer parses them into a structured model, and a Vite static UI renders that model as two views.
+A research interface for exploring how Claude Code's system prompt has evolved across every published version. Prompt captures come from [marckrenn/claude-code-changelog](https://github.com/marckrenn/claude-code-changelog) (the rolling `cc-prompt.md` plus its commit history); historical versions through 2.1.112 were originally captured from `cchistory.mariozechner.at` before that archive went offline. A Python analyzer parses each capture into a structured model, and a Vite static UI renders that model as two views.
 
 ## Views
 
@@ -104,4 +104,4 @@ uv run pytest
 
 ## Credit
 
-Prompt captures: [cchistory.mariozechner.at](https://cchistory.mariozechner.at/) — without that archive this project would have nothing to look at.
+Prompt captures: [marckrenn/claude-code-changelog](https://github.com/marckrenn/claude-code-changelog) (current source — extracts the prompt from the published npm bundle on each release) and [cchistory.mariozechner.at](https://cchistory.mariozechner.at/) (historical source for versions through 2.1.112). Without those archives this project would have nothing to look at.

@@ -16,6 +16,13 @@
   --viz-user: oklch(61% 0.120 82);
   --viz-system: oklch(56% 0.105 215);
   --viz-tools: oklch(57% 0.100 155);
+  /* Per-slug fills for promoted H1s. Stable mapping so the same section
+     reads the same color across the corpus, even versions before promotion.
+     exec-actions is intentionally darker + more saturated than system blue
+     so adjacent bars in the Evolution matrix don't blur together. */
+  --viz-exec-actions: oklch(45% 0.135 175);
+  --viz-text-output: oklch(54% 0.130 320);
+  --viz-h1-default: oklch(56% 0.030 250);
   --viz-added: oklch(52% 0.110 150);
   --viz-removed: oklch(50% 0.115 25);
   --viz-changed: oklch(55% 0.120 76);

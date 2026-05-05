@@ -200,7 +200,8 @@
   font-variant-numeric: tabular-nums;
 }
 
-.evo-col-comp { width: 196px; }
+.evo-col-cat { width: 168px; }
+.evo-col-sec { width: 188px; }
 /* .evo-col-v intentionally has no width — version columns share remaining width equally */
 
 .evo-th {
@@ -214,11 +215,20 @@
   background: oklch(99.2% 0.004 70);
 }
 
-.evo-th-comp {
+.evo-th-cat {
   position: sticky;
   left: 0;
-  z-index: 4;
+  z-index: 5;
   padding-left: 14px;
+  background: oklch(99.2% 0.004 70);
+}
+
+.evo-th-sec {
+  position: sticky;
+  left: 168px;
+  z-index: 4;
+  padding-left: 10px;
+  background: oklch(99.2% 0.004 70);
 }
 
 .evo-th-v {
@@ -267,6 +277,9 @@
   border-bottom: 0;
   background: transparent;
   vertical-align: bottom;
+  position: sticky;
+  left: 0;
+  z-index: 5;
 }
 
 .evo-model-cell {
@@ -321,60 +334,34 @@
   box-shadow: inset 1px 0 0 oklch(50% 0.014 60 / 0.28);
 }
 
-/* Group rows — head row carries its own per-version stream graph */
-.evo-group-row {
-  cursor: pointer;
-  user-select: none;
-}
-
-.evo-group-row .evo-cell,
-.evo-group-row .evo-td-comp {
-  height: 32px;
-  background: var(--surface-1);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.evo-group-comp {
-  display: flex !important;
-  align-items: center;
-  gap: 0 !important;
-  padding: 6px 14px !important;
-}
-
-.evo-group-row:hover .evo-cell,
-.evo-group-row:hover .evo-td-comp { background: oklch(91% 0.010 70); }
-
-.evo-group-chev {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 14px;
-  height: 14px;
-  color: var(--text-muted);
-  margin-right: 8px;
-  vertical-align: -3px;
-  transition: transform 0.18s var(--ease-out);
-}
-
-.evo-group-chev.collapsed { transform: rotate(-90deg); }
-
-.evo-group-dot {
+/* Category dot in the first label column — color encodes current H1 parent. */
+.evo-cat-dot {
   display: inline-block;
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  margin-right: 8px;
+  margin-right: 7px;
   vertical-align: 1px;
+  flex: none;
+  background: var(--viz-h1-default);
 }
-.evo-group-dot.sys  { background: var(--viz-system); }
-.evo-group-dot.tool { background: var(--viz-tools); }
-.evo-group-dot.user { background: var(--viz-user); }
 
-.evo-group-name {
-  font-size: 13px;
+.evo-cat-label {
+  font-size: 12px;
   font-weight: 600;
   color: var(--text-primary);
+  letter-spacing: 0.005em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.evo-sec-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Component rows */
@@ -383,46 +370,47 @@
   transition: background 0.10s;
 }
 
-/* Group toggle hides rows in place rather than re-rendering 8000+ cells. */
-.evo-row.evo-row-hidden,
-.evo-expand-row.evo-row-hidden {
-  display: none;
-}
-
-.evo-row:hover .evo-td-comp,
-.evo-row:hover .evo-cell,
-.evo-user-row:hover .evo-td-comp,
-.evo-user-row:hover .evo-cell {
+.evo-row:hover .evo-td-cat,
+.evo-row:hover .evo-td-sec,
+.evo-row:hover .evo-cell {
   background: oklch(96.8% 0.006 70);
 }
 
-.evo-row.selected .evo-td-comp,
-.evo-row.selected .evo-cell,
-.evo-user-row.selected .evo-td-comp,
-.evo-user-row.selected .evo-cell {
+.evo-row.selected .evo-td-cat,
+.evo-row.selected .evo-td-sec,
+.evo-row.selected .evo-cell {
   background: oklch(94% 0.018 220 / 0.55);
 }
 
-.evo-user-row { cursor: pointer; }
-
-.evo-group-row:focus-visible,
-.evo-row:focus-visible,
-.evo-user-row:focus-visible {
+.evo-row:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
 
-.evo-td-comp {
+.evo-td-cat,
+.evo-td-sec {
   font-size: 12px;
   border-bottom: 1px solid oklch(92% 0.008 70);
   background: oklch(99.2% 0.004 70);
   white-space: nowrap;
   overflow: hidden;
   position: sticky;
-  left: 0;
   z-index: 2;
-  padding: 6px 8px 6px 14px;
-  max-width: 196px;
+}
+
+.evo-td-cat {
+  left: 0;
+  padding: 6px 6px 6px 14px;
+  max-width: 168px;
+  display: flex !important;
+  align-items: center;
+}
+
+.evo-td-sec {
+  left: 168px;
+  padding: 6px 8px 6px 10px;
+  max-width: 188px;
+  z-index: 1;
 }
 
 .evo-comp-inner {
@@ -444,15 +432,8 @@
   opacity: 0.85;
 }
 
-.evo-comp-label {
-  color: var(--text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.evo-row.selected .evo-comp-label,
-.evo-row:hover .evo-comp-label { color: var(--text-primary); }
+.evo-row.selected .evo-sec-label,
+.evo-row:hover .evo-sec-label { color: var(--text-primary); }
 
 /* Version cells — bars share remaining width equally with a 1px white gap */
 .evo-cell {
@@ -473,10 +454,22 @@
   pointer-events: none;
 }
 
-.evo-bar.sys   { background: var(--viz-system); }
-.evo-bar.tool  { background: var(--viz-tools); }
-.evo-bar.user  { background: var(--viz-user); }
+/* Per-slug fill colors. Stable mapping from H1 slug → token so a section
+   moved between H1s shows its old hue on old versions and the new hue on
+   newer versions in the same row. */
+.evo-bar          { background: var(--viz-h1-default); }
+.evo-bar.slug-user_message { background: var(--viz-user); }
+.evo-bar.slug-system_prompt { background: var(--viz-system); }
+.evo-bar.slug-executing_actions_with_care { background: var(--viz-exec-actions); }
+.evo-bar.slug-text_output_does_not_apply_to_tool_calls { background: var(--viz-text-output); }
+.evo-bar.slug-tools { background: var(--viz-tools); }
 .evo-bar.total { background: oklch(32% 0.020 60); }
+
+.evo-cat-dot.slug-user_message { background: var(--viz-user); }
+.evo-cat-dot.slug-system_prompt { background: var(--viz-system); }
+.evo-cat-dot.slug-executing_actions_with_care { background: var(--viz-exec-actions); }
+.evo-cat-dot.slug-text_output_does_not_apply_to_tool_calls { background: var(--viz-text-output); }
+.evo-cat-dot.slug-tools { background: var(--viz-tools); }
 
 /* Top-level totals row */
 .evo-total-row .evo-cell {
@@ -485,16 +478,18 @@
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.evo-total-row .evo-td-comp {
+.evo-total-row .evo-total-cat {
   height: 36px;
   border-bottom: 1px solid var(--border-subtle);
-}
-
-.evo-total-comp {
-  display: flex !important;
-  align-items: baseline;
-  gap: 10px;
+  font-size: 12px;
+  background: oklch(99.2% 0.004 70);
+  position: sticky;
+  left: 0;
+  z-index: 3;
   padding: 6px 14px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
 }
 
 .evo-total-label {
@@ -504,25 +499,13 @@
   letter-spacing: 0.005em;
 }
 
-/* User Message summary row (single-row section, no breakdown) */
+/* User Message summary row (single-row section). Slightly elevated so it
+   reads as a top-level item rather than just another data row. */
 .evo-user-row .evo-cell,
-.evo-user-row .evo-td-comp {
-  height: 32px;
+.evo-user-row .evo-td-cat,
+.evo-user-row .evo-td-sec {
   background: oklch(98.2% 0.005 70);
   border-bottom: 1px solid var(--border-subtle);
-}
-
-.evo-user-comp {
-  display: flex !important;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px !important;
-}
-
-.evo-user-label {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
 }
 
 /* Legend strip */
@@ -550,9 +533,11 @@
   border-radius: 1px;
 }
 
-.evo-leg-swatch.sys  { background: var(--viz-system); }
-.evo-leg-swatch.tool { background: var(--viz-tools); }
-.evo-leg-swatch.user { background: var(--viz-user); }
+.evo-leg-swatch.slug-user_message { background: var(--viz-user); }
+.evo-leg-swatch.slug-system_prompt { background: var(--viz-system); }
+.evo-leg-swatch.slug-executing_actions_with_care { background: var(--viz-exec-actions); }
+.evo-leg-swatch.slug-text_output_does_not_apply_to_tool_calls { background: var(--viz-text-output); }
+.evo-leg-swatch.slug-tools { background: var(--viz-tools); }
 
 .evo-leg-note {
   margin-left: auto;
@@ -833,8 +818,7 @@
 @media (forced-colors: active) {
   .evo-bar { forced-color-adjust: none; }
   .evo-leg-swatch { forced-color-adjust: none; }
-  .evo-row.selected,
-  .evo-user-row.selected {
+  .evo-row.selected {
     outline: 2px solid Highlight;
     outline-offset: -2px;
   }
@@ -958,7 +942,6 @@
 
   .evo-table thead tr,
   .evo-row,
-  .evo-group-row,
   .evo-total-row,
   .evo-user-row {
     display: flex;
@@ -966,8 +949,18 @@
     align-items: stretch;
   }
 
-  .evo-th-comp,
-  .evo-td-comp {
+  .evo-th-cat,
+  .evo-th-sec,
+  .evo-td-cat,
+  .evo-td-sec {
+    position: static !important;
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: none;
+    z-index: auto;
+  }
+
+  .evo-total-row .evo-total-cat {
     position: static !important;
     flex: 1 0 100%;
     width: 100%;
@@ -975,11 +968,10 @@
     z-index: auto;
   }
 
-  /* Version columns share the second line equally. flex-basis: 1px gives them
-     enough wanted-width to push past comp's 100% on line 1 and trigger flex-wrap. */
+  /* Version columns share the next line equally. flex-basis: 1px gives them
+     enough wanted-width to push past the labels' 50% on line 1 and trigger flex-wrap. */
   .evo-th-v,
   .evo-row .evo-cell,
-  .evo-group-row .evo-cell,
   .evo-total-row .evo-cell,
   .evo-user-row .evo-cell {
     flex: 1 1 1px;
@@ -989,13 +981,11 @@
 
   /* Tighten heights since each component now occupies two lines */
   .evo-row .evo-cell        { height: 22px; }
-  .evo-group-row .evo-cell,
-  .evo-group-row .evo-td-comp { height: auto; min-height: 26px; }
-  .evo-user-row .evo-cell,
-  .evo-user-row .evo-td-comp  { height: auto; min-height: 24px; }
-  .evo-total-row .evo-cell,
-  .evo-total-row .evo-td-comp { height: auto; min-height: 30px; }
-  .evo-row .evo-td-comp { padding: 6px 4px 2px 14px; }
+  .evo-user-row .evo-cell   { height: auto; min-height: 24px; }
+  .evo-total-row .evo-cell  { height: auto; min-height: 30px; }
+  .evo-total-row .evo-total-cat { height: auto; min-height: 30px; }
+  .evo-row .evo-td-cat { padding: 6px 4px 2px 14px; }
+  .evo-row .evo-td-sec { padding: 6px 4px 2px 8px; }
 
   /* Axis labels sit above the bar strip; the labels still overflow rightward */
   .evo-th-v { min-height: 28px; }

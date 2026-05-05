@@ -49,11 +49,10 @@ def test_all_three_components_extracted():
     assert isinstance(result, StructuralRegions)
     assert result.user_message is not None
     assert result.user_message.title == "User Message"
-    assert result.system_prompt is not None
-    assert result.system_prompt.title == "System Prompt"
+    assert "system_prompt" in result.h1_sections
+    assert result.h1_sections["system_prompt"].title == "System Prompt"
     assert result.tools is not None
     assert result.tools.title == "Tools"
-    assert result.unknown == []
 
 
 # ---------------------------------------------------------------------------
@@ -70,16 +69,15 @@ def test_missing_tools_is_none():
 
     assert result.tools is None
     assert result.user_message is not None
-    assert result.system_prompt is not None
-    assert result.unknown == []
+    assert "system_prompt" in result.h1_sections
 
 
 # ---------------------------------------------------------------------------
-# Test 3: Unknown top-level heading ends up in unknown list
+# Test 3: Non-special H1s are recognized as section groups
 # ---------------------------------------------------------------------------
 
-def test_unknown_heading_appended_to_unknown():
-    """Unrecognised top-level headings are collected in unknown."""
+def test_non_special_h1s_become_section_groups():
+    """Any H1 that isn't User Message or Tools becomes an h1_sections entry."""
     doc = _doc(sections=[
         _section("System Prompt", line_start=1, line_end=20),
         _section("Experimental Features", line_start=21, line_end=40),
@@ -88,14 +86,16 @@ def test_unknown_heading_appended_to_unknown():
     ])
     result = parse_structural(doc)
 
-    assert result.system_prompt is not None
     assert result.user_message is not None
     assert result.tools is None
-
-    unknown_titles = [s.title for s in result.unknown]
-    assert "Experimental Features" in unknown_titles
-    assert "Debug Info" in unknown_titles
-    assert len(result.unknown) == 2
+    # All three non-special H1s are recognized, in document order.
+    assert list(result.h1_sections.keys()) == [
+        "system_prompt",
+        "experimental_features",
+        "debug_info",
+    ]
+    assert result.h1_sections["experimental_features"].title == "Experimental Features"
+    assert result.h1_sections["debug_info"].title == "Debug Info"
 
 
 # ---------------------------------------------------------------------------
@@ -116,6 +116,7 @@ def test_version_and_release_date_from_preamble():
 
     assert result.version == "2.1.49"
     assert result.release_date == "2025-09-15"
+    assert "system_prompt" in result.h1_sections
 
 
 # ---------------------------------------------------------------------------
@@ -142,11 +143,12 @@ def test_version_from_section_title_and_release_date_from_body():
 
     assert result.version == "3.0.0"
     assert result.release_date == "2026-01-01"
-    # The version section itself must NOT appear as a component or in unknown
+    # The version section itself must NOT appear as a recognized H1.
     assert result.user_message is not None
-    assert result.system_prompt is not None
+    assert "system_prompt" in result.h1_sections
     assert result.tools is not None
-    assert result.unknown == []
+    # Slug of the version pseudo-heading should not leak in.
+    assert all("claude_code_version" not in slug for slug in result.h1_sections)
 
 
 # ---------------------------------------------------------------------------
@@ -192,6 +194,5 @@ def test_empty_doc():
     assert result.version == ""
     assert result.release_date == ""
     assert result.user_message is None
-    assert result.system_prompt is None
     assert result.tools is None
-    assert result.unknown == []
+    assert result.h1_sections == {}

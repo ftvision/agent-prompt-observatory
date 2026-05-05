@@ -91,7 +91,7 @@ class TestIntegrationRealFile:
         assert "Bash" in snapshot.manifest.tools
 
     def test_doing_tasks_in_system_prompt_sections(self, snapshot):
-        assert "Doing tasks" in snapshot.manifest.system_prompt_sections
+        assert "Doing tasks" in snapshot.manifest.h1_subsections["system_prompt"]
 
     def test_diagnostic_count_matches_diagnostics(self, snapshot):
         assert snapshot.manifest.diagnostic_count == len(snapshot.diagnostics)
@@ -140,7 +140,7 @@ class TestMinimalSnapshot:
         assert missing == []
 
     def test_system_prompt_sections(self, minimal_snapshot):
-        sections = minimal_snapshot.manifest.system_prompt_sections
+        sections = minimal_snapshot.manifest.h1_subsections["system_prompt"]
         assert "Getting started" in sections
         assert "Doing tasks" in sections
 
@@ -155,8 +155,12 @@ class TestMinimalSnapshot:
     def test_diagnostic_count_consistency(self, minimal_snapshot):
         assert minimal_snapshot.manifest.diagnostic_count == len(minimal_snapshot.diagnostics)
 
-    def test_unknown_top_level_headings_empty(self, minimal_snapshot):
-        assert minimal_snapshot.manifest.unknown_top_level_headings == []
+    def test_h1_subsections_only_lists_non_special_h1s(self, minimal_snapshot):
+        # User Message and Tools are not h1 section groups; they have dedicated handling.
+        slugs = list(minimal_snapshot.manifest.h1_subsections.keys())
+        assert "user_message" not in slugs
+        assert "tools" not in slugs
+        assert "system_prompt" in slugs
 
     def test_component_fields(self, minimal_snapshot):
         sp = minimal_snapshot.components["system_prompt"]
@@ -223,10 +227,10 @@ class TestMissingComponentDiagnostics:
 
 
 # ---------------------------------------------------------------------------
-# Unit tests — unknown top-level heading
+# Unit tests — extra (non-special) H1 is treated as a section group
 # ---------------------------------------------------------------------------
 
-_UNKNOWN_HEADING_MD = """\
+_EXTRA_H1_MD = """\
 # Claude Code Version 9.9.9
 
 Release Date: 2030-12-31
@@ -239,6 +243,12 @@ Test.
 
 Answer.
 
+# Experimental Features
+
+## A bold thing
+
+Some secret stuff.
+
 # Tools
 
 ## Read
@@ -246,31 +256,31 @@ Answer.
 Read files.
 
 {"type": "object"}
-
-# Experimental Features
-
-Some secret stuff.
 """
 
 
-class TestUnknownHeadingDiagnostics:
-    """Unknown top-level headings produce a warning and appear in the manifest."""
+class TestExtraH1IsSectionGroup:
+    """Any H1 that isn't User Message or Tools becomes a recognized H1 section."""
 
     @pytest.fixture
-    def snapshot_with_unknown(self, tmp_path):
-        md_file = tmp_path / "unknown_heading.md"
-        md_file.write_text(_UNKNOWN_HEADING_MD, encoding="utf-8")
+    def snapshot_with_extra(self, tmp_path):
+        md_file = tmp_path / "extra_h1.md"
+        md_file.write_text(_EXTRA_H1_MD, encoding="utf-8")
         return parse_snapshot(str(md_file))
 
-    def test_unknown_heading_warning_emitted(self, snapshot_with_unknown):
-        codes = [d.code for d in snapshot_with_unknown.diagnostics]
-        assert "unknown_top_level_heading" in codes
+    def test_extra_h1_appears_in_components(self, snapshot_with_extra):
+        assert "experimental_features" in snapshot_with_extra.components
 
-    def test_unknown_heading_in_manifest(self, snapshot_with_unknown):
-        assert "Experimental Features" in snapshot_with_unknown.manifest.unknown_top_level_headings
+    def test_extra_h1_subsections_recorded(self, snapshot_with_extra):
+        subs = snapshot_with_extra.manifest.h1_subsections.get("experimental_features", [])
+        assert "A bold thing" in subs
 
-    def test_diagnostic_count_consistency(self, snapshot_with_unknown):
-        assert snapshot_with_unknown.manifest.diagnostic_count == len(snapshot_with_unknown.diagnostics)
+    def test_extra_h1_title_preserved(self, snapshot_with_extra):
+        comp = snapshot_with_extra.components["experimental_features"]
+        assert comp.title == "Experimental Features"
+
+    def test_diagnostic_count_consistency(self, snapshot_with_extra):
+        assert snapshot_with_extra.manifest.diagnostic_count == len(snapshot_with_extra.diagnostics)
 
 
 # ---------------------------------------------------------------------------
@@ -287,7 +297,7 @@ def test_build_manifest_direct():
     # Build stubs: just need the children to have `.title`
     sp_child_a = Component(
         id="system_prompt/Getting started",
-        kind="system_prompt_section",
+        kind="h1_subsection",
         title="Getting started",
         path=["System Prompt", "Getting started"],
         raw="",
@@ -298,7 +308,7 @@ def test_build_manifest_direct():
     )
     sp_child_b = Component(
         id="system_prompt/Doing tasks",
-        kind="system_prompt_section",
+        kind="h1_subsection",
         title="Doing tasks",
         path=["System Prompt", "Doing tasks"],
         raw="",
@@ -373,8 +383,7 @@ def test_build_manifest_direct():
     assert "User Message" in manifest.top_level_headings
     assert "System Prompt" in manifest.top_level_headings
     assert "Tools" in manifest.top_level_headings
-    assert "Getting started" in manifest.system_prompt_sections
-    assert "Doing tasks" in manifest.system_prompt_sections
+    assert "Getting started" in manifest.h1_subsections["system_prompt"]
+    assert "Doing tasks" in manifest.h1_subsections["system_prompt"]
     assert "Bash" in manifest.tools
-    assert manifest.unknown_top_level_headings == []
     assert manifest.diagnostic_count == 2

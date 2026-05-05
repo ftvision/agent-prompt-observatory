@@ -1,6 +1,18 @@
 {
-  "system_message": {
-    "Preamble": {
+  "user_message": {
+    "available_deferred_tools/0": {
+      "hash": "966fb56fd0e49aed",
+      "char_count": 217,
+      "text": "<available-deferred-tools>\nAskUserQuestion\nCronCreate\nCronDelete\nCronList\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nExitWorktree\nNotebookEdit\nTaskOutput\nTaskStop\nTodoWrite\nWebFetch\nWebSearch\n</available-deferred-tools>"
+    },
+    "actual_prompt": {
+      "hash": "9de938b7b357a5c1",
+      "char_count": 42,
+      "text": "# User Message\n</available-deferred-tools>"
+    }
+  },
+  "system_prompt": {
+    "System Prompt": {
       "hash": "2e2bfe337e350e5a",
       "char_count": 914,
       "text": "# System Prompt\n\nYou are a Claude agent, built on Anthropic's Claude Agent SDK.\n\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.\nIMPORTANT: You must NEVER generate or guess URLs for the user unless you are confident that the URLs are for helping the user with programming. You may use URLs provided by the user in their messages or local files."
@@ -54,18 +66,6 @@
       "schema_chars": 505,
       "prose": "## ToolSearch\n\nFetches full schema definitions for deferred tools so they can be called.\n\nDeferred tools appear by name in <available-deferred-tools> messages. Until fetched, only the name is known \u2014 there is no parameter schema, so the tool cannot be invoked. This tool takes a query, matches it against the deferred tool list, and returns the matched tools' complete JSONSchema definitions inside a <functions> block. Once a tool's schema appears in that result, it is callable exactly like any tool defined at the top of the prompt.\n\nResult format: each matched tool appears as one <function>{\"description\": \"...\", \"name\": \"...\", \"parameters\": {...}}</function> line inside the <functions> block \u2014 the same encoding as the tool list at the top of this prompt.\n\nQuery forms:\n- \"select:Read,Edit,Grep\" \u2014 fetch these exact tools by name\n- \"notebook jupyter\" \u2014 keyword search, up to max_results best matches\n- \"+slack send\" \u2014 require \"slack\" in the name, rank by remaining terms",
       "schema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"query\": {\n      \"description\": \"Query to find deferred tools. Use \\\"select:<tool_name>\\\" for direct selection, or keywords to search.\",\n      \"type\": \"string\"\n    },\n    \"max_results\": {\n      \"description\": \"Maximum number of results to return (default: 5)\",\n      \"default\": 5,\n      \"type\": \"number\"\n    }\n  },\n  \"required\": [\n    \"query\",\n    \"max_results\"\n  ],\n  \"additionalProperties\": false\n}"
-    }
-  },
-  "user_message": {
-    "available_deferred_tools/0": {
-      "hash": "966fb56fd0e49aed",
-      "char_count": 217,
-      "text": "<available-deferred-tools>\nAskUserQuestion\nCronCreate\nCronDelete\nCronList\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nExitWorktree\nNotebookEdit\nTaskOutput\nTaskStop\nTodoWrite\nWebFetch\nWebSearch\n</available-deferred-tools>"
-    },
-    "actual_prompt": {
-      "hash": "9de938b7b357a5c1",
-      "char_count": 42,
-      "text": "# User Message\n</available-deferred-tools>"
     }
   }
 }

@@ -10,7 +10,11 @@ from __future__ import annotations
 
 from .models import Component, Diagnostic, Manifest, Snapshot, StructuralRegions
 from .parsers import parse_markdown, parse_structural
-from .parsers.extractors import extract_user_message, extract_system_prompt, extract_tools
+from .parsers.extractors import (
+    extract_h1_section,
+    extract_tools,
+    extract_user_message,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -18,7 +22,6 @@ from .parsers.extractors import extract_user_message, extract_system_prompt, ext
 # ---------------------------------------------------------------------------
 
 def _empty_component(component_id: str, title: str) -> Component:
-    """Return a zero-content placeholder Component for a missing top-level region."""
     return Component(
         id=component_id,
         kind=component_id,
@@ -42,52 +45,33 @@ def build_manifest(
     regions: StructuralRegions,
     diagnostics: list[Diagnostic],
 ) -> Manifest:
-    """Build a :class:`Manifest` summary from the assembled components.
-
-    Parameters
-    ----------
-    components:
-        The fully-extracted top-level component mapping (keys are component ids).
-    regions:
-        The structural regions produced by the structural parser; used to
-        reconstruct document order and collect unknown heading titles.
-    diagnostics:
-        The accumulated diagnostics list; its length becomes ``diagnostic_count``.
-
-    Returns
-    -------
-    Manifest
-    """
-    # top_level_headings: all known + unknown sections ordered by line_start.
+    """Build a :class:`Manifest` summary from the assembled components."""
     ordered_sections: list[tuple[int, str]] = []
-    for section in [regions.user_message, regions.system_prompt, regions.tools]:
-        if section is not None:
-            ordered_sections.append((section.line_start, section.title))
-    for section in regions.unknown:
+    if regions.user_message is not None:
+        ordered_sections.append((regions.user_message.line_start, regions.user_message.title))
+    for section in regions.h1_sections.values():
         ordered_sections.append((section.line_start, section.title))
+    if regions.tools is not None:
+        ordered_sections.append((regions.tools.line_start, regions.tools.title))
     ordered_sections.sort(key=lambda t: t[0])
     top_level_headings = [title for _, title in ordered_sections]
 
-    # system_prompt_sections: titles of direct children of the system_prompt component.
-    system_prompt_sections: list[str] = []
-    sp = components.get("system_prompt")
-    if sp is not None:
-        system_prompt_sections = [child.title for child in sp.children.values()]
+    h1_subsections: dict[str, list[str]] = {}
+    for slug in regions.h1_sections:
+        comp = components.get(slug)
+        if comp is None:
+            continue
+        h1_subsections[slug] = [child.title for child in comp.children.values()]
 
-    # tools: titles of direct children of the tools component.
     tools_titles: list[str] = []
     tools_comp = components.get("tools")
     if tools_comp is not None:
         tools_titles = [child.title for child in tools_comp.children.values()]
 
-    # unknown_top_level_headings: titles from regions.unknown.
-    unknown_top_level_headings = [s.title for s in regions.unknown]
-
     return Manifest(
         top_level_headings=top_level_headings,
-        system_prompt_sections=system_prompt_sections,
+        h1_subsections=h1_subsections,
         tools=tools_titles,
-        unknown_top_level_headings=unknown_top_level_headings,
         diagnostic_count=len(diagnostics),
     )
 
@@ -97,30 +81,7 @@ def build_manifest(
 # ---------------------------------------------------------------------------
 
 def parse_snapshot(path: str) -> Snapshot:
-    """Parse the Claude Code prompt capture at *path* and return a :class:`Snapshot`.
-
-    Steps
-    -----
-    1. Read the file at *path*.
-    2. Call ``parse_markdown`` to produce a ``MarkdownDoc``.
-    3. Call ``parse_structural`` to produce ``StructuralRegions``.
-    4. For each known region (user_message, system_prompt, tools):
-       - If the region is ``None``, emit a ``missing_top_level_component``
-         warning and use an empty placeholder :class:`Component`.
-       - Otherwise call the matching extractor.
-    5. For each unknown section in ``regions.unknown``, emit an
-       ``unknown_top_level_heading`` warning.
-    6. Build a :class:`Manifest` and return a :class:`Snapshot`.
-
-    Parameters
-    ----------
-    path:
-        Absolute or relative filesystem path to a ``.md`` capture file.
-
-    Returns
-    -------
-    Snapshot
-    """
+    """Parse the Claude Code prompt capture at *path* and return a :class:`Snapshot`."""
     with open(path, encoding="utf-8") as fh:
         text = fh.read()
 
@@ -142,19 +103,6 @@ def parse_snapshot(path: str) -> Snapshot:
     else:
         user_message_comp = extract_user_message(regions.user_message, diagnostics)
 
-    # ── System Prompt ─────────────────────────────────────────────────────────
-    if regions.system_prompt is None:
-        diagnostics.append(
-            Diagnostic(
-                level="warning",
-                code="missing_top_level_component",
-                message="Top-level component 'System Prompt' is missing from the document.",
-            )
-        )
-        system_prompt_comp = _empty_component("system_prompt", "System Prompt")
-    else:
-        system_prompt_comp = extract_system_prompt(regions.system_prompt, diagnostics)
-
     # ── Tools ─────────────────────────────────────────────────────────────────
     if regions.tools is None:
         diagnostics.append(
@@ -168,25 +116,17 @@ def parse_snapshot(path: str) -> Snapshot:
     else:
         tools_comp = extract_tools(regions.tools, diagnostics)
 
-    # ── Unknown sections ──────────────────────────────────────────────────────
-    for unknown_section in regions.unknown:
-        diagnostics.append(
-            Diagnostic(
-                level="warning",
-                code="unknown_top_level_heading",
-                message=(
-                    f"Unrecognised top-level heading '{unknown_section.title}' "
-                    f"at line {unknown_section.line_start}."
-                ),
-                line=unknown_section.line_start,
-            )
-        )
+    # ── H1 sections (System Prompt + any newly-promoted H1) ──────────────────
+    h1_components: dict[str, Component] = {}
+    for slug, section in regions.h1_sections.items():
+        h1_components[slug] = extract_h1_section(section, slug, diagnostics)
 
-    components: dict[str, Component] = {
-        "user_message": user_message_comp,
-        "system_prompt": system_prompt_comp,
-        "tools": tools_comp,
-    }
+    # Assemble in document order: User Message, then each H1 section in source
+    # order, then Tools. Insertion order survives in Python dicts and JSON.
+    components: dict[str, Component] = {"user_message": user_message_comp}
+    for slug, comp in h1_components.items():
+        components[slug] = comp
+    components["tools"] = tools_comp
 
     manifest = build_manifest(components, regions, diagnostics)
 
@@ -198,4 +138,3 @@ def parse_snapshot(path: str) -> Snapshot:
         components=components,
         diagnostics=diagnostics,
     )
-

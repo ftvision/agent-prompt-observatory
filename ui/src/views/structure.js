@@ -16,43 +16,80 @@ function loadMarked() {
   return markedPromise
 }
 
-const PALETTE = {
-  user: {
-    label: 'User Prompt',
+// Reserved top-level slugs for which the structure shape isn't a flat list of
+// {title, char_count} subsections. user_message holds xml_tag entries; tools
+// holds tool entries (with prose/schema breakdown).
+const USER_SLUG = 'user_message'
+const TOOLS_SLUG = 'tools'
+
+// Per-slug palettes for the 3D slabs. Known H1s get hand-tuned hues; any H1
+// the corpus introduces later falls through to DEFAULT_H1_PALETTE.
+const PALETTES = {
+  user_message: {
+    fallbackLabel: 'User Prompt',
     className: 'amber',
     ink: '#674407',
-    topA: '#ffe6b5',
-    topB: '#f6c776',
-    frontA: '#f7d28f',
-    frontB: '#efb84f',
-    sideA: '#f0bf64',
-    sideB: '#d49a34',
+    topA: '#ffe6b5', topB: '#f6c776',
+    frontA: '#f7d28f', frontB: '#efb84f',
+    sideA: '#f0bf64', sideB: '#d49a34',
     stroke: '#c58d27',
   },
-  system: {
-    label: 'System Prompt',
+  system_prompt: {
+    fallbackLabel: 'System Prompt',
     className: 'blue',
     ink: '#174d7d',
-    topA: '#d9ecfb',
-    topB: '#a7cce9',
-    frontA: '#c6def2',
-    frontB: '#8db9dc',
-    sideA: '#9fc5e4',
-    sideB: '#77a8cf',
+    topA: '#d9ecfb', topB: '#a7cce9',
+    frontA: '#c6def2', frontB: '#8db9dc',
+    sideA: '#9fc5e4', sideB: '#77a8cf',
     stroke: '#6d9bc2',
   },
+  executing_actions_with_care: {
+    fallbackLabel: 'Executing actions with care',
+    className: 'teal',
+    ink: '#11534f',
+    topA: '#cdeeea', topB: '#8fcfc6',
+    frontA: '#b6e3dd', frontB: '#74bdb2',
+    sideA: '#90ccc4', sideB: '#5da89e',
+    stroke: '#5fa39a',
+  },
+  text_output_does_not_apply_to_tool_calls: {
+    fallbackLabel: 'Text output',
+    className: 'violet',
+    ink: '#3d2563',
+    topA: '#e3d6f3', topB: '#bda1dd',
+    frontA: '#cfb9e6', frontB: '#a585cf',
+    sideA: '#b094d6', sideB: '#8a6abc',
+    stroke: '#7e5ab1',
+  },
   tools: {
-    label: 'Tools',
+    fallbackLabel: 'Tools',
     className: 'green',
     ink: '#205d37',
-    topA: '#dff0da',
-    topB: '#b7d9ad',
-    frontA: '#cce5c5',
-    frontB: '#9fc98f',
-    sideA: '#afd5a4',
-    sideB: '#89b97a',
+    topA: '#dff0da', topB: '#b7d9ad',
+    frontA: '#cce5c5', frontB: '#9fc98f',
+    sideA: '#afd5a4', sideB: '#89b97a',
     stroke: '#7faa70',
   },
+}
+
+const DEFAULT_H1_PALETTE = {
+  fallbackLabel: 'Section',
+  className: 'slate',
+  ink: '#3a4655',
+  topA: '#dde4ec', topB: '#b1bdcc',
+  frontA: '#cad3de', frontB: '#9ba9bb',
+  sideA: '#aeb9c8', sideB: '#8290a3',
+  stroke: '#7a8798',
+}
+
+function getPalette(slug) {
+  return PALETTES[slug] || DEFAULT_H1_PALETTE
+}
+
+function classifyKind(slug) {
+  if (slug === USER_SLUG) return 'user'
+  if (slug === TOOLS_SLUG) return 'tool'
+  return 'h1'
 }
 
 function esc(value = '') {
@@ -94,40 +131,61 @@ function getSize(item) {
   return item.char_count ?? item.total_chars ?? item.prose_chars ?? 0
 }
 
-function buildGroups(structure) {
-  return [
-    {
-      key: 'user',
-      ...PALETTE.user,
-      items: (structure.user_message || []).map(item => ({
+function buildGroups(structure, topLevelTitles) {
+  const groups = []
+  for (const [slug, rawItems] of Object.entries(structure)) {
+    const items = Array.isArray(rawItems) ? rawItems : []
+    if (!items.length) continue
+
+    const kind = classifyKind(slug)
+    const palette = getPalette(slug)
+    const label = topLevelTitles?.[slug] || palette.fallbackLabel
+
+    if (kind === 'user') {
+      groups.push({
+        slug, kind, label, key: slug,
+        ...palette,
+        items: items.map(item => ({
+          ...item,
+          title: formatTitle(item),
+          type: 'user',
+          slug,
+          lookupKey: item.key,
+          size: getSize(item),
+        })),
+      })
+      continue
+    }
+
+    if (kind === 'tool') {
+      groups.push({
+        slug, kind, label, key: slug,
+        ...palette,
+        items: items.map(item => ({
+          ...item,
+          type: 'tool',
+          slug,
+          lookupKey: item.title,
+          size: getSize(item),
+        })),
+      })
+      continue
+    }
+
+    // Generic H1 section
+    groups.push({
+      slug, kind, label, key: slug,
+      ...palette,
+      items: items.map(item => ({
         ...item,
-        title: formatTitle(item),
-        type: 'user',
-        lookupKey: item.key,
-        size: getSize(item),
-      })),
-    },
-    {
-      key: 'system',
-      ...PALETTE.system,
-      items: (structure.system_message || []).map(item => ({
-        ...item,
-        type: 'system',
+        type: 'h1',
+        slug,
         lookupKey: item.title,
         size: getSize(item),
       })),
-    },
-    {
-      key: 'tools',
-      ...PALETTE.tools,
-      items: (structure.tools || []).map(item => ({
-        ...item,
-        type: 'tool',
-        lookupKey: item.title,
-        size: getSize(item),
-      })),
-    },
-  ].filter(group => group.items.length)
+    })
+  }
+  return groups
 }
 
 function flattenGroups(groups) {
@@ -155,14 +213,40 @@ function slab({ x, y, w, h, d, item, group, showTop = false, selected = false })
   `
 }
 
+// Greedy word-wrap so SVG callout titles don't get clipped by the narrow
+// rail column. SVG <text> doesn't wrap; we emit one <tspan> per line.
+function wrapTitle(text, maxChars = 17) {
+  const words = String(text || '').split(/\s+/).filter(Boolean)
+  const lines = []
+  let cur = ''
+  for (const word of words) {
+    if (!cur) { cur = word; continue }
+    if ((cur.length + 1 + word.length) <= maxChars) cur += ' ' + word
+    else { lines.push(cur); cur = word }
+  }
+  if (cur) lines.push(cur)
+  return lines.length ? lines : [text]
+}
+
 function groupCallout({ group, anchorX, anchorY, labelX }) {
+  const subLabel = group.kind === 'tool' ? 'tool' : 'section'
+  const lines = wrapTitle(group.label, 17)
+  const lineHeight = 18  // ~ matches the 19px font-size of .callout-title
+  // Center the multi-line block vertically around (anchorY - 6) so single-line
+  // titles render at the original position and longer titles stay balanced.
+  const titleTop = anchorY - 6 - (lines.length - 1) * lineHeight / 2
+  const tspans = lines.map((line, i) =>
+    `<tspan x="${labelX}" ${i === 0 ? `y="${titleTop}"` : `dy="${lineHeight}"`}>${esc(line)}</tspan>`
+  ).join('')
+  const metaY1 = titleTop + (lines.length - 1) * lineHeight + 18
+  const metaY2 = metaY1 + 17
   return `
     <g class="group-callout ${group.className}">
       <path d="M${labelX + 74},${anchorY} H${anchorX - 28}" stroke="${group.stroke}" stroke-width="1.4"/>
       <circle cx="${anchorX - 28}" cy="${anchorY}" r="3" fill="${group.stroke}"/>
-      <text class="callout-title" x="${labelX}" y="${anchorY - 6}" fill="${group.ink}">${group.label}</text>
-      <text class="callout-meta" x="${labelX}" y="${anchorY + 12}" fill="#5f5a51">${plural(group.items.length, group.key === 'tools' ? 'tool' : 'section')}</text>
-      <text class="callout-meta" x="${labelX}" y="${anchorY + 29}" fill="#5f5a51">${formatNumber(group.total)} chars</text>
+      <text class="callout-title" fill="${group.ink}">${tspans}</text>
+      <text class="callout-meta" x="${labelX}" y="${metaY1}" fill="#5f5a51">${plural(group.items.length, subLabel)}</text>
+      <text class="callout-meta" x="${labelX}" y="${metaY2}" fill="#5f5a51">${formatNumber(group.total)} chars</text>
     </g>
   `
 }
@@ -177,6 +261,14 @@ function renderSvgStack(groups, selectedId) {
   let y = 32
   const parts = []
   const callouts = []
+
+  // Compute the total height we need so the SVG can grow with more H1s.
+  let predictedHeight = y
+  groups.forEach((group, i) => {
+    if (i > 0) predictedHeight += dividerGap
+    predictedHeight += group.items.length * (h + gap)
+  })
+  predictedHeight += 32
 
   groups.forEach((group, groupIndex) => {
     if (groupIndex > 0) {
@@ -193,7 +285,7 @@ function renderSvgStack(groups, selectedId) {
   })
 
   return `
-    <svg class="structure-stack-svg" viewBox="0 0 660 950" role="list" aria-label="Prompt structure stack. Use arrow keys to move between layers, Enter to read details.">
+    <svg class="structure-stack-svg" viewBox="0 0 660 ${Math.max(950, predictedHeight)}" role="list" aria-label="Prompt structure stack. Use arrow keys to move between layers, Enter to read details.">
       <defs>
         ${groups.map(group => `
           <linearGradient id="${group.key}-top" x1="0" x2="0" y1="0" y2="1">
@@ -224,12 +316,13 @@ function renderSvgStack(groups, selectedId) {
 function getTextForItem(components, item) {
   if (!components) return ''
   if (item.type === 'tool') {
-    const detail = components.tools?.[item.lookupKey]
+    const detail = components[item.slug]?.[item.lookupKey]
     if (!detail) return ''
     return [detail.prose, detail.schema ? `\`\`\`json\n${detail.schema}\n\`\`\`` : ''].filter(Boolean).join('\n\n')
   }
-  if (item.type === 'system') return components.system_message?.[item.lookupKey]?.text || ''
-  return components.user_message?.[item.lookupKey]?.text || ''
+  if (item.type === 'user') return components[item.slug]?.[item.lookupKey]?.text || ''
+  // h1 subsection
+  return components[item.slug]?.[item.lookupKey]?.text || ''
 }
 
 function getMetadata(item) {
@@ -247,10 +340,6 @@ function getMetadata(item) {
 }
 
 function renderPanel(item, components, activeTab = 'rendered') {
-  // Synchronous skeleton. If components are already cached we render the
-  // plain text immediately so there's no flash; hydratePanel() upgrades the
-  // rendered pane to parsed markdown once `marked` loads. If components
-  // haven't arrived yet, the placeholder reads "Loading…" until they do.
   const text = components ? getTextForItem(components, item) : null
   const initialBody = components == null
     ? 'Loading panel content…'
@@ -260,7 +349,7 @@ function renderPanel(item, components, activeTab = 'rendered') {
   return `
     <div class="structure-panel-head">
       <div>
-        <div class="structure-breadcrumb">${item.groupLabel} <span>›</span> ${esc(item.title)}</div>
+        <div class="structure-breadcrumb">${esc(item.groupLabel)} <span>›</span> ${esc(item.title)}</div>
       </div>
       <button class="panel-close" type="button" aria-label="Clear selection">×</button>
     </div>
@@ -306,11 +395,28 @@ function renderError(message) {
 }
 
 function renderMetrics(structure, version, versionMeta) {
-  const userTotal = (structure.user_message || []).reduce((sum, item) => sum + getSize(item), 0)
-  const systemTotal = (structure.system_message || []).reduce((sum, item) => sum + getSize(item), 0)
-  const toolTotal = (structure.tools || []).reduce((sum, item) => sum + getSize(item), 0)
-  const systemSectionCount = (structure.system_message || []).length
-  const total = userTotal + systemTotal + toolTotal
+  // Aggregate per-slug totals; sum across H1 sections (excluding user/tools)
+  // for the "system sections" metric so the count still answers "how many
+  // H2-level subsections live in the system area."
+  let userTotal = 0
+  let toolsTotal = 0
+  let toolsCount = 0
+  let h1SubsectionCount = 0
+  let h1Total = 0
+
+  for (const [slug, items] of Object.entries(structure)) {
+    const arr = Array.isArray(items) ? items : []
+    if (slug === USER_SLUG) {
+      userTotal = arr.reduce((sum, item) => sum + getSize(item), 0)
+    } else if (slug === TOOLS_SLUG) {
+      toolsTotal = arr.reduce((sum, item) => sum + getSize(item), 0)
+      toolsCount = arr.length
+    } else {
+      h1SubsectionCount += arr.length
+      h1Total += arr.reduce((sum, item) => sum + getSize(item), 0)
+    }
+  }
+  const total = userTotal + h1Total + toolsTotal
 
   return `
     <div class="structure-index">
@@ -325,8 +431,8 @@ function renderMetrics(structure, version, versionMeta) {
       </div>
       <dl class="metric-list">
         <div><dt>Total size</dt><dd>${formatNumber(total)}<span>characters</span></dd></div>
-        <div><dt>System sections</dt><dd>${formatNumber(systemSectionCount)}</dd></div>
-        <div><dt>Tools</dt><dd>${formatNumber((structure.tools || []).length)}</dd></div>
+        <div><dt>System sections</dt><dd>${formatNumber(h1SubsectionCount)}</dd></div>
+        <div><dt>Tools</dt><dd>${formatNumber(toolsCount)}</dd></div>
         <div><dt>Last updated</dt><dd>${esc(formatDate(versionMeta?.release_date))}<span>local dataset</span></dd></div>
       </dl>
     </div>
@@ -364,6 +470,7 @@ export async function renderStructure(container) {
 
   const versionMetaList = Array.isArray(meta.versions) ? meta.versions : []
   const versions = versionMetaList.map(v => v.version)
+  const topLevelTitles = meta.top_level_titles || {}
   let currentVersion = latestPayload.version || versionMetaList.at(-1)?.version || versions.at(-1)
   let currentTab = 'rendered'
   let currentId
@@ -388,7 +495,7 @@ export async function renderStructure(container) {
 
     const versionMeta = versionMetaList.find(v => v.version === currentVersion)
 
-    const groups = buildGroups(structure).map(group => ({
+    const groups = buildGroups(structure, topLevelTitles).map(group => ({
       ...group,
       total: group.items.reduce((sum, item) => sum + item.size, 0),
       items: group.items.map((item, index) => ({
@@ -399,7 +506,10 @@ export async function renderStructure(container) {
       })),
     }))
     const allItems = flattenGroups(groups)
-    const firstSystem = groups.find(group => group.key === 'system')?.items[0]
+    // Default selection: first system_prompt subsection if present, else
+    // first item in first non-user group, else first item overall.
+    const firstSystem = groups.find(g => g.slug === 'system_prompt')?.items[0]
+      || groups.find(g => g.kind === 'h1')?.items[0]
     const selectedItem = currentId === null
       ? null
       : allItems.find(item => item.id === currentId) || firstSystem || groups[0]?.items[0] || null
