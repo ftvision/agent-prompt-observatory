@@ -40226,5 +40226,1267 @@
         "char_count": 305
       }
     ]
+  },
+  "2.1.113": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1626
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.114": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.116": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.117": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.118": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.119": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.120": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.121": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      },
+      {
+        "title": "System",
+        "char_count": 290
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 361
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.122": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 1004
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.123": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 169
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.124": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 169
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.126": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 169
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
+  },
+  "2.1.128": {
+    "system_message": [
+      {
+        "title": "Preamble",
+        "char_count": 169
+      },
+      {
+        "title": "System",
+        "char_count": 1261
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3547
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ],
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ]
   }
 }

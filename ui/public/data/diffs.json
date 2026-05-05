@@ -3594,5 +3594,176 @@
     "reordered_tools": false,
     "added_xml_tags": [],
     "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.112",
+    "to": "2.1.113",
+    "added_sections": [],
+    "removed_sections": [
+      "Environment",
+      "Executing actions with care",
+      "Session-specific guidance",
+      "Text output (does not apply to tool calls)",
+      "Tone and style",
+      "Using your tools",
+      "auto memory"
+    ],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.113",
+    "to": "2.1.114",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.114",
+    "to": "2.1.116",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.116",
+    "to": "2.1.117",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.117",
+    "to": "2.1.118",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.118",
+    "to": "2.1.119",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.119",
+    "to": "2.1.120",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.120",
+    "to": "2.1.121",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.121",
+    "to": "2.1.122",
+    "added_sections": [],
+    "removed_sections": [
+      "Doing tasks",
+      "System"
+    ],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.122",
+    "to": "2.1.123",
+    "added_sections": [
+      "System"
+    ],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.123",
+    "to": "2.1.124",
+    "added_sections": [
+      "Doing tasks"
+    ],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.124",
+    "to": "2.1.126",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.126",
+    "to": "2.1.128",
+    "added_sections": [],
+    "removed_sections": [],
+    "reordered_sections": false,
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
   }
 ]
