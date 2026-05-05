@@ -1,6 +1,23 @@
 {
-  "system_message": {
-    "Preamble": {
+  "user_message": {
+    "system_reminder/0": {
+      "hash": "efbaf5b027a25dc8",
+      "char_count": 1924,
+      "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".\n- claude-developer-platform: Use this skill when the user wants to build a program that calls the Claude API or Anthropic SDK, OR when they need an AI/LLM and haven't chosen a platform yet. Trigger if the request:\n- Mentions Claude, Opus, Sonnet, Haiku, or the Anthropic SDK / Agent SDK / API\n- References Anthropic-specific features (Batches API, Files API, prompt caching, extended thinking, etc.)\n- Involves building a chatbot, AI agent, or LLM-powered app and the existing code already uses Claude/Anthropic, or no AI SDK has been chosen yet\n- Describes a program whose core logic requires calling an AI model and no non-Claude SDK is already in use\nDo NOT trigger if the user is already working with a non-Claude AI platform. Check for these signals BEFORE reading this skill's docs:\n- Filenames in the prompt referencing another provider (e.g. \"openai\", \"gpt\", \"gemini\" in the filename)\n- The prompt explicitly mentions using OpenAI, GPT, Gemini, or another non-Claude provider\n- Existing project files import a non-Claude AI SDK (e.g. openai, google.generativeai, or another provider)\nThis skill only contains Claude/Anthropic documentation and cannot help with other providers.\nDo NOT trigger for purely conventional programming with no AI \u2014 calculators, timers, unit converters, file utilities, todo apps, password generators, URL shorteners, format converters, or similar deterministic-logic tasks.\nDo NOT trigger for traditional ML/data science tasks that don't call an LLM API \u2014 scikit-learn pipelines, PyTorch model training, pandas/numpy data processing, etc.\n</system-reminder>"
+    },
+    "system_reminder/1": {
+      "hash": "0e60bd73a6773fa3",
+      "char_count": 305,
+      "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is 2026-02-20.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
+    },
+    "actual_prompt": {
+      "hash": "1fb8d61b76a5ffc7",
+      "char_count": 96,
+      "text": "# User Message\n</system-reminder>\n\n2026-02-20T09:28:20.624Z is the date. Write a haiku about it."
+    }
+  },
+  "system_prompt": {
+    "System Prompt": {
       "hash": "2e2bfe337e350e5a",
       "char_count": 914,
       "text": "# System Prompt\n\nYou are a Claude agent, built on Anthropic's Claude Agent SDK.\n\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.\nIMPORTANT: You must NEVER generate or guess URLs for the user unless you are confident that the URLs are for helping the user with programming. You may use URLs provided by the user in their messages or local files."
@@ -177,23 +194,6 @@
       "schema_chars": 439,
       "prose": "## Write\n\nWrites a file to the local filesystem.\n\nUsage:\n- This tool will overwrite the existing file if there is one at the provided path.\n- If this is an existing file, you MUST use the Read tool first to read the file's contents. This tool will fail if you did not read the file first.\n- ALWAYS prefer editing existing files in the codebase. NEVER write new files unless explicitly required.\n- NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.\n- Only use emojis if the user explicitly requests it. Avoid writing emojis to files unless asked.",
       "schema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"file_path\": {\n      \"description\": \"The absolute path to the file to write (must be absolute, not relative)\",\n      \"type\": \"string\"\n    },\n    \"content\": {\n      \"description\": \"The content to write to the file\",\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"file_path\",\n    \"content\"\n  ],\n  \"additionalProperties\": false\n}"
-    }
-  },
-  "user_message": {
-    "system_reminder/0": {
-      "hash": "efbaf5b027a25dc8",
-      "char_count": 1924,
-      "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".\n- claude-developer-platform: Use this skill when the user wants to build a program that calls the Claude API or Anthropic SDK, OR when they need an AI/LLM and haven't chosen a platform yet. Trigger if the request:\n- Mentions Claude, Opus, Sonnet, Haiku, or the Anthropic SDK / Agent SDK / API\n- References Anthropic-specific features (Batches API, Files API, prompt caching, extended thinking, etc.)\n- Involves building a chatbot, AI agent, or LLM-powered app and the existing code already uses Claude/Anthropic, or no AI SDK has been chosen yet\n- Describes a program whose core logic requires calling an AI model and no non-Claude SDK is already in use\nDo NOT trigger if the user is already working with a non-Claude AI platform. Check for these signals BEFORE reading this skill's docs:\n- Filenames in the prompt referencing another provider (e.g. \"openai\", \"gpt\", \"gemini\" in the filename)\n- The prompt explicitly mentions using OpenAI, GPT, Gemini, or another non-Claude provider\n- Existing project files import a non-Claude AI SDK (e.g. openai, google.generativeai, or another provider)\nThis skill only contains Claude/Anthropic documentation and cannot help with other providers.\nDo NOT trigger for purely conventional programming with no AI \u2014 calculators, timers, unit converters, file utilities, todo apps, password generators, URL shorteners, format converters, or similar deterministic-logic tasks.\nDo NOT trigger for traditional ML/data science tasks that don't call an LLM API \u2014 scikit-learn pipelines, PyTorch model training, pandas/numpy data processing, etc.\n</system-reminder>"
-    },
-    "system_reminder/1": {
-      "hash": "0e60bd73a6773fa3",
-      "char_count": 305,
-      "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is 2026-02-20.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
-    },
-    "actual_prompt": {
-      "hash": "1fb8d61b76a5ffc7",
-      "char_count": 96,
-      "text": "# User Message\n</system-reminder>\n\n2026-02-20T09:28:20.624Z is the date. Write a haiku about it."
     }
   }
 }

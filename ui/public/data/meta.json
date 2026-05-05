@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-05T03:12:18.579686+00:00",
+  "generated_at": "2026-05-05T04:12:15.503206+00:00",
   "total_versions": 302,
   "versions": [
     {
@@ -1210,5 +1210,12 @@
       "version": "2.1.128",
       "release_date": "2026-05-04"
     }
-  ]
+  ],
+  "top_level_titles": {
+    "user_message": "User Message",
+    "system_prompt": "System Prompt",
+    "tools": "Tools",
+    "executing_actions_with_care": "Executing actions with care",
+    "text_output_does_not_apply_to_tool_calls": "Text output (does not apply to tool calls)"
+  }
 }

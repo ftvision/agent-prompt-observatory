@@ -1,6 +1,28 @@
 {
-  "system_message": {
-    "Preamble": {
+  "user_message": {
+    "system_reminder/0": {
+      "hash": "fb4f2f3ec30e6be6",
+      "char_count": 276,
+      "text": "<system-reminder>\nThe following deferred tools are now available via ToolSearch:\nAskUserQuestion\nCronCreate\nCronDelete\nCronList\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nExitWorktree\nNotebookEdit\nRemoteTrigger\nTaskOutput\nTaskStop\nTodoWrite\nWebFetch\nWebSearch\n</system-reminder>"
+    },
+    "system_reminder/1": {
+      "hash": "d33e72ab1e30e720",
+      "char_count": 1500,
+      "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so m\u2026\n- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".\n- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found.\n- loop: Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m) - When the user wants to set up a recurring task, poll for status, or run something repeatedly on an interval (e.g. \"check the deploy every 5 minutes\", \"keep\u2026\n- schedule: Create, update, list, or run scheduled remote agents (triggers) that execute on a cron schedule. - When the user wants to schedule a recurring remote agent, set up automated tasks, create a cron job for Claude Code, or manage their scheduled agents/\u2026\n- claude-api: Build apps with the Claude API or Anthropic SDK.\nTRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK.\nDO NOT TRIGGER when: code imports `openai`/other AI SDK, ge\u2026\n</system-reminder>"
+    },
+    "system_reminder/2": {
+      "hash": "4f9c2553e245b064",
+      "char_count": 305,
+      "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is 2026-04-04.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
+    },
+    "actual_prompt": {
+      "hash": "6b1b89cd8b10c2ad",
+      "char_count": 116,
+      "text": "# User Message\n</system-reminder>\n</system-reminder>\n\n\n2026-04-04T09:28:25.172Z is the date. Write a haiku about it."
+    }
+  },
+  "system_prompt": {
+    "System Prompt": {
       "hash": "a6e40572bedcb189",
       "char_count": 999,
       "text": "# System Prompt\n\nx-anthropic-billing-header: cc_version=2.1.92.b81; cc_entrypoint=sdk-cli; cch=00000;\nYou are a Claude agent, built on Anthropic's Claude Agent SDK.\n\nYou are an interactive agent that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.\n\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases.\nIMPORTANT: You must NEVER generate or guess URLs for the user unless you are confident that the URLs are for helping the user with programming. You may use URLs provided by the user in their messages or local files."
@@ -123,28 +145,6 @@
       "schema_chars": 439,
       "prose": "## Write\n\nWrites a file to the local filesystem.\n\nUsage:\n- This tool will overwrite the existing file if there is one at the provided path.\n- If this is an existing file, you MUST use the Read tool first to read the file's contents. This tool will fail if you did not read the file first.\n- Prefer the Edit tool for modifying existing files \u2014 it only sends the diff. Only use this tool to create new files or for complete rewrites.\n- NEVER create documentation files (*.md) or README files unless explicitly requested by the User.\n- Only use emojis if the user explicitly requests it. Avoid writing emojis to files unless asked.",
       "schema": "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"file_path\": {\n      \"description\": \"The absolute path to the file to write (must be absolute, not relative)\",\n      \"type\": \"string\"\n    },\n    \"content\": {\n      \"description\": \"The content to write to the file\",\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"file_path\",\n    \"content\"\n  ],\n  \"additionalProperties\": false\n}"
-    }
-  },
-  "user_message": {
-    "system_reminder/0": {
-      "hash": "fb4f2f3ec30e6be6",
-      "char_count": 276,
-      "text": "<system-reminder>\nThe following deferred tools are now available via ToolSearch:\nAskUserQuestion\nCronCreate\nCronDelete\nCronList\nEnterPlanMode\nEnterWorktree\nExitPlanMode\nExitWorktree\nNotebookEdit\nRemoteTrigger\nTaskOutput\nTaskStop\nTodoWrite\nWebFetch\nWebSearch\n</system-reminder>"
-    },
-    "system_reminder/1": {
-      "hash": "d33e72ab1e30e720",
-      "char_count": 1500,
-      "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- update-config: Use this skill to configure the Claude Code harness via settings.json. Automated behaviors (\"from now on when X\", \"each time X\", \"whenever X\", \"before/after X\") require hooks configured in settings.json - the harness executes these, not Claude, so m\u2026\n- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".\n- simplify: Review changed code for reuse, quality, and efficiency, then fix any issues found.\n- loop: Run a prompt or slash command on a recurring interval (e.g. /loop 5m /foo, defaults to 10m) - When the user wants to set up a recurring task, poll for status, or run something repeatedly on an interval (e.g. \"check the deploy every 5 minutes\", \"keep\u2026\n- schedule: Create, update, list, or run scheduled remote agents (triggers) that execute on a cron schedule. - When the user wants to schedule a recurring remote agent, set up automated tasks, create a cron job for Claude Code, or manage their scheduled agents/\u2026\n- claude-api: Build apps with the Claude API or Anthropic SDK.\nTRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK.\nDO NOT TRIGGER when: code imports `openai`/other AI SDK, ge\u2026\n</system-reminder>"
-    },
-    "system_reminder/2": {
-      "hash": "4f9c2553e245b064",
-      "char_count": 305,
-      "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is 2026-04-04.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
-    },
-    "actual_prompt": {
-      "hash": "6b1b89cd8b10c2ad",
-      "char_count": 116,
-      "text": "# User Message\n</system-reminder>\n</system-reminder>\n\n\n2026-04-04T09:28:25.172Z is the date. Write a haiku about it."
     }
   }
 }

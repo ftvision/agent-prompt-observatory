@@ -1,8 +1,16 @@
 {
   "1.0.0": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 821
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1973
       },
       {
@@ -128,21 +136,21 @@
         "prose_chars": 534,
         "schema_chars": 434,
         "total_chars": 968
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 821
       }
     ]
   },
   "1.0.1": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 821
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1973
       },
       {
@@ -268,21 +276,21 @@
         "prose_chars": 534,
         "schema_chars": 434,
         "total_chars": 968
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 821
       }
     ]
   },
   "1.0.2": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 821
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1973
       },
       {
@@ -409,20 +417,20 @@
         "schema_chars": 434,
         "total_chars": 968
       }
-    ],
+    ]
+  },
+  "1.0.3": {
     "user_message": [
       {
         "key": "system_reminder/0",
         "kind": "system_reminder",
         "index": 0,
-        "char_count": 821
+        "char_count": 710
       }
-    ]
-  },
-  "1.0.3": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1973
       },
       {
@@ -549,7 +557,9 @@
         "schema_chars": 434,
         "total_chars": 968
       }
-    ],
+    ]
+  },
+  "1.0.4": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -557,12 +567,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.4": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -688,21 +696,21 @@
         "prose_chars": 534,
         "schema_chars": 434,
         "total_chars": 968
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.5": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -829,7 +837,9 @@
         "schema_chars": 434,
         "total_chars": 968
       }
-    ],
+    ]
+  },
+  "1.0.6": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -837,12 +847,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.6": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -969,7 +977,9 @@
         "schema_chars": 434,
         "total_chars": 968
       }
-    ],
+    ]
+  },
+  "1.0.7": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -977,12 +987,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.7": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1109,7 +1117,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.8": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -1117,12 +1127,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.8": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1248,21 +1256,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.9": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1389,7 +1397,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.10": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -1397,12 +1407,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.10": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1528,21 +1536,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.11": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1668,21 +1676,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.14": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1808,21 +1816,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.15": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -1949,7 +1957,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.16": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -1957,12 +1967,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.16": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2088,21 +2096,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.17": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2229,7 +2237,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.18": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -2237,12 +2247,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.18": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2369,7 +2377,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.19": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -2377,12 +2387,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.19": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2515,7 +2523,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.20": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -2523,12 +2533,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.20": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2660,21 +2668,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.21": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2807,7 +2815,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.22": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -2815,12 +2825,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.22": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -2953,7 +2961,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.23": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -2961,12 +2971,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.23": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3098,21 +3106,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.24": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3245,7 +3253,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.25": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -3253,12 +3263,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.25": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3390,21 +3398,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.26": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3536,21 +3544,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.27": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3682,21 +3690,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.28": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3828,21 +3836,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.29": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -3974,21 +3982,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.30": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 2038
       },
       {
@@ -4121,7 +4129,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.31": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -4129,12 +4139,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.31": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -4267,7 +4275,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.32": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -4275,12 +4285,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.32": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -4412,21 +4420,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.33": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -4558,21 +4566,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.34": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -4705,7 +4713,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.35": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -4713,12 +4723,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.35": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -4851,7 +4859,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.36": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -4859,12 +4869,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.36": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -4996,21 +5004,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.37": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -5143,7 +5151,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.38": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -5151,12 +5161,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.38": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -5288,21 +5296,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.39": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -5435,7 +5443,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.40": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -5443,12 +5453,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.40": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -5580,21 +5588,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.41": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -5727,7 +5735,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.42": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -5735,12 +5745,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.42": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -5872,21 +5880,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.43": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6019,7 +6027,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.44": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -6027,12 +6037,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.44": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6159,7 +6167,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.45": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -6167,12 +6177,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.45": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6298,21 +6306,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.46": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6438,21 +6446,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.47": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6578,21 +6586,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.48": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6718,21 +6726,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.49": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6858,21 +6866,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.50": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -6998,21 +7006,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.51": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7138,21 +7146,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.52": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7279,7 +7287,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.53": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -7287,12 +7297,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.53": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7418,21 +7426,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.54": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7558,21 +7566,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 710
       }
     ]
   },
   "1.0.55": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 710
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7699,7 +7707,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.56": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -7707,12 +7717,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.56": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7839,7 +7847,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.57": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -7847,12 +7857,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.57": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -7979,7 +7987,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.58": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -7987,12 +7997,10 @@
         "index": 0,
         "char_count": 710
       }
-    ]
-  },
-  "1.0.58": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8119,20 +8127,20 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.59": {
     "user_message": [
       {
         "key": "system_reminder/0",
         "kind": "system_reminder",
         "index": 0,
-        "char_count": 710
+        "char_count": 630
       }
-    ]
-  },
-  "1.0.59": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8259,7 +8267,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.60": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -8267,12 +8277,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.60": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8398,21 +8406,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.61": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8538,21 +8546,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.62": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8679,7 +8687,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.63": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -8687,12 +8697,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.63": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8819,7 +8827,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.64": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -8827,12 +8837,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.64": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -8958,21 +8966,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.65": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9098,21 +9106,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.66": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9238,21 +9246,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.67": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9379,7 +9387,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.68": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -9387,12 +9397,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.68": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9512,21 +9520,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.69": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9647,7 +9655,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.70": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -9655,12 +9665,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.70": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9781,7 +9789,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.71": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -9789,12 +9799,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.71": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -9915,7 +9923,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.72": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -9923,12 +9933,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.72": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10060,21 +10068,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.73": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10207,7 +10215,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.74": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -10215,12 +10225,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.74": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10352,21 +10360,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.76": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10498,21 +10506,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.77": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10645,7 +10653,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.78": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -10653,12 +10663,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.78": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10790,21 +10798,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.79": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -10936,21 +10944,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.80": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11082,21 +11090,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.81": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11228,21 +11236,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.82": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11374,21 +11382,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.83": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11520,21 +11528,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.84": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11666,21 +11674,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.85": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11812,21 +11820,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.86": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1871
       },
       {
@@ -11959,7 +11967,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.87": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -11967,12 +11977,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.87": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12104,21 +12112,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.88": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12250,21 +12258,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.89": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12396,21 +12404,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.90": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12542,21 +12550,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.91": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12688,21 +12696,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.92": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12834,21 +12842,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.93": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -12980,21 +12988,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.94": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -13126,21 +13134,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.95": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -13272,21 +13280,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.96": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1397
       },
       {
@@ -13419,7 +13427,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.98": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -13427,12 +13437,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.98": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -13558,21 +13566,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.100": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -13698,21 +13706,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.102": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -13838,21 +13846,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.103": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -13978,21 +13986,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.105": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14119,7 +14127,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.106": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -14127,12 +14137,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.106": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14262,21 +14270,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.107": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14406,21 +14414,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.108": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14550,21 +14558,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.109": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14694,21 +14702,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.110": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14839,7 +14847,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.111": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -14847,12 +14857,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.111": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -14982,21 +14990,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.112": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15127,7 +15135,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.113": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -15135,12 +15145,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.113": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15270,21 +15278,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.114": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15414,21 +15422,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.115": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15558,21 +15566,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.116": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15702,21 +15710,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.117": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15846,21 +15854,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.118": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -15991,7 +15999,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.119": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -15999,12 +16009,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.119": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1534
       },
       {
@@ -16135,7 +16143,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.120": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -16143,12 +16153,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.120": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -16279,7 +16287,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.122": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -16287,12 +16297,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.122": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -16428,21 +16436,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.123": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -16579,7 +16587,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.124": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -16587,12 +16597,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.124": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -16729,7 +16737,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.125": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -16737,12 +16747,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.125": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -16878,21 +16886,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "1.0.126": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -17029,7 +17037,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.127": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -17037,12 +17047,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.127": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1531
       },
       {
@@ -17179,7 +17187,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "1.0.128": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -17187,12 +17197,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "1.0.128": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -17329,7 +17337,9 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
+    ]
+  },
+  "2.0.0": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -17337,12 +17347,10 @@
         "index": 0,
         "char_count": 630
       }
-    ]
-  },
-  "2.0.0": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -17464,21 +17472,21 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "2.0.1": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -17600,21 +17608,14 @@
         "prose_chars": 632,
         "schema_chars": 434,
         "total_chars": 1066
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
       }
     ]
   },
   "2.0.2": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -17737,13 +17738,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.3": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -17866,13 +17867,20 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.5": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 630
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -17995,20 +18003,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 630
-      }
     ]
   },
   "2.0.8": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -18131,13 +18132,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.9": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -18260,13 +18261,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.10": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1536
       },
       {
@@ -18389,13 +18390,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.11": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -18514,13 +18515,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.12": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -18639,13 +18640,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.13": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -18764,13 +18765,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.14": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -18889,13 +18890,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.15": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19014,13 +19015,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.17": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19139,13 +19140,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.18": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19264,13 +19265,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.19": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19389,13 +19390,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.20": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19520,13 +19521,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.21": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19651,13 +19652,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.22": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19782,13 +19783,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.23": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1559
       },
       {
@@ -19913,13 +19914,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.24": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20044,13 +20045,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.25": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20175,13 +20176,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.26": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20306,13 +20307,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.27": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20437,13 +20438,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.28": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20568,13 +20569,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.29": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20699,13 +20700,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.30": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20830,13 +20831,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.31": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -20961,13 +20962,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.32": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -21092,13 +21093,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.33": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -21223,13 +21224,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.34": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -21354,13 +21355,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.35": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -21485,13 +21486,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.36": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -21616,13 +21617,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.37": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1641
       },
       {
@@ -21747,13 +21748,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.41": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1629
       },
       {
@@ -21878,13 +21879,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.42": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1629
       },
       {
@@ -22009,13 +22010,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.43": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1629
       },
       {
@@ -22144,13 +22145,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.44": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1629
       },
       {
@@ -22279,13 +22280,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.45": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -22418,13 +22419,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.46": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -22557,13 +22558,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.47": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -22696,13 +22697,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.49": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -22835,13 +22836,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.50": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -22974,13 +22975,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.51": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23119,13 +23120,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.52": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23264,13 +23265,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.53": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23409,13 +23410,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.54": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23554,13 +23555,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.55": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23699,13 +23700,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.56": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23844,13 +23845,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.57": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -23989,13 +23990,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.58": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -24134,13 +24135,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.59": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -24279,13 +24280,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.60": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -24430,13 +24431,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.61": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -24581,13 +24582,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.62": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -24732,13 +24733,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.63": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -24883,13 +24884,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.64": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25034,13 +25035,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.65": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25179,13 +25180,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.66": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25324,13 +25325,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.67": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25469,13 +25470,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.68": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25614,13 +25615,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.69": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25759,13 +25760,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.70": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -25904,13 +25905,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.71": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26059,13 +26060,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.72": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26214,13 +26215,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.73": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26363,13 +26364,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.74": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26518,13 +26519,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.75": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26673,13 +26674,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.76": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26828,13 +26829,13 @@
         "schema_chars": 434,
         "total_chars": 1066
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.0.77": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -26979,13 +26980,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.0": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27124,13 +27125,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.1": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27269,13 +27270,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.2": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27414,13 +27415,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.3": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27559,13 +27560,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.4": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27704,13 +27705,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.5": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27849,13 +27850,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.6": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -27994,13 +27995,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.7": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -28139,13 +28140,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.8": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -28284,13 +28285,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.9": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -28429,13 +28430,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.10": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -28574,13 +28575,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.11": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -28719,13 +28720,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.12": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -28864,13 +28865,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.14": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -29009,13 +29010,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.15": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1216
       },
       {
@@ -29154,13 +29155,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.16": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -29299,13 +29300,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.17": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -29444,13 +29445,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.18": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -29589,13 +29590,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.19": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -29734,13 +29735,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.20": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1061
       },
       {
@@ -29879,13 +29880,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.21": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1061
       },
       {
@@ -30024,13 +30025,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.22": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1061
       },
       {
@@ -30169,13 +30170,13 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.23": {
-    "system_message": [
+    "user_message": [],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -30314,13 +30315,20 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
-    "user_message": []
+    ]
   },
   "2.1.25": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -30458,21 +30466,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.26": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -30610,21 +30618,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.27": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -30762,21 +30770,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.28": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -30914,21 +30922,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.29": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -31067,7 +31075,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.30": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -31075,12 +31085,10 @@
         "index": 0,
         "char_count": 350
       }
-    ]
-  },
-  "2.1.30": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -31219,7 +31227,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.31": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -31227,12 +31237,10 @@
         "index": 0,
         "char_count": 350
       }
-    ]
-  },
-  "2.1.31": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -31371,7 +31379,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.32": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -31379,12 +31389,10 @@
         "index": 0,
         "char_count": 350
       }
-    ]
-  },
-  "2.1.32": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1143
       },
       {
@@ -31523,7 +31531,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.33": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -31531,12 +31541,10 @@
         "index": 0,
         "char_count": 350
       }
-    ]
-  },
-  "2.1.33": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -31670,21 +31678,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.34": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -31819,7 +31827,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.36": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -31827,12 +31837,10 @@
         "index": 0,
         "char_count": 350
       }
-    ]
-  },
-  "2.1.36": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -31966,21 +31974,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.37": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -32115,7 +32123,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.38": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -32123,12 +32133,10 @@
         "index": 0,
         "char_count": 350
       }
-    ]
-  },
-  "2.1.38": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -32262,21 +32270,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.39": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -32410,21 +32418,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.40": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -32558,21 +32566,21 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
       }
     ]
   },
   "2.1.41": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -32707,20 +32715,26 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.42": {
     "user_message": [
       {
         "key": "system_reminder/0",
         "kind": "system_reminder",
         "index": 0,
         "char_count": 350
-      }
-    ]
-  },
-  "2.1.42": {
-    "system_message": [
+      },
       {
-        "title": "Preamble",
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -32854,27 +32868,27 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 350
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.44": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 350
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33009,7 +33023,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.45": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -33023,12 +33039,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.45": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33163,13 +33177,15 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.47": {
     "user_message": [
       {
         "key": "system_reminder/0",
         "kind": "system_reminder",
         "index": 0,
-        "char_count": 350
+        "char_count": 1924
       },
       {
         "key": "system_reminder/1",
@@ -33177,12 +33193,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.47": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33317,7 +33331,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.48": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -33331,12 +33347,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.48": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33470,27 +33484,27 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1924
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.49": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1924
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33625,7 +33639,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.50": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -33639,12 +33655,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.50": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33778,27 +33792,27 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1924
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.51": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -33938,27 +33952,27 @@
         "prose_chars": 632,
         "schema_chars": 439,
         "total_chars": 1071
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.52": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -34099,7 +34113,9 @@
         "schema_chars": 439,
         "total_chars": 1071
       }
-    ],
+    ]
+  },
+  "2.1.53": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -34113,12 +34129,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.53": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -34258,27 +34272,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.54": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -34418,27 +34432,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.55": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -34578,27 +34592,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.56": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -34738,27 +34752,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.58": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -34898,27 +34912,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.59": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -35058,27 +35072,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.61": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -35218,27 +35232,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 1515
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.62": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 1515
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -35379,13 +35393,15 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.63": {
     "user_message": [
       {
         "key": "system_reminder/0",
         "kind": "system_reminder",
         "index": 0,
-        "char_count": 1515
+        "char_count": 768
       },
       {
         "key": "system_reminder/1",
@@ -35393,12 +35409,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.63": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -35539,7 +35553,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.64": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -35553,12 +35569,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.64": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -35699,7 +35713,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.66": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -35713,12 +35729,10 @@
         "index": 1,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.66": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -35858,27 +35872,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 768
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.67": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 445
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -36022,27 +36036,27 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 445
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
       }
     ]
   },
   "2.1.68": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 445
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -36187,26 +36201,20 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 445
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 305
-      }
     ]
   },
   "2.1.69": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "available_deferred_tools/0",
+        "kind": "available_deferred_tools",
+        "index": 0,
+        "char_count": 216
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -36248,21 +36256,21 @@
         "prose_chars": 3145,
         "schema_chars": 505,
         "total_chars": 3650
-      }
-    ],
-    "user_message": [
-      {
-        "key": "available_deferred_tools/0",
-        "kind": "available_deferred_tools",
-        "index": 0,
-        "char_count": 216
       }
     ]
   },
   "2.1.70": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "available_deferred_tools/0",
+        "kind": "available_deferred_tools",
+        "index": 0,
+        "char_count": 216
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -36304,21 +36312,21 @@
         "prose_chars": 3145,
         "schema_chars": 505,
         "total_chars": 3650
-      }
-    ],
-    "user_message": [
-      {
-        "key": "available_deferred_tools/0",
-        "kind": "available_deferred_tools",
-        "index": 0,
-        "char_count": 216
       }
     ]
   },
   "2.1.71": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "available_deferred_tools/0",
+        "kind": "available_deferred_tools",
+        "index": 0,
+        "char_count": 216
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -36361,20 +36369,20 @@
         "schema_chars": 505,
         "total_chars": 3650
       }
-    ],
+    ]
+  },
+  "2.1.72": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
         "kind": "available_deferred_tools",
         "index": 0,
-        "char_count": 216
+        "char_count": 217
       }
-    ]
-  },
-  "2.1.72": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 914
       },
       {
@@ -36417,7 +36425,9 @@
         "schema_chars": 505,
         "total_chars": 1482
       }
-    ],
+    ]
+  },
+  "2.1.73": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -36425,12 +36435,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.73": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -36521,7 +36529,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.74": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -36529,12 +36539,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.74": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -36625,7 +36633,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.75": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -36633,12 +36643,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.75": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -36728,21 +36736,21 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "available_deferred_tools/0",
-        "kind": "available_deferred_tools",
-        "index": 0,
-        "char_count": 217
       }
     ]
   },
   "2.1.76": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "available_deferred_tools/0",
+        "kind": "available_deferred_tools",
+        "index": 0,
+        "char_count": 217
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -36833,7 +36841,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.77": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -36841,12 +36851,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.77": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -36937,7 +36945,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.78": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -36945,12 +36955,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.78": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37041,7 +37049,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.79": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -37049,12 +37059,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.79": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37145,7 +37153,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.80": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -37153,12 +37163,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.80": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37249,7 +37257,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.81": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -37257,12 +37267,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.81": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37353,7 +37361,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.83": {
     "user_message": [
       {
         "key": "available_deferred_tools/0",
@@ -37361,12 +37371,10 @@
         "index": 0,
         "char_count": 217
       }
-    ]
-  },
-  "2.1.83": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37457,20 +37465,32 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
-    "user_message": [
-      {
-        "key": "available_deferred_tools/0",
-        "kind": "available_deferred_tools",
-        "index": 0,
-        "char_count": 217
-      }
     ]
   },
   "2.1.84": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2035
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37560,33 +37580,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2035
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.85": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2035
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37677,7 +37697,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.86": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -37689,7 +37711,7 @@
         "key": "system_reminder/1",
         "kind": "system_reminder",
         "index": 1,
-        "char_count": 2035
+        "char_count": 1500
       },
       {
         "key": "system_reminder/2",
@@ -37697,12 +37719,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.86": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37792,33 +37812,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.87": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -37909,7 +37929,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.88": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -37929,12 +37951,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.88": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38028,33 +38048,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.89": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38148,33 +38168,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.90": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38268,33 +38288,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.91": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38388,33 +38408,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.92": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38509,7 +38529,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.94": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -38529,12 +38551,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.94": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38628,33 +38648,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 276
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.96": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 276
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38749,13 +38769,15 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.97": {
     "user_message": [
       {
         "key": "system_reminder/0",
         "kind": "system_reminder",
         "index": 0,
-        "char_count": 276
+        "char_count": 462
       },
       {
         "key": "system_reminder/1",
@@ -38769,12 +38791,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.97": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38868,33 +38888,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 462
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.98": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 462
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 1500
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 999
       },
       {
@@ -38989,123 +39009,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 462
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 1500
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
-      }
     ]
   },
   "2.1.100": {
-    "system_message": [
-      {
-        "title": "Preamble",
-        "char_count": 1000
-      },
-      {
-        "title": "System",
-        "char_count": 1626
-      },
-      {
-        "title": "Doing tasks",
-        "char_count": 3336
-      },
-      {
-        "title": "Executing actions with care",
-        "char_count": 2833
-      },
-      {
-        "title": "Using your tools",
-        "char_count": 1622
-      },
-      {
-        "title": "Tone and style",
-        "char_count": 707
-      },
-      {
-        "title": "Session-specific guidance",
-        "char_count": 1287
-      },
-      {
-        "title": "auto memory",
-        "char_count": 12507
-      },
-      {
-        "title": "Environment",
-        "char_count": 1087
-      }
-    ],
-    "tools": [
-      {
-        "title": "Agent",
-        "prose_chars": 1635,
-        "schema_chars": 0,
-        "total_chars": 1635
-      },
-      {
-        "title": "Bash",
-        "prose_chars": 998,
-        "schema_chars": 0,
-        "total_chars": 998
-      },
-      {
-        "title": "Edit",
-        "prose_chars": 1103,
-        "schema_chars": 710,
-        "total_chars": 1813
-      },
-      {
-        "title": "Glob",
-        "prose_chars": 380,
-        "schema_chars": 625,
-        "total_chars": 1005
-      },
-      {
-        "title": "Grep",
-        "prose_chars": 874,
-        "schema_chars": 2894,
-        "total_chars": 3768
-      },
-      {
-        "title": "Read",
-        "prose_chars": 1641,
-        "schema_chars": 912,
-        "total_chars": 2553
-      },
-      {
-        "title": "Skill",
-        "prose_chars": 1281,
-        "schema_chars": 401,
-        "total_chars": 1682
-      },
-      {
-        "title": "ToolSearch",
-        "prose_chars": 968,
-        "schema_chars": 505,
-        "total_chars": 1473
-      },
-      {
-        "title": "Write",
-        "prose_chars": 628,
-        "schema_chars": 439,
-        "total_chars": 1067
-      }
-    ],
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39125,12 +39031,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.101": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -39139,7 +39043,7 @@
       },
       {
         "title": "Doing tasks",
-        "char_count": 3727
+        "char_count": 3336
       },
       {
         "title": "Executing actions with care",
@@ -39221,7 +39125,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.101": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39241,12 +39147,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.104": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -39320,12 +39224,6 @@
         "total_chars": 2553
       },
       {
-        "title": "ScheduleWakeup",
-        "prose_chars": 660,
-        "schema_chars": 0,
-        "total_chars": 660
-      },
-      {
         "title": "Skill",
         "prose_chars": 1281,
         "schema_chars": 401,
@@ -39343,7 +39241,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.104": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39363,12 +39263,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.105": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -39465,7 +39363,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.105": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39484,110 +39384,110 @@
         "kind": "system_reminder",
         "index": 2,
         "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
+        "char_count": 1000
+      },
+      {
+        "title": "System",
+        "char_count": 1626
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3727
+      },
+      {
+        "title": "Executing actions with care",
+        "char_count": 2833
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 1622
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 707
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 1287
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1087
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1281,
+        "schema_chars": 401,
+        "total_chars": 1682
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
       }
     ]
   },
   "2.1.107": {
-    "system_message": [
-      {
-        "title": "Preamble",
-        "char_count": 1000
-      },
-      {
-        "title": "System",
-        "char_count": 1626
-      },
-      {
-        "title": "Doing tasks",
-        "char_count": 3727
-      },
-      {
-        "title": "Executing actions with care",
-        "char_count": 2833
-      },
-      {
-        "title": "Using your tools",
-        "char_count": 1622
-      },
-      {
-        "title": "Tone and style",
-        "char_count": 707
-      },
-      {
-        "title": "Session-specific guidance",
-        "char_count": 1287
-      },
-      {
-        "title": "auto memory",
-        "char_count": 12507
-      },
-      {
-        "title": "Environment",
-        "char_count": 1087
-      }
-    ],
-    "tools": [
-      {
-        "title": "Agent",
-        "prose_chars": 1635,
-        "schema_chars": 0,
-        "total_chars": 1635
-      },
-      {
-        "title": "Bash",
-        "prose_chars": 998,
-        "schema_chars": 0,
-        "total_chars": 998
-      },
-      {
-        "title": "Edit",
-        "prose_chars": 1103,
-        "schema_chars": 710,
-        "total_chars": 1813
-      },
-      {
-        "title": "Glob",
-        "prose_chars": 380,
-        "schema_chars": 625,
-        "total_chars": 1005
-      },
-      {
-        "title": "Grep",
-        "prose_chars": 874,
-        "schema_chars": 2894,
-        "total_chars": 3768
-      },
-      {
-        "title": "Read",
-        "prose_chars": 1641,
-        "schema_chars": 912,
-        "total_chars": 2553
-      },
-      {
-        "title": "ScheduleWakeup",
-        "prose_chars": 660,
-        "schema_chars": 0,
-        "total_chars": 660
-      },
-      {
-        "title": "Skill",
-        "prose_chars": 1281,
-        "schema_chars": 401,
-        "total_chars": 1682
-      },
-      {
-        "title": "ToolSearch",
-        "prose_chars": 968,
-        "schema_chars": 505,
-        "total_chars": 1473
-      },
-      {
-        "title": "Write",
-        "prose_chars": 628,
-        "schema_chars": 439,
-        "total_chars": 1067
-      }
-    ],
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39607,12 +39507,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.108": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -39709,7 +39607,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.108": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39728,110 +39628,110 @@
         "kind": "system_reminder",
         "index": 2,
         "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
+        "char_count": 1000
+      },
+      {
+        "title": "System",
+        "char_count": 1626
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3727
+      },
+      {
+        "title": "Executing actions with care",
+        "char_count": 2833
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 1622
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 707
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 1287
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1087
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1281,
+        "schema_chars": 401,
+        "total_chars": 1682
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
       }
     ]
   },
   "2.1.109": {
-    "system_message": [
-      {
-        "title": "Preamble",
-        "char_count": 1000
-      },
-      {
-        "title": "System",
-        "char_count": 1626
-      },
-      {
-        "title": "Doing tasks",
-        "char_count": 3727
-      },
-      {
-        "title": "Executing actions with care",
-        "char_count": 2833
-      },
-      {
-        "title": "Using your tools",
-        "char_count": 1622
-      },
-      {
-        "title": "Tone and style",
-        "char_count": 707
-      },
-      {
-        "title": "Session-specific guidance",
-        "char_count": 1287
-      },
-      {
-        "title": "auto memory",
-        "char_count": 12507
-      },
-      {
-        "title": "Environment",
-        "char_count": 1087
-      }
-    ],
-    "tools": [
-      {
-        "title": "Agent",
-        "prose_chars": 1635,
-        "schema_chars": 0,
-        "total_chars": 1635
-      },
-      {
-        "title": "Bash",
-        "prose_chars": 998,
-        "schema_chars": 0,
-        "total_chars": 998
-      },
-      {
-        "title": "Edit",
-        "prose_chars": 1103,
-        "schema_chars": 710,
-        "total_chars": 1813
-      },
-      {
-        "title": "Glob",
-        "prose_chars": 380,
-        "schema_chars": 625,
-        "total_chars": 1005
-      },
-      {
-        "title": "Grep",
-        "prose_chars": 874,
-        "schema_chars": 2894,
-        "total_chars": 3768
-      },
-      {
-        "title": "Read",
-        "prose_chars": 1641,
-        "schema_chars": 912,
-        "total_chars": 2553
-      },
-      {
-        "title": "ScheduleWakeup",
-        "prose_chars": 660,
-        "schema_chars": 0,
-        "total_chars": 660
-      },
-      {
-        "title": "Skill",
-        "prose_chars": 1281,
-        "schema_chars": 401,
-        "total_chars": 1682
-      },
-      {
-        "title": "ToolSearch",
-        "prose_chars": 968,
-        "schema_chars": 505,
-        "total_chars": 1473
-      },
-      {
-        "title": "Write",
-        "prose_chars": 628,
-        "schema_chars": 439,
-        "total_chars": 1067
-      }
-    ],
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39851,12 +39751,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.110": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -39953,7 +39851,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.110": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -39973,12 +39873,132 @@
         "index": 2,
         "char_count": 305
       }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
+        "char_count": 1000
+      },
+      {
+        "title": "System",
+        "char_count": 1626
+      },
+      {
+        "title": "Doing tasks",
+        "char_count": 3727
+      },
+      {
+        "title": "Executing actions with care",
+        "char_count": 2833
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 1622
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 707
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 1287
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1087
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1281,
+        "schema_chars": 401,
+        "total_chars": 1682
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
     ]
   },
   "2.1.111": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -40078,33 +40098,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.112": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1000
       },
       {
@@ -40205,7 +40225,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.113": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -40225,12 +40247,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.113": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40242,6 +40262,38 @@
         "char_count": 3547
       }
     ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
+      }
+    ],
     "tools": [
       {
         "title": "Agent",
@@ -40302,33 +40354,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.114": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40338,6 +40390,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -40400,33 +40484,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.116": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40436,6 +40520,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -40498,33 +40614,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.117": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40534,6 +40650,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -40596,33 +40744,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.118": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40632,6 +40780,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -40694,33 +40874,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.119": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40730,6 +40910,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -40792,33 +41004,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.120": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40828,6 +41040,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -40891,7 +41135,9 @@
         "schema_chars": 439,
         "total_chars": 1067
       }
-    ],
+    ]
+  },
+  "2.1.121": {
     "user_message": [
       {
         "key": "system_reminder/0",
@@ -40911,12 +41157,10 @@
         "index": 2,
         "char_count": 305
       }
-    ]
-  },
-  "2.1.121": {
-    "system_message": [
+    ],
+    "system_prompt": [
       {
-        "title": "Preamble",
+        "title": "System Prompt",
         "char_count": 1004
       },
       {
@@ -40928,6 +41172,38 @@
         "char_count": 361
       }
     ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 2829
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
+      }
+    ],
     "tools": [
       {
         "title": "Agent",
@@ -40988,34 +41264,66 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.122": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 1004
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 3220
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -41078,38 +41386,70 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.123": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 169
       },
       {
         "title": "System",
         "char_count": 1261
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 3220
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -41172,33 +41512,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.124": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 169
       },
       {
@@ -41208,6 +41548,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 3220
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -41270,33 +41642,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.126": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 169
       },
       {
@@ -41306,6 +41678,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 3220
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -41368,33 +41772,33 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   },
   "2.1.128": {
-    "system_message": [
+    "user_message": [
       {
-        "title": "Preamble",
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 305
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
         "char_count": 169
       },
       {
@@ -41404,6 +41808,38 @@
       {
         "title": "Doing tasks",
         "char_count": 3547
+      }
+    ],
+    "executing_actions_with_care": [
+      {
+        "title": "Executing actions with care",
+        "char_count": 3220
+      },
+      {
+        "title": "Using your tools",
+        "char_count": 762
+      },
+      {
+        "title": "Tone and style",
+        "char_count": 556
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12507
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
       }
     ],
     "tools": [
@@ -41466,26 +41902,6 @@
         "prose_chars": 628,
         "schema_chars": 439,
         "total_chars": 1067
-      }
-    ],
-    "user_message": [
-      {
-        "key": "system_reminder/0",
-        "kind": "system_reminder",
-        "index": 0,
-        "char_count": 487
-      },
-      {
-        "key": "system_reminder/1",
-        "kind": "system_reminder",
-        "index": 1,
-        "char_count": 2898
-      },
-      {
-        "key": "system_reminder/2",
-        "kind": "system_reminder",
-        "index": 2,
-        "char_count": 305
       }
     ]
   }
