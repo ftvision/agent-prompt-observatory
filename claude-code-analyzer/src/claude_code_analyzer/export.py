@@ -3,12 +3,27 @@
 from __future__ import annotations
 
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable
 
 from .diagnose import _extract_structure, _diff, _version_key
 from .models import Snapshot
+
+_ISO_DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+
+
+def _resolve_release_date(snap_value: str, meta_value: str) -> str:
+    """Authoritative release date: prefer ISO dates from the file, then versions_meta.
+
+    Some upstream captures (marckrenn) write a literal 'Release Date: Unknown'
+    in the prompt; in that case we fall back to the commit-date stored in
+    versions_meta.json by the fetch script.
+    """
+    if _ISO_DATE_RE.fullmatch(snap_value or ""):
+        return snap_value
+    return meta_value or snap_value
 
 
 def run_export(
@@ -28,6 +43,19 @@ def run_export(
         snap = parse_fn(str(f))
         snapshots.append(snap)
 
+    # versions_meta.json (sibling of raw_dir) is the authoritative source for
+    # release dates when the file itself is missing one.
+    meta_dates: dict[str, str] = {}
+    meta_path = raw_dir.parent / "versions_meta.json"
+    if meta_path.exists():
+        try:
+            meta_dates = {
+                e["version"]: e.get("release_date", "")
+                for e in json.loads(meta_path.read_text(encoding="utf-8"))
+            }
+        except (json.JSONDecodeError, KeyError, TypeError):
+            pass
+
     output_dir.mkdir(parents=True, exist_ok=True)
     components_dir = output_dir / "components"
     components_dir.mkdir(parents=True, exist_ok=True)
@@ -38,7 +66,12 @@ def run_export(
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_versions": len(snapshots),
         "versions": [
-            {"version": snap.version, "release_date": snap.release_date}
+            {
+                "version": snap.version,
+                "release_date": _resolve_release_date(
+                    snap.release_date, meta_dates.get(snap.version, "")
+                ),
+            }
             for snap in snapshots
         ],
     }

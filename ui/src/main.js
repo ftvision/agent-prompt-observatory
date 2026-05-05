@@ -68,7 +68,7 @@ async function main() {
         <span>${formatCount(meta.versions?.length ?? 0)} versions</span>
         <span>${esc(latest?.version ?? 'latest unavailable')}</span>
         <span class="rail-divider" aria-hidden="true">·</span>
-        <a class="rail-credit" href="https://cchistory.mariozechner.at/" target="_blank" rel="noopener noreferrer">data: cchistory.mariozechner.at</a>
+        <a class="rail-credit" href="https://github.com/marckrenn/claude-code-changelog" target="_blank" rel="noopener noreferrer">data: marckrenn/claude-code-changelog</a>
       </div>
     </header>
     <main class="scroll-page">
