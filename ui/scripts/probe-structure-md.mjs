@@ -23,5 +23,13 @@ const r = await page.evaluate(() => {
   }
 })
 console.log(JSON.stringify(r, null, 2))
+
+// Scroll the panel body to bring the JSON code block into view for the
+// screenshot — it's far below the prose so the default capture misses it.
+await page.evaluate(() => {
+  const pre = document.querySelector('.panel-pane[data-panel-pane="rendered"] pre')
+  pre?.scrollIntoView({ block: 'center' })
+})
+await page.waitForTimeout(200)
 await page.screenshot({ path: '/tmp/structure-md.png', fullPage: false })
 await browser.close()

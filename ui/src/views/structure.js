@@ -10,10 +10,85 @@ function loadMarked() {
   if (!markedPromise) {
     markedPromise = import('marked').then(({ marked }) => {
       marked.setOptions({ breaks: true })
+      // Override the code renderer for ```json fences so tool schemas get
+      // syntax-highlighted instead of one wall of monospace text. Other
+      // languages fall through to marked's default code renderer.
+      // Marked v12 hands the renderer positional args (code, infostring,
+      // escaped), not a token object — easy thing to get wrong.
+      marked.use({
+        renderer: {
+          code(code, infostring) {
+            if (infostring === 'json') {
+              return `<pre><code class="language-json">${highlightJson(code)}</code></pre>\n`
+            }
+            return false
+          },
+        },
+      })
       return marked
     })
   }
   return markedPromise
+}
+
+// Tiny JSON syntax highlighter. Tokenizes the raw JSON source character by
+// character and emits HTML with semantic classes that structure.css styles.
+// Non-token characters (whitespace, punctuation) and string contents are
+// HTML-escaped individually so any literal &, <, > inside JSON values can't
+// escape into markup — output is safe to drop into innerHTML.
+function highlightJson(raw) {
+  let out = ''
+  let i = 0
+  const n = raw.length
+  while (i < n) {
+    const c = raw[i]
+    // String — possibly a key if the next non-whitespace char is ':'
+    if (c === '"') {
+      let j = i + 1
+      while (j < n) {
+        if (raw[j] === '\\' && j + 1 < n) { j += 2; continue }
+        if (raw[j] === '"') { j++; break }
+        j++
+      }
+      const lit = raw.slice(i, j)
+      let k = j
+      while (k < n && /\s/.test(raw[k])) k++
+      const isKey = raw[k] === ':'
+      out += `<span class="tok-${isKey ? 'key' : 'string'}">${escHtml(lit)}</span>`
+      i = j
+      continue
+    }
+    // Number
+    if (c === '-' || (c >= '0' && c <= '9')) {
+      let j = i
+      if (raw[j] === '-') j++
+      while (j < n && raw[j] >= '0' && raw[j] <= '9') j++
+      if (raw[j] === '.') { j++; while (j < n && raw[j] >= '0' && raw[j] <= '9') j++ }
+      if (raw[j] === 'e' || raw[j] === 'E') {
+        j++
+        if (raw[j] === '+' || raw[j] === '-') j++
+        while (j < n && raw[j] >= '0' && raw[j] <= '9') j++
+      }
+      out += `<span class="tok-number">${raw.slice(i, j)}</span>`
+      i = j
+      continue
+    }
+    // Keywords
+    if (raw.startsWith('true', i))  { out += '<span class="tok-bool">true</span>';  i += 4; continue }
+    if (raw.startsWith('false', i)) { out += '<span class="tok-bool">false</span>'; i += 5; continue }
+    if (raw.startsWith('null', i))  { out += '<span class="tok-null">null</span>';  i += 4; continue }
+    // Punctuation, whitespace, anything else
+    out += escHtml(c)
+    i++
+  }
+  return out
+}
+
+function escHtml(s) {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
 }
 
 // Reserved top-level slugs for which the structure shape isn't a flat list of
