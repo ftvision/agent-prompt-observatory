@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/virtual-core": "^3.14.0",
     "d3": "^7.9.0",
     "marked": "^12.0.0",
     "three": "^0.165.0"
   },
   "devDependencies": {
+    "playwright": "^1.59.1",
     "vite": "^5.4.0"
   }
 }
