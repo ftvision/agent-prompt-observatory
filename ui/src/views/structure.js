@@ -643,8 +643,12 @@ export async function renderStructure(container) {
     if (token !== drawToken) return
 
     const text = getTextForItem(currentComponents, item)
-    const md = text ? esc(text) : '_No detail text available._'
-    const html = marked ? marked.parse(md) : md
+    const md = text || '_No detail text available._'
+    // marked.parse() handles HTML escaping itself — pre-escaping the input
+    // produced double-encoded entities like "&quot;" and "&lt;&lt;" inside
+    // tool schemas and prose. Fall back to esc() only when marked failed
+    // to load, since we still write to innerHTML.
+    const html = marked ? marked.parse(md) : esc(md)
     container.querySelectorAll('[data-rendered-md]').forEach(el => { el.innerHTML = html })
     container.querySelectorAll('[data-raw-text]').forEach(el => {
       el.textContent = text || 'No detail text available.'
