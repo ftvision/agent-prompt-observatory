@@ -401,6 +401,38 @@
   padding-left: 18px;
 }
 
+/* JSON syntax highlighting for ```json code fences (tool schemas, mostly).
+   Hues are picked to harmonize with the warm panel background while staying
+   distinct enough at small sizes. The fenced block itself gets a subtle
+   tinted surface and a soft border to read as a code surface, not body text. */
+.rendered-md pre,
+.panel-pane pre {
+  background: oklch(98.6% 0.005 70);
+  border: 1px solid oklch(90% 0.008 70);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.rendered-md pre code,
+.panel-pane pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  background: transparent;
+  /* The global `code` rule in main.css sets a 1 px border + radius for inline
+     code chips (`like this`). Inside a pre, that border wraps to every
+     visual line and draws faint underlines beneath each row. Reset here. */
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.rendered-md .tok-key    { color: oklch(45% 0.13 255); font-weight: 600; }
+.rendered-md .tok-string { color: oklch(40% 0.10 145); }
+.rendered-md .tok-number { color: oklch(50% 0.14 60); }
+.rendered-md .tok-bool   { color: oklch(48% 0.16 305); }
+.rendered-md .tok-null   { color: var(--text-muted); font-style: italic; }
+
 .panel-pane pre {
   margin: 0;
   min-height: 280px;
