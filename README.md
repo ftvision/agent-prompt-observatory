@@ -9,7 +9,7 @@ A research interface for exploring how Claude Code's system prompt has evolved a
 
 ## Views
 
-**Structure** — single-version inspector. The current prompt rendered as a 3D layered model: User Prompt slabs at the top, System Prompt sections in the middle, Tools at the bottom. Click any slab to read its prose / schema / metadata in the side panel.
+**Structure** — single-version inspector. The current prompt rendered as a 3D layered model, stacked top-to-bottom in Anthropic's [prompt-cache order](https://platform.claude.com/docs/en/build-with-claude/prompt-caching): Tools at the top, System Prompt sections in the middle, User Prompt slabs at the bottom. Click any slab to read its prose / schema / metadata in the side panel.
 
 **Evolution** — temporal stream graph across the entire 289-version range. Each row is a component (User Message total, System Prompt sections, every individual tool); the bar at each version's column has height proportional to character count. Empty cells mark releases where a section was absent. A model-release axis above the version axis labels Claude 4 → 4.7 launches with vertical guides threading through the matrix, so you can see when prompt changes correlate with model releases. Click any component name to expand a change-log timeline below it; click any change-log entry to see the line-level diff of that version against its predecessor.
 
