@@ -188,13 +188,25 @@
 .evo-table-wrap {
   min-width: 0;
   padding-bottom: 4px;
+  /* Horizontal scroll container only — vertical scroll falls through to the
+     page so the section flows in document order. THEAD sticks to the wrap's
+     top edge anyway because position:sticky parks against the nearest scroll
+     ancestor; the page header above the surface keeps it from drifting up. */
+  overflow-x: auto;
+  overflow-y: visible;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: oklch(99.2% 0.004 70);
 }
 
 /* --- Table --- */
 .evo-table {
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
+  /* Sized to the explicit per-column widths set in JS. min-width keeps short
+     corpora flush with the container instead of collapsing to label-width. */
+  width: max-content;
+  min-width: 100%;
   table-layout: fixed;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
@@ -218,15 +230,25 @@
 .evo-th-cat {
   position: sticky;
   left: 0;
-  z-index: 5;
+  /* Top corner — sticky on both axes, must outrank the version-axis row and
+     all sticky tbody label cells. has-models pushes it 36 px down so it
+     parks beneath the model-release row instead of overlapping it. */
+  top: 0;
+  z-index: 7;
   padding-left: 14px;
   background: oklch(99.2% 0.004 70);
+}
+
+.evo-table.has-models .evo-th-cat,
+.evo-table.has-models .evo-th-sec {
+  top: 36px;
 }
 
 .evo-th-sec {
   position: sticky;
   left: 168px;
-  z-index: 4;
+  top: 0;
+  z-index: 6;
   padding-left: 10px;
   background: oklch(99.2% 0.004 70);
 }
@@ -234,9 +256,24 @@
 .evo-th-v {
   padding: 0;
   vertical-align: bottom;
-  position: relative;
-  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  background: oklch(99.2% 0.004 70);
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.evo-table.has-models .evo-th-v {
+  top: 36px;
+}
+
+/* Labeled cells host an absolutely-positioned label that overflows rightward
+   into adjacent (unlabeled) cells. Without a higher z-index, those neighbors
+   paint their own backgrounds on top in DOM order and visually clip the
+   overflow back to cell width. Bumping above the neighbor's z-index keeps
+   the label readable. */
+.evo-th-v.labeled {
+  z-index: 5;
 }
 
 .evo-th-v-label {
@@ -275,19 +312,29 @@
   color: var(--text-muted);
   padding: 6px 10px 0 14px;
   border-bottom: 0;
-  background: transparent;
+  /* Opaque background covers tbody cells underneath when scrolling vertically. */
+  background: oklch(99.2% 0.004 70);
   vertical-align: bottom;
   position: sticky;
   left: 0;
-  z-index: 5;
+  top: 0;
+  /* Top-left corner of the model row — outranks every other sticky cell. */
+  z-index: 8;
 }
 
 .evo-model-cell {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 4;
   padding: 0;
   vertical-align: bottom;
   border-bottom: 0;
-  background: transparent;
+  background: oklch(99.2% 0.004 70);
+}
+
+/* Same overflow-clip trick as .evo-th-v.labeled — model markers spill right. */
+.evo-model-cell.has-marker {
+  z-index: 5;
 }
 
 .evo-model-cell::before {
@@ -332,6 +379,88 @@
 .evo-cell.model-anchor,
 .evo-model-cell.model-anchor {
   box-shadow: inset 1px 0 0 oklch(50% 0.014 60 / 0.28);
+}
+
+/* Opt-in row checkbox. Sits at the left edge of the sticky cat column.
+   Faint by default so unselected rows stay visually quiet for screenshots;
+   fully visible on row hover, focus, or when checked. */
+.evo-row-check {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  margin: 0 8px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+  opacity: 0.32;
+  transition: opacity 0.12s;
+}
+
+.evo-row:hover .evo-row-check,
+.evo-total-row:hover .evo-row-check,
+.evo-user-row:hover .evo-row-check,
+.evo-row-check:hover,
+.evo-row-check:focus-visible,
+.evo-row-check:checked {
+  opacity: 1;
+}
+
+/* Selection pill — appears in the header band when ≥1 row is checked. */
+.evo-selection-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 6px 6px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  background: var(--surface-0);
+  font-size: 12px;
+  color: var(--text-secondary);
+  align-self: end;
+  box-shadow: 0 1px 0 oklch(60% 0.010 60 / 0.04);
+}
+
+.evo-selection-pill[hidden] { display: none; }
+
+.evo-sel-count {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.evo-sel-focus,
+.evo-sel-clear {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 3px 10px;
+  border-radius: 999px;
+  transition: background 0.12s, color 0.12s, box-shadow 0.12s;
+}
+
+.evo-sel-focus:hover,
+.evo-sel-clear:hover {
+  color: var(--text-primary);
+  background: var(--surface-1);
+}
+
+.evo-sel-focus[aria-pressed="true"] {
+  background: var(--accent);
+  color: oklch(99% 0.003 70);
+}
+
+.evo-sel-focus[aria-pressed="true"]:hover {
+  background: oklch(from var(--accent) calc(l - 0.04) c h);
+  color: oklch(99% 0.003 70);
+}
+
+.evo-sel-focus:focus-visible,
+.evo-sel-clear:focus-visible {
+  outline: 0;
+  color: var(--text-primary);
+  box-shadow: 0 0 0 2px oklch(60% 0.115 215 / 0.32);
 }
 
 /* Category dot in the first label column — color encodes current H1 parent. */
@@ -434,6 +563,15 @@
 
 .evo-row.selected .evo-sec-label,
 .evo-row:hover .evo-sec-label { color: var(--text-primary); }
+
+/* Off-viewport filler emitted by the column virtualizer. Has no content
+   and no decoration; its only job is to push the visible cells to the right
+   horizontal offset so colgroup-driven layout still positions them correctly. */
+.evo-spacer {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
 
 /* Version cells — bars share remaining width equally with a 1px white gap */
 .evo-cell {
@@ -549,9 +687,24 @@
 .evo-expand-row td.evo-expand-td {
   background: oklch(98.4% 0.005 70);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 16px 22px 18px;
+  /* Padding lives on the inner div so the JS-set width exactly matches the
+     visible viewport width (border-box accounts for padding). */
+  padding: 0;
+}
+
+.evo-expand-inner {
+  /* Sticky lives on the inner (not the td) — Chromium sometimes ignores
+     position: sticky on a colspanned table cell that spans every column,
+     but a normal block child sticks reliably to the wrap's left edge.
+     left:356 parks it just past the sticky Category+Section label columns
+     (168 + 188) so they don't overlap the panel's leading text. Width is
+     set in JS to (tableWrap.clientWidth - 356) so the panel ends at the
+     viewport's right edge. */
   position: sticky;
-  left: 0;
+  left: 356px;
+  box-sizing: border-box;
+  padding: 16px 22px 18px;
+  background: oklch(98.4% 0.005 70);
 }
 
 .evo-expand-head {
@@ -921,6 +1074,22 @@
   }
   .evo-controls { flex-wrap: wrap; }
   .evo-export { align-self: flex-start; }
+
+  /* On narrow widths the table reflows into stacked blocks, so the contained
+     scroll and sticky-header machinery aren't needed. Let the page scroll. */
+  .evo-table-wrap {
+    max-height: none;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .evo-th-v,
+  .evo-model-cell {
+    position: static !important;
+    top: auto;
+    z-index: auto;
+  }
 
   /* Model release axis hides at narrow widths: 8 labels can't fit in <500px
      of matrix space without stacking unreadably. The vertical guide lines also

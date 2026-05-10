@@ -16,31 +16,23 @@
       "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is 2026-04-16.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
     },
     "actual_prompt": {
-      "hash": "263e798df027d7b5",
+      "hash": "dcd8d6f14782754a",
       "char_count": 117,
-      "text": "# User Message\n</system-reminder>\n</system-reminder>\n\n\n2026-05-08T18:40:15+00:00 is the date. Write a haiku about it."
+      "text": "# User Message\n</system-reminder>\n</system-reminder>\n\n\n2026-05-08T19:52:44+00:00 is the date. Write a haiku about it."
     }
   },
   "system_prompt": {
     "System Prompt": {
-      "hash": "fa4ae65664232724",
-      "char_count": 185,
-      "text": "# System Prompt\n\nx-anthropic-billing-header: cc_version=2.1.136.native; cc_entrypoint=sdk-cli; cch=00000;\n\nYou are an interactive agent that helps users with software engineering tasks."
-    },
-    "System": {
-      "hash": "b9ddeb2d91ee31fc",
-      "char_count": 76,
-      "text": "## System\n - [Bun] Hot-module-reloading socket disconnected, reconnecting..."
-    },
-    "Doing tasks": {
-      "hash": "054994777e307cb3",
-      "char_count": 81,
-      "text": "## Doing tasks\n - [Bun] Hot-module-reloading socket disconnected, reconnecting..."
-    },
-    "Tone and style": {
-      "hash": "904ab1539bedbae1",
-      "char_count": 84,
-      "text": "## Tone and style\n - [Bun] Hot-module-reloading socket disconnected, reconnecting..."
+      "hash": "8320d6b6f9b8a409",
+      "char_count": 645,
+      "text": "# System Prompt\n\nx-anthropic-billing-header: cc_version=2.1.136.native; cc_entrypoint=sdk-cli; cch=00000;\n\nYou are an interactive agent that helps users with software engineering tasks.\nIMPORTANT: Assist with authorized security testing, defensive security, CTF challenges, and educational contexts. Refuse requests for destructive techniques, DoS attacks, mass targeting, supply chain compromise, or detection evasion for malicious purposes. Dual-use security tools (C2 frameworks, credential testing, exploit development) require clear authorization context: pentesting engagements, CTF competitions, security research, or defensive use cases."
+    }
+  },
+  "harness": {
+    "Harness": {
+      "hash": "e61290654825a2f2",
+      "char_count": 693,
+      "text": "# Harness\n - Text you output outside of tool use is displayed to the user as Github-flavored markdown in a terminal.\n - Tools run behind a user-selected permission mode; a denied call means the user declined it \u2014 adjust, don't retry verbatim.\n - `<system-reminder>` tags in messages and tool results are injected by the harness, not the user. Hooks may intercept tool calls; treat hook output as user feedback.\n - If the conversation grows long, automatic context compaction will be triggered.\n - Prefer the dedicated file/search tools over shell commands when one fits. Independent tool calls can run in parallel in one response.\n - Reference code as `file_path:line_number` \u2014 it's clickable."
     }
   },
   "text_output_does_not_apply_to_tool_calls": {

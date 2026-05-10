@@ -4459,18 +4459,13 @@
   {
     "from": "2.1.132",
     "to": "2.1.133",
-    "added_h1_sections": [],
+    "added_h1_sections": [
+      "harness"
+    ],
     "removed_h1_sections": [
       "executing_actions_with_care"
     ],
-    "added_subsections": {
-      "system_prompt": [
-        "Doing tasks",
-        "System",
-        "Tone and style",
-        "Using your tools"
-      ]
-    },
+    "added_subsections": {},
     "removed_subsections": {},
     "reordered_h1s": [],
     "added_tools": [],
@@ -4485,11 +4480,7 @@
     "added_h1_sections": [],
     "removed_h1_sections": [],
     "added_subsections": {},
-    "removed_subsections": {
-      "system_prompt": [
-        "Using your tools"
-      ]
-    },
+    "removed_subsections": {},
     "reordered_h1s": [],
     "added_tools": [],
     "removed_tools": [],
@@ -4500,18 +4491,24 @@
   {
     "from": "2.1.136",
     "to": "2.1.137",
-    "added_h1_sections": [
-      "harness"
-    ],
+    "added_h1_sections": [],
     "removed_h1_sections": [],
     "added_subsections": {},
-    "removed_subsections": {
-      "system_prompt": [
-        "Doing tasks",
-        "System",
-        "Tone and style"
-      ]
-    },
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.137",
+    "to": "2.1.138",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
     "reordered_h1s": [],
     "added_tools": [],
     "removed_tools": [],

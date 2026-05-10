@@ -1,11 +1,26 @@
 import './evolution.css'
+import {
+  Virtualizer,
+  observeElementRect,
+  observeElementOffset,
+  elementScroll,
+} from '@tanstack/virtual-core'
 import { getMeta, getStructures, getComponents } from '../data/loader.js'
 
 const MIN_LABEL_PX = 56
+// Slide-window cap: the focal viewport shows at most this many cells at a
+// time, regardless of how many versions are in the range. Cell width is
+// sized so FOCAL_COUNT cells fill the wrap; extra versions extend the table
+// past the viewport, and the user slides the window via horizontal scroll.
+const FOCAL_COUNT = 100
+const MIN_CELL_PX = 8
 
 // Reserved top-level slugs whose row treatment is special.
 const USER_SLUG = 'user_message'
 const TOOLS_SLUG = 'tools'
+
+const TOTAL_ROW_KEY = 'total:Total'
+const USER_ROW_KEY = 'user:User Message'
 
 // Claude model releases that fall within the Claude Code 1.0 → 2.x history.
 // Anchored to the first version whose release_date is on or after the model's
@@ -93,10 +108,33 @@ export async function renderEvolution(container) {
     return topLevelTitles[slug] || slug
   }
 
+  // Default range: the entire corpus. The matrix renders every version, but
+  // the focal viewport only shows FOCAL_COUNT at a time — the rest live off
+  // to the left and the user slides the window via horizontal scroll. First
+  // paint snaps to the right edge (latest versions visible) via
+  // pendingScrollToEnd below.
   let startVersion = allVersions[0]
   let endVersion = allVersions[allVersions.length - 1]
   let granularity = 'all'
   let selectedKey = null
+  // Opt-in row selection for focused screenshots. Selection is decoupled
+  // from view filtering — checking rows just accumulates them; the user
+  // applies the filter explicitly via the Focus toggle below. That decoupling
+  // is what makes multi-row selection work (otherwise the first checkbox
+  // would hide all other rows along with their checkboxes).
+  const selectedRowKeys = new Set()
+  let focusMode = false
+  // Horizontal-scroll anchoring: snap to the rightmost (latest) version on
+  // first paint and after the user changes the range or granularity. Resize
+  // redraws preserve the existing scrollLeft.
+  let pendingScrollToEnd = true
+
+  // TanStack Virtual handles "render only the cells in the viewport plus a
+  // small overscan" for the column axis. Rebuilt on every full draw; its
+  // cleanup callback (returned by _didMount) is captured here so we can tear
+  // down ResizeObserver / scroll listeners across redraws and on view unmount.
+  let columnVirtualizer = null
+  let virtualizerCleanup = null
 
   function getRange() {
     const si = allVersions.indexOf(startVersion)
@@ -345,12 +383,12 @@ export async function renderEvolution(container) {
   const rangeGrp = ctrlGroup('Range')
   const rangeRow = document.createElement('div')
   rangeRow.className = 'evo-range-row'
-  const startSelect = makeRangeSelect(allVersions, startVersion, v => { startVersion = v; draw() })
+  const startSelect = makeRangeSelect(allVersions, startVersion, v => { startVersion = v; pendingScrollToEnd = true; draw() })
   const dash = document.createElement('span')
   dash.className = 'evo-range-dash'
   dash.textContent = '–'
   dash.setAttribute('aria-hidden', 'true')
-  const endSelect = makeRangeSelect(allVersions, endVersion, v => { endVersion = v; draw() })
+  const endSelect = makeRangeSelect(allVersions, endVersion, v => { endVersion = v; pendingScrollToEnd = true; draw() })
   rangeRow.appendChild(startSelect)
   rangeRow.appendChild(dash)
   rangeRow.appendChild(endSelect)
@@ -366,11 +404,42 @@ export async function renderEvolution(container) {
     if (v === granularity) o.selected = true
     granSel.appendChild(o)
   })
-  granSel.addEventListener('change', () => { granularity = granSel.value; draw() })
+  granSel.addEventListener('change', () => { granularity = granSel.value; pendingScrollToEnd = true; draw() })
   granGrp.body.appendChild(granSel)
   controls.appendChild(granGrp.root)
 
   headerBand.appendChild(controls)
+
+  const selectionPill = document.createElement('div')
+  selectionPill.className = 'evo-selection-pill'
+  selectionPill.hidden = true
+  const selCount = document.createElement('span')
+  selCount.className = 'evo-sel-count'
+  const selFocus = document.createElement('button')
+  selFocus.type = 'button'
+  selFocus.className = 'evo-sel-focus'
+  selFocus.setAttribute('aria-pressed', 'false')
+  selFocus.textContent = 'Focus'
+  selFocus.addEventListener('click', () => {
+    focusMode = !focusMode
+    applyRowVisibility()
+    updateSelectionPill()
+  })
+  const selClear = document.createElement('button')
+  selClear.type = 'button'
+  selClear.className = 'evo-sel-clear'
+  selClear.textContent = 'Clear'
+  selClear.addEventListener('click', () => {
+    selectedRowKeys.clear()
+    focusMode = false
+    tableWrap.querySelectorAll('.evo-row-check').forEach(cb => { cb.checked = false })
+    applyRowVisibility()
+    updateSelectionPill()
+  })
+  selectionPill.appendChild(selCount)
+  selectionPill.appendChild(selFocus)
+  selectionPill.appendChild(selClear)
+  headerBand.appendChild(selectionPill)
 
   const exportBtn = document.createElement('button')
   exportBtn.type = 'button'
@@ -487,6 +556,57 @@ export async function renderEvolution(container) {
     activeCell = null
   })
 
+  function makeRowCheckbox(key, ariaLabel) {
+    const cb = document.createElement('input')
+    cb.type = 'checkbox'
+    cb.className = 'evo-row-check'
+    cb.checked = selectedRowKeys.has(key)
+    cb.setAttribute('aria-label', `Include ${ariaLabel} in focus selection`)
+    // Stop click bubbling so the checkbox doesn't also trigger row activation.
+    cb.addEventListener('click', e => e.stopPropagation())
+    cb.addEventListener('change', () => {
+      if (cb.checked) selectedRowKeys.add(key)
+      else selectedRowKeys.delete(key)
+      // If the user empties the selection while focused, drop focus mode so
+      // the table doesn't go blank with no path back without the pill.
+      if (selectedRowKeys.size === 0) focusMode = false
+      applyRowVisibility()
+      updateSelectionPill()
+    })
+    return cb
+  }
+
+  function applyRowVisibility() {
+    const filterActive = focusMode && selectedRowKeys.size > 0
+    const tbody = tableWrap.querySelector('tbody')
+    if (!tbody) return
+    for (const tr of tbody.children) {
+      // Inline expand rows piggyback on their preceding row's visibility.
+      if (tr.classList.contains('evo-expand-row')) {
+        const prev = tr.previousElementSibling
+        tr.style.display = prev && prev.style.display === 'none' ? 'none' : ''
+        continue
+      }
+      const k = tr.dataset.key
+      if (!k) { tr.style.display = ''; continue }
+      tr.style.display = !filterActive || selectedRowKeys.has(k) ? '' : 'none'
+    }
+  }
+
+  function updateSelectionPill() {
+    const n = selectedRowKeys.size
+    if (n === 0) {
+      selectionPill.hidden = true
+      selFocus.setAttribute('aria-pressed', 'false')
+      selFocus.textContent = 'Focus'
+      return
+    }
+    selCount.textContent = `${n} selected`
+    selectionPill.hidden = false
+    selFocus.setAttribute('aria-pressed', focusMode ? 'true' : 'false')
+    selFocus.textContent = focusMode ? 'Show all' : 'Focus'
+  }
+
   function ctrlGroup(label) {
     const root = document.createElement('div')
     root.className = 'evo-ctrl-grp'
@@ -519,7 +639,10 @@ export async function renderEvolution(container) {
   function closePanel() {
     selectedKey = null
     tableWrap.querySelectorAll('tr.selected').forEach(r => r.classList.remove('selected'))
-    tableWrap.querySelectorAll('.evo-expand-row').forEach(r => r.remove())
+    tableWrap.querySelectorAll('.evo-expand-row').forEach(r => {
+      r._sizeRo?.disconnect()
+      r.remove()
+    })
   }
 
   function openPanel(key, type, title) {
@@ -535,10 +658,37 @@ export async function renderEvolution(container) {
     expandRow.className = 'evo-expand-row'
     const td = document.createElement('td')
     td.className = 'evo-expand-td'
-    td.colSpan = row.children.length
-    td.appendChild(buildHistoryFragment(type, title))
+    // Span the full grid via the colgroup count rather than the row's child
+    // count — the row's children fluctuate as the column virtualizer scrolls.
+    const colCount = tableWrap.querySelector('colgroup')?.childElementCount
+    td.colSpan = colCount || row.children.length
+
+    // The td spans the full ~6000 px table so the row visually exists across
+    // all columns, but content is contained in an inner div sized to the
+    // wrap's visible width. Combined with the td's `position: sticky; left: 0`
+    // styling, the change log stays anchored at the focal viewport instead
+    // of running off into the scrolled-out area.
+    const inner = document.createElement('div')
+    inner.className = 'evo-expand-inner'
+    inner.appendChild(buildHistoryFragment(type, title))
+    td.appendChild(inner)
     expandRow.appendChild(td)
     row.insertAdjacentElement('afterend', expandRow)
+
+    const syncWidth = () => {
+      // 356 = sticky label column widths (.evo-col-cat 168 + .evo-col-sec 188).
+      // Inner is offset to begin just past those, so its width must shrink
+      // by the same amount to end at the viewport's right edge. Keep this in
+      // sync with `left: 356px` in .evo-expand-inner.
+      const focalWidth = Math.max(0, tableWrap.clientWidth - 356)
+      inner.style.width = focalWidth + 'px'
+    }
+    syncWidth()
+    // ResizeObserver keeps the inner width in lock-step with the wrap on
+    // window resizes, sidebar toggles, etc. Disconnected in closePanel().
+    const ro = new ResizeObserver(syncWidth)
+    ro.observe(tableWrap)
+    expandRow._sizeRo = ro
   }
 
   function buildHistoryFragment(type, title) {
@@ -857,11 +1007,15 @@ export async function renderEvolution(container) {
     const table = document.createElement('table')
     table.className = 'evo-table'
 
-    // Compute label density. Two label columns now take ~280 px combined.
+    // Two sticky label columns combined occupy ~356 px. Cell width is sized
+    // so the focal view shows at most FOCAL_COUNT versions; once the corpus
+    // exceeds that, the matrix overflows and the wrap container scrolls
+    // horizontally instead of squeezing every column into the viewport.
     const wrapWidth = tableWrap.clientWidth || 1200
-    const matrixWidth = Math.max(0, wrapWidth - 280)
-    const maxLabels = Math.max(2, Math.floor(matrixWidth / MIN_LABEL_PX))
-    const labelStep = Math.max(1, Math.ceil(displayVers.length / maxLabels))
+    const matrixWidth = Math.max(0, wrapWidth - 356)
+    const focalCols = Math.max(1, Math.min(displayVers.length, FOCAL_COUNT))
+    const cellWidth = Math.max(MIN_CELL_PX, Math.floor(matrixWidth / focalCols))
+    const labelStep = Math.max(1, Math.ceil(MIN_LABEL_PX / cellWidth))
 
     const colgroup = document.createElement('colgroup')
     const colCat = document.createElement('col'); colCat.className = 'evo-col-cat'
@@ -869,7 +1023,9 @@ export async function renderEvolution(container) {
     colgroup.appendChild(colCat)
     colgroup.appendChild(colSec)
     displayVers.forEach(() => {
-      const c = document.createElement('col'); c.className = 'evo-col-v'
+      const c = document.createElement('col')
+      c.className = 'evo-col-v'
+      c.style.width = `${cellWidth}px`
       colgroup.appendChild(c)
     })
     table.appendChild(colgroup)
@@ -887,32 +1043,24 @@ export async function renderEvolution(container) {
     }).filter(Boolean)
     const modelAnchorIndices = new Set(modelMarkers.map(m => m.idx))
 
-    const thead = document.createElement('thead')
-    const hrow = document.createElement('tr')
-    const thCat = document.createElement('th'); thCat.scope = 'col'; thCat.className = 'evo-th evo-th-cat'; thCat.textContent = 'Category'
-    const thSec = document.createElement('th'); thSec.scope = 'col'; thSec.className = 'evo-th evo-th-sec'; thSec.textContent = 'Section'
-    hrow.appendChild(thCat)
-    hrow.appendChild(thSec)
+    // RowMeta captures everything fillRow() needs to (re)render a row's
+    // version-axis cells given a TanStack-Virtual visible range. Each row
+    // contributes one entry (header rows + body rows alike). The cellCache
+    // memoizes per-index cell elements so subsequent scrolls just rearrange
+    // existing nodes via replaceChildren instead of paying createElement +
+    // className + appendChild for each visible cell on every onChange. Cache
+    // lives at draw scope; redraws (range/granularity/resize) build fresh
+    // metas with empty caches.
+    const rowMetas = []
 
-    displayVers.forEach((v, i) => {
-      const th = document.createElement('th')
-      th.scope = 'col'
-      th.className = 'evo-th evo-th-v'
-      const isLast = i === displayVers.length - 1
-      const labeled = i % labelStep === 0 || isLast
-      if (labeled) {
-        th.classList.add('labeled')
-        const span = document.createElement('span')
-        span.className = 'evo-th-v-label'
-        span.textContent = v
-        th.appendChild(span)
-      }
-      if (modelAnchorIndices.has(i)) th.classList.add('model-anchor')
-      th.title = versionMeta[v]?.release_date || v
-      hrow.appendChild(th)
-    })
+    function pushRowMeta(tr, stickyCount, makeCell) {
+      rowMetas.push({ tr, stickyCount, makeCell, cellCache: new Map() })
+    }
+
+    const thead = document.createElement('thead')
 
     if (modelMarkers.length > 0) {
+      table.classList.add('has-models')
       const modelRow = document.createElement('tr')
       modelRow.className = 'evo-model-row'
       const thMarker = document.createElement('th')
@@ -929,11 +1077,14 @@ export async function renderEvolution(container) {
         markerByIdx.set(m.idx, list)
       })
 
-      displayVers.forEach((_, i) => {
+      pushRowMeta(modelRow, 1, i => {
         const th = document.createElement('th')
         th.scope = 'col'
-        th.className = 'evo-model-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const events = markerByIdx.get(i)
+        const cls = ['evo-model-cell']
+        if (modelAnchorIndices.has(i)) cls.push('model-anchor')
+        if (events) cls.push('has-marker')
+        th.className = cls.join(' ')
         if (events) {
           events.forEach((e, k) => {
             const marker = document.createElement('span')
@@ -943,11 +1094,34 @@ export async function renderEvolution(container) {
             th.appendChild(marker)
           })
         }
-        modelRow.appendChild(th)
+        return th
       })
       thead.appendChild(modelRow)
     }
 
+    const hrow = document.createElement('tr')
+    const thCat = document.createElement('th'); thCat.scope = 'col'; thCat.className = 'evo-th evo-th-cat'; thCat.textContent = 'Category'
+    const thSec = document.createElement('th'); thSec.scope = 'col'; thSec.className = 'evo-th evo-th-sec'; thSec.textContent = 'Section'
+    hrow.appendChild(thCat)
+    hrow.appendChild(thSec)
+    pushRowMeta(hrow, 2, i => {
+      const v = displayVers[i]
+      const th = document.createElement('th')
+      th.scope = 'col'
+      th.className = 'evo-th evo-th-v'
+      const isLast = i === displayVers.length - 1
+      const labeled = i % labelStep === 0 || isLast
+      if (labeled) {
+        th.classList.add('labeled')
+        const span = document.createElement('span')
+        span.className = 'evo-th-v-label'
+        span.textContent = v
+        th.appendChild(span)
+      }
+      if (modelAnchorIndices.has(i)) th.classList.add('model-anchor')
+      th.title = versionMeta[v]?.release_date || v
+      return th
+    })
     thead.appendChild(hrow)
     table.appendChild(thead)
 
@@ -991,17 +1165,20 @@ export async function renderEvolution(container) {
 
       const tr = document.createElement('tr')
       tr.className = 'evo-total-row'
+      tr.setAttribute('data-key', TOTAL_ROW_KEY)
 
       const tdCat = document.createElement('td')
       tdCat.className = 'evo-td-cat evo-total-cat'
       tdCat.colSpan = 2
+      tdCat.appendChild(makeRowCheckbox(TOTAL_ROW_KEY, 'Total'))
       const label = document.createElement('span')
       label.className = 'evo-total-label'
       label.textContent = 'Total'
       tdCat.appendChild(label)
       tr.appendChild(tdCat)
 
-      displayVers.forEach((v, i) => {
+      pushRowMeta(tr, 1, i => {
+        const v = displayVers[i]
         const td = document.createElement('td')
         td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = totals[v]
@@ -1018,7 +1195,7 @@ export async function renderEvolution(container) {
           value: val,
           breakdown: breakdowns[v] || [],
         }
-        tr.appendChild(td)
+        return td
       })
 
       tbody.appendChild(tr)
@@ -1036,7 +1213,7 @@ export async function renderEvolution(container) {
       if (vals.length === 0) return
       const max = Math.max(...vals)
 
-      const key = 'user:User Message'
+      const key = USER_ROW_KEY
       const tr = document.createElement('tr')
       tr.className = 'evo-row evo-user-row'
       tr.setAttribute('data-key', key)
@@ -1045,6 +1222,7 @@ export async function renderEvolution(container) {
 
       const tdCat = document.createElement('td')
       tdCat.className = 'evo-td-cat'
+      tdCat.appendChild(makeRowCheckbox(key, 'User Message'))
       const dot = document.createElement('span')
       dot.className = 'evo-cat-dot slug-user_message'
       const catLabel = document.createElement('span')
@@ -1068,8 +1246,21 @@ export async function renderEvolution(container) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate() }
       })
 
-      let lastPresent = null
-      displayVers.forEach((v, i) => {
+      // Precompute the per-index delta (vs last present version). Cells are
+      // rendered windowed via TanStack Virtual, so we can't track lastPresent
+      // inside the renderer — the loop only sees the visible slice.
+      const deltaByIdx = new Array(displayVers.length).fill(null)
+      {
+        let lastPresent = null
+        displayVers.forEach((v, i) => {
+          const val = totals[v]
+          if (val !== undefined && lastPresent !== null) deltaByIdx[i] = val - lastPresent
+          if (val !== undefined) lastPresent = val
+        })
+      }
+
+      pushRowMeta(tr, 2, i => {
+        const v = displayVers[i]
         const td = document.createElement('td')
         td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = totals[v]
@@ -1086,10 +1277,9 @@ export async function renderEvolution(container) {
           title: 'User Message',
           parentLabel: topLevelTitleFor(USER_SLUG),
           value: val,
-          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
+          delta: deltaByIdx[i],
         }
-        if (val !== undefined) lastPresent = val
-        tr.appendChild(td)
+        return td
       })
 
       tbody.appendChild(tr)
@@ -1104,6 +1294,7 @@ export async function renderEvolution(container) {
 
       const tdCat = document.createElement('td')
       tdCat.className = 'evo-td-cat'
+      tdCat.appendChild(makeRowCheckbox(rowData.key, rowData.title))
       const dot = document.createElement('span')
       dot.className = `evo-cat-dot slug-${rowData.currentSlug}`
       const catLabel = document.createElement('span')
@@ -1131,8 +1322,19 @@ export async function renderEvolution(container) {
       tdSec.appendChild(compInner)
       tr.appendChild(tdSec)
 
-      let lastPresent = null
-      displayVers.forEach((v, i) => {
+      // Precompute deltas — see addUserMessageRow for the rationale.
+      const deltaByIdx = new Array(displayVers.length).fill(null)
+      {
+        let lastPresent = null
+        displayVers.forEach((v, i) => {
+          const val = rowData.values[v]
+          if (val !== undefined && lastPresent !== null) deltaByIdx[i] = val - lastPresent
+          if (val !== undefined) lastPresent = val
+        })
+      }
+
+      pushRowMeta(tr, 2, i => {
+        const v = displayVers[i]
         const td = document.createElement('td')
         td.className = 'evo-cell' + (modelAnchorIndices.has(i) ? ' model-anchor' : '')
         const val = rowData.values[v]
@@ -1151,10 +1353,9 @@ export async function renderEvolution(container) {
           title: rowData.title,
           parentLabel: topLevelTitleFor(slugAtVer),
           value: val,
-          delta: val !== undefined && lastPresent !== null ? val - lastPresent : null,
+          delta: deltaByIdx[i],
         }
-        if (val !== undefined) lastPresent = val
-        tr.appendChild(td)
+        return td
       })
 
       const activate = () => openPanel(rowData.key, rowData.type, rowData.title)
@@ -1176,6 +1377,96 @@ export async function renderEvolution(container) {
 
     table.appendChild(tbody)
     tableWrap.appendChild(table)
+
+    // --- TanStack Virtual: column windowing -----------------------------
+    // Rebuild on every draw because displayVers (range/granularity) and
+    // cellWidth can change. Old virtualizer's _didMount cleanup is captured
+    // in virtualizerCleanup at module scope; tear it down before creating a
+    // fresh one so ResizeObservers / scroll listeners don't leak.
+    if (virtualizerCleanup) { virtualizerCleanup(); virtualizerCleanup = null }
+    columnVirtualizer = null
+
+    const totalCols = displayVers.length
+
+    function makeSpacer(tr, count) {
+      // Header rows are <tr> inside <thead>; body rows inside <tbody>. Use
+      // <th>/<td> to match so the HTML stays valid.
+      const inThead = tr.parentElement?.tagName === 'THEAD'
+      const sp = document.createElement(inThead ? 'th' : 'td')
+      sp.className = 'evo-spacer'
+      sp.colSpan = count
+      if (inThead) sp.scope = 'col'
+      return sp
+    }
+
+    function fillRow(meta, virtualItems) {
+      const { tr, stickyCount, makeCell, cellCache } = meta
+
+      const sticky = []
+      for (let i = 0; i < stickyCount; i++) sticky.push(tr.children[i])
+
+      const tail = []
+
+      if (virtualItems.length === 0) {
+        if (totalCols > 0) tail.push(makeSpacer(tr, totalCols))
+      } else {
+        const firstIdx = virtualItems[0].index
+        if (firstIdx > 0) tail.push(makeSpacer(tr, firstIdx))
+        for (const item of virtualItems) {
+          // Memoized cell: created once on first visit, reused forever.
+          let cell = cellCache.get(item.index)
+          if (!cell) {
+            cell = makeCell(item.index)
+            cellCache.set(item.index, cell)
+          }
+          tail.push(cell)
+        }
+        const lastIdx = virtualItems[virtualItems.length - 1].index
+        const trailing = totalCols - lastIdx - 1
+        if (trailing > 0) tail.push(makeSpacer(tr, trailing))
+      }
+
+      // Atomic swap. Cached cells move from being detached to being attached
+      // (or just rearrange position) without any creation cost.
+      tr.replaceChildren(...sticky, ...tail)
+    }
+
+    function fillAllRows(virtualItems) {
+      for (const meta of rowMetas) fillRow(meta, virtualItems)
+    }
+
+    if (totalCols > 0) {
+      columnVirtualizer = new Virtualizer({
+        count: totalCols,
+        horizontal: true,
+        // Larger overscan keeps a buffer of pre-rendered cells on each side
+        // of the viewport so fast horizontal scrolls don't reveal blank
+        // space before onChange fires the next batch render.
+        overscan: 30,
+        getScrollElement: () => tableWrap,
+        estimateSize: () => cellWidth,
+        scrollToFn: elementScroll,
+        observeElementRect,
+        observeElementOffset,
+        onChange: instance => fillAllRows(instance.getVirtualItems()),
+      })
+      columnVirtualizer._willUpdate()
+      virtualizerCleanup = columnVirtualizer._didMount()
+      fillAllRows(columnVirtualizer.getVirtualItems())
+    } else {
+      fillAllRows([])
+    }
+
+    // Snap to the rightmost (latest) version after the table has been filled,
+    // because scrollWidth only resolves once the colgroup-driven layout has a
+    // chance to measure. Browser clamps to scrollWidth - clientWidth; the
+    // virtualizer's scroll listener picks this up and re-fills the visible
+    // window for the latest range.
+    if (pendingScrollToEnd) {
+      tableWrap.scrollLeft = tableWrap.scrollWidth
+      pendingScrollToEnd = false
+    }
+    // -------------------------------------------------------------------
 
     // Legend: one swatch per top-level slug present in the corpus.
     const slugsInCorpus = new Set()
@@ -1202,6 +1493,9 @@ export async function renderEvolution(container) {
       selectedKey = null
       openPanel(restoreKey, type, title)
     }
+
+    applyRowVisibility()
+    updateSelectionPill()
   }
 
   draw()
@@ -1218,4 +1512,8 @@ export async function renderEvolution(container) {
   window.addEventListener('resize', onResize)
   cleanupFns.push(() => window.removeEventListener('resize', onResize))
   cleanupFns.push(() => clearTimeout(resizeTimer))
+  cleanupFns.push(() => {
+    if (virtualizerCleanup) { virtualizerCleanup(); virtualizerCleanup = null }
+    columnVirtualizer = null
+  })
 }

@@ -3,8 +3,14 @@ Fetch new Claude Code prompt captures from marckrenn/claude-code-changelog.
 
 Upstream tracks the live system prompt as a rolling `cc-prompt.md` whose git
 history records one commit per release ("Update prompt to version X.Y.Z").
-We walk that commit history, download the file content at each commit, and
-save it as `data/raw/{version}.md`. Already-captured versions are skipped.
+Sometimes a release's initial capture is buggy (e.g. dev-server HMR text leaks
+into the prompt) and upstream follows up with "Fix cc-prompt for vX.Y.Z" — we
+match both patterns so the fix wins the dedup.
+
+We walk that commit history, download the file content at each version's
+newest matching commit, and save it as `data/raw/{version}.md`. Each entry
+in `versions_meta.json` records the upstream commit SHA so a future fix
+commit on a version we already captured triggers a re-download.
 
 Set GITHUB_TOKEN in the environment to lift the unauthenticated 60/hr limit
 when running in CI.
@@ -31,7 +37,9 @@ RAW_DIR = REPO_ROOT / "data" / "raw"
 META_FILE = REPO_ROOT / "data" / "versions_meta.json"
 
 _RELEASE_DATE_RE = re.compile(r"Release Date:\s*(.+)")
-_VERSION_MSG_RE = re.compile(r"Update prompt to version\s+([0-9]+\.[0-9]+\.[0-9]+)")
+_VERSION_MSG_RE = re.compile(
+    r"(?:Update prompt to version\s+|Fix cc-prompt for v)([0-9]+\.[0-9]+\.[0-9]+)"
+)
 
 
 def _request(url: str) -> bytes:
@@ -110,7 +118,7 @@ def main() -> None:
     existing_meta: list[dict] = []
     if META_FILE.exists():
         existing_meta = json.loads(META_FILE.read_text())
-    existing_versions = {e["version"] for e in existing_meta}
+    by_version: dict[str, dict] = {e["version"]: dict(e) for e in existing_meta}
 
     print(f"Fetching commit history for {REPO}:{PROMPT_PATH} …")
     try:
@@ -121,22 +129,36 @@ def main() -> None:
 
     print(f"  Upstream lists {len(commits)} versioned commits.")
 
-    new_entries: list[dict] = []
+    added: list[str] = []
+    refreshed: list[str] = []
+    backfilled: list[str] = []
+
     for entry in commits:
         version = entry["version"]
         sha = entry["sha"]
         commit_date = entry["commit_date"]
         dest = RAW_DIR / f"{version}.md"
+        existing = by_version.get(version)
 
-        if dest.exists():
-            if version not in existing_versions:
-                release_date = _release_date(dest.read_text(encoding="utf-8"), commit_date)
-                new_entries.append({"version": version, "release_date": release_date})
-                existing_versions.add(version)
+        # Already in sync with upstream — nothing to do.
+        if existing and existing.get("sha") == sha and dest.exists():
             continue
 
+        # File on disk + meta entry without a recorded SHA: this is a one-time
+        # migration for entries captured before SHA tracking. Trust the file
+        # and just record the current upstream SHA so future fix commits will
+        # be detected via the mismatch path below. (Avoids a 300-file re-fetch
+        # the first time a user runs the updated script.)
+        if existing and "sha" not in existing and dest.exists():
+            existing["sha"] = sha
+            backfilled.append(version)
+            continue
+
+        # Either the file is missing, or upstream's SHA changed (a fix commit
+        # landed for a version we already had). Re-download.
         url = RAW_URL.format(sha=sha)
-        print(f"  Downloading {version} (sha {sha[:8]}) …")
+        action = "Re-fetching" if existing else "Downloading"
+        print(f"  {action} {version} (sha {sha[:8]}) …")
         try:
             text = _fetch_text(url)
         except urllib.error.URLError as exc:
@@ -145,15 +167,19 @@ def main() -> None:
 
         dest.write_text(text, encoding="utf-8")
         release_date = _release_date(text, commit_date)
-        new_entries.append({"version": version, "release_date": release_date})
-        existing_versions.add(version)
+        by_version[version] = {"version": version, "release_date": release_date, "sha": sha}
+        (refreshed if existing else added).append(version)
         time.sleep(0.2)  # be polite to the upstream server
 
-    if new_entries:
-        combined = existing_meta + new_entries
-        combined.sort(key=_version_key)
+    if added or refreshed or backfilled:
+        combined = sorted(by_version.values(), key=_version_key)
         META_FILE.write_text(json.dumps(combined, indent=2) + "\n", encoding="utf-8")
-        print(f"Added {len(new_entries)} new version(s): {[e['version'] for e in new_entries]}")
+        if added:
+            print(f"Added {len(added)} new version(s): {added}")
+        if refreshed:
+            print(f"Refreshed {len(refreshed)} version(s) from upstream fix commits: {refreshed}")
+        if backfilled:
+            print(f"Backfilled SHA for {len(backfilled)} existing version(s).")
     else:
         print("No new versions found.")
 

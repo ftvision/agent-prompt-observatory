@@ -238,6 +238,11 @@ p.loading { color: var(--text-muted); font-style: italic; }
 
 .work-section {
   scroll-margin-top: calc(var(--rail-height) + 16px);
+  /* CSS-grid items default to min-width: auto, which makes them grow to fit
+     their content's max-content. The Evolution table is wider than the
+     viewport on purpose; without this override the entire section blows out
+     and the horizontal-scroll wrap inside can't cap at the viewport width. */
+  min-width: 0;
 }
 
 .section-chrome {

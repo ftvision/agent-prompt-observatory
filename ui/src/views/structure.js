@@ -185,7 +185,15 @@ function buildGroups(structure, topLevelTitles) {
       })),
     })
   }
+
+  // Stack order mirrors Anthropic's prompt-cache layout:
+  // tools (top) → system (middle) → messages (bottom). Stable within each
+  // band so H1 subsections keep their declared order in the source structure.
+  const rank = g => g.slug === TOOLS_SLUG ? 0 : g.slug === USER_SLUG ? 2 : 1
   return groups
+    .map((g, i) => ({ g, i }))
+    .sort((a, b) => rank(a.g) - rank(b.g) || a.i - b.i)
+    .map(({ g }) => g)
 }
 
 function flattenGroups(groups) {
@@ -422,7 +430,16 @@ function renderMetrics(structure, version, versionMeta) {
     <div class="structure-index">
       <div class="section-number">1</div>
       <div class="structure-index-titles">
-        <h2>Structure</h2>
+        <h2>
+          Structure
+          <span class="cache-info" data-cache-info>
+            <button type="button" class="cache-info-trigger" aria-expanded="false" aria-controls="cache-info-popover" aria-label="About the slab order">i</button>
+            <span class="cache-info-popover" id="cache-info-popover" role="tooltip">
+              Slabs are stacked top-to-bottom in Anthropic's prompt-cache order: <strong>tools → system → messages</strong>. The cache references the prompt in that order up to and including each <code>cache_control</code> block, so changes lower in the stack invalidate less.
+              <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching" target="_blank" rel="noopener">Prompt caching docs ↗</a>
+            </span>
+          </span>
+        </h2>
         <p>Claude Code ${esc(version)}</p>
       </div>
       <div class="structure-version-pick">
@@ -579,6 +596,30 @@ export async function renderStructure(container) {
       currentId = null
       draw()
     })
+
+    const cacheInfo = container.querySelector('[data-cache-info]')
+    const cacheTrigger = cacheInfo?.querySelector('.cache-info-trigger')
+    if (cacheInfo && cacheTrigger) {
+      // Document-level listeners get torn down when the popover closes so they
+      // don't accumulate across redraws (draw() runs on every selection change).
+      let dismissCtrl = null
+      const close = () => {
+        cacheInfo.classList.remove('open')
+        cacheTrigger.setAttribute('aria-expanded', 'false')
+        dismissCtrl?.abort()
+        dismissCtrl = null
+      }
+      cacheInfo.querySelector('.cache-info-popover')?.addEventListener('click', e => e.stopPropagation())
+      cacheTrigger.addEventListener('click', event => {
+        event.stopPropagation()
+        if (cacheInfo.classList.contains('open')) { close(); return }
+        cacheInfo.classList.add('open')
+        cacheTrigger.setAttribute('aria-expanded', 'true')
+        dismissCtrl = new AbortController()
+        document.addEventListener('click', close, { signal: dismissCtrl.signal })
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') close() }, { signal: dismissCtrl.signal })
+      })
+    }
 
     if (focusSelectedAfterDraw) {
       focusSelectedAfterDraw = false
