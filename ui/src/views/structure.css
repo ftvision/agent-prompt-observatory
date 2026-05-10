@@ -419,6 +419,11 @@
   font-size: 12px;
   line-height: 1.55;
   background: transparent;
+  /* The global `code` rule in main.css sets a 1 px border + radius for inline
+     code chips (`like this`). Inside a pre, that border wraps to every
+     visual line and draws faint underlines beneath each row. Reset here. */
+  border: 0;
+  border-radius: 0;
   padding: 0;
 }
 
