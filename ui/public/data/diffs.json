@@ -4571,5 +4571,19 @@
     "reordered_tools": false,
     "added_xml_tags": [],
     "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.142",
+    "to": "2.1.143",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
   }
 ]

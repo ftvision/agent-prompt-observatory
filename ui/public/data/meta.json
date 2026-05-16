@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-15T06:58:31.492071+00:00",
-  "total_versions": 313,
+  "generated_at": "2026-05-16T06:41:32.377736+00:00",
+  "total_versions": 314,
   "versions": [
     {
       "version": "1.0.0",
@@ -1253,6 +1253,10 @@
     {
       "version": "2.1.142",
       "release_date": "2026-05-14"
+    },
+    {
+      "version": "2.1.143",
+      "release_date": "2026-05-15"
     }
   ],
   "top_level_titles": {
