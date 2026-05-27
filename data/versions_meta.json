@@ -1353,5 +1353,10 @@
     "version": "2.1.150",
     "release_date": "2026-05-23",
     "sha": "0e80833a738d4d5ebc96214f5e18eb1c2b530b3f"
+  },
+  {
+    "version": "2.1.152",
+    "release_date": "2026-05-27",
+    "sha": "e979ed63b07798b1c86cf6269641a61cfb444fcd"
   }
 ]
