@@ -1413,5 +1413,15 @@
     "version": "2.1.165",
     "release_date": "2026-06-05",
     "sha": "c98d424572972903590a929f09381069d4f4c9bc"
+  },
+  {
+    "version": "2.1.166",
+    "release_date": "2026-06-06",
+    "sha": "5be14711f3d00aafa2de09c9a0d9ac5e74a0fe18"
+  },
+  {
+    "version": "2.1.167",
+    "release_date": "2026-06-06",
+    "sha": "c439a2b0b4d929fcb134de52500e8907c67b09e0"
   }
 ]
