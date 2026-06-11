@@ -4921,5 +4921,33 @@
     "reordered_tools": false,
     "added_xml_tags": [],
     "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.170",
+    "to": "2.1.172",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
+  },
+  {
+    "from": "2.1.172",
+    "to": "2.1.173",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": []
   }
 ]
