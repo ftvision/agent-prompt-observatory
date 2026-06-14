@@ -370,6 +370,24 @@ p.loading { color: var(--text-muted); font-style: italic; }
   border-radius: 2px;
 }
 
+/* Icon variant: align mark + label, and keep the dotted underline under the
+   label only so the GitHub mark stays clean. */
+.rail-credit-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 0;
+}
+
+.rail-credit-gh svg { flex: none; }
+
+.rail-credit-gh span {
+  border-bottom: 1px dotted var(--border-default);
+  transition: border-color 0.12s;
+}
+
+.rail-credit-gh:hover span { border-bottom-color: var(--text-secondary); }
+
 /* ===== Theme toggle ===== */
 .theme-toggle {
   flex: none;
