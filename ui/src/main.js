@@ -70,6 +70,10 @@ async function main() {
         <span class="rail-divider" aria-hidden="true">·</span>
         <a class="rail-credit" href="https://github.com/marckrenn/claude-code-changelog" target="_blank" rel="noopener noreferrer">data: marckrenn/claude-code-changelog</a>
       </div>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
     </header>
     <main class="scroll-page">
       ${SECTIONS.map(section => `
@@ -144,8 +148,42 @@ async function main() {
     startEvolution()
   }
 
+  wireThemeToggle()
+
   await structurePromise
   wireSectionNav()
+}
+
+// Theme toggle. The pre-paint script in index.html already set the initial
+// theme from localStorage or the OS preference; here we just flip + persist
+// on click, and keep following the OS while the user hasn't chosen explicitly.
+function wireThemeToggle() {
+  const root = document.documentElement
+  const button = document.querySelector('[data-theme-toggle]')
+  if (!button) return
+
+  const sync = () => {
+    const dark = root.dataset.theme === 'dark'
+    button.setAttribute('aria-pressed', String(dark))
+    button.setAttribute('title', dark ? 'Switch to light theme' : 'Switch to dark theme')
+  }
+  sync()
+
+  button.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark'
+    root.dataset.theme = next
+    try { localStorage.setItem('theme', next) } catch (e) { /* private mode */ }
+    sync()
+  })
+
+  const media = window.matchMedia?.('(prefers-color-scheme: dark)')
+  media?.addEventListener?.('change', event => {
+    let stored = null
+    try { stored = localStorage.getItem('theme') } catch (e) { /* ignore */ }
+    if (stored === 'light' || stored === 'dark') return
+    root.dataset.theme = event.matches ? 'dark' : 'light'
+    sync()
+  })
 }
 
 function wireSectionNav() {

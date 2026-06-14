@@ -1,24 +1,51 @@
-/* ===== Design tokens — light mode ===== */
+/* ===== Design tokens =====
+   Light is the default (see DESIGN.md). Dark is an opt-in "warm graphite
+   workbench": the same analytical instrument at night, not a neon console.
+   Every value is a semantic token so a single [data-theme="dark"] block can
+   retheme the whole app. Structure slabs stay bright (lit ceramic objects)
+   and are coloured in structure.js; everything else flows from here. */
 :root {
-  --surface-0: oklch(97.5% 0.006 70);
-  --surface-1: oklch(94% 0.008 70);
-  --surface-2: oklch(89% 0.010 70);
-  --surface-3: oklch(83% 0.012 70);
+  color-scheme: light;
+
+  /* Warm graphite neutral scale (hue ~70). Higher = brighter surface. */
+  --surface-0: oklch(97.5% 0.006 70);   /* page base */
+  --surface-1: oklch(94% 0.008 70);     /* subtle raise: nav pill, quiet bands */
+  --surface-2: oklch(89% 0.010 70);     /* raise */
+  --surface-3: oklch(83% 0.012 70);     /* strong raise */
+  --surface-panel: oklch(99.3% 0.003 70); /* near-white raised panels, popovers, tooltips */
+  --surface-table: oklch(99.2% 0.004 70); /* table + cell surface, canvas gradient top */
+  --surface-inset: oklch(98.3% 0.005 70); /* code blocks, expand rows, recessed surfaces */
+  --surface-hover: oklch(96.5% 0.006 70); /* row + control hover */
+  --glow-warm: oklch(91% 0.014 75 / 0.55); /* warm radial accent inside canvas surfaces */
+
+  --border-faint: oklch(92% 0.008 70);  /* hairline row dividers */
   --border-subtle: oklch(84% 0.010 70);
   --border-default: oklch(74% 0.014 70);
+
   --text-primary: oklch(18% 0.012 55);
   --text-secondary: oklch(38% 0.010 55);
   --text-muted: oklch(55% 0.008 55);
+
   --accent: oklch(45% 0.095 205);
   --accent-dim: oklch(37% 0.080 205);
   --accent-hover: oklch(50% 0.105 205);
+  --accent-on: oklch(99% 0.003 70);     /* text/icon sitting on an accent fill */
+
+  --danger: oklch(50% 0.18 25);
+
+  --focus-ring: oklch(48% 0.13 255);    /* keyboard focus stroke */
+  --focus-glow: oklch(60% 0.115 215 / 0.18);
+  --slab-selected-stroke: oklch(38% 0.13 255);
+  --slab-focus-stroke: oklch(45% 0.14 255);
+  --selection-bg: oklch(94% 0.018 220 / 0.55);
+
   --code-bg: oklch(91% 0.007 70);
+
+  /* Data viz — Evolution bars, dots, legend (structure slabs live in JS). */
   --viz-user: oklch(61% 0.120 82);
   --viz-system: oklch(56% 0.105 215);
   --viz-tools: oklch(57% 0.100 155);
-  /* Per-slug fills for promoted H1s. Stable mapping so the same section
-     reads the same color across the corpus, even versions before promotion.
-     exec-actions is intentionally darker + more saturated than system blue
+  /* exec-actions is intentionally darker + more saturated than system blue
      so adjacent bars in the Evolution matrix don't blur together. */
   --viz-exec-actions: oklch(45% 0.135 175);
   --viz-text-output: oklch(54% 0.130 320);
@@ -26,9 +53,121 @@
   --viz-added: oklch(52% 0.110 150);
   --viz-removed: oklch(50% 0.115 25);
   --viz-changed: oklch(55% 0.120 76);
-  --shadow-panel: 0 18px 50px rgba(54, 45, 30, 0.14);
+  --viz-total: oklch(32% 0.020 60);
+
+  /* Semantic diff / change states */
+  --diff-add-bg: oklch(91% 0.045 145);
+  --diff-add-text: oklch(32% 0.090 150);
+  --diff-add-line: oklch(58% 0.135 145);
+  --diff-removed-bg: oklch(91% 0.040 25);
+  --diff-removed-text: oklch(34% 0.100 25);
+  --diff-changed-bg: oklch(91% 0.055 75);
+  --diff-changed-text: oklch(35% 0.085 70);
+  --diff-changed-line: oklch(62% 0.140 76);
+  --log-initial: oklch(54% 0.115 220);
+
+  /* JSON syntax highlighting (tool schemas) */
+  --tok-key: oklch(45% 0.13 255);
+  --tok-string: oklch(40% 0.10 145);
+  --tok-number: oklch(50% 0.14 60);
+  --tok-bool: oklch(48% 0.16 305);
+
+  /* Structure callout title inks, per slab family. Light = deep saturated
+     hue that reads on paper; dark = light tint that reads on graphite. */
+  --callout-amber: oklch(38% 0.085 70);
+  --callout-blue: oklch(38% 0.090 240);
+  --callout-teal: oklch(38% 0.075 185);
+  --callout-violet: oklch(36% 0.095 300);
+  --callout-green: oklch(40% 0.085 150);
+  --callout-slate: oklch(40% 0.025 250);
+
+  /* Elevation */
+  --shadow-color: oklch(45% 0.018 60 / 0.12);
+  --shadow-panel: 0 18px 50px var(--shadow-color);
+  --shadow-tooltip: 0 8px 24px var(--shadow-color);
+  --hairline-hi: oklch(60% 0.010 60 / 0.04);
+  --guide-line: oklch(50% 0.014 60 / 0.28);
+
   --rail-height: 49px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== Dark theme — warm graphite workbench ===== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --surface-0: oklch(20% 0.006 70);
+  --surface-1: oklch(24.5% 0.007 70);
+  --surface-2: oklch(29% 0.008 70);
+  --surface-3: oklch(35% 0.010 70);
+  --surface-panel: oklch(25% 0.007 70);   /* raised: lighter than base */
+  --surface-table: oklch(22.5% 0.006 70);
+  --surface-inset: oklch(17.5% 0.006 70); /* recessed: darker than base */
+  --surface-hover: oklch(28% 0.009 70);
+  --glow-warm: oklch(58% 0.04 75 / 0.16);
+
+  --border-faint: oklch(30% 0.008 70);
+  --border-subtle: oklch(35% 0.009 70);
+  --border-default: oklch(45% 0.011 70);
+
+  --text-primary: oklch(92% 0.006 70);
+  --text-secondary: oklch(75% 0.008 70);
+  --text-muted: oklch(60% 0.008 70);
+
+  --accent: oklch(72% 0.10 205);
+  --accent-dim: oklch(60% 0.09 205);
+  --accent-hover: oklch(79% 0.105 205);
+  --accent-on: oklch(20% 0.012 240);
+
+  --danger: oklch(70% 0.16 25);
+
+  --focus-ring: oklch(74% 0.12 245);
+  --focus-glow: oklch(70% 0.12 215 / 0.32);
+  --slab-selected-stroke: oklch(82% 0.10 245);
+  --slab-focus-stroke: oklch(74% 0.13 245);
+  --selection-bg: oklch(46% 0.05 240 / 0.45);
+
+  --code-bg: oklch(26% 0.008 70);
+
+  /* Lift saturated mid-tones so bars/dots read on graphite. */
+  --viz-user: oklch(73% 0.115 82);
+  --viz-system: oklch(70% 0.105 215);
+  --viz-tools: oklch(70% 0.10 155);
+  --viz-exec-actions: oklch(66% 0.12 175);
+  --viz-text-output: oklch(70% 0.125 320);
+  --viz-h1-default: oklch(68% 0.035 250);
+  --viz-added: oklch(68% 0.12 150);
+  --viz-removed: oklch(68% 0.13 25);
+  --viz-changed: oklch(74% 0.13 76);
+  --viz-total: oklch(80% 0.02 70);
+
+  --diff-add-bg: oklch(33% 0.06 150);
+  --diff-add-text: oklch(88% 0.085 150);
+  --diff-add-line: oklch(64% 0.13 145);
+  --diff-removed-bg: oklch(33% 0.06 25);
+  --diff-removed-text: oklch(87% 0.09 25);
+  --diff-changed-bg: oklch(35% 0.06 75);
+  --diff-changed-text: oklch(89% 0.09 76);
+  --diff-changed-line: oklch(72% 0.14 76);
+  --log-initial: oklch(70% 0.11 220);
+
+  --tok-key: oklch(75% 0.12 245);
+  --tok-string: oklch(76% 0.11 145);
+  --tok-number: oklch(80% 0.12 70);
+  --tok-bool: oklch(77% 0.13 320);
+
+  --callout-amber: oklch(82% 0.10 82);
+  --callout-blue: oklch(80% 0.09 215);
+  --callout-teal: oklch(80% 0.09 180);
+  --callout-violet: oklch(82% 0.10 320);
+  --callout-green: oklch(82% 0.10 150);
+  --callout-slate: oklch(82% 0.02 250);
+
+  --shadow-color: oklch(12% 0.01 60 / 0.55);
+  --shadow-panel: 0 18px 50px var(--shadow-color);
+  --shadow-tooltip: 0 10px 28px var(--shadow-color);
+  --hairline-hi: oklch(100% 0 0 / 0.03);
+  --guide-line: oklch(80% 0.012 70 / 0.22);
 }
 
 /* Accessibility utility */
@@ -71,7 +210,7 @@ code {
   color: var(--text-primary);
 }
 
-p.error { color: #b91c1c; }
+p.error { color: var(--danger); }
 p.loading { color: var(--text-muted); font-style: italic; }
 
 .app-fatal,
@@ -84,7 +223,7 @@ p.loading { color: var(--text-muted); font-style: italic; }
   padding: 32px;
   text-align: center;
   color: var(--text-secondary);
-  background: linear-gradient(180deg, oklch(99% 0.004 70), oklch(96.8% 0.006 70));
+  background: linear-gradient(180deg, var(--surface-table), var(--surface-hover));
 }
 
 .app-fatal h1,
@@ -184,6 +323,7 @@ p.loading { color: var(--text-muted); font-style: italic; }
 .rail-link:hover { color: var(--text-secondary); }
 .rail-brand:focus-visible,
 .rail-link:focus-visible,
+.theme-toggle:focus-visible,
 .app-fatal button:focus-visible,
 .section-error button:focus-visible {
   outline: 2px solid var(--accent);
@@ -193,7 +333,7 @@ p.loading { color: var(--text-muted); font-style: italic; }
 .rail-link.active {
   color: var(--text-primary);
   background: var(--surface-0);
-  box-shadow: 0 1px 0 rgba(54, 45, 30, 0.08);
+  box-shadow: var(--hairline-hi);
 }
 
 .rail-meta {
@@ -229,6 +369,40 @@ p.loading { color: var(--text-muted); font-style: italic; }
   outline-offset: 2px;
   border-radius: 2px;
 }
+
+/* ===== Theme toggle ===== */
+.theme-toggle {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 7px;
+  background: var(--surface-1);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.14s, background 0.14s, border-color 0.14s;
+}
+
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--surface-2);
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* Show the icon for the theme you'd switch *to*: moon in light, sun in dark. */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 .scroll-page {
   display: grid;
@@ -334,6 +508,12 @@ main {
 .version-select:focus { border-color: var(--accent); }
 .version-select option { background: var(--surface-0); }
 
+/* Dark mode: native option lists draw on a dark backdrop, and the inlined
+   chevron is a fixed mid-grey stroke. Swap to a lighter chevron so it reads. */
+:root[data-theme="dark"] .version-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a9a39c' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
 /* ===== Chips ===== */
 .chips-row {
   display: flex;
@@ -350,15 +530,15 @@ main {
   margin: 2px;
 }
 
-.chip-added    { background: oklch(91% 0.045 145); color: oklch(32% 0.090 150); }
-.chip-removed  { background: oklch(91% 0.040 25); color: oklch(34% 0.100 25); }
-.chip-changed  { background: oklch(91% 0.055 75); color: oklch(35% 0.085 70); }
+.chip-added    { background: var(--diff-add-bg); color: var(--diff-add-text); }
+.chip-removed  { background: var(--diff-removed-bg); color: var(--diff-removed-text); }
+.chip-changed  { background: var(--diff-changed-bg); color: var(--diff-changed-text); }
 .chip-neutral  { background: var(--surface-2); color: var(--text-muted); }
 
 /* ===== Tooltip ===== */
 .tooltip {
   position: fixed;
-  background: var(--surface-0);
+  background: var(--surface-panel);
   border: 1px solid var(--border-default);
   padding: 8px 12px;
   border-radius: 6px;
@@ -370,7 +550,7 @@ main {
   line-height: 1.5;
   max-width: 240px;
   color: var(--text-primary);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  box-shadow: var(--shadow-tooltip);
 }
 
 /* ===== Scrollbar ===== */

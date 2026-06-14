@@ -13,8 +13,8 @@
   flex-direction: column;
   padding: 26px 26px 22px;
   background:
-    radial-gradient(ellipse at 50% 28%, oklch(91% 0.014 75 / 0.40), transparent 42%),
-    linear-gradient(180deg, oklch(99.2% 0.004 70), oklch(97.5% 0.006 70));
+    radial-gradient(ellipse at 50% 28%, var(--glow-warm), transparent 42%),
+    linear-gradient(180deg, var(--surface-table), var(--surface-0));
 }
 
 /* --- Header band --- */
@@ -41,14 +41,14 @@
 .evo-eyebrow-num {
   width: 24px;
   height: 24px;
-  border: 1px solid oklch(83% 0.012 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 50%;
   display: inline-grid;
   place-items: center;
   color: var(--text-primary);
   font-size: 12px;
   font-weight: 650;
-  background: oklch(99% 0.003 70);
+  background: var(--surface-panel);
   font-feature-settings: "lnum";
   font-variant-numeric: lining-nums;
   flex: none;
@@ -129,13 +129,18 @@
   background-repeat: no-repeat;
   background-position: right 9px center;
   background-size: 10px 10px;
-  box-shadow: 0 1px 0 oklch(60% 0.010 60 / 0.04);
+  box-shadow: 0 1px 0 var(--hairline-hi);
 }
 
 .evo-select:hover { border-color: var(--border-default); }
 .evo-select:focus-visible {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px oklch(60% 0.115 215 / 0.18);
+  box-shadow: 0 0 0 3px var(--focus-glow);
+}
+
+/* Lighter chevron so the inlined stroke reads on the dark control. */
+:root[data-theme="dark"] .evo-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12' fill='none' stroke='%23a9a39c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
 }
 
 .evo-select-version { min-width: 90px; }
@@ -156,11 +161,11 @@
   cursor: pointer;
   transition: background 0.14s, color 0.14s, border-color 0.14s, box-shadow 0.14s;
   align-self: end;
-  box-shadow: 0 1px 0 oklch(60% 0.010 60 / 0.04);
+  box-shadow: 0 1px 0 var(--hairline-hi);
 }
 
 .evo-export svg:first-child { color: var(--text-muted); }
-.evo-export svg:last-child { color: oklch(70% 0.012 60); }
+.evo-export svg:last-child { color: var(--border-default); }
 
 .evo-export:hover {
   color: var(--text-primary);
@@ -171,7 +176,7 @@
 .evo-export:focus-visible {
   outline: 0;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px oklch(60% 0.115 215 / 0.18);
+  box-shadow: 0 0 0 3px var(--focus-glow);
 }
 
 /* --- Body --- */
@@ -196,7 +201,7 @@
   overflow-y: visible;
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
 }
 
 /* --- Table --- */
@@ -224,7 +229,7 @@
   color: var(--text-muted);
   text-align: left;
   white-space: nowrap;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
 }
 
 .evo-th-cat {
@@ -236,7 +241,7 @@
   top: 0;
   z-index: 7;
   padding-left: 14px;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
 }
 
 .evo-table.has-models .evo-th-cat,
@@ -250,7 +255,7 @@
   top: 0;
   z-index: 6;
   padding-left: 10px;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
 }
 
 .evo-th-v {
@@ -259,7 +264,7 @@
   position: sticky;
   top: 0;
   z-index: 4;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -313,7 +318,7 @@
   padding: 6px 10px 0 14px;
   border-bottom: 0;
   /* Opaque background covers tbody cells underneath when scrolling vertically. */
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
   vertical-align: bottom;
   position: sticky;
   left: 0;
@@ -329,7 +334,7 @@
   padding: 0;
   vertical-align: bottom;
   border-bottom: 0;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
 }
 
 /* Same overflow-clip trick as .evo-th-v.labeled — model markers spill right. */
@@ -378,7 +383,7 @@
 .evo-th-v.model-anchor,
 .evo-cell.model-anchor,
 .evo-model-cell.model-anchor {
-  box-shadow: inset 1px 0 0 oklch(50% 0.014 60 / 0.28);
+  box-shadow: inset 1px 0 0 var(--guide-line);
 }
 
 /* Opt-in row checkbox. Sits at the left edge of the sticky cat column.
@@ -416,7 +421,7 @@
   font-size: 12px;
   color: var(--text-secondary);
   align-self: end;
-  box-shadow: 0 1px 0 oklch(60% 0.010 60 / 0.04);
+  box-shadow: 0 1px 0 var(--hairline-hi);
 }
 
 .evo-selection-pill[hidden] { display: none; }
@@ -448,19 +453,19 @@
 
 .evo-sel-focus[aria-pressed="true"] {
   background: var(--accent);
-  color: oklch(99% 0.003 70);
+  color: var(--accent-on);
 }
 
 .evo-sel-focus[aria-pressed="true"]:hover {
   background: oklch(from var(--accent) calc(l - 0.04) c h);
-  color: oklch(99% 0.003 70);
+  color: var(--accent-on);
 }
 
 .evo-sel-focus:focus-visible,
 .evo-sel-clear:focus-visible {
   outline: 0;
   color: var(--text-primary);
-  box-shadow: 0 0 0 2px oklch(60% 0.115 215 / 0.32);
+  box-shadow: 0 0 0 2px var(--focus-glow);
 }
 
 /* Category dot in the first label column — color encodes current H1 parent. */
@@ -502,13 +507,13 @@
 .evo-row:hover .evo-td-cat,
 .evo-row:hover .evo-td-sec,
 .evo-row:hover .evo-cell {
-  background: oklch(96.8% 0.006 70);
+  background: var(--surface-hover);
 }
 
 .evo-row.selected .evo-td-cat,
 .evo-row.selected .evo-td-sec,
 .evo-row.selected .evo-cell {
-  background: oklch(94% 0.018 220 / 0.55);
+  background: var(--selection-bg);
 }
 
 .evo-row:focus-visible {
@@ -519,8 +524,8 @@
 .evo-td-cat,
 .evo-td-sec {
   font-size: 12px;
-  border-bottom: 1px solid oklch(92% 0.008 70);
-  background: oklch(99.2% 0.004 70);
+  border-bottom: 1px solid var(--border-faint);
+  background: var(--surface-table);
   white-space: nowrap;
   overflow: hidden;
   position: sticky;
@@ -579,8 +584,8 @@
   height: 28px;
   padding: 0;
   vertical-align: bottom;
-  border-bottom: 1px solid oklch(94% 0.006 70);
-  background: oklch(99.2% 0.004 70);
+  border-bottom: 1px solid var(--border-faint);
+  background: var(--surface-table);
 }
 
 .evo-bar {
@@ -601,7 +606,7 @@
 .evo-bar.slug-executing_actions_with_care { background: var(--viz-exec-actions); }
 .evo-bar.slug-text_output_does_not_apply_to_tool_calls { background: var(--viz-text-output); }
 .evo-bar.slug-tools { background: var(--viz-tools); }
-.evo-bar.total { background: oklch(32% 0.020 60); }
+.evo-bar.total { background: var(--viz-total); }
 
 .evo-cat-dot.slug-user_message { background: var(--viz-user); }
 .evo-cat-dot.slug-system_prompt { background: var(--viz-system); }
@@ -612,7 +617,7 @@
 /* Top-level totals row */
 .evo-total-row .evo-cell {
   height: 36px;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -620,7 +625,7 @@
   height: 36px;
   border-bottom: 1px solid var(--border-subtle);
   font-size: 12px;
-  background: oklch(99.2% 0.004 70);
+  background: var(--surface-table);
   position: sticky;
   left: 0;
   z-index: 3;
@@ -642,7 +647,7 @@
 .evo-user-row .evo-cell,
 .evo-user-row .evo-td-cat,
 .evo-user-row .evo-td-sec {
-  background: oklch(98.2% 0.005 70);
+  background: var(--surface-inset);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -685,7 +690,7 @@
 
 /* --- Inline detail expansion --- */
 .evo-expand-row td.evo-expand-td {
-  background: oklch(98.4% 0.005 70);
+  background: var(--surface-inset);
   border-bottom: 1px solid var(--border-subtle);
   /* Padding lives on the inner div so the JS-set width exactly matches the
      visible viewport width (border-box accounts for padding). */
@@ -704,7 +709,7 @@
   left: 356px;
   box-sizing: border-box;
   padding: 16px 22px 18px;
-  background: oklch(98.4% 0.005 70);
+  background: var(--surface-inset);
 }
 
 .evo-expand-head {
@@ -787,10 +792,10 @@
   margin-top: 5px;
   background: var(--text-muted);
 }
-.evo-log-dot-added { background: oklch(58% 0.135 145); }
-.evo-log-dot-changed { background: oklch(62% 0.140 76); }
+.evo-log-dot-added { background: var(--diff-add-line); }
+.evo-log-dot-changed { background: var(--diff-changed-line); }
 .evo-log-dot-removed { background: var(--viz-removed); }
-.evo-log-dot-initial { background: oklch(54% 0.115 220); }
+.evo-log-dot-initial { background: var(--log-initial); }
 
 .evo-log-main {
   display: flex;
@@ -840,16 +845,16 @@
   transition: background 0.10s;
 }
 
-.evo-log-clickable:hover { background: oklch(96% 0.006 70); }
+.evo-log-clickable:hover { background: var(--surface-hover); }
 .evo-log-clickable:hover .evo-log-ver { color: var(--accent); }
 .evo-log-clickable:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
-  background: oklch(96% 0.006 70);
+  background: var(--surface-hover);
 }
 
 .evo-log-row.expanded {
-  background: oklch(94% 0.014 220 / 0.5);
+  background: var(--selection-bg);
 }
 .evo-log-row.expanded .evo-log-ver { color: var(--accent); }
 
@@ -857,7 +862,7 @@
 .evo-diff {
   grid-column: 1 / -1;
   margin: 6px 0 12px;
-  background: oklch(99.6% 0.003 70);
+  background: var(--surface-panel);
   border: 1px solid var(--border-subtle);
   border-radius: 7px;
   overflow: hidden;
@@ -900,8 +905,8 @@
 }
 
 .evo-diff-eq  { color: var(--text-muted); }
-.evo-diff-add { background: oklch(94% 0.045 145 / 0.50); color: oklch(28% 0.085 150); border-left-color: oklch(58% 0.135 145); }
-.evo-diff-del { background: oklch(94% 0.040 25  / 0.50); color: oklch(34% 0.090 25);  border-left-color: var(--viz-removed); }
+.evo-diff-add { background: var(--diff-add-bg); color: var(--diff-add-text); border-left-color: var(--diff-add-line); }
+.evo-diff-del { background: var(--diff-removed-bg); color: var(--diff-removed-text);  border-left-color: var(--viz-removed); }
 .evo-diff-init { color: var(--text-secondary); }
 
 .evo-diff-empty {
@@ -988,7 +993,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: oklch(99.6% 0.003 70);
+  background: var(--surface-panel);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
@@ -1001,8 +1006,8 @@
   min-width: 168px;
   max-width: 260px;
   box-shadow:
-    0 1px 0 oklch(60% 0.012 60 / 0.05),
-    0 8px 24px oklch(40% 0.012 60 / 0.16);
+    0 1px 0 var(--hairline-hi),
+    0 8px 24px var(--shadow-color);
   font-variant-numeric: tabular-nums;
   font-size: 12px;
   line-height: 1.4;

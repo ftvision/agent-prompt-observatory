@@ -10,8 +10,8 @@
   max-width: 1640px;
   margin: 0 auto;
   background:
-    radial-gradient(ellipse at 36% 44%, oklch(91% 0.014 75 / 0.55), transparent 34%),
-    linear-gradient(180deg, oklch(99.2% 0.004 70), oklch(97.5% 0.006 70));
+    radial-gradient(ellipse at 36% 44%, var(--glow-warm), transparent 34%),
+    linear-gradient(180deg, var(--surface-table), var(--surface-0));
 }
 
 .structure-live {
@@ -35,14 +35,14 @@
 .section-number {
   width: 24px;
   height: 24px;
-  border: 1px solid oklch(83% 0.012 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 50%;
   display: grid;
   place-items: center;
   color: var(--text-primary);
   font-size: 12px;
   font-weight: 650;
-  background: oklch(99% 0.003 70);
+  background: var(--surface-panel);
 }
 
 .structure-index h2 {
@@ -64,10 +64,10 @@
   width: 18px;
   height: 18px;
   padding: 0;
-  border: 1px solid oklch(78% 0.012 70);
+  border: 1px solid var(--border-default);
   border-radius: 50%;
   color: var(--text-muted);
-  background: oklch(99% 0.003 70);
+  background: var(--surface-panel);
   font: 600 11px/1 ui-serif, Georgia, serif;
   font-style: italic;
   cursor: pointer;
@@ -80,7 +80,7 @@
 }
 
 .cache-info-trigger:focus-visible {
-  outline: 2px solid oklch(48% 0.13 255);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -91,10 +91,10 @@
   z-index: 5;
   width: 280px;
   padding: 12px 14px;
-  border: 1px solid oklch(82% 0.01 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 10px;
-  background: oklch(99.4% 0.003 70);
-  box-shadow: 0 14px 36px oklch(40% 0.02 60 / 0.16);
+  background: var(--surface-panel);
+  box-shadow: 0 14px 36px var(--shadow-color);
   color: var(--text-primary);
   font-size: 12px;
   font-weight: 500;
@@ -116,14 +116,14 @@
 .cache-info-popover code {
   padding: 1px 4px;
   border-radius: 4px;
-  background: oklch(94% 0.008 70);
+  background: var(--code-bg);
   font-size: 11px;
 }
 
 .cache-info-popover a {
   display: inline-block;
   margin-top: 8px;
-  color: oklch(45% 0.14 255);
+  color: var(--slab-focus-stroke);
   text-decoration: none;
   font-weight: 600;
 }
@@ -155,7 +155,7 @@
 
 .structure-version-pick .version-select {
   min-width: 116px;
-  background: oklch(99% 0.003 70 / 0.92);
+  background: var(--surface-panel);
 }
 
 .metric-list {
@@ -203,7 +203,7 @@
 .structure-version-pick .version-select:focus-visible,
 .panel-close:focus-visible,
 .panel-tab:focus-visible {
-  outline: 2px solid oklch(48% 0.13 255);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -233,11 +233,11 @@
 }
 
 .svg-slab.selected .slab-front {
-  stroke: oklch(38% 0.13 255);
+  stroke: var(--slab-selected-stroke);
 }
 
 .svg-slab:focus-visible .slab-front {
-  stroke: oklch(45% 0.14 255);
+  stroke: var(--slab-focus-stroke);
 }
 
 .slab-label,
@@ -260,16 +260,29 @@
   pointer-events: none;
 }
 
+/* Callout titles sit outside the slabs, on the page canvas, so their colour
+   is theme-driven (not the slab ink). CSS fill beats the SVG presentation
+   attribute, so the family class on .group-callout carries the hue and it
+   re-themes live without re-rendering the SVG. */
 .callout-title {
   font-size: 19px;
   font-weight: 750;
   font-family: system-ui, -apple-system, sans-serif;
+  fill: var(--callout-slate);
 }
+
+.group-callout.amber  .callout-title { fill: var(--callout-amber); }
+.group-callout.blue   .callout-title { fill: var(--callout-blue); }
+.group-callout.teal   .callout-title { fill: var(--callout-teal); }
+.group-callout.violet .callout-title { fill: var(--callout-violet); }
+.group-callout.green  .callout-title { fill: var(--callout-green); }
+.group-callout.slate  .callout-title { fill: var(--callout-slate); }
 
 .callout-meta {
   font-size: 15px;
   font-weight: 520;
   font-family: system-ui, -apple-system, sans-serif;
+  fill: var(--text-secondary);
 }
 
 .structure-panel {
@@ -277,10 +290,10 @@
   min-height: 0;
   max-height: calc(100vh - var(--rail-height) - 132px);
   margin-top: 0;
-  border: 1px solid oklch(84% 0.009 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 14px;
-  background: oklch(99.3% 0.003 70 / 0.92);
-  box-shadow: 0 18px 50px oklch(45% 0.018 60 / 0.08);
+  background: var(--surface-panel);
+  box-shadow: 0 18px 50px var(--shadow-color);
   overflow: hidden;
   display: grid;
   grid-template-rows: auto auto 1fr;
@@ -321,14 +334,14 @@
 
 .panel-close:hover {
   color: var(--text-primary);
-  background: oklch(94% 0.006 70);
+  background: var(--border-faint);
 }
 
 .panel-tabs {
   display: flex;
   gap: 20px;
   padding: 0 20px;
-  border-bottom: 1px solid oklch(88% 0.008 70);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .panel-tab {
@@ -371,10 +384,10 @@
 }
 
 .rendered-md {
-  border: 1px solid oklch(88% 0.008 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 16px;
-  background: oklch(99.7% 0.002 70);
+  background: var(--surface-panel);
   color: var(--text-primary);
   font-size: clamp(13px, calc(12px + 0.1vw), 15px);
   line-height: 1.6;
@@ -407,8 +420,8 @@
    tinted surface and a soft border to read as a code surface, not body text. */
 .rendered-md pre,
 .panel-pane pre {
-  background: oklch(98.6% 0.005 70);
-  border: 1px solid oklch(90% 0.008 70);
+  background: var(--surface-inset);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 14px 16px;
 }
@@ -427,20 +440,20 @@
   padding: 0;
 }
 
-.rendered-md .tok-key    { color: oklch(45% 0.13 255); font-weight: 600; }
-.rendered-md .tok-string { color: oklch(40% 0.10 145); }
-.rendered-md .tok-number { color: oklch(50% 0.14 60); }
-.rendered-md .tok-bool   { color: oklch(48% 0.16 305); }
+.rendered-md .tok-key    { color: var(--tok-key); font-weight: 600; }
+.rendered-md .tok-string { color: var(--tok-string); }
+.rendered-md .tok-number { color: var(--tok-number); }
+.rendered-md .tok-bool   { color: var(--tok-bool); }
 .rendered-md .tok-null   { color: var(--text-muted); font-style: italic; }
 
 .panel-pane pre {
   margin: 0;
   min-height: 280px;
-  border: 1px solid oklch(88% 0.008 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 16px;
   overflow: auto;
-  background: oklch(98% 0.004 70);
+  background: var(--surface-inset);
   color: var(--text-primary);
   font-size: 12px;
   line-height: 1.55;
@@ -450,10 +463,10 @@
 
 .metadata-list {
   margin: 0;
-  border: 1px solid oklch(88% 0.008 70);
+  border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 16px;
-  background: oklch(99.7% 0.002 70);
+  background: var(--surface-panel);
 }
 
 .metadata-list div {
@@ -505,22 +518,22 @@
   min-height: 420px;
   place-content: center;
   text-align: center;
-  background: linear-gradient(180deg, oklch(99.2% 0.004 70), oklch(97.5% 0.006 70));
+  background: linear-gradient(180deg, var(--surface-table), var(--surface-0));
 }
 
 .structure-error button {
   justify-self: center;
-  border: 1px solid oklch(72% 0.012 60);
+  border: 1px solid var(--border-default);
   border-radius: 8px;
   padding: 8px 14px;
   color: var(--text-primary);
-  background: oklch(99% 0.003 70);
+  background: var(--surface-panel);
   font: inherit;
   cursor: pointer;
 }
 
 .structure-error button:hover {
-  background: oklch(95% 0.006 70);
+  background: var(--surface-hover);
 }
 
 @media (max-width: 1180px) {
