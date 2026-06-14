@@ -6,14 +6,14 @@
       "text": "<system-reminder>\nThe following skills are available for use with the Skill tool:\n\n- keybindings-help: Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: \"rebind ctrl+s\", \"add a chord shortcut\", \"change the submit key\", \"customize keybindings\".\n- claude-developer-platform: Build applications that call the Claude API or Anthropic SDK. Use ONLY when the code actually uses or will use the `anthropic` SDK package or Claude API endpoints.\nTRIGGER when:\n- Code imports `anthropic` or `@anthropic-ai/sdk` (the Anthropic SDK)\n- Code imports `claude_agent_sdk` or `@anthropic-ai/claude-agent-sdk` (the Agent SDK)\n- User explicitly asks to use Claude, the Anthropic API, or Anthropic SDK\n- User needs an AI/LLM and no other provider's SDK is already in use\nDO NOT TRIGGER when (use another skill instead):\n- Code imports `openai`, `google.generativeai`, or any non-Anthropic AI SDK\n- Filenames contain \"openai\", \"gpt\", \"gemini\" \u2014 the code uses a different provider\n- The task is general programming with no LLM API calls\n- The task is ML/data science (PyTorch, scikit-learn, etc.)\n- Feature names like \"extended thinking\", \"prompt caching\", \"tool use\" appear but the code uses a NON-Anthropic SDK \u2014 those are generic concepts, not Claude-specific\nCRITICAL: Check the existing code's imports FIRST. If it imports `openai` or another provider, this skill cannot help \u2014 it only contains Claude/Anthropic documentation.\n</system-reminder>"
     },
     "system_reminder/1": {
-      "hash": "9f7a37392afb7c97",
-      "char_count": 305,
-      "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is 2026-02-25.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
+      "hash": "86e1ee7df08a65b9",
+      "char_count": 301,
+      "text": "<system-reminder>\nAs you answer the user's questions, you can use the following context:\n## currentDate\nToday's date is <date>.\n\n      IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.\n</system-reminder>"
     },
     "actual_prompt": {
-      "hash": "43e893b2af9472d5",
-      "char_count": 96,
-      "text": "# User Message\n</system-reminder>\n\n2026-02-25T09:28:37.334Z is the date. Write a haiku about it."
+      "hash": "4de5987233ee829c",
+      "char_count": 82,
+      "text": "# User Message\n</system-reminder>\n\n<datetime> is the date. Write a haiku about it."
     }
   },
   "system_prompt": {
