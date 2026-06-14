@@ -76,6 +76,65 @@ def _tools_entries(comp) -> list[dict]:
     return out
 
 
+def _flat_leaves(snap: Snapshot) -> dict[str, tuple[str, int]]:
+    """Map every diffable leaf to ``(content_hash, char_count)``.
+
+    Leaves are the units a content edit can land in: each H1 subsection, each
+    tool's prose and schema, and each user-message xml tag / actual prompt.
+    Hashes come from the normalized text, so volatile tokens (version stamp,
+    dates) are already masked — a leaf only differs here on a real edit.
+    """
+    leaves: dict[str, tuple[str, int]] = {}
+    for slug, comp in snap.components.items():
+        if slug == "user_message":
+            for child in comp.children.values():
+                if child.kind == "actual_prompt":
+                    key = "user_message/actual_prompt"
+                else:
+                    parts = child.id.split("/")
+                    idx = int(parts[-1]) if parts[-1].isdigit() else 0
+                    key = f"user_message/{child.kind}/{idx}"
+                leaves[key] = (child.hash, len(child.normalized))
+        elif slug == "tools":
+            for child in comp.children.values():
+                if child.kind != "tool":
+                    continue
+                prose = child.children.get(f"{child.id}/prose")
+                schema = child.children.get(f"{child.id}/schema")
+                if prose:
+                    leaves[f"tools/{child.title}/prose"] = (prose.hash, len(prose.normalized))
+                if schema:
+                    leaves[f"tools/{child.title}/schema"] = (schema.hash, len(schema.normalized))
+        else:
+            for child in comp.children.values():
+                leaves[child.id] = (child.hash, len(child.normalized))
+    return leaves
+
+
+def _changed_components(prev: Snapshot, curr: Snapshot) -> list[dict]:
+    """Leaves present in both versions whose content hash changed.
+
+    This is the content-edit signal the structural diff misses: removing a
+    bullet from a section, rewording a tool's prose, etc. Added/removed leaves
+    are already covered by the structural added_/removed_ fields, so they're
+    intentionally excluded here.
+    """
+    prev_leaves = _flat_leaves(prev)
+    curr_leaves = _flat_leaves(curr)
+    changed: list[dict] = []
+    for cid in sorted(set(prev_leaves) & set(curr_leaves)):
+        prev_hash, prev_chars = prev_leaves[cid]
+        curr_hash, curr_chars = curr_leaves[cid]
+        if prev_hash != curr_hash:
+            changed.append({
+                "component": cid,
+                "from_chars": prev_chars,
+                "to_chars": curr_chars,
+                "delta": curr_chars - prev_chars,
+            })
+    return changed
+
+
 def _build_structure_for_version(snap: Snapshot) -> dict:
     """One key per H1, in document order (insertion order is preserved by JSON)."""
     out: dict[str, list[dict]] = {}
@@ -234,6 +293,9 @@ def run_export(
             "reordered_tools": d.reordered_tools,
             "added_xml_tags": d.added_xml_tags,
             "removed_xml_tags": d.removed_xml_tags,
+            # Content edits to leaves present in both versions — the within-
+            # section changes the structural fields above can't see.
+            "changed_components": _changed_components(snapshots[i - 1], snapshots[i]),
         })
 
     (output_dir / "diffs.json").write_text(

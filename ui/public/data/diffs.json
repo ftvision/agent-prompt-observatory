@@ -11,7 +11,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.1",
@@ -25,7 +33,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.2",
@@ -39,7 +55,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      },
+      {
+        "component": "tools/Edit/schema",
+        "from_chars": 700,
+        "to_chars": 736,
+        "delta": 36
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 821,
+        "to_chars": 710,
+        "delta": -111
+      }
+    ]
   },
   {
     "from": "1.0.3",
@@ -53,7 +89,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1973,
+        "to_chars": 2038,
+        "delta": 65
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1631,
+        "to_chars": 1702,
+        "delta": 71
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 37,
+        "to_chars": 38,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "1.0.4",
@@ -67,7 +129,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.5",
@@ -81,7 +151,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1702,
+        "to_chars": 1695,
+        "delta": -7
+      }
+    ]
   },
   {
     "from": "1.0.6",
@@ -95,7 +179,45 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3270,
+        "to_chars": 3376,
+        "delta": 106
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 1859,
+        "to_chars": 2225,
+        "delta": 366
+      },
+      {
+        "component": "tools/Edit/prose",
+        "from_chars": 557,
+        "to_chars": 654,
+        "delta": 97
+      },
+      {
+        "component": "tools/MultiEdit/prose",
+        "from_chars": 2484,
+        "to_chars": 2581,
+        "delta": 97
+      },
+      {
+        "component": "tools/Write/prose",
+        "from_chars": 534,
+        "to_chars": 632,
+        "delta": 98
+      }
+    ]
   },
   {
     "from": "1.0.7",
@@ -109,7 +231,39 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      },
+      {
+        "component": "tools/Edit/prose",
+        "from_chars": 654,
+        "to_chars": 1116,
+        "delta": 462
+      },
+      {
+        "component": "tools/Edit/schema",
+        "from_chars": 736,
+        "to_chars": 704,
+        "delta": -32
+      },
+      {
+        "component": "tools/MultiEdit/prose",
+        "from_chars": 2581,
+        "to_chars": 2498,
+        "delta": -83
+      },
+      {
+        "component": "tools/MultiEdit/schema",
+        "from_chars": 1109,
+        "to_chars": 1078,
+        "delta": -31
+      }
+    ]
   },
   {
     "from": "1.0.8",
@@ -123,7 +277,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 780,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.9",
@@ -137,7 +299,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 780,
+        "to_chars": 781,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "1.0.10",
@@ -151,7 +321,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 781,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.11",
@@ -165,7 +343,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 781,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.14",
@@ -179,7 +365,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 781,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.15",
@@ -193,7 +387,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 781,
+        "delta": 0
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 2022,
+        "to_chars": 2090,
+        "delta": 68
+      }
+    ]
   },
   {
     "from": "1.0.16",
@@ -207,7 +415,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 781,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.17",
@@ -221,7 +437,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 781,
+        "delta": 0
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2225,
+        "to_chars": 2199,
+        "delta": -26
+      }
+    ]
   },
   {
     "from": "1.0.18",
@@ -237,7 +467,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 781,
+        "to_chars": 810,
+        "delta": 29
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 2090,
+        "to_chars": 2106,
+        "delta": 16
+      }
+    ]
   },
   {
     "from": "1.0.19",
@@ -251,7 +495,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 810,
+        "to_chars": 359,
+        "delta": -451
+      },
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2313,
+        "to_chars": 2321,
+        "delta": 8
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1695,
+        "to_chars": 1696,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "1.0.20",
@@ -265,7 +529,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.21",
@@ -279,7 +544,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/NotebookEdit/schema",
+        "from_chars": 1093,
+        "to_chars": 1232,
+        "delta": 139
+      },
+      {
+        "component": "tools/NotebookRead/schema",
+        "from_chars": 339,
+        "to_chars": 486,
+        "delta": 147
+      }
+    ]
   },
   {
     "from": "1.0.22",
@@ -293,7 +572,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1696,
+        "to_chars": 1694,
+        "delta": -2
+      },
+      {
+        "component": "tools/NotebookEdit/schema",
+        "from_chars": 1232,
+        "to_chars": 1182,
+        "delta": -50
+      }
+    ]
   },
   {
     "from": "1.0.23",
@@ -307,7 +600,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.24",
@@ -321,7 +615,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 2106,
+        "to_chars": 2176,
+        "delta": 70
+      }
+    ]
   },
   {
     "from": "1.0.25",
@@ -335,7 +637,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.26",
@@ -349,7 +652,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.27",
@@ -363,7 +667,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.28",
@@ -377,7 +682,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.29",
@@ -391,7 +697,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.30",
@@ -405,7 +712,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 2038,
+        "to_chars": 1871,
+        "delta": -167
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1694,
+        "to_chars": 1348,
+        "delta": -346
+      }
+    ]
   },
   {
     "from": "1.0.31",
@@ -419,7 +740,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/exit_plan_mode/prose",
+        "from_chars": 165,
+        "to_chars": 803,
+        "delta": 638
+      }
+    ]
   },
   {
     "from": "1.0.32",
@@ -433,7 +762,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.33",
@@ -447,7 +777,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.34",
@@ -461,7 +792,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3376,
+        "to_chars": 3095,
+        "delta": -281
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2199,
+        "to_chars": 2202,
+        "delta": 3
+      },
+      {
+        "component": "tools/TodoRead/schema",
+        "from_chars": 314,
+        "to_chars": 313,
+        "delta": -1
+      }
+    ]
   },
   {
     "from": "1.0.35",
@@ -475,7 +826,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 495,
+        "to_chars": 535,
+        "delta": 40
+      }
+    ]
   },
   {
     "from": "1.0.36",
@@ -489,7 +848,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.37",
@@ -503,7 +863,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2321,
+        "to_chars": 2588,
+        "delta": 267
+      }
+    ]
   },
   {
     "from": "1.0.38",
@@ -517,7 +885,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.39",
@@ -531,7 +900,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 535,
+        "to_chars": 670,
+        "delta": 135
+      }
+    ]
   },
   {
     "from": "1.0.40",
@@ -545,7 +922,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.41",
@@ -559,7 +937,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1348,
+        "to_chars": 1519,
+        "delta": 171
+      },
+      {
+        "component": "tools/WebFetch/prose",
+        "from_chars": 958,
+        "to_chars": 1167,
+        "delta": 209
+      }
+    ]
   },
   {
     "from": "1.0.42",
@@ -573,7 +965,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.43",
@@ -589,7 +982,21 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2588,
+        "to_chars": 2575,
+        "delta": -13
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 2176,
+        "to_chars": 2166,
+        "delta": -10
+      }
+    ]
   },
   {
     "from": "1.0.44",
@@ -603,7 +1010,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1519,
+        "to_chars": 1520,
+        "delta": 1
+      },
+      {
+        "component": "tools/Grep/prose",
+        "from_chars": 682,
+        "to_chars": 873,
+        "delta": 191
+      },
+      {
+        "component": "tools/Grep/schema",
+        "from_chars": 581,
+        "to_chars": 2512,
+        "delta": 1931
+      }
+    ]
   },
   {
     "from": "1.0.45",
@@ -617,7 +1044,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.46",
@@ -631,7 +1059,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.47",
@@ -645,7 +1074,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.48",
@@ -659,7 +1089,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.49",
@@ -673,7 +1104,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.50",
@@ -687,7 +1119,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.51",
@@ -701,7 +1134,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.52",
@@ -715,7 +1149,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2575,
+        "to_chars": 2664,
+        "delta": 89
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1520,
+        "to_chars": 1818,
+        "delta": 298
+      }
+    ]
   },
   {
     "from": "1.0.53",
@@ -729,7 +1177,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.54",
@@ -743,7 +1192,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.55",
@@ -757,7 +1207,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1818,
+        "to_chars": 1863,
+        "delta": 45
+      }
+    ]
   },
   {
     "from": "1.0.56",
@@ -775,7 +1233,15 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 2166,
+        "to_chars": 2164,
+        "delta": -2
+      }
+    ]
   },
   {
     "from": "1.0.57",
@@ -789,7 +1255,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1570,
+        "to_chars": 1696,
+        "delta": 126
+      }
+    ]
   },
   {
     "from": "1.0.58",
@@ -803,7 +1277,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Proactiveness",
+        "from_chars": 626,
+        "to_chars": 454,
+        "delta": -172
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3095,
+        "to_chars": 3262,
+        "delta": 167
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 710,
+        "to_chars": 630,
+        "delta": -80
+      }
+    ]
   },
   {
     "from": "1.0.59",
@@ -817,7 +1311,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1863,
+        "to_chars": 1985,
+        "delta": 122
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 2164,
+        "to_chars": 3842,
+        "delta": 1678
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 408,
+        "to_chars": 557,
+        "delta": 149
+      }
+    ]
   },
   {
     "from": "1.0.60",
@@ -831,7 +1345,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.61",
@@ -845,7 +1360,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.62",
@@ -859,7 +1375,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1985,
+        "to_chars": 1853,
+        "delta": -132
+      }
+    ]
   },
   {
     "from": "1.0.63",
@@ -873,7 +1397,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1853,
+        "to_chars": 1556,
+        "delta": -297
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3842,
+        "to_chars": 3556,
+        "delta": -286
+      }
+    ]
   },
   {
     "from": "1.0.64",
@@ -887,7 +1425,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.65",
@@ -901,7 +1440,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.66",
@@ -915,7 +1455,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.67",
@@ -931,7 +1472,21 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2202,
+        "to_chars": 2198,
+        "delta": -4
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1696,
+        "to_chars": 1765,
+        "delta": 69
+      }
+    ]
   },
   {
     "from": "1.0.68",
@@ -945,7 +1500,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 38,
+        "to_chars": 82,
+        "delta": 44
+      }
+    ]
   },
   {
     "from": "1.0.69",
@@ -959,7 +1522,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3262,
+        "to_chars": 3254,
+        "delta": -8
+      }
+    ]
   },
   {
     "from": "1.0.70",
@@ -973,7 +1544,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3556,
+        "to_chars": 3667,
+        "delta": 111
+      }
+    ]
   },
   {
     "from": "1.0.71",
@@ -990,7 +1569,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2198,
+        "to_chars": 2575,
+        "delta": 377
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3667,
+        "to_chars": 3668,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "1.0.72",
@@ -1004,7 +1597,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.73",
@@ -1018,7 +1612,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3668,
+        "to_chars": 3778,
+        "delta": 110
+      }
+    ]
   },
   {
     "from": "1.0.74",
@@ -1032,7 +1634,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.76",
@@ -1046,7 +1649,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.77",
@@ -1060,7 +1664,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3778,
+        "to_chars": 3780,
+        "delta": 2
+      }
+    ]
   },
   {
     "from": "1.0.78",
@@ -1074,7 +1686,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.79",
@@ -1088,7 +1701,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.80",
@@ -1102,7 +1716,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3780,
+        "to_chars": 3786,
+        "delta": 6
+      }
+    ]
   },
   {
     "from": "1.0.81",
@@ -1116,7 +1738,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.82",
@@ -1130,7 +1753,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.83",
@@ -1144,7 +1768,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.84",
@@ -1158,7 +1783,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.85",
@@ -1172,7 +1798,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.86",
@@ -1186,7 +1813,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1871,
+        "to_chars": 1397,
+        "delta": -474
+      }
+    ]
   },
   {
     "from": "1.0.87",
@@ -1200,7 +1835,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.88",
@@ -1214,7 +1850,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.89",
@@ -1228,7 +1865,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.90",
@@ -1242,7 +1880,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.91",
@@ -1256,7 +1895,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.92",
@@ -1270,7 +1910,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.93",
@@ -1284,7 +1925,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.94",
@@ -1298,7 +1940,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.95",
@@ -1312,7 +1955,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.96",
@@ -1328,7 +1972,39 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1397,
+        "to_chars": 1534,
+        "delta": 137
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1556,
+        "to_chars": 1693,
+        "delta": 137
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2575,
+        "to_chars": 2562,
+        "delta": -13
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1765,
+        "to_chars": 1873,
+        "delta": 108
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3786,
+        "to_chars": 3780,
+        "delta": -6
+      }
+    ]
   },
   {
     "from": "1.0.98",
@@ -1342,7 +2018,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1693,
+        "to_chars": 1693,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.100",
@@ -1356,7 +2040,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1693,
+        "to_chars": 1693,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "1.0.102",
@@ -1370,7 +2062,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2562,
+        "to_chars": 2561,
+        "delta": -1
+      }
+    ]
   },
   {
     "from": "1.0.103",
@@ -1384,7 +2084,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.105",
@@ -1402,7 +2103,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3254,
+        "to_chars": 3235,
+        "delta": -19
+      }
+    ]
   },
   {
     "from": "1.0.106",
@@ -1416,7 +2125,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.107",
@@ -1430,7 +2140,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.108",
@@ -1444,7 +2155,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.109",
@@ -1458,7 +2170,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.110",
@@ -1472,7 +2185,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1693,
+        "to_chars": 1951,
+        "delta": 258
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 3780,
+        "to_chars": 4071,
+        "delta": 291
+      }
+    ]
   },
   {
     "from": "1.0.111",
@@ -1486,7 +2213,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.112",
@@ -1504,7 +2232,8 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.113",
@@ -1518,7 +2247,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.114",
@@ -1532,7 +2262,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.115",
@@ -1546,7 +2277,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.116",
@@ -1560,7 +2292,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.117",
@@ -1574,7 +2307,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.118",
@@ -1588,7 +2322,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 1486,
+        "to_chars": 1559,
+        "delta": 73
+      }
+    ]
   },
   {
     "from": "1.0.119",
@@ -1602,7 +2344,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1534,
+        "to_chars": 1531,
+        "delta": -3
+      }
+    ]
   },
   {
     "from": "1.0.120",
@@ -1618,7 +2368,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2561,
+        "to_chars": 2562,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "1.0.122",
@@ -1632,7 +2390,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.123",
@@ -1646,7 +2405,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2562,
+        "to_chars": 3870,
+        "delta": 1308
+      }
+    ]
   },
   {
     "from": "1.0.124",
@@ -1660,7 +2427,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3870,
+        "to_chars": 4162,
+        "delta": 292
+      }
+    ]
   },
   {
     "from": "1.0.125",
@@ -1674,7 +2449,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "1.0.126",
@@ -1688,7 +2464,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 1559,
+        "to_chars": 1560,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "1.0.127",
@@ -1702,7 +2486,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1531,
+        "to_chars": 1536,
+        "delta": 5
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3235,
+        "to_chars": 3563,
+        "delta": 328
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1951,
+        "to_chars": 1950,
+        "delta": -1
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 4162,
+        "to_chars": 2562,
+        "delta": -1600
+      }
+    ]
   },
   {
     "from": "1.0.128",
@@ -1723,7 +2533,27 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 1560,
+        "to_chars": 567,
+        "delta": -993
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 1950,
+        "to_chars": 2559,
+        "delta": 609
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 2562,
+        "to_chars": 3367,
+        "delta": 805
+      }
+    ]
   },
   {
     "from": "2.0.0",
@@ -1737,7 +2567,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.1",
@@ -1753,6 +2584,44 @@
     "added_xml_tags": [],
     "removed_xml_tags": [
       "system_reminder"
+    ],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 2559,
+        "to_chars": 2694,
+        "delta": 135
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3367,
+        "to_chars": 3692,
+        "delta": 325
+      },
+      {
+        "component": "tools/Glob/prose",
+        "from_chars": 554,
+        "to_chars": 539,
+        "delta": -15
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1873,
+        "to_chars": 1761,
+        "delta": -112
+      },
+      {
+        "component": "tools/SlashCommand/prose",
+        "from_chars": 602,
+        "to_chars": 1368,
+        "delta": 766
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 82,
+        "to_chars": 63,
+        "delta": -19
+      }
     ]
   },
   {
@@ -1767,7 +2636,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.3",
@@ -1783,7 +2653,45 @@
     "added_xml_tags": [
       "system_reminder"
     ],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 2694,
+        "to_chars": 2559,
+        "delta": -135
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3692,
+        "to_chars": 3367,
+        "delta": -325
+      },
+      {
+        "component": "tools/Glob/prose",
+        "from_chars": 539,
+        "to_chars": 554,
+        "delta": 15
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1761,
+        "to_chars": 1873,
+        "delta": 112
+      },
+      {
+        "component": "tools/SlashCommand/prose",
+        "from_chars": 1368,
+        "to_chars": 602,
+        "delta": -766
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 63,
+        "to_chars": 82,
+        "delta": 19
+      }
+    ]
   },
   {
     "from": "2.0.5",
@@ -1799,6 +2707,50 @@
     "added_xml_tags": [],
     "removed_xml_tags": [
       "system_reminder"
+    ],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 2559,
+        "to_chars": 2694,
+        "delta": 135
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3367,
+        "to_chars": 3692,
+        "delta": 325
+      },
+      {
+        "component": "tools/Glob/prose",
+        "from_chars": 554,
+        "to_chars": 539,
+        "delta": -15
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1873,
+        "to_chars": 1761,
+        "delta": -112
+      },
+      {
+        "component": "tools/SlashCommand/prose",
+        "from_chars": 602,
+        "to_chars": 1368,
+        "delta": 766
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 4071,
+        "to_chars": 4378,
+        "delta": 307
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 82,
+        "to_chars": 63,
+        "delta": -19
+      }
     ]
   },
   {
@@ -1813,7 +2765,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.9",
@@ -1827,7 +2780,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.10",
@@ -1845,7 +2799,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1536,
+        "to_chars": 1559,
+        "delta": 23
+      },
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2664,
+        "to_chars": 2663,
+        "delta": -1
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 3563,
+        "to_chars": 360,
+        "delta": -3203
+      }
+    ]
   },
   {
     "from": "2.0.11",
@@ -1859,7 +2833,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 567,
+        "to_chars": 569,
+        "delta": 2
+      },
+      {
+        "component": "tools/SlashCommand/prose",
+        "from_chars": 1368,
+        "to_chars": 1550,
+        "delta": 182
+      }
+    ]
   },
   {
     "from": "2.0.12",
@@ -1873,7 +2861,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.13",
@@ -1887,7 +2876,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 360,
+        "to_chars": 779,
+        "delta": 419
+      }
+    ]
   },
   {
     "from": "2.0.14",
@@ -1901,7 +2898,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/ExitPlanMode/prose",
+        "from_chars": 801,
+        "to_chars": 446,
+        "delta": -355
+      }
+    ]
   },
   {
     "from": "2.0.15",
@@ -1915,7 +2920,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 2694,
+        "to_chars": 3288,
+        "delta": 594
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 4378,
+        "to_chars": 4681,
+        "delta": 303
+      }
+    ]
   },
   {
     "from": "2.0.17",
@@ -1929,7 +2948,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 4681,
+        "to_chars": 4906,
+        "delta": 225
+      }
+    ]
   },
   {
     "from": "2.0.18",
@@ -1943,7 +2970,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.19",
@@ -1959,7 +2987,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.20",
@@ -1973,7 +3002,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.21",
@@ -1987,7 +3017,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.22",
@@ -2001,7 +3032,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.23",
@@ -2015,7 +3047,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1559,
+        "to_chars": 1641,
+        "delta": 82
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3288,
+        "to_chars": 3372,
+        "delta": 84
+      }
+    ]
   },
   {
     "from": "2.0.24",
@@ -2029,7 +3075,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3692,
+        "to_chars": 3616,
+        "delta": -76
+      }
+    ]
   },
   {
     "from": "2.0.25",
@@ -2043,7 +3097,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.26",
@@ -2057,7 +3112,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.27",
@@ -2071,7 +3127,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Professional objectivity",
+        "from_chars": 655,
+        "to_chars": 790,
+        "delta": 135
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 4906,
+        "to_chars": 5117,
+        "delta": 211
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 557,
+        "to_chars": 1036,
+        "delta": 479
+      }
+    ]
   },
   {
     "from": "2.0.28",
@@ -2085,7 +3161,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5117,
+        "to_chars": 5431,
+        "delta": 314
+      }
+    ]
   },
   {
     "from": "2.0.29",
@@ -2099,7 +3183,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 569,
+        "to_chars": 775,
+        "delta": 206
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5431,
+        "to_chars": 5123,
+        "delta": -308
+      }
+    ]
   },
   {
     "from": "2.0.30",
@@ -2113,7 +3211,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3372,
+        "to_chars": 3525,
+        "delta": 153
+      }
+    ]
   },
   {
     "from": "2.0.31",
@@ -2127,7 +3233,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Grep/schema",
+        "from_chars": 2512,
+        "to_chars": 2764,
+        "delta": 252
+      }
+    ]
   },
   {
     "from": "2.0.32",
@@ -2141,7 +3255,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3525,
+        "to_chars": 3524,
+        "delta": -1
+      }
+    ]
   },
   {
     "from": "2.0.33",
@@ -2155,7 +3277,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 775,
+        "to_chars": 777,
+        "delta": 2
+      },
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2663,
+        "to_chars": 2665,
+        "delta": 2
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5123,
+        "to_chars": 5463,
+        "delta": 340
+      }
+    ]
   },
   {
     "from": "2.0.34",
@@ -2169,7 +3311,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Skill/schema",
+        "from_chars": 296,
+        "to_chars": 292,
+        "delta": -4
+      }
+    ]
   },
   {
     "from": "2.0.35",
@@ -2183,7 +3333,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 777,
+        "to_chars": 775,
+        "delta": -2
+      },
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 984,
+        "to_chars": 978,
+        "delta": -6
+      },
+      {
+        "component": "tools/SlashCommand/prose",
+        "from_chars": 1550,
+        "to_chars": 1346,
+        "delta": -204
+      }
+    ]
   },
   {
     "from": "2.0.36",
@@ -2197,7 +3367,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.37",
@@ -2211,7 +3382,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1641,
+        "to_chars": 1629,
+        "delta": -12
+      }
+    ]
   },
   {
     "from": "2.0.41",
@@ -2225,7 +3404,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.42",
@@ -2243,7 +3423,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 775,
+        "to_chars": 961,
+        "delta": 186
+      }
+    ]
   },
   {
     "from": "2.0.43",
@@ -2257,7 +3445,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.44",
@@ -2275,7 +3464,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1629,
+        "to_chars": 1143,
+        "delta": -486
+      },
+      {
+        "component": "tools/BashOutput/prose",
+        "from_chars": 458,
+        "to_chars": 457,
+        "delta": -1
+      },
+      {
+        "component": "tools/KillShell/prose",
+        "from_chars": 276,
+        "to_chars": 275,
+        "delta": -1
+      }
+    ]
   },
   {
     "from": "2.0.45",
@@ -2289,7 +3498,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 359,
+        "to_chars": 833,
+        "delta": 474
+      }
+    ]
   },
   {
     "from": "2.0.46",
@@ -2303,7 +3520,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 961,
+        "to_chars": 2149,
+        "delta": 1188
+      }
+    ]
   },
   {
     "from": "2.0.47",
@@ -2317,7 +3542,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 833,
+        "to_chars": 359,
+        "delta": -474
+      }
+    ]
   },
   {
     "from": "2.0.49",
@@ -2331,7 +3564,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 670,
+        "to_chars": 1195,
+        "delta": 525
+      }
+    ]
   },
   {
     "from": "2.0.50",
@@ -2347,7 +3588,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/ExitPlanMode/prose",
+        "from_chars": 446,
+        "to_chars": 142,
+        "delta": -304
+      }
+    ]
   },
   {
     "from": "2.0.51",
@@ -2361,7 +3610,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.52",
@@ -2375,7 +3625,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.53",
@@ -2389,7 +3640,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.54",
@@ -2403,7 +3655,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.55",
@@ -2417,7 +3670,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 2149,
+        "to_chars": 2223,
+        "delta": 74
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5463,
+        "to_chars": 5205,
+        "delta": -258
+      },
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 1195,
+        "to_chars": 1342,
+        "delta": 147
+      }
+    ]
   },
   {
     "from": "2.0.56",
@@ -2431,7 +3704,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.57",
@@ -2445,7 +3719,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3524,
+        "to_chars": 3520,
+        "delta": -4
+      }
+    ]
   },
   {
     "from": "2.0.58",
@@ -2459,7 +3741,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.59",
@@ -2475,7 +3758,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 359,
+        "to_chars": 877,
+        "delta": 518
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3520,
+        "to_chars": 3002,
+        "delta": -518
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5205,
+        "to_chars": 5586,
+        "delta": 381
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1036,
+        "to_chars": 1213,
+        "delta": 177
+      }
+    ]
   },
   {
     "from": "2.0.60",
@@ -2489,7 +3798,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.61",
@@ -2503,7 +3813,45 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 2223,
+        "to_chars": 2514,
+        "delta": 291
+      },
+      {
+        "component": "tools/BashOutput/prose",
+        "from_chars": 457,
+        "to_chars": 456,
+        "delta": -1
+      },
+      {
+        "component": "tools/EnterPlanMode/prose",
+        "from_chars": 261,
+        "to_chars": 343,
+        "delta": 82
+      },
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 978,
+        "to_chars": 1060,
+        "delta": 82
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5586,
+        "to_chars": 5765,
+        "delta": 179
+      },
+      {
+        "component": "tools/WebFetch/prose",
+        "from_chars": 1167,
+        "to_chars": 1124,
+        "delta": -43
+      }
+    ]
   },
   {
     "from": "2.0.62",
@@ -2517,7 +3865,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.63",
@@ -2531,7 +3880,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.64",
@@ -2550,7 +3900,27 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Grep/schema",
+        "from_chars": 2764,
+        "to_chars": 2720,
+        "delta": -44
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5765,
+        "to_chars": 5755,
+        "delta": -10
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1213,
+        "to_chars": 1208,
+        "delta": -5
+      }
+    ]
   },
   {
     "from": "2.0.65",
@@ -2564,7 +3934,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.66",
@@ -2578,7 +3949,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.67",
@@ -2592,7 +3964,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 779,
+        "to_chars": 996,
+        "delta": 217
+      }
+    ]
   },
   {
     "from": "2.0.68",
@@ -2606,7 +3986,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.69",
@@ -2620,7 +4001,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.70",
@@ -2640,7 +4022,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 2514,
+        "to_chars": 2603,
+        "delta": 89
+      },
+      {
+        "component": "system_prompt/Task Management",
+        "from_chars": 2665,
+        "to_chars": 2299,
+        "delta": -366
+      }
+    ]
   },
   {
     "from": "2.0.71",
@@ -2654,7 +4050,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5755,
+        "to_chars": 5839,
+        "delta": 84
+      }
+    ]
   },
   {
     "from": "2.0.72",
@@ -2670,7 +4074,33 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 2603,
+        "to_chars": 2312,
+        "delta": -291
+      },
+      {
+        "component": "system_prompt/Looking up your own documentation:",
+        "from_chars": 724,
+        "to_chars": 716,
+        "delta": -8
+      },
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 1060,
+        "to_chars": 1428,
+        "delta": 368
+      },
+      {
+        "component": "tools/Skill/schema",
+        "from_chars": 292,
+        "to_chars": 396,
+        "delta": 104
+      }
+    ]
   },
   {
     "from": "2.0.73",
@@ -2686,7 +4116,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.74",
@@ -2700,7 +4131,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 996,
+        "to_chars": 779,
+        "delta": -217
+      }
+    ]
   },
   {
     "from": "2.0.75",
@@ -2714,7 +4153,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.0.76",
@@ -2732,7 +4172,129 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 779,
+        "to_chars": 996,
+        "delta": 217
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3002,
+        "to_chars": 3001,
+        "delta": -1
+      },
+      {
+        "component": "tools/AskUserQuestion/prose",
+        "from_chars": 596,
+        "to_chars": 832,
+        "delta": 236
+      },
+      {
+        "component": "tools/AskUserQuestion/schema",
+        "from_chars": 2674,
+        "to_chars": 2768,
+        "delta": 94
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3616,
+        "to_chars": 3684,
+        "delta": 68
+      },
+      {
+        "component": "tools/Edit/schema",
+        "from_chars": 704,
+        "to_chars": 709,
+        "delta": 5
+      },
+      {
+        "component": "tools/Glob/schema",
+        "from_chars": 620,
+        "to_chars": 625,
+        "delta": 5
+      },
+      {
+        "component": "tools/Grep/schema",
+        "from_chars": 2720,
+        "to_chars": 2725,
+        "delta": 5
+      },
+      {
+        "component": "tools/KillShell/schema",
+        "from_chars": 280,
+        "to_chars": 285,
+        "delta": 5
+      },
+      {
+        "component": "tools/LSP/schema",
+        "from_chars": 989,
+        "to_chars": 1064,
+        "delta": 75
+      },
+      {
+        "component": "tools/NotebookEdit/schema",
+        "from_chars": 1182,
+        "to_chars": 1187,
+        "delta": 5
+      },
+      {
+        "component": "tools/Read/schema",
+        "from_chars": 597,
+        "to_chars": 602,
+        "delta": 5
+      },
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 1428,
+        "to_chars": 1618,
+        "delta": 190
+      },
+      {
+        "component": "tools/Skill/schema",
+        "from_chars": 396,
+        "to_chars": 401,
+        "delta": 5
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5839,
+        "to_chars": 5980,
+        "delta": 141
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1208,
+        "to_chars": 1270,
+        "delta": 62
+      },
+      {
+        "component": "tools/TaskOutput/schema",
+        "from_chars": 554,
+        "to_chars": 587,
+        "delta": 33
+      },
+      {
+        "component": "tools/WebFetch/schema",
+        "from_chars": 409,
+        "to_chars": 414,
+        "delta": 5
+      },
+      {
+        "component": "tools/WebSearch/schema",
+        "from_chars": 634,
+        "to_chars": 639,
+        "delta": 5
+      },
+      {
+        "component": "tools/Write/schema",
+        "from_chars": 434,
+        "to_chars": 439,
+        "delta": 5
+      }
+    ]
   },
   {
     "from": "2.0.77",
@@ -2748,7 +4310,8 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.0",
@@ -2762,7 +4325,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.1",
@@ -2776,7 +4340,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1270,
+        "to_chars": 1503,
+        "delta": 233
+      }
+    ]
   },
   {
     "from": "2.1.2",
@@ -2790,7 +4362,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/AskUserQuestion/schema",
+        "from_chars": 2768,
+        "to_chars": 3196,
+        "delta": 428
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3684,
+        "to_chars": 3861,
+        "delta": 177
+      }
+    ]
   },
   {
     "from": "2.1.3",
@@ -2804,7 +4390,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3861,
+        "to_chars": 3862,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "2.1.4",
@@ -2818,7 +4412,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.5",
@@ -2832,7 +4427,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.6",
@@ -2846,7 +4442,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 5980,
+        "to_chars": 6086,
+        "delta": 106
+      }
+    ]
   },
   {
     "from": "2.1.7",
@@ -2860,7 +4464,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 1342,
+        "to_chars": 1322,
+        "delta": -20
+      }
+    ]
   },
   {
     "from": "2.1.8",
@@ -2882,7 +4494,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.9",
@@ -2896,7 +4509,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.10",
@@ -2910,7 +4524,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.11",
@@ -2924,7 +4539,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.12",
@@ -2938,7 +4554,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3862,
+        "to_chars": 3945,
+        "delta": 83
+      },
+      {
+        "component": "tools/WebFetch/prose",
+        "from_chars": 1124,
+        "to_chars": 1229,
+        "delta": 105
+      }
+    ]
   },
   {
     "from": "2.1.14",
@@ -2952,7 +4582,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1143,
+        "to_chars": 1216,
+        "delta": 73
+      }
+    ]
   },
   {
     "from": "2.1.15",
@@ -2966,7 +4604,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1216,
+        "to_chars": 1143,
+        "delta": -73
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1503,
+        "to_chars": 2031,
+        "delta": 528
+      }
+    ]
   },
   {
     "from": "2.1.16",
@@ -2980,7 +4632,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.17",
@@ -2994,7 +4647,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.18",
@@ -3012,7 +4666,21 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 1618,
+        "to_chars": 1616,
+        "delta": -2
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 2031,
+        "to_chars": 1757,
+        "delta": -274
+      }
+    ]
   },
   {
     "from": "2.1.19",
@@ -3026,7 +4694,39 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Asking questions as you work",
+        "from_chars": 697,
+        "to_chars": 696,
+        "delta": -1
+      },
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 877,
+        "to_chars": 876,
+        "delta": -1
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1143,
+        "to_chars": 1061,
+        "delta": -82
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 3001,
+        "to_chars": 2915,
+        "delta": -86
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1757,
+        "to_chars": 1503,
+        "delta": -254
+      }
+    ]
   },
   {
     "from": "2.1.20",
@@ -3040,7 +4740,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Grep/schema",
+        "from_chars": 2725,
+        "to_chars": 2815,
+        "delta": 90
+      }
+    ]
   },
   {
     "from": "2.1.21",
@@ -3054,7 +4762,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.22",
@@ -3068,7 +4777,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1061,
+        "to_chars": 1143,
+        "delta": 82
+      },
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 2915,
+        "to_chars": 2998,
+        "delta": 83
+      },
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 1616,
+        "to_chars": 1281,
+        "delta": -335
+      }
+    ]
   },
   {
     "from": "2.1.23",
@@ -3084,7 +4813,21 @@
     "added_xml_tags": [
       "system_reminder"
     ],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Tool usage policy",
+        "from_chars": 2998,
+        "to_chars": 3306,
+        "delta": 308
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 63,
+        "to_chars": 81,
+        "delta": 18
+      }
+    ]
   },
   {
     "from": "2.1.25",
@@ -3098,7 +4841,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.26",
@@ -3112,7 +4856,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.27",
@@ -3126,7 +4871,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.28",
@@ -3140,7 +4886,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.29",
@@ -3154,7 +4901,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1761,
+        "to_chars": 1888,
+        "delta": 127
+      },
+      {
+        "component": "tools/Read/schema",
+        "from_chars": 602,
+        "to_chars": 791,
+        "delta": 189
+      }
+    ]
   },
   {
     "from": "2.1.30",
@@ -3168,7 +4929,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 6086,
+        "to_chars": 6562,
+        "delta": 476
+      }
+    ]
   },
   {
     "from": "2.1.31",
@@ -3182,7 +4951,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Code References",
+        "from_chars": 876,
+        "to_chars": 867,
+        "delta": -9
+      }
+    ]
   },
   {
     "from": "2.1.32",
@@ -3213,7 +4990,39 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 2312,
+        "to_chars": 3389,
+        "delta": 1077
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1143,
+        "to_chars": 914,
+        "delta": -229
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 996,
+        "to_chars": 556,
+        "delta": -440
+      },
+      {
+        "component": "tools/Edit/schema",
+        "from_chars": 709,
+        "to_chars": 710,
+        "delta": 1
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 6562,
+        "to_chars": 6086,
+        "delta": -476
+      }
+    ]
   },
   {
     "from": "2.1.33",
@@ -3227,7 +5036,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.34",
@@ -3241,7 +5051,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 653,
+        "to_chars": 843,
+        "delta": 190
+      }
+    ]
   },
   {
     "from": "2.1.36",
@@ -3255,7 +5073,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.37",
@@ -3269,7 +5088,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3389,
+        "to_chars": 3390,
+        "delta": 1
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 914,
+        "to_chars": 914,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 1170,
+        "to_chars": 1935,
+        "delta": 765
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 6086,
+        "to_chars": 6082,
+        "delta": -4
+      }
+    ]
   },
   {
     "from": "2.1.38",
@@ -3283,7 +5128,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.39",
@@ -3297,7 +5143,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.40",
@@ -3311,7 +5158,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.41",
@@ -3325,7 +5173,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 843,
+        "to_chars": 830,
+        "delta": -13
+      },
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 1322,
+        "to_chars": 1334,
+        "delta": 12
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 81,
+        "to_chars": 82,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "2.1.42",
@@ -3339,7 +5207,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.44",
@@ -3353,7 +5222,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 830,
+        "to_chars": 811,
+        "delta": -19
+      },
+      {
+        "component": "tools/AskUserQuestion/schema",
+        "from_chars": 3196,
+        "to_chars": 4233,
+        "delta": 1037
+      }
+    ]
   },
   {
     "from": "2.1.45",
@@ -3367,7 +5250,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/AskUserQuestion/prose",
+        "from_chars": 832,
+        "to_chars": 1093,
+        "delta": 261
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 350,
+        "to_chars": 1924,
+        "delta": 1574
+      }
+    ]
   },
   {
     "from": "2.1.47",
@@ -3381,7 +5278,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 6082,
+        "to_chars": 6204,
+        "delta": 122
+      }
+    ]
   },
   {
     "from": "2.1.48",
@@ -3395,7 +5300,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.49",
@@ -3409,7 +5315,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 1935,
+        "to_chars": 1725,
+        "delta": -210
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 6204,
+        "to_chars": 6495,
+        "delta": 291
+      },
+      {
+        "component": "tools/Task/schema",
+        "from_chars": 1503,
+        "to_chars": 1734,
+        "delta": 231
+      }
+    ]
   },
   {
     "from": "2.1.50",
@@ -3425,7 +5351,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 1924,
+        "to_chars": 1515,
+        "delta": -409
+      }
+    ]
   },
   {
     "from": "2.1.51",
@@ -3439,7 +5373,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.52",
@@ -3453,7 +5388,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 811,
+        "to_chars": 810,
+        "delta": -1
+      },
+      {
+        "component": "tools/Bash/prose",
+        "from_chars": 3945,
+        "to_chars": 998,
+        "delta": -2947
+      },
+      {
+        "component": "tools/Task/prose",
+        "from_chars": 6495,
+        "to_chars": 6392,
+        "delta": -103
+      },
+      {
+        "component": "tools/Write/prose",
+        "from_chars": 632,
+        "to_chars": 628,
+        "delta": -4
+      }
+    ]
   },
   {
     "from": "2.1.53",
@@ -3467,7 +5428,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.54",
@@ -3481,7 +5443,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.55",
@@ -3495,7 +5458,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.56",
@@ -3509,7 +5473,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.58",
@@ -3523,7 +5488,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.59",
@@ -3537,7 +5503,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.61",
@@ -3551,7 +5518,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.62",
@@ -3569,7 +5537,27 @@
     ],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Using your tools",
+        "from_chars": 2774,
+        "to_chars": 2776,
+        "delta": 2
+      },
+      {
+        "component": "tools/Grep/prose",
+        "from_chars": 873,
+        "to_chars": 874,
+        "delta": 1
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 1515,
+        "to_chars": 768,
+        "delta": -747
+      }
+    ]
   },
   {
     "from": "2.1.63",
@@ -3583,7 +5571,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Agent/prose",
+        "from_chars": 6403,
+        "to_chars": 6063,
+        "delta": -340
+      },
+      {
+        "component": "tools/Agent/schema",
+        "from_chars": 1734,
+        "to_chars": 1203,
+        "delta": -531
+      },
+      {
+        "component": "tools/WebSearch/prose",
+        "from_chars": 1334,
+        "to_chars": 1331,
+        "delta": -3
+      }
+    ]
   },
   {
     "from": "2.1.64",
@@ -3597,7 +5605,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "tools/Agent/prose",
+        "from_chars": 6063,
+        "to_chars": 6403,
+        "delta": 340
+      },
+      {
+        "component": "tools/Agent/schema",
+        "from_chars": 1203,
+        "to_chars": 1734,
+        "delta": 531
+      }
+    ]
   },
   {
     "from": "2.1.66",
@@ -3615,7 +5637,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 768,
+        "to_chars": 445,
+        "delta": -323
+      }
+    ]
   },
   {
     "from": "2.1.67",
@@ -3629,7 +5659,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.68",
@@ -3668,6 +5699,20 @@
     ],
     "removed_xml_tags": [
       "system_reminder"
+    ],
+    "changed_components": [
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 1725,
+        "to_chars": 1987,
+        "delta": 262
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 82,
+        "to_chars": 42,
+        "delta": -40
+      }
     ]
   },
   {
@@ -3682,7 +5727,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.70",
@@ -3696,7 +5742,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.71",
@@ -3710,7 +5757,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 810,
+        "to_chars": 969,
+        "delta": 159
+      },
+      {
+        "component": "system_prompt/Using your tools",
+        "from_chars": 2776,
+        "to_chars": 2779,
+        "delta": 3
+      },
+      {
+        "component": "tools/ToolSearch/prose",
+        "from_chars": 3145,
+        "to_chars": 977,
+        "delta": -2168
+      },
+      {
+        "component": "user_message/available_deferred_tools/0",
+        "from_chars": 216,
+        "to_chars": 217,
+        "delta": 1
+      }
+    ]
   },
   {
     "from": "2.1.72",
@@ -3733,7 +5806,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 914,
+        "to_chars": 998,
+        "delta": 84
+      }
+    ]
   },
   {
     "from": "2.1.73",
@@ -3747,7 +5828,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 998,
+        "to_chars": 1000,
+        "delta": 2
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 1987,
+        "to_chars": 10540,
+        "delta": 8553
+      }
+    ]
   },
   {
     "from": "2.1.74",
@@ -3761,7 +5856,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1000,
+        "delta": 0
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1888,
+        "to_chars": 1830,
+        "delta": -58
+      }
+    ]
   },
   {
     "from": "2.1.75",
@@ -3775,7 +5884,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1002,
+        "delta": 2
+      }
+    ]
   },
   {
     "from": "2.1.76",
@@ -3789,7 +5906,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1002,
+        "delta": 0
+      },
+      {
+        "component": "tools/Agent/prose",
+        "from_chars": 5876,
+        "to_chars": 5627,
+        "delta": -249
+      },
+      {
+        "component": "tools/Agent/schema",
+        "from_chars": 1448,
+        "to_chars": 1267,
+        "delta": -181
+      }
+    ]
   },
   {
     "from": "2.1.77",
@@ -3803,7 +5940,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Executing actions with care",
+        "from_chars": 2623,
+        "to_chars": 2833,
+        "delta": 210
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 999,
+        "delta": -3
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 10540,
+        "to_chars": 11251,
+        "delta": 711
+      }
+    ]
   },
   {
     "from": "2.1.78",
@@ -3817,7 +5974,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 11251,
+        "to_chars": 12182,
+        "delta": 931
+      }
+    ]
   },
   {
     "from": "2.1.79",
@@ -3831,7 +5996,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 999,
+        "to_chars": 1002,
+        "delta": 3
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 12182,
+        "to_chars": 12432,
+        "delta": 250
+      }
+    ]
   },
   {
     "from": "2.1.80",
@@ -3845,7 +6024,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1002,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 12432,
+        "to_chars": 12453,
+        "delta": 21
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1830,
+        "to_chars": 1782,
+        "delta": -48
+      }
+    ]
   },
   {
     "from": "2.1.81",
@@ -3859,7 +6058,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 969,
+        "to_chars": 1083,
+        "delta": 114
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1002,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 12453,
+        "to_chars": 12535,
+        "delta": 82
+      }
+    ]
   },
   {
     "from": "2.1.83",
@@ -3877,6 +6096,56 @@
     ],
     "removed_xml_tags": [
       "available_deferred_tools"
+    ],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3390,
+        "to_chars": 3257,
+        "delta": -133
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1002,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 556,
+        "to_chars": 707,
+        "delta": 151
+      },
+      {
+        "component": "tools/Glob/prose",
+        "from_chars": 539,
+        "to_chars": 380,
+        "delta": -159
+      },
+      {
+        "component": "tools/Grep/schema",
+        "from_chars": 2815,
+        "to_chars": 2894,
+        "delta": 79
+      },
+      {
+        "component": "tools/Read/prose",
+        "from_chars": 1782,
+        "to_chars": 1641,
+        "delta": -141
+      },
+      {
+        "component": "tools/ToolSearch/prose",
+        "from_chars": 977,
+        "to_chars": 968,
+        "delta": -9
+      },
+      {
+        "component": "user_message/actual_prompt",
+        "from_chars": 42,
+        "to_chars": 102,
+        "delta": 60
+      }
     ]
   },
   {
@@ -3891,7 +6160,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 998,
+        "delta": -4
+      }
+    ]
   },
   {
     "from": "2.1.85",
@@ -3905,7 +6182,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3257,
+        "to_chars": 3336,
+        "delta": 79
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 998,
+        "to_chars": 1002,
+        "delta": 4
+      },
+      {
+        "component": "tools/Edit/prose",
+        "from_chars": 1116,
+        "to_chars": 1103,
+        "delta": -13
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 2035,
+        "to_chars": 1500,
+        "delta": -535
+      }
+    ]
   },
   {
     "from": "2.1.86",
@@ -3919,7 +6222,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1000,
+        "delta": -2
+      }
+    ]
   },
   {
     "from": "2.1.87",
@@ -3937,7 +6248,39 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System",
+        "from_chars": 1725,
+        "to_chars": 1626,
+        "delta": -99
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1002,
+        "delta": 2
+      },
+      {
+        "component": "system_prompt/Using your tools",
+        "from_chars": 2779,
+        "to_chars": 1622,
+        "delta": -1157
+      },
+      {
+        "component": "tools/Agent/prose",
+        "from_chars": 5627,
+        "to_chars": 4510,
+        "delta": -1117
+      },
+      {
+        "component": "tools/Read/schema",
+        "from_chars": 791,
+        "to_chars": 912,
+        "delta": 121
+      }
+    ]
   },
   {
     "from": "2.1.88",
@@ -3951,7 +6294,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1000,
+        "delta": -2
+      }
+    ]
   },
   {
     "from": "2.1.89",
@@ -3965,7 +6316,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 998,
+        "delta": -2
+      }
+    ]
   },
   {
     "from": "2.1.90",
@@ -3979,7 +6338,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 998,
+        "to_chars": 1000,
+        "delta": 2
+      }
+    ]
   },
   {
     "from": "2.1.91",
@@ -3993,7 +6360,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1002,
+        "delta": 2
+      }
+    ]
   },
   {
     "from": "2.1.92",
@@ -4007,7 +6382,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 999,
+        "delta": -3
+      },
+      {
+        "component": "system_prompt/auto memory",
+        "from_chars": 12535,
+        "to_chars": 12499,
+        "delta": -36
+      },
+      {
+        "component": "tools/Agent/prose",
+        "from_chars": 4510,
+        "to_chars": 1635,
+        "delta": -2875
+      }
+    ]
   },
   {
     "from": "2.1.94",
@@ -4021,7 +6416,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 999,
+        "to_chars": 1002,
+        "delta": 3
+      }
+    ]
   },
   {
     "from": "2.1.96",
@@ -4035,7 +6438,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 1083,
+        "to_chars": 1087,
+        "delta": 4
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1000,
+        "delta": -2
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 276,
+        "to_chars": 462,
+        "delta": 186
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 1500,
+        "to_chars": 1500,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "2.1.97",
@@ -4049,7 +6478,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 999,
+        "delta": -1
+      }
+    ]
   },
   {
     "from": "2.1.98",
@@ -4067,7 +6504,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 999,
+        "to_chars": 1000,
+        "delta": 1
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 462,
+        "to_chars": 470,
+        "delta": 8
+      }
+    ]
   },
   {
     "from": "2.1.100",
@@ -4081,7 +6532,33 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3336,
+        "to_chars": 3727,
+        "delta": 391
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1002,
+        "delta": 2
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 470,
+        "to_chars": 485,
+        "delta": 15
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 1500,
+        "to_chars": 1500,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "2.1.101",
@@ -4097,7 +6574,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 1000,
+        "delta": -2
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 485,
+        "to_chars": 470,
+        "delta": -15
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 1500,
+        "to_chars": 1500,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "2.1.104",
@@ -4111,7 +6608,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1000,
+        "delta": 0
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 1500,
+        "to_chars": 2651,
+        "delta": 1151
+      }
+    ]
   },
   {
     "from": "2.1.105",
@@ -4125,7 +6636,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 1000,
+        "delta": 0
+      }
+    ]
   },
   {
     "from": "2.1.107",
@@ -4139,7 +6658,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1000,
+        "to_chars": 998,
+        "delta": -2
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 2651,
+        "to_chars": 2776,
+        "delta": 125
+      }
+    ]
   },
   {
     "from": "2.1.108",
@@ -4153,7 +6686,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 998,
+        "to_chars": 1002,
+        "delta": 4
+      }
+    ]
   },
   {
     "from": "2.1.109",
@@ -4167,7 +6708,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 998,
+        "delta": -4
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 2776,
+        "to_chars": 2577,
+        "delta": -199
+      }
+    ]
   },
   {
     "from": "2.1.110",
@@ -4185,7 +6740,75 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3727,
+        "to_chars": 3320,
+        "delta": -407
+      },
+      {
+        "component": "system_prompt/Environment",
+        "from_chars": 1087,
+        "to_chars": 1232,
+        "delta": 145
+      },
+      {
+        "component": "system_prompt/Session-specific guidance",
+        "from_chars": 1287,
+        "to_chars": 769,
+        "delta": -518
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 998,
+        "to_chars": 1002,
+        "delta": 4
+      },
+      {
+        "component": "system_prompt/Tone and style",
+        "from_chars": 707,
+        "to_chars": 556,
+        "delta": -151
+      },
+      {
+        "component": "system_prompt/Using your tools",
+        "from_chars": 1622,
+        "to_chars": 762,
+        "delta": -860
+      },
+      {
+        "component": "tools/Agent/prose",
+        "from_chars": 1635,
+        "to_chars": 1635,
+        "delta": 0
+      },
+      {
+        "component": "tools/Skill/prose",
+        "from_chars": 1281,
+        "to_chars": 1324,
+        "delta": 43
+      },
+      {
+        "component": "tools/Skill/schema",
+        "from_chars": 401,
+        "to_chars": 413,
+        "delta": 12
+      },
+      {
+        "component": "user_message/system_reminder/0",
+        "from_chars": 470,
+        "to_chars": 487,
+        "delta": 17
+      },
+      {
+        "component": "user_message/system_reminder/1",
+        "from_chars": 2577,
+        "to_chars": 2898,
+        "delta": 321
+      }
+    ]
   },
   {
     "from": "2.1.111",
@@ -4199,7 +6822,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1002,
+        "to_chars": 998,
+        "delta": -4
+      }
+    ]
   },
   {
     "from": "2.1.112",
@@ -4226,7 +6857,27 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3320,
+        "to_chars": 3547,
+        "delta": 227
+      },
+      {
+        "component": "system_prompt/System",
+        "from_chars": 1626,
+        "to_chars": 1626,
+        "delta": 0
+      },
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 998,
+        "to_chars": 1006,
+        "delta": 8
+      }
+    ]
   },
   {
     "from": "2.1.113",
@@ -4240,7 +6891,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System",
+        "from_chars": 1626,
+        "to_chars": 1261,
+        "delta": -365
+      }
+    ]
   },
   {
     "from": "2.1.114",
@@ -4254,7 +6913,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.116",
@@ -4268,7 +6928,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.117",
@@ -4282,7 +6943,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.118",
@@ -4296,7 +6958,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.119",
@@ -4310,7 +6973,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.120",
@@ -4324,7 +6988,21 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/Doing tasks",
+        "from_chars": 3547,
+        "to_chars": 361,
+        "delta": -3186
+      },
+      {
+        "component": "system_prompt/System",
+        "from_chars": 1261,
+        "to_chars": 290,
+        "delta": -971
+      }
+    ]
   },
   {
     "from": "2.1.121",
@@ -4343,7 +7021,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "executing_actions_with_care/Executing actions with care",
+        "from_chars": 2829,
+        "to_chars": 3220,
+        "delta": 391
+      }
+    ]
   },
   {
     "from": "2.1.122",
@@ -4361,7 +7047,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 1006,
+        "to_chars": 171,
+        "delta": -835
+      }
+    ]
   },
   {
     "from": "2.1.123",
@@ -4379,7 +7073,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.124",
@@ -4393,7 +7088,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.126",
@@ -4407,7 +7103,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.128",
@@ -4421,7 +7118,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.129",
@@ -4435,7 +7133,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.131",
@@ -4454,7 +7153,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.132",
@@ -4472,7 +7172,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 171,
+        "to_chars": 647,
+        "delta": 476
+      }
+    ]
   },
   {
     "from": "2.1.133",
@@ -4486,7 +7194,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.136",
@@ -4500,7 +7209,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.137",
@@ -4514,7 +7224,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.138",
@@ -4528,7 +7239,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "harness/Harness",
+        "from_chars": 693,
+        "to_chars": 610,
+        "delta": -83
+      }
+    ]
   },
   {
     "from": "2.1.139",
@@ -4542,7 +7261,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.140",
@@ -4556,7 +7276,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.141",
@@ -4570,7 +7291,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.142",
@@ -4584,7 +7306,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.143",
@@ -4598,7 +7321,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.144",
@@ -4612,7 +7336,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.145",
@@ -4626,7 +7351,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.146",
@@ -4640,7 +7366,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.147",
@@ -4654,7 +7381,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.148",
@@ -4668,7 +7396,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.149",
@@ -4682,7 +7411,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.150",
@@ -4696,7 +7426,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.152",
@@ -4710,7 +7441,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.153",
@@ -4724,7 +7456,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.154",
@@ -4738,7 +7471,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.156",
@@ -4752,7 +7486,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.157",
@@ -4766,7 +7501,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.158",
@@ -4780,7 +7516,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.159",
@@ -4794,7 +7531,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.160",
@@ -4808,7 +7546,15 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "system_prompt/System Prompt",
+        "from_chars": 647,
+        "to_chars": 568,
+        "delta": -79
+      }
+    ]
   },
   {
     "from": "2.1.161",
@@ -4822,7 +7568,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.162",
@@ -4836,7 +7583,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.163",
@@ -4850,7 +7598,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.165",
@@ -4864,7 +7613,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.166",
@@ -4878,7 +7628,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.167",
@@ -4892,7 +7643,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.168",
@@ -4906,7 +7658,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.169",
@@ -4920,7 +7673,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.170",
@@ -4934,7 +7688,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.172",
@@ -4948,7 +7703,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.173",
@@ -4962,7 +7718,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.174",
@@ -4976,7 +7733,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.175",
@@ -4990,7 +7748,8 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   },
   {
     "from": "2.1.176",
@@ -5004,6 +7763,7 @@
     "removed_tools": [],
     "reordered_tools": false,
     "added_xml_tags": [],
-    "removed_xml_tags": []
+    "removed_xml_tags": [],
+    "changed_components": []
   }
 ]

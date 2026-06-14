@@ -2,25 +2,10 @@
 
 from __future__ import annotations
 
-import hashlib
 import re
 
 from ...models import Component, Diagnostic, MarkdownSection, XmlSpan
-
-
-# ── Shared helpers ────────────────────────────────────────────────────────────
-
-def _normalize(text: str) -> str:
-    text = text.replace("\r\n", "\n").replace("\r", "\n")
-    lines = [l.rstrip() for l in text.split("\n")]
-    text = "\n".join(lines)
-    text = re.sub(r"/tmp/claude-[^\s]+", "/tmp/claude-<session>", text)
-    text = re.sub(r"(/\.claude/projects/)[^/\s]+", r"\1<project>", text)
-    return text.strip()
-
-
-def _hash(text: str) -> str:
-    return hashlib.sha256(text.encode()).hexdigest()[:16]
+from .normalize import content_hash as _hash, normalize as _normalize
 
 
 # ── Context-block helper ──────────────────────────────────────────────────────
