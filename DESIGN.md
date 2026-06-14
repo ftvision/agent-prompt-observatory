@@ -6,9 +6,13 @@ product
 
 ## Theme
 
-Light. The product is used as a desktop research workspace where users need to compare many labels, version numbers, and dense component names for long periods. Light mode keeps the 3D structure model legible and makes the tool feel like an analytical workbench rather than a night-mode AI console.
+Light is the default. The product is used as a desktop research workspace where users need to compare many labels, version numbers, and dense component names for long periods. Light mode keeps the 3D structure model legible and makes the tool feel like an analytical workbench rather than a night-mode AI console.
 
-Physical scene: a researcher on a large monitor in a quiet workspace, cross-checking prompt versions against raw captures and notes, needing fast orientation more than atmosphere.
+Physical scene (light): a researcher on a large monitor in a quiet workspace, cross-checking prompt versions against raw captures and notes, needing fast orientation more than atmosphere.
+
+Dark is an opt-in "warm graphite workbench", not a neon console. It exists for the second scene: a prompt engineer reading captures for long stretches in a dim room with a dark IDE open beside the Observatory, who wants the tool to stop being a bright glare-slab next to their editor. It inverts the same warm hue-70 neutrals into warm graphite rather than introducing a cool/black "AI command center" palette, which the anti-references reject. The 3D structure slabs stay bright (lit ceramic objects on a dark surface) so spatial separation survives the inversion; only the callout text, which sits on the page canvas rather than on a slab face, switches to light hued tints.
+
+Theme resolution: a pre-paint script sets `data-theme` on `<html>` from a stored choice, falling back to the OS `prefers-color-scheme`. A quiet rail toggle flips and persists the choice; with no stored choice, the app keeps following the OS. Every color is a semantic OKLCH token in `src/styles/main.css`, so a single `:root[data-theme="dark"]` block retones the whole app.
 
 ## Color Strategy
 

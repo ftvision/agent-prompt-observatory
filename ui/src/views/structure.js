@@ -327,9 +327,9 @@ function groupCallout({ group, anchorX, anchorY, labelX }) {
     <g class="group-callout ${group.className}">
       <path d="M${labelX + 74},${anchorY} H${anchorX - 28}" stroke="${group.stroke}" stroke-width="1.4"/>
       <circle cx="${anchorX - 28}" cy="${anchorY}" r="3" fill="${group.stroke}"/>
-      <text class="callout-title" fill="${group.ink}">${tspans}</text>
-      <text class="callout-meta" x="${labelX}" y="${metaY1}" fill="#5f5a51">${plural(group.items.length, subLabel)}</text>
-      <text class="callout-meta" x="${labelX}" y="${metaY2}" fill="#5f5a51">${formatNumber(group.total)} chars</text>
+      <text class="callout-title">${tspans}</text>
+      <text class="callout-meta" x="${labelX}" y="${metaY1}">${plural(group.items.length, subLabel)}</text>
+      <text class="callout-meta" x="${labelX}" y="${metaY2}">${formatNumber(group.total)} chars</text>
     </g>
   `
 }
