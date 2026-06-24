@@ -47530,5 +47530,119 @@
         "total_chars": 1067
       }
     ]
+  },
+  "2.1.187": {
+    "user_message": [
+      {
+        "key": "system_reminder/0",
+        "kind": "system_reminder",
+        "index": 0,
+        "char_count": 487
+      },
+      {
+        "key": "system_reminder/1",
+        "kind": "system_reminder",
+        "index": 1,
+        "char_count": 2898
+      },
+      {
+        "key": "system_reminder/2",
+        "kind": "system_reminder",
+        "index": 2,
+        "char_count": 301
+      }
+    ],
+    "system_prompt": [
+      {
+        "title": "System Prompt",
+        "char_count": 780
+      }
+    ],
+    "harness": [
+      {
+        "title": "Harness",
+        "char_count": 610
+      }
+    ],
+    "text_output_does_not_apply_to_tool_calls": [
+      {
+        "title": "Text output (does not apply to tool calls)",
+        "char_count": 1340
+      },
+      {
+        "title": "Session-specific guidance",
+        "char_count": 769
+      },
+      {
+        "title": "auto memory",
+        "char_count": 12499
+      },
+      {
+        "title": "Environment",
+        "char_count": 1230
+      }
+    ],
+    "tools": [
+      {
+        "title": "Agent",
+        "prose_chars": 1635,
+        "schema_chars": 0,
+        "total_chars": 1635
+      },
+      {
+        "title": "Bash",
+        "prose_chars": 998,
+        "schema_chars": 0,
+        "total_chars": 998
+      },
+      {
+        "title": "Edit",
+        "prose_chars": 1103,
+        "schema_chars": 710,
+        "total_chars": 1813
+      },
+      {
+        "title": "Glob",
+        "prose_chars": 380,
+        "schema_chars": 625,
+        "total_chars": 1005
+      },
+      {
+        "title": "Grep",
+        "prose_chars": 874,
+        "schema_chars": 2894,
+        "total_chars": 3768
+      },
+      {
+        "title": "Read",
+        "prose_chars": 1641,
+        "schema_chars": 912,
+        "total_chars": 2553
+      },
+      {
+        "title": "ScheduleWakeup",
+        "prose_chars": 660,
+        "schema_chars": 0,
+        "total_chars": 660
+      },
+      {
+        "title": "Skill",
+        "prose_chars": 1324,
+        "schema_chars": 413,
+        "total_chars": 1737
+      },
+      {
+        "title": "ToolSearch",
+        "prose_chars": 968,
+        "schema_chars": 505,
+        "total_chars": 1473
+      },
+      {
+        "title": "Write",
+        "prose_chars": 628,
+        "schema_chars": 439,
+        "total_chars": 1067
+      }
+    ]
   }
 }
