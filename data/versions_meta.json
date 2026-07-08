@@ -1563,5 +1563,15 @@
     "version": "2.1.202",
     "release_date": "2026-07-06",
     "sha": "3cbf19a70bc72383e0b97b006e5388fb57c9936c"
+  },
+  {
+    "version": "2.1.203",
+    "release_date": "2026-07-07",
+    "sha": "d5ed9d00d2e5966a0634e30aadb37e7fe9e93a4b"
+  },
+  {
+    "version": "2.1.204",
+    "release_date": "2026-07-08",
+    "sha": "d156b69ea42ea6c1d833030d9ce6d0ad44db490e"
   }
 ]
