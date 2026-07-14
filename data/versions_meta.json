@@ -1588,5 +1588,10 @@
     "version": "2.1.207",
     "release_date": "2026-07-11",
     "sha": "e54e1e43e7e37e77bd4ac7c2495ac8342fc6560e"
+  },
+  {
+    "version": "2.1.208",
+    "release_date": "2026-07-14",
+    "sha": "12084ded94fbd6c54e2899243a3c67caac96bab7"
   }
 ]
