@@ -1668,5 +1668,10 @@
     "version": "2.1.223",
     "release_date": "2026-08-06",
     "sha": "4b837197b04ce4f76ea4e9940e14bdcedbcea9ea"
+  },
+  {
+    "version": "2.1.224",
+    "release_date": "2026-08-07",
+    "sha": "98eed1b3022324184cc3985cb699b6b0100a7ba1"
   }
 ]
