@@ -8564,5 +8564,35 @@
     "added_xml_tags": [],
     "removed_xml_tags": [],
     "changed_components": []
+  },
+  {
+    "from": "2.1.235",
+    "to": "2.1.236",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
+  },
+  {
+    "from": "2.1.236",
+    "to": "2.1.237",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
   }
 ]
