@@ -1753,5 +1753,20 @@
     "version": "2.1.241",
     "release_date": "2026-08-23",
     "sha": "7e586758fb0b010d970b2583330c64d3a23342a3"
+  },
+  {
+    "version": "2.1.242",
+    "release_date": "2026-08-24",
+    "sha": "27945500888b5d20323ea11818a2d4668fae538b"
+  },
+  {
+    "version": "2.1.243",
+    "release_date": "2026-08-24",
+    "sha": "41126e2c4507f581c9b4ab3a11b6f27d45adfcce"
+  },
+  {
+    "version": "2.1.245",
+    "release_date": "2026-08-25",
+    "sha": "553234657a06a146519dd8878cbcfe0df098fbea"
   }
 ]
