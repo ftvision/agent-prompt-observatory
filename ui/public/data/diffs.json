@@ -9014,5 +9014,27 @@
     "added_xml_tags": [],
     "removed_xml_tags": [],
     "changed_components": []
+  },
+  {
+    "from": "2.1.273",
+    "to": "2.1.274",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "harness/Harness",
+        "from_chars": 514,
+        "to_chars": 522,
+        "delta": 8
+      }
+    ]
   }
 ]
