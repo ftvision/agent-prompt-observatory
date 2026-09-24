@@ -9111,5 +9111,27 @@
     "added_xml_tags": [],
     "removed_xml_tags": [],
     "changed_components": []
+  },
+  {
+    "from": "2.1.280",
+    "to": "2.1.281",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": [
+      {
+        "component": "harness/Harness",
+        "from_chars": 522,
+        "to_chars": 514,
+        "delta": -8
+      }
+    ]
   }
 ]
