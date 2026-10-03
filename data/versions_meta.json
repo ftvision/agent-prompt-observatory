@@ -1938,5 +1938,10 @@
     "version": "2.1.287",
     "release_date": "2026-10-01",
     "sha": "b2e16c09886802422fa136f37ec5feb38a60c0a8"
+  },
+  {
+    "version": "2.1.288",
+    "release_date": "2026-10-02",
+    "sha": "3f477011a0d3784ba8b0b109e8f6261e5364feca"
   }
 ]
