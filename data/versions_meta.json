@@ -1943,5 +1943,10 @@
     "version": "2.1.288",
     "release_date": "2026-10-02",
     "sha": "3f477011a0d3784ba8b0b109e8f6261e5364feca"
+  },
+  {
+    "version": "2.1.289",
+    "release_date": "2026-10-03",
+    "sha": "2fc3ea05902251e2079e346950f026af7a188e76"
   }
 ]
