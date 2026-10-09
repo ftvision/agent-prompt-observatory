@@ -1968,5 +1968,15 @@
     "version": "2.1.293",
     "release_date": "2026-10-07",
     "sha": "e133bcaa233faea4d2c4bfba5e8d2d8c2b6777fe"
+  },
+  {
+    "version": "2.1.294",
+    "release_date": "2026-10-08",
+    "sha": "de2cc55a3cb82ab76018b0627c194e395ef0ec14"
+  },
+  {
+    "version": "2.1.295",
+    "release_date": "2026-10-08",
+    "sha": "d7a1121bbddff28a82e7a778221dec4c8aadc46b"
   }
 ]
