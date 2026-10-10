@@ -1978,5 +1978,10 @@
     "version": "2.1.295",
     "release_date": "2026-10-08",
     "sha": "d7a1121bbddff28a82e7a778221dec4c8aadc46b"
+  },
+  {
+    "version": "2.1.296",
+    "release_date": "2026-10-09",
+    "sha": "7b9d7fd62f2a6d26ee33820bad11e57a6799542a"
   }
 ]
