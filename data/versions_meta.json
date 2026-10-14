@@ -1983,5 +1983,10 @@
     "version": "2.1.296",
     "release_date": "2026-10-09",
     "sha": "7b9d7fd62f2a6d26ee33820bad11e57a6799542a"
+  },
+  {
+    "version": "2.1.299",
+    "release_date": "2026-10-14",
+    "sha": "69f7191312458ee04e95afaaa24b869ac96fc06b"
   }
 ]
