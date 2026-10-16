@@ -1993,5 +1993,10 @@
     "version": "2.1.300",
     "release_date": "2026-10-14",
     "sha": "2911b144cbf3f8a8737f236628e168f753c273f2"
+  },
+  {
+    "version": "2.1.301",
+    "release_date": "2026-10-15",
+    "sha": "ad25d6440ff91289b8758521a54d15c39abdad6f"
   }
 ]
