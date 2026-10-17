@@ -1998,5 +1998,10 @@
     "version": "2.1.301",
     "release_date": "2026-10-15",
     "sha": "ad25d6440ff91289b8758521a54d15c39abdad6f"
+  },
+  {
+    "version": "2.1.302",
+    "release_date": "2026-10-16",
+    "sha": "eb640addf4a8276c0299ac1497bb7ab63da4fe49"
   }
 ]
