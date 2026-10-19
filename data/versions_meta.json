@@ -2003,5 +2003,10 @@
     "version": "2.1.302",
     "release_date": "2026-10-16",
     "sha": "eb640addf4a8276c0299ac1497bb7ab63da4fe49"
+  },
+  {
+    "version": "2.1.303",
+    "release_date": "2026-10-18",
+    "sha": "f9c7888156116e9b74c94ca6a79f29611d420f77"
   }
 ]
