@@ -2008,5 +2008,10 @@
     "version": "2.1.303",
     "release_date": "2026-10-18",
     "sha": "f9c7888156116e9b74c94ca6a79f29611d420f77"
+  },
+  {
+    "version": "2.1.304",
+    "release_date": "2026-10-19",
+    "sha": "1111285add2f75750743c4707ccdff102cce20d4"
   }
 ]
