@@ -2013,5 +2013,15 @@
     "version": "2.1.304",
     "release_date": "2026-10-19",
     "sha": "1111285add2f75750743c4707ccdff102cce20d4"
+  },
+  {
+    "version": "2.1.305",
+    "release_date": "2026-10-20",
+    "sha": "ec17b7f6d929bd3949bffbd2cff1c160e932a88c"
+  },
+  {
+    "version": "2.1.306",
+    "release_date": "2026-10-21",
+    "sha": "d90469a6d193e4d8123f1494028012421c965b59"
   }
 ]
