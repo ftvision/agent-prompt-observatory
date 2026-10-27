@@ -2043,5 +2043,10 @@
     "version": "2.1.310",
     "release_date": "2026-10-23",
     "sha": "c8ac01f9f5431c3b6a91e7c4aa3a935544c509d1"
+  },
+  {
+    "version": "2.1.311",
+    "release_date": "2026-10-26",
+    "sha": "ec14d08dbd3b067c139a29819a3b8d30e90d8957"
   }
 ]
