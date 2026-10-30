@@ -9618,5 +9618,29 @@
         "delta": -397
       }
     ]
+  },
+  {
+    "from": "2.1.312",
+    "to": "2.1.314",
+    "added_h1_sections": [
+      "executing_actions_with_care"
+    ],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {
+      "system_prompt": [
+        "Doing tasks",
+        "System",
+        "Tone and style",
+        "Using your tools"
+      ]
+    },
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
   }
 ]
