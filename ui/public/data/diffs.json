@@ -9642,5 +9642,43 @@
     "added_xml_tags": [],
     "removed_xml_tags": [],
     "changed_components": []
+  },
+  {
+    "from": "2.1.314",
+    "to": "2.1.315",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {
+      "executing_actions_with_care": [
+        "Tone and style"
+      ],
+      "system_prompt": [
+        "Doing tasks",
+        "System"
+      ]
+    },
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
+  },
+  {
+    "from": "2.1.315",
+    "to": "2.1.316",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
   }
 ]
