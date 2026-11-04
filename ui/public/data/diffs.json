@@ -9649,12 +9649,12 @@
     "added_h1_sections": [],
     "removed_h1_sections": [],
     "added_subsections": {
+      "executing_actions_with_care": [
+        "Tone and style"
+      ],
       "system_prompt": [
         "Doing tasks",
         "System"
-      ],
-      "executing_actions_with_care": [
-        "Tone and style"
       ]
     },
     "removed_subsections": {},
@@ -9684,6 +9684,21 @@
   {
     "from": "2.1.316",
     "to": "2.1.317",
+    "added_h1_sections": [],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {},
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
+  },
+  {
+    "from": "2.1.317",
+    "to": "2.1.318",
     "added_h1_sections": [],
     "removed_h1_sections": [],
     "added_subsections": {},
