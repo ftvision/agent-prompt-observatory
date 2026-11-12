@@ -9649,12 +9649,12 @@
     "added_h1_sections": [],
     "removed_h1_sections": [],
     "added_subsections": {
-      "executing_actions_with_care": [
-        "Tone and style"
-      ],
       "system_prompt": [
         "Doing tasks",
         "System"
+      ],
+      "executing_actions_with_care": [
+        "Tone and style"
       ]
     },
     "removed_subsections": {},
