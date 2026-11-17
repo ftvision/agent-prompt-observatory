@@ -9807,5 +9807,27 @@
     "added_xml_tags": [],
     "removed_xml_tags": [],
     "changed_components": []
+  },
+  {
+    "from": "2.1.325",
+    "to": "2.1.326",
+    "added_h1_sections": [
+      "executing_actions_with_care"
+    ],
+    "removed_h1_sections": [],
+    "added_subsections": {},
+    "removed_subsections": {
+      "system_prompt": [
+        "Tone and style",
+        "Using your tools"
+      ]
+    },
+    "reordered_h1s": [],
+    "added_tools": [],
+    "removed_tools": [],
+    "reordered_tools": false,
+    "added_xml_tags": [],
+    "removed_xml_tags": [],
+    "changed_components": []
   }
 ]
