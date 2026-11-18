@@ -2036,82 +2036,87 @@
   },
   {
     "version": "2.1.309",
-    "release_date": "2026-10-22",
-    "sha": "9cf3d2ffd045f505c0fd762bb44c3342e81b7b4c"
+    "release_date": "2026-11-17",
+    "sha": "0adc105f28e2b65a77a3ff7ced385792981d9701"
   },
   {
     "version": "2.1.310",
-    "release_date": "2026-10-23",
-    "sha": "c8ac01f9f5431c3b6a91e7c4aa3a935544c509d1"
+    "release_date": "2026-11-17",
+    "sha": "2d4d987d742f765ba3e61f8d6e3dfaea6b15c6ee"
   },
   {
     "version": "2.1.311",
-    "release_date": "2026-10-26",
-    "sha": "ec14d08dbd3b067c139a29819a3b8d30e90d8957"
+    "release_date": "2026-11-17",
+    "sha": "34ff332b441d45539ce70b0b87f6153ca2f6c10f"
   },
   {
     "version": "2.1.312",
-    "release_date": "2026-10-27",
-    "sha": "889419ce64a1303058a33c407091821207ef736e"
+    "release_date": "2026-11-17",
+    "sha": "46d6d975daabd59b57c341b83bd964fa7bd99f5e"
   },
   {
     "version": "2.1.314",
-    "release_date": "2026-10-30",
-    "sha": "041ea22f1fa6910d6964d048fde536165b9c1460"
+    "release_date": "2026-11-17",
+    "sha": "82848d7e428202d224f1f42ed88ad6e50d7aa564"
   },
   {
     "version": "2.1.315",
-    "release_date": "2026-10-31",
-    "sha": "14514e80a789e7645a30e7706d23955c799c1c4c"
+    "release_date": "2026-11-17",
+    "sha": "cd607d4f500ecaa70317442c97cab7742b37b981"
   },
   {
     "version": "2.1.316",
-    "release_date": "2026-10-31",
-    "sha": "b7d9717ba3a3e5c6d329d5136c4de3b13e4b1163"
+    "release_date": "2026-11-17",
+    "sha": "36ff95de8f19ccd1fc0d342ca313adad65f3d86e"
   },
   {
     "version": "2.1.317",
-    "release_date": "2026-11-03",
-    "sha": "2635d71b46c6f170f388d6112d0736679b3ab4e4"
+    "release_date": "2026-11-17",
+    "sha": "52d3ad60cb30cfc5877009c99c7d5377a176efb8"
   },
   {
     "version": "2.1.318",
-    "release_date": "2026-11-04",
-    "sha": "3f598aa5df267d08ebbbf11a353902d3fcfe838c"
+    "release_date": "2026-11-17",
+    "sha": "ff1d34cc6f883d72f45b967739791781c0b7d493"
   },
   {
     "version": "2.1.319",
-    "release_date": "2026-11-06",
-    "sha": "5587d6aff9ad3fba599bc91de055d424461d9130"
+    "release_date": "2026-11-17",
+    "sha": "d1b5ffa0ef40943aabffcefba8baf068a6da6a41"
   },
   {
     "version": "2.1.321",
-    "release_date": "2026-11-09",
-    "sha": "faeb90a8893c7ac79da7ded59ec625e2e16c2902"
+    "release_date": "2026-11-17",
+    "sha": "20d6090c5273b205517fbc15152ce9f5c2bcbd72"
   },
   {
     "version": "2.1.322",
-    "release_date": "2026-11-10",
-    "sha": "a53d10bc53040ecd46958cb00cf1e70d306a91ee"
+    "release_date": "2026-11-17",
+    "sha": "70202fc25512156a708951089f7c9a5565c73ba3"
   },
   {
     "version": "2.1.323",
-    "release_date": "2026-11-12",
-    "sha": "0df8be5178538d1a32fbf6e246480e9f393b5284"
+    "release_date": "2026-11-17",
+    "sha": "9c04fb1855eee8be2b1897a6c7dae65911829723"
   },
   {
     "version": "2.1.324",
-    "release_date": "2026-11-13",
-    "sha": "47bc2f29332d47b3a67c7643c3522407950d83a4"
+    "release_date": "2026-11-17",
+    "sha": "60966df086cb70d56e15ef7bb79cc0dffd496a9d"
   },
   {
     "version": "2.1.325",
-    "release_date": "2026-11-13",
-    "sha": "71ba2d0cb72954a3f296bb8a540247b10599bd4a"
+    "release_date": "2026-11-17",
+    "sha": "633360192c7db12516faddb541d28f254782323b"
   },
   {
     "version": "2.1.326",
-    "release_date": "2026-11-16",
-    "sha": "6151fe054b27d0d96ec9551cecbd2824e9cad60b"
+    "release_date": "2026-11-17",
+    "sha": "9725b9ed6f1ec40e9a24715362352a26f40c829e"
+  },
+  {
+    "version": "2.1.327",
+    "release_date": "2026-11-17",
+    "sha": "3119903545cc4281111ef7dc43de0e6658dc98ee"
   }
 ]
