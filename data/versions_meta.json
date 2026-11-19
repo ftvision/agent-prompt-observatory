@@ -2118,5 +2118,10 @@
     "version": "2.1.327",
     "release_date": "2026-11-17",
     "sha": "3119903545cc4281111ef7dc43de0e6658dc98ee"
+  },
+  {
+    "version": "2.1.328",
+    "release_date": "2026-11-19",
+    "sha": "6e7e59393333fed1d2e3c1535cd0170ffbc8861e"
   }
 ]
